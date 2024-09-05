@@ -1,0 +1,32 @@
+[
+  {
+    "type": "Astal.Window",
+    "properties": {
+      "visible": true,
+      "anchor": 14,
+      "exclusivity": 1,
+      "child": {
+        "type": "Astal.CenterBox",
+        "properties": {
+          "visible": true,
+          "start_widget": {
+            "type": "ValaLabel.Label",
+            "properties": {
+              "label": "hello",
+              "vertical": true,
+              "visible": true,
+              "halign": 1
+            }
+          },
+          "end_widget": {
+            "type": "River.Title",
+            "properties": {
+              "visible": true,
+              "halign": 2
+            }
+          }
+        }
+      }
+    }
+  } 
+]
