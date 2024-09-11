@@ -5,7 +5,7 @@ deps = [
 ]
 
 bar_module = shared_library('module',
-  'label.vala',
+  'example.vala',
   dependencies: deps,
-  install_dir : join_paths(get_option('datadir'), 'kompass/modules/ValaLabel'),
+  install_dir : join_paths(get_option('datadir'), 'kompass/modules/ValaExample'),
   install : true)

@@ -1,32 +1,33 @@
-[
-  {
-    "type": "Astal.Window",
-    "properties": {
-      "visible": true,
-      "anchor": 14,
-      "exclusivity": 1,
-      "child": {
-        "type": "Astal.CenterBox",
-        "properties": {
-          "visible": true,
-          "start_widget": {
-            "type": "ValaLabel.Label",
+{
+  "style": "style.css",
+  "windows": [
+    {
+      "monitor": ".*",
+      "type": "Kompass.Bar",
+      "properties": {
+        "anchor": 13,
+        "vertical": true,
+        "exclusivity": 1,
+        "start_widgets": [
+          { "type": "River.Tags",
             "properties": {
-              "label": "hello",
-              "vertical": true,
-              "visible": true,
-              "halign": 1
-            }
-          },
-          "end_widget": {
-            "type": "River.Title",
-            "properties": {
-              "visible": true,
-              "halign": 2
+            "vertical": true,
+              "show_labels": false
             }
           }
-        }
+        ],
+        "center_widgets": [
+        ],
+        "end_widgets": [
+          { 
+            "type": "KompassTray.Tray",
+            "properties": {
+              "vertical": true
+            }
+          },
+          { "type": "Kompass.VClock" }
+        ]
       }
     }
-  } 
-]
+  ]
+}

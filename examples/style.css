@@ -1,0 +1,27 @@
+.tags {
+  padding: 0.3rem 0 0.3rem 0;
+}
+
+.tag {
+  padding: unset;
+  margin: 0.1rem 0 0.1rem 0;
+  min-width: 0.5rem;
+  min-height: 0.5rem;
+  border: 1rem;
+  border: 0.1rem solid @card_bg_color;
+  background-color: transparent;
+  border-radius: 1rem;
+}
+
+.tag.occupied {
+  background-color: @card_bg_color;
+}
+
+.tag.focused {
+  background-color: @accent_color;
+  border: 0.1rem solid @accent_color;
+}
+
+.tray-item {
+  all: unset;
+}

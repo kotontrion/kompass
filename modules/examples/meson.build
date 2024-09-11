@@ -1,2 +1,2 @@
 
-subdir('ValaLabel')
+subdir('ValaExample')

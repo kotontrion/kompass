@@ -4,6 +4,7 @@ deps = [
   dependency('gmodule-2.0'),
   dependency('json-glib-1.0'),
   dependency('gtk+-3.0'),
+  dependency('gtk-layer-shell-0'),
   dependency('astal-0.1')
 ]
 

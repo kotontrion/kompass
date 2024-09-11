@@ -1,7 +1,7 @@
 
-namespace ValaLabel{
+namespace ValaExample{
 
-class Label : Astal.Box {
+class Example : Astal.Box {
 
   public string label {get; set construct;}
   private Astal.Label label1;
@@ -9,6 +9,8 @@ class Label : Astal.Box {
 
 
   construct {
+    if(this.label == null) this.label = "hello";
+
     this.label1 = new Astal.Label();
     this.label1.label = "from vala";
     this.label2 = new Astal.Label();
@@ -19,7 +21,7 @@ class Label : Astal.Box {
     this.show_all();
   }
 
-  public Label(bool vertical, List<weak Gtk.Widget> children) {
+  public Example(bool vertical, List<weak Gtk.Widget> children) {
     base(vertical, children);
   }
 
@@ -28,8 +30,5 @@ class Label : Astal.Box {
 
 public void init() {
   // register the type, is done automatically in most cases
-  // typeof(ValaLabel.Label).ensure();
-}
-
-public void deinit() {
+  // typeof(ValaExample.Example).ensure();
 }

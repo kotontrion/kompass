@@ -9,14 +9,12 @@ public errordomain ModuleError {
 }
 
 public delegate void InitModule();
-public delegate void DeinitModule();
 public delegate Type GTypeGetFunc();
 
 public class Module {
   public string name;
   public unowned GLib.Module module;
   public InitModule init;
-  public DeinitModule deinit;
 
   public Module(string name) throws ModuleError {
 
@@ -52,14 +50,6 @@ public class Module {
 
     this.init = (InitModule) init_function;
     this.init();
-    
-
-    void* deinit_function;
-    module.symbol ("deinit", out deinit_function);
-    if (deinit_function == null) {
-      throw new ModuleError.NO_FUNCTION("no deinit function found in module %s", name);
-    }
-    this.deinit = (DeinitModule) deinit_function;
     
     module.make_resident();
    
