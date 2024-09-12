@@ -2,31 +2,36 @@
   "style": "style.css",
   "windows": [
     {
-      "monitor": ".*",
       "type": "Kompass.Bar",
       "properties": {
-        "anchor": 13,
+        "anchor": 11,
         "vertical": true,
         "exclusivity": 1,
+        "margin": 4,
+        "margin-left": 0,
         "start_widgets": [
-          { "type": "River.Tags",
-            "properties": {
-            "vertical": true,
-              "show_labels": false
-            }
-          }
-        ],
-        "center_widgets": [
-        ],
-        "end_widgets": [
+          { "type": "Kompass.VClock" },
           { 
             "type": "KompassTray.Tray",
             "properties": {
               "vertical": true
             }
           },
-          { "type": "Kompass.VClock" }
-        ]
+          { "type": "Kompass.QSBar",
+            "properties": {
+              "vertical": true,
+              "spacing": 8
+            }
+          }
+        ],
+        "end_widgets": [
+          { "type": "River.Tags",
+            "properties": {
+            "vertical": true,
+              "show_labels": false
+            }
+          }
+        ] 
       }
     }
   ]
