@@ -40,7 +40,16 @@ class Tray : Astal.Box {
     this.items = new HashTable<string, TrayItem>(GLib.str_hash, GLib.str_equal);
 
     Astal.widget_set_class_names(this, {"tray"});
-    
+
+    foreach(AstalTray.TrayItem item in KompassTray.tray.items) {
+      if(item == null) continue;
+      if(this.items.contains(item.item_id)) continue;
+      TrayItem tray_item = new TrayItem(item);
+      this.items.insert (item.item_id, tray_item);
+      this.add(tray_item);
+
+    }
+
     KompassTray.tray.item_added.connect(id => {
       if(this.items.contains(id)) return;
       AstalTray.TrayItem item = KompassTray.tray.get_item(id);

@@ -19,6 +19,8 @@ class VClock : Astal.Box {
 
     this.vertical = true;
 
+    Astal.widget_set_class_names(this, {"clock"});
+
     this.hour = new Astal.Label();
     this.minute = new Astal.Label();
     this.add(this.hour);

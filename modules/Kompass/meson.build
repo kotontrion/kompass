@@ -3,12 +3,17 @@ deps = [
   dependency('gdk-3.0'),
   dependency('gtk-layer-shell-0'),
   dependency('astal-0.1'),
+  dependency('astal-battery-0.1'),
+  dependency('astal-bluetooth-0.1'),
+  dependency('astal-network-0.1'),
+  dependency('libnm'),
 ]
 
 srcs = [
   'bar.vala',
   'clock.vala',
   'vclock.vala',
+  'quicksettings.vala',
   'module.vala'
 ]
 

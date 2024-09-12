@@ -22,6 +22,8 @@ class Clock : Astal.EventBox {
     if(this.format == null) this.format = "%T";
     if(this.hover_format == null) this.hover_format = "%a %F";
    
+    Astal.widget_set_class_names(this, {"clock"});
+    
     this.label = new Astal.Label();
     this.add(this.label);
     

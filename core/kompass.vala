@@ -14,15 +14,11 @@ public class Main : Object {
   private static void create_windows_for_monitor(Gdk.Monitor monitor, Config config, Astal.Application app, Kompass.ModuleManager manager) throws Kompass.ModuleError {
     string name = get_monitor_name(monitor);
     foreach( WindowConfig win_conf in config.windows) {
-      if(win_conf.monitor == null) {
-        app.add_window(load_window(win_conf.window, manager));
-      }
-      else {
-        if(Regex.match_simple (win_conf.monitor, name, 0, 0)) {
-          Gtk.Window win = load_window(win_conf.window, manager);
-          GtkLayerShell.set_monitor(win, monitor);
-          app.add_window(win);
-        }
+      if(win_conf.monitor == null) continue;
+      if(Regex.match_simple (win_conf.monitor, name, 0, 0)) {
+        Gtk.Window win = load_window(win_conf.window, manager);
+        GtkLayerShell.set_monitor(win, monitor);
+        app.add_window(win);
       }
     }
   }
@@ -80,6 +76,12 @@ private static bool inspector;
           app.apply_css(Path.build_filename(Path.get_dirname(config_file), config.style), true);
         }
 
+        foreach( WindowConfig win_conf in config.windows) {
+          if(win_conf.monitor == null) {
+            Gtk.Window win = load_window(win_conf.window, manager);
+            app.add_window(win);
+          }
+        };
 
         app.monitors.foreach (m => {
           create_windows_for_monitor(m, config, app, manager);
