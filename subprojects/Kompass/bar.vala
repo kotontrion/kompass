@@ -9,7 +9,12 @@ class Bar : Astal.Window {
   public unowned List<weak Gtk.Widget> center_widgets {get; construct;}
   public unowned List<weak Gtk.Widget> end_widgets {get; construct;}
 
+  static construct {
+    set_css_name("kompass-bar");
+  }
+
   construct {
+
     this.center_box = new Astal.CenterBox();
     this.center_box.vertical = this.vertical;
 

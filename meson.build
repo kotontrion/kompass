@@ -12,4 +12,7 @@ project(
 )
 
 subdir('core')
-subdir('modules')
+
+subproject('Kompass')
+subproject('River')
+subproject('Tray')

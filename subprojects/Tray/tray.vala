@@ -1,5 +1,5 @@
 
-namespace KompassTray {
+namespace Tray {
 
 class TrayItem : Gtk.Button {
 

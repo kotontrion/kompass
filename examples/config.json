@@ -12,7 +12,7 @@
         "start_widgets": [
           { "type": "Kompass.VClock" },
           { 
-            "type": "KompassTray.Tray",
+            "type": "Tray.Tray",
             "properties": {
               "vertical": true
             }
