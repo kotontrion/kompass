@@ -1,0 +1,82 @@
+using Gtk 4.0;
+using AstalWp 0.1;
+
+template $KompassQsAudio : Box {
+  orientation: vertical;
+  spacing: 5;
+  Box {
+    Button {
+      icon-name: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.volume-icon;
+      clicked => $toggle_mute_speaker();
+    }
+    Scale {
+      hexpand: true;
+      adjustment: Adjustment speaker_adjust {
+        lower: 0;
+        upper: 1.5;
+      };
+    }
+  }
+  Box {
+    Button {
+      icon-name: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-microphone as <AstalWp.Endpoint>.volume-icon;
+      clicked => $toggle_mute_mic();
+    }
+    Scale {
+      hexpand: true;
+      adjustment: Adjustment mic_adjust {
+        lower: 0;
+        upper: 1.5;
+      };
+    }
+  }
+  Box {
+    Image {
+      icon-name: "audio-speakers-symbolic";
+    }
+    Label {
+      halign: start;
+      label: "Sink Selector";
+    }
+  }
+  Separator {}
+  ListBox sinks {
+    hexpand: true;
+    valign: start;
+    selection-mode: none;
+    show-separators: true;
+    styles ["boxed-list"]
+  }
+  Box {
+    Image {
+      icon-name: "audio-input-microphone-symbolic";
+    }
+    Label {
+      halign: start;
+      label: "Source Selector";
+    }
+  }
+  Separator {}
+  ListBox sources {
+    hexpand: true;
+    valign: start;
+    selection-mode: none;
+    show-separators: true;
+    styles ["boxed-list"]}
+  Box {
+    Image {
+      icon-name: "view-list-symbolic";
+    }
+    Label {
+      halign: start;
+      label: "App mixer";
+    }
+  }
+  ListBox mixers {
+    hexpand: true;
+    valign: start;
+    selection-mode: none;
+    show-separators: true;
+    styles ["boxed-list"]
+  }
+}

@@ -1,0 +1,29 @@
+* {
+  font-family: "CaskaydiaCove Nerd Font";
+}
+
+.half-font-size {
+  font-size: 0.5rem;
+}
+
+@each $spacing in (3, 6) {
+  .spacing-#{$spacing} {
+    &.vertical > *:not(:last-child) {
+      margin-bottom: calc($spacing/10 * 1rem);
+    }
+    // should be .horizontal, but setting classnames resets it
+    &:not(.vertical) > *:not(:last-child) {
+      margin-right: calc($spacing/10 * 1rem);
+    }
+  }
+}
+
+popover {
+  > * {
+    background: #{"@view_bg_color"};
+  }
+}
+
+@import "bar";
+@import "tags";
+@import "quicksettings";

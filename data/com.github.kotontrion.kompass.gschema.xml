@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="kompass">
+	<schema id="com.github.koontrion.kompass" path="/com/github/koontrion/kompass/">
+	</schema>
+</schemalist>

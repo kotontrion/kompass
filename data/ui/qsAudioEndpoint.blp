@@ -1,0 +1,32 @@
+using Gtk 4.0;
+using AstalWp 0.1;
+
+template $KompassQsAudioEndpoint : ListBoxRow {
+
+  selectable: false;
+  activatable: false;
+  child: Box {
+    Image {
+      icon-size: large;
+      icon-name: bind $icon_substitue(template.endpoint as <AstalWp.Endpoint>.icon) as <string>;
+    }
+    Box {
+      orientation: vertical;
+      Label {
+        halign: start;
+        label: bind template.endpoint as <AstalWp.Endpoint>.description;
+      }
+      Scale {
+        hexpand: true;
+        adjustment: Adjustment volume_adjust {
+          lower: 0;
+          upper: 1.5;
+        };
+      }
+    }
+
+    GestureClick {
+      pressed => $clicked();
+    }
+  };
+}

@@ -1,0 +1,54 @@
+using Gtk 4.0;
+using Adw 1;
+using AstalWp 0.1;
+using AstalBattery 0.1;
+using AstalNetwork 0.1;
+using AstalBluetooth 0.1;
+
+template $KompassQs: Box {
+  orientation: vertical;
+
+  Popover popover {
+    position: right;
+    width-request: 400;
+
+    Box {
+      orientation: vertical;
+      //Adw.ViewSwitcher switcher_title {
+      //  stack: stack;
+      //  policy: narrow;
+      //}
+
+      Adw.ViewStack stack {
+        Adw.ViewStackPage {
+          name: "audio";
+          title: _("Audio");
+          icon-name: "audio-speakers-symbolic";
+          use-underline: true;
+          child: $KompassQsAudio {};
+        }
+      }
+    }
+  }
+
+  Image {
+    icon-name: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.volume-icon;
+  }
+
+  Image {
+    icon-name: bind template.battery as <AstalBattery.Device>.icon-name;
+  }
+
+  Image {
+    icon-name: bind template.network as <AstalNetwork.Network>.wifi as <AstalNetwork.Wifi>.icon-name;
+  }
+
+  Image {
+    icon-name: bind $bluetooth_icon_name(template.bluetooth as <AstalBluetooth.Bluetooth>.is-connected) as <string>;
+  }
+
+  GestureClick {
+    pressed => $popup();
+  }
+
+}

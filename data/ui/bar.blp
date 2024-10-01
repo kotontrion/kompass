@@ -1,0 +1,29 @@
+using Gtk 4.0;
+
+template $KompassBar: Window {
+  title: _("Kompass");
+
+  child: CenterBox {
+    orientation: vertical;
+
+    [start]
+    $KompassTags {
+      orientation: vertical;
+      styles ["bar-module"]
+    }
+
+    [end]
+    Box {
+      orientation: vertical;
+      styles ["spacing-6"]
+
+      $KompassQs {
+        styles ["bar-module", "spacing-3"]
+      }
+
+      $KompassClock {
+        styles ["bar-module"]
+      }
+    }
+  };
+}

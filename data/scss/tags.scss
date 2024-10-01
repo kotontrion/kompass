@@ -1,0 +1,18 @@
+
+tag {
+  margin: 0.2rem 0 0.2rem 0;
+  min-width: 0.7rem;
+  min-height: 0.7rem;
+  border: 0.1rem solid #{"@card_bg_color"};
+  background-color: transparent;
+  border-radius: 1rem;
+
+  &.occupied {
+    background-color: #{"@card_bg_color"};
+  }
+
+  &.focused {
+    background-color: #{"@accent_color"};
+    border: 0.1rem solid #{"@accent_color"};
+  }
+}

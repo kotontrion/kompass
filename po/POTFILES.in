@@ -1,0 +1,8 @@
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
+data/com.github.kotontrion.kompass.desktop.in
+data/com.github.kotontrion.kompass.metainfo.xml.in
+data/com.github.kotontrion.kompass.gschema.xml
+src/main.vala
+src/window.vala
+src/window.blp
