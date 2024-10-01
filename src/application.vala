@@ -1,4 +1,4 @@
-public class Kompass.Application : Gtk.Application {
+public class Kompass.Application : Adw.Application {
     public Application () {
         Object (
             application_id: "com.github.kotontrion.kompass",
