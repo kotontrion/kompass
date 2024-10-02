@@ -49,8 +49,25 @@ template $KompassQs: Box {
     }
   }
 
-  Image {
-    icon-name: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.volume-icon;
+  Revealer rev_volume{
+    child: Box {
+      orientation: vertical;
+      spacing: 5;
+
+      LevelBar {
+        orientation: vertical;
+        inverted: true;
+        height-request: 150;
+        max-value: 1.5;
+        min-value: 0;
+        value: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.volume;
+      }
+
+      Image {
+        icon-name: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.volume-icon;
+      }
+      Separator {}
+    };    
   }
 
   Image {
@@ -63,6 +80,10 @@ template $KompassQs: Box {
 
   Image {
     icon-name: bind $bluetooth_icon_name(template.bluetooth as <AstalBluetooth.Bluetooth>.is-connected) as <string>;
+  }
+
+  Image {
+    icon-name: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.volume-icon;
   }
 
   GestureClick {

@@ -6,12 +6,16 @@ public class Kompass.Qs : Gtk.Box {
     public AstalNetwork.Network network {get; private set;}
     public AstalBluetooth.Bluetooth bluetooth {get; private set;}
 
+    private int count = 0;
+
     [GtkChild]
     private unowned Gtk.Popover popover;
 
     [GtkChild]
     private unowned Adw.NavigationView nav_view;
 
+    [GtkChild]
+    private unowned Gtk.Revealer rev_volume;
 
     [GtkCallback]
     public string bluetooth_icon_name(bool connected) {
@@ -47,6 +51,16 @@ public class Kompass.Qs : Gtk.Box {
         this.battery = AstalBattery.get_default();
         this.network = AstalNetwork.get_default();
         this.bluetooth = AstalBluetooth.get_default();
+
+        this.wp.audio.default_speaker.notify["volume"].connect(() => {
+            this.count++;
+            rev_volume.reveal_child = true;
+            GLib.Timeout.add(2000, () => {
+                if(--this.count == 0)
+                    rev_volume.reveal_child = false;
+                return GLib.Source.REMOVE;
+            });
+        });
     }
 
 }

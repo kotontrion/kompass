@@ -1,16 +1,25 @@
-private class Kompass.Tag : Gtk.Button {
+private class Kompass.Tag : Gtk.Box {
 
     public int index { get; construct; }
     public AstalRiver.Output output { get; construct; }
+    private Gtk.GestureClick lc;
+    private Gtk.GestureClick rc;
 
     construct {
 
         valign = Gtk.Align.CENTER;
         halign = Gtk.Align.CENTER;
 
-        this.clicked.connect(() => {
-            output.focused_tags = 1 << index;
-        });
+        lc = new Gtk.GestureClick();
+        lc.set_button(Gdk.BUTTON_PRIMARY);
+        lc.pressed.connect(() => output.focused_tags = 1 << index);
+        this.add_controller(lc);
+
+        rc = new Gtk.GestureClick();
+        rc.set_button(Gdk.BUTTON_SECONDARY);
+        rc.pressed.connect(() => output.focused_tags ^= 1 << index);
+        this.add_controller(rc);
+
         output.changed.connect(update_css);
         update_css();
     }
