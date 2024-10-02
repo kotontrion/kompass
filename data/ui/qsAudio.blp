@@ -1,9 +1,11 @@
 using Gtk 4.0;
+using Adw 1;
 using AstalWp 0.1;
 
 template $KompassQsAudio : Box {
   orientation: vertical;
   spacing: 5;
+  Adw.HeaderBar {}
   Box {
     Button {
       icon-name: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.volume-icon;
@@ -31,6 +33,7 @@ template $KompassQsAudio : Box {
     }
   }
   Box {
+    spacing: 5;
     Image {
       icon-name: "audio-speakers-symbolic";
     }
@@ -48,6 +51,7 @@ template $KompassQsAudio : Box {
     styles ["boxed-list"]
   }
   Box {
+    spacing: 5;
     Image {
       icon-name: "audio-input-microphone-symbolic";
     }
@@ -64,6 +68,7 @@ template $KompassQsAudio : Box {
     show-separators: true;
     styles ["boxed-list"]}
   Box {
+    spacing: 5;
     Image {
       icon-name: "view-list-symbolic";
     }
@@ -72,6 +77,7 @@ template $KompassQsAudio : Box {
       label: "App mixer";
     }
   }
+  Separator {}
   ListBox mixers {
     hexpand: true;
     valign: start;

@@ -9,6 +9,10 @@ public class Kompass.Qs : Gtk.Box {
     [GtkChild]
     private unowned Gtk.Popover popover;
 
+    [GtkChild]
+    private unowned Adw.NavigationView nav_view;
+
+
     [GtkCallback]
     public string bluetooth_icon_name(bool connected) {
         return connected
@@ -19,6 +23,23 @@ public class Kompass.Qs : Gtk.Box {
     [GtkCallback]
     public void popup() {
         popover.popup();
+    }
+
+    [GtkCallback]
+    public void push_stack_audio() {
+        nav_view.push_by_tag("audio");
+    }
+
+    [GtkCallback]
+    public void push_stack_bt() {
+        nav_view.push_by_tag("bluetooth");
+    }
+
+    [GtkCallback]
+    public bool on_scroll(Gtk.EventControllerScroll scroll, double dx, double dy) {
+        double delta = dy > 0 ? -0.03 : 0.03;
+        this.wp.audio.default_speaker.volume += delta;
+        return true;
     }
 
     construct {

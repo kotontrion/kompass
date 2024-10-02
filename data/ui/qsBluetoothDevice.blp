@@ -1,0 +1,45 @@
+using Gtk 4.0;
+using AstalBluetooth 0.1;
+
+template $KompassQsBluetoothDevice : ListBoxRow {
+
+  selectable: false;
+  activatable: false;
+
+  child: CenterBox {
+    [start]
+    Box {
+      Image {
+        icon-size: large;
+        icon-name: bind $icon_substitue(template.device as <AstalBluetooth.Device>.icon) as <string>;
+      }
+      Box {
+        orientation: vertical;
+        Label {
+          halign: start;
+          label: bind template.device as <AstalBluetooth.Device>.name;
+        }
+        Label {
+          halign: start;
+          label: bind template.device as <AstalBluetooth.Device>.address;
+          styles ["subtitle"]
+        }
+      }
+    }
+    [end]
+    Box {
+      Spinner spinner{
+        visible: bind spinner.spinning;
+        spinning: bind template.device as <AstalBluetooth.Device>.connecting;
+      }
+      Image {
+        visible: bind template.device as <AstalBluetooth.Device> .connected;
+        icon-name: "object-select-symbolic";
+      }
+    }
+
+    GestureClick {
+      pressed => $toggle_connection();
+    }
+  };
+}

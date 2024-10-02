@@ -13,20 +13,38 @@ template $KompassQs: Box {
     width-request: 400;
 
     Box {
-      orientation: vertical;
-      //Adw.ViewSwitcher switcher_title {
-      //  stack: stack;
-      //  policy: narrow;
-      //}
+      Adw.NavigationView nav_view {
+       
 
-      Adw.ViewStack stack {
-        Adw.ViewStackPage {
-          name: "audio";
+        Adw.NavigationPage {
+          tag: "dashboard";
+          title: _("Dashboard");
+          child: Box  {
+            orientation: vertical;
+            Button {
+              label: "bluetooth";
+              clicked => $push_stack_bt();
+            }
+            Button {
+              label: "audio";
+              clicked => $push_stack_audio();
+            }
+          };
+        }
+
+        Adw.NavigationPage {
+          tag: "audio";
           title: _("Audio");
-          icon-name: "audio-speakers-symbolic";
-          use-underline: true;
           child: $KompassQsAudio {};
         }
+
+        
+        Adw.NavigationPage {
+          tag: "bluetooth";
+          title: _("Bluetooth");
+          child: $KompassQsBluetooth {};
+        }
+
       }
     }
   }
@@ -49,6 +67,11 @@ template $KompassQs: Box {
 
   GestureClick {
     pressed => $popup();
+  }
+
+  EventControllerScroll {
+    scroll => $on_scroll();
+    flags: vertical;
   }
 
 }
