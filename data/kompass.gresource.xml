@@ -9,5 +9,6 @@
     <file preprocess="xml-stripblanks">ui/qsAudioEndpoint.ui</file>
     <file preprocess="xml-stripblanks">ui/qsBluetooth.ui</file>
     <file preprocess="xml-stripblanks">ui/qsBluetoothDevice.ui</file>
+    <file preprocess="xml-stripblanks">ui/qsButton.ui</file>
   </gresource>
 </gresources>

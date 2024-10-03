@@ -26,17 +26,28 @@ public class Kompass.Qs : Gtk.Box {
 
     [GtkCallback]
     public void popup() {
+        nav_view.pop_to_tag("dashboard");
         popover.popup();
     }
 
     [GtkCallback]
-    public void push_stack_audio() {
-        nav_view.push_by_tag("audio");
+    public void on_bt_clicked() {
+        this.bluetooth.adapter.powered = !this.bluetooth.adapter.powered;
     }
 
     [GtkCallback]
-    public void push_stack_bt() {
+    public void on_bt_arrow_clicked() {
         nav_view.push_by_tag("bluetooth");
+    }
+
+    [GtkCallback]
+    public void on_audio_clicked() {
+        this.wp.audio.default_speaker.mute = !this.wp.audio.default_speaker.mute;
+    }
+
+    [GtkCallback]
+    public void on_audio_arrow_clicked() {
+        nav_view.push_by_tag("audio");
     }
 
     [GtkCallback]

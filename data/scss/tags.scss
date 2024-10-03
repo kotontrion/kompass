@@ -12,7 +12,7 @@ tag {
   }
 
   &.focused {
-    background-color: #{"@accent_color"};
-    border: 0.1rem solid #{"@accent_color"};
+    background-color: #{"@accent_bg_color"};
+    border: 0.1rem solid #{"@accent_bg_color"};
   }
 }

@@ -1,5 +1,6 @@
 using Gtk 4.0;
 using Adw 1;
+using AstalBluetooth 0.1;
 
 template $KompassQsBluetooth : Box {
   orientation: vertical;
@@ -8,6 +9,7 @@ template $KompassQsBluetooth : Box {
     [start]
     ToggleButton scan_button {
       toggled => $toggle_discover();
+      active: bind template.bluetooth as <AstalBluetooth.Bluetooth>.adapter as <AstalBluetooth.Adapter>.discovering;
       Box {
         Spinner {
           visible: bind scan_button.active;
@@ -24,12 +26,15 @@ template $KompassQsBluetooth : Box {
       activate => $toggle_powered();
     }
   }
-  
-  ListBox devices {
-    hexpand: true;
-    valign: start;
-    selection-mode: none;
-    show-separators: true;
-    styles ["boxed-list"]
+  ScrolledWindow {  
+    max-content-height: 500;
+    propagate-natural-height: true;
+    ListBox devices {
+      hexpand: true;
+      valign: start;
+      selection-mode: none;
+      show-separators: true;
+      styles ["boxed-list"]
+    }
   }
 }

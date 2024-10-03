@@ -32,57 +32,65 @@ template $KompassQsAudio : Box {
       };
     }
   }
-  Box {
-    spacing: 5;
-    Image {
-      icon-name: "audio-speakers-symbolic";
-    }
-    Label {
-      halign: start;
-      label: "Sink Selector";
-    }
-  }
-  Separator {}
-  ListBox sinks {
-    hexpand: true;
-    valign: start;
-    selection-mode: none;
-    show-separators: true;
-    styles ["boxed-list"]
-  }
-  Box {
-    spacing: 5;
-    Image {
-      icon-name: "audio-input-microphone-symbolic";
-    }
-    Label {
-      halign: start;
-      label: "Source Selector";
-    }
-  }
-  Separator {}
-  ListBox sources {
-    hexpand: true;
-    valign: start;
-    selection-mode: none;
-    show-separators: true;
-    styles ["boxed-list"]}
-  Box {
-    spacing: 5;
-    Image {
-      icon-name: "view-list-symbolic";
-    }
-    Label {
-      halign: start;
-      label: "App mixer";
-    }
-  }
-  Separator {}
-  ListBox mixers {
-    hexpand: true;
-    valign: start;
-    selection-mode: none;
-    show-separators: true;
-    styles ["boxed-list"]
+  ScrolledWindow {
+    max-content-height: 500;
+    propagate-natural-height: true;
+    child: Box {
+      orientation: vertical;
+      spacing: 5;
+      Box {
+        spacing: 5;
+        Image {
+          icon-name: "audio-speakers-symbolic";
+        }
+        Label {
+          halign: start;
+          label: "Sink Selector";
+        }
+      }
+      Separator {}
+      ListBox sinks {
+        hexpand: true;
+        valign: start;
+        selection-mode: none;
+        show-separators: true;
+        styles ["boxed-list"]
+      }
+      Box {
+        spacing: 5;
+        Image {
+          icon-name: "audio-input-microphone-symbolic";
+        }
+        Label {
+          halign: start;
+          label: "Source Selector";
+        }
+      }
+      Separator {}
+      ListBox sources {
+        hexpand: true;
+        valign: start;
+        selection-mode: none;
+        show-separators: true;
+        styles ["boxed-list"]}
+      Box {
+        spacing: 5;
+        Image {
+          icon-name: "view-list-symbolic";
+        }
+        Label {
+          halign: start;
+          label: "App mixer";
+        }
+      }
+      Separator {}
+      ListBox mixers {
+        hexpand: true;
+        valign: start;
+        selection-mode: none;
+        show-separators: true;
+        styles ["boxed-list"]
+      }
+    };
   }
 }

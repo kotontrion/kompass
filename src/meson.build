@@ -9,6 +9,7 @@ kompass_sources += [
   'qsAudioEndpoint.vala',
   'qsBluetooth.vala',
   'qsBluetoothDevice.vala',
+  'qsButton.vala',
 ]
 
 kompass_deps = [

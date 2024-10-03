@@ -8,47 +8,6 @@ using AstalBluetooth 0.1;
 template $KompassQs: Box {
   orientation: vertical;
 
-  Popover popover {
-    position: right;
-    width-request: 400;
-
-    Box {
-      Adw.NavigationView nav_view {
-       
-
-        Adw.NavigationPage {
-          tag: "dashboard";
-          title: _("Dashboard");
-          child: Box  {
-            orientation: vertical;
-            Button {
-              label: "bluetooth";
-              clicked => $push_stack_bt();
-            }
-            Button {
-              label: "audio";
-              clicked => $push_stack_audio();
-            }
-          };
-        }
-
-        Adw.NavigationPage {
-          tag: "audio";
-          title: _("Audio");
-          child: $KompassQsAudio {};
-        }
-
-        
-        Adw.NavigationPage {
-          tag: "bluetooth";
-          title: _("Bluetooth");
-          child: $KompassQsBluetooth {};
-        }
-
-      }
-    }
-  }
-
   Revealer rev_volume{
     child: Box {
       orientation: vertical;
@@ -70,29 +29,85 @@ template $KompassQs: Box {
     };    
   }
 
-  Image {
-    icon-name: bind template.battery as <AstalBattery.Device>.icon-name;
-  }
+  Box {
+    spacing: 5;
+    orientation: vertical;
+    Popover popover {
+      position: right;
+      width-request: 400;
 
-  Image {
-    icon-name: bind template.network as <AstalNetwork.Network>.wifi as <AstalNetwork.Wifi>.icon-name;
-  }
+      Box {
+        Adw.NavigationView nav_view {
 
-  Image {
-    icon-name: bind $bluetooth_icon_name(template.bluetooth as <AstalBluetooth.Bluetooth>.is-connected) as <string>;
-  }
+          Adw.NavigationPage {
+            tag: "dashboard";
+            title: _("Dashboard");
+            child: FlowBox {
+              max-children-per-line: 2;
+              selection-mode: none;
+              homogeneous: true;
 
-  Image {
-    icon-name: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.volume-icon;
-  }
+              $KompassQsButton {
+                label: "bluetooth";
+                icon: bind $bluetooth_icon_name(template.bluetooth as <AstalBluetooth.Bluetooth>.is-connected) as <string>;
+                active: bind template.bluetooth as <AstalBluetooth.Bluetooth>.is-connected;
+                clicked => $on_bt_clicked();
+                arrow_clicked => $on_bt_arrow_clicked();
+              }
 
-  GestureClick {
-    pressed => $popup();
+              $KompassQsButton {
+                label: "audio";
+                icon: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.volume-icon;
+                inactive: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.mute;
+                clicked => $on_audio_clicked();
+                arrow_clicked => $on_audio_arrow_clicked();
+              }
+            };
+          }
+
+          Adw.NavigationPage {
+            tag: "audio";
+            title: _("Audio");
+            child: $KompassQsAudio {};
+          }
+
+          
+          Adw.NavigationPage {
+            tag: "bluetooth";
+            title: _("Bluetooth");
+            child: $KompassQsBluetooth {};
+          }
+        }
+      }
+    }
+
+
+
+    Image {
+      icon-name: bind template.battery as <AstalBattery.Device>.icon-name;
+    }
+
+    Image {
+      icon-name: bind template.network as <AstalNetwork.Network>.wifi as <AstalNetwork.Wifi>.icon-name;
+    }
+
+    Image {
+      icon-name: bind $bluetooth_icon_name(template.bluetooth as <AstalBluetooth.Bluetooth>.is-connected) as <string>;
+    }
+
+    Image {
+      icon-name: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.volume-icon;
+    }
+
+    GestureClick {
+      pressed => $popup();
+    }
   }
 
   EventControllerScroll {
     scroll => $on_scroll();
     flags: vertical;
   }
-
 }
+
+

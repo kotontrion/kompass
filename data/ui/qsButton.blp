@@ -1,0 +1,29 @@
+using Gtk 4.0;
+
+template $KompassQsButton : Box {
+  hexpand: true; 
+  Button {
+    hexpand: true; 
+    styles ["qs-main-button"]
+    Box {
+      spacing: 5;
+      Image {
+        icon-name: bind template.icon;
+      }
+      Label {
+        label: bind template.label;
+      }
+    }  
+    clicked => $on_clicked();
+  }
+  Separator {
+    orientation: vertical;
+  }
+  Button {
+    styles ["qs-arrow-button"]
+    Image {
+        icon-name: "pan-end-symbolic";
+    }
+    clicked => $on_arrow_clicked();
+  }
+}

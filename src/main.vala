@@ -6,6 +6,7 @@ void ensure_types() {
     typeof(Kompass.Qs).ensure();
     typeof(Kompass.QsAudio).ensure();
     typeof(Kompass.QsBluetooth).ensure();
+    typeof(Kompass.QsButton).ensure();
 }
 
 int main (string[] args) {
