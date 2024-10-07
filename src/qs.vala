@@ -5,6 +5,8 @@ public class Kompass.Qs : Gtk.Box {
     public AstalBattery.Device battery {get; private set;}
     public AstalNetwork.Network network {get; private set;}
     public AstalBluetooth.Bluetooth bluetooth {get; private set;}
+    public AstalNotifd.Notifd notifd {get; private set;}
+    public AstalMpris.Mpris mpris {get; private set;}
 
     private int count = 0;
 
@@ -17,11 +19,26 @@ public class Kompass.Qs : Gtk.Box {
     [GtkChild]
     private unowned Gtk.Revealer rev_volume;
 
+    [GtkChild]
+    private unowned Adw.Carousel players;
+
     [GtkCallback]
     public string bluetooth_icon_name(bool connected) {
         return connected
             ? "bluetooth-active-symbolic"
             : "bluetooth-disabled-symbolic";
+    }
+
+    [GtkCallback]
+    public bool notification_icon_visible(List notifications) {
+      return notifications.length() > 0;
+    }
+
+    [GtkCallback]
+    public string notification_dnd_icon(bool dnd) {
+      return dnd 
+        ? "notifications-disabled-symbolic"
+        : "user-available-symbolic";
     }
 
     [GtkCallback]
@@ -51,17 +68,42 @@ public class Kompass.Qs : Gtk.Box {
     }
 
     [GtkCallback]
+    public void on_notif_clicked() {
+        this.notifd.dont_disturb = !this.notifd.dont_disturb;
+    }
+
+    [GtkCallback]
+    public void on_notif_arrow_clicked() {
+        nav_view.push_by_tag("notifications");
+    }
+
+    [GtkCallback]
     public bool on_scroll(Gtk.EventControllerScroll scroll, double dx, double dy) {
         double delta = dy > 0 ? -0.03 : 0.03;
         this.wp.audio.default_speaker.volume += delta;
         return true;
     }
 
+    private void on_player_added(AstalMpris.Player player) {
+        this.players.append(new Kompass.Player(player));
+    }
+
+    private void on_player_removed(AstalMpris.Player player) {
+      for(int i = 0; i < this.players.n_pages; i++) {
+        Kompass.Player p = (Kompass.Player) this.players.get_nth_page(i);
+        if (p.player == player)
+          this.players.remove(p);
+      }
+    }
+
+
     construct {
         this.wp = AstalWp.get_default();
         this.battery = AstalBattery.get_default();
         this.network = AstalNetwork.get_default();
         this.bluetooth = AstalBluetooth.get_default();
+        this.notifd = AstalNotifd.get_default();
+        this.mpris = AstalMpris.get_default();
 
         this.wp.audio.default_speaker.notify["volume"].connect(() => {
             this.count++;
@@ -72,6 +114,10 @@ public class Kompass.Qs : Gtk.Box {
                 return GLib.Source.REMOVE;
             });
         });
+
+        this.mpris.players.@foreach((p) => this.on_player_added(p));
+        this.mpris.player_added.connect((p) => this.on_player_added(p));
+        this.mpris.player_closed.connect((p) => this.on_player_removed(p));
     }
 
 }

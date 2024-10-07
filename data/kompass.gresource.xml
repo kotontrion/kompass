@@ -10,5 +10,8 @@
     <file preprocess="xml-stripblanks">ui/qsBluetooth.ui</file>
     <file preprocess="xml-stripblanks">ui/qsBluetoothDevice.ui</file>
     <file preprocess="xml-stripblanks">ui/qsButton.ui</file>
+    <file preprocess="xml-stripblanks">ui/qsNotif.ui</file>
+    <file preprocess="xml-stripblanks">ui/notification.ui</file>
+    <file preprocess="xml-stripblanks">ui/mprisPlayer.ui</file>
   </gresource>
 </gresources>

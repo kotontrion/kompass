@@ -6,7 +6,7 @@ template $KompassQsBluetooth : Box {
   orientation: vertical;
   spacing: 5;
   Adw.HeaderBar {
-    [start]
+    [end]
     ToggleButton scan_button {
       toggled => $toggle_discover();
       active: bind template.bluetooth as <AstalBluetooth.Bluetooth>.adapter as <AstalBluetooth.Adapter>.discovering;
@@ -25,6 +25,7 @@ template $KompassQsBluetooth : Box {
     Switch enable_switch {
       activate => $toggle_powered();
     }
+
   }
   ScrolledWindow {  
     max-content-height: 500;

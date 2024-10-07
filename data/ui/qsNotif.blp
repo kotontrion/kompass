@@ -1,0 +1,26 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $KompassQsNotif : Box {
+  orientation: vertical;
+  spacing: 5;
+  Adw.HeaderBar {
+    [end]
+    Button {
+      icon-name: "user-trash-symbolic";
+      clicked => $clear();
+    }
+
+  }
+  ScrolledWindow {  
+    max-content-height: 500;
+    propagate-natural-height: true;
+    ListBox notifications {
+      hexpand: true;
+      valign: start;
+      selection-mode: none;
+      show-separators: true;
+      styles ["boxed-list"]
+    }
+  }
+}

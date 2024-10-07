@@ -1,0 +1,51 @@
+using Gtk 4.0;
+using AstalMpris 0.1;
+
+template $KompassPlayer : Box {
+
+  hexpand: true;
+  styles ["mpris-player"]
+
+  CenterBox {
+    styles ["mpris-player-controls"]
+    hexpand: true;
+    valign: end;
+    
+    [start]
+    Box {
+      orientation: vertical;
+      Label {
+        label: bind template.player as <AstalMpris.Player>.title;
+        halign: start;
+        ellipsize: end;
+        max-width-chars: 20;
+      }
+      Label {
+        label: bind template.player as <AstalMpris.Player>.artist;
+        halign: start;
+        ellipsize: end;
+        max-width-chars: 20;
+        styles ["subtitle"]
+      }
+    }
+
+    [end]
+    Box {
+      Button {
+        icon-name: "media-skip-backward-symbolic";
+        clicked => $prev();
+      }
+
+      Button {
+        icon-name: bind $pause_icon(template.player as <AstalMpris.Player>.playback-status) as <string>;
+        clicked => $play_pause();
+      }
+
+      Button {
+        icon-name: "media-skip-forward-symbolic";
+        clicked => $next();
+      }
+    }
+  }
+}
+

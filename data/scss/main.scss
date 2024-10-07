@@ -6,6 +6,11 @@
   font-size: 0.5rem;
 }
 
+headerbar > windowhandle > box {
+  padding-right: 0;
+  padding-left: 0;
+}
+
 @each $spacing in (3, 6) {
   .spacing-#{$spacing} {
     &.vertical > *:not(:last-child) {
@@ -21,6 +26,45 @@
 popover {
   > * {
     background: #{"@view_bg_color"};
+  }
+}
+
+picture {
+  -gtk-icon-size: 80px;
+}
+
+.mpris-player {
+  min-height: 8rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0.8rem;
+  padding: 0.3rem;
+
+  label {
+    text-shadow: 0.1rem 0.1rem #{"@view_bg_color"};
+  }
+  image {
+    -gtk-icon-shadow: 0.1rem 0.1rem #{"@view_bg_color"};
+  }
+  button {
+    background-color: transparent;
+  }
+}
+
+.notification { 
+  label {
+    margin-left: 0px;
+  }
+  button {
+    background-color: transparent;
+  }
+  .notification-action {
+    background-color: #{"@accent_bg_color"};
+    color: #{"@accent_fg_color"};
+    &:hover {
+      background-color: #{"mix(@accent_bg_color, @accent_fg_color, 0.10)"};
+    }
   }
 }
 

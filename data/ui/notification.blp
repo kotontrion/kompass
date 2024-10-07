@@ -1,0 +1,44 @@
+using Gtk 4.0;
+using AstalNotifd 0.1;
+
+template $KompassNotification : Box {
+  orientation: vertical;
+  styles ["notification"]
+
+  CenterBox {
+    [start]
+    Box {
+      Label {
+        label: bind template.notification as <AstalNotifd.Notification>.summary;
+        halign: start;
+        ellipsize: end;
+        styles ["title"]
+      }
+    }
+    [end]
+    Box {
+      Label {
+        label: bind $time(template.notification as <AstalNotifd.Notification>.time) as <string>;
+        styles ["subtitle"]
+      }
+      Button {
+        icon-name: "window-close-symbolic";
+        clicked => $close();
+      }
+    }
+  }
+  Box {
+    orientation: vertical;
+    spacing: 5;
+    Label {
+      label: bind template.notification as <AstalNotifd.Notification>.body;
+      halign: start;
+      hexpand: true;
+      wrap: true;
+      wrap-mode: word_char;
+    }
+    Box actions {
+      spacing: 5;
+    }
+  }
+}

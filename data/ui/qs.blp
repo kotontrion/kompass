@@ -3,6 +3,7 @@ using Adw 1;
 using AstalWp 0.1;
 using AstalBattery 0.1;
 using AstalNetwork 0.1;
+using AstalNotifd 0.1;
 using AstalBluetooth 0.1;
 
 template $KompassQs: Box {
@@ -38,30 +39,54 @@ template $KompassQs: Box {
 
       Box {
         Adw.NavigationView nav_view {
+          animate-transitions: false;
 
           Adw.NavigationPage {
             tag: "dashboard";
             title: _("Dashboard");
-            child: FlowBox {
-              max-children-per-line: 2;
-              selection-mode: none;
-              homogeneous: true;
+            child: Box {
+              orientation: vertical;
+              spacing: 5;
 
-              $KompassQsButton {
-                label: "bluetooth";
-                icon: bind $bluetooth_icon_name(template.bluetooth as <AstalBluetooth.Bluetooth>.is-connected) as <string>;
-                active: bind template.bluetooth as <AstalBluetooth.Bluetooth>.is-connected;
-                clicked => $on_bt_clicked();
-                arrow_clicked => $on_bt_arrow_clicked();
+              FlowBox {
+                max-children-per-line: 2;
+                selection-mode: none;
+                homogeneous: true;
+
+                $KompassQsButton {
+                  label: "Bluetooth";
+                  icon: bind $bluetooth_icon_name(template.bluetooth as <AstalBluetooth.Bluetooth>.is-powered) as <string>;
+                  active: bind template.bluetooth as <AstalBluetooth.Bluetooth>.is-powered;
+                  clicked => $on_bt_clicked();
+                  arrow_clicked => $on_bt_arrow_clicked();
+                }
+
+
+                $KompassQsButton {
+                  label: "Audio";
+                  icon: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.volume-icon;
+                  inactive: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.mute;
+                  clicked => $on_audio_clicked();
+                  arrow_clicked => $on_audio_arrow_clicked();
+                }
+
+                $KompassQsButton {
+                  label: "Notifications";
+                  icon: bind $notification_dnd_icon(template.notifd as <AstalNotifd.Notifd>.dont-disturb) as <string>;
+                  inactive: bind template.notifd as <AstalNotifd.Notifd>.dont-disturb;
+                  clicked => $on_notif_clicked();
+                  arrow_clicked => $on_notif_arrow_clicked();
+                }
               }
 
-              $KompassQsButton {
-                label: "audio";
-                icon: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.volume-icon;
-                inactive: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.mute;
-                clicked => $on_audio_clicked();
-                arrow_clicked => $on_audio_arrow_clicked();
+              Adw.Carousel players {
+                spacing: 5;
               }
+
+              Adw.CarouselIndicatorDots {
+                carousel: players;
+              }
+
             };
           }
 
@@ -70,18 +95,26 @@ template $KompassQs: Box {
             title: _("Audio");
             child: $KompassQsAudio {};
           }
-
-          
+ 
           Adw.NavigationPage {
             tag: "bluetooth";
             title: _("Bluetooth");
             child: $KompassQsBluetooth {};
           }
+          
+          Adw.NavigationPage {
+            tag: "notifications";
+            title: _("Notifications");
+            child: $KompassQsNotif {};
+          }
         }
       }
     }
 
-
+    Image {
+      visible: bind $notification_icon_visible(template.notifd as <AstalNotifd.Notifd>.notifications) as <bool>;
+      icon-name: "user-available-symbolic";
+    }
 
     Image {
       icon-name: bind template.battery as <AstalBattery.Device>.icon-name;

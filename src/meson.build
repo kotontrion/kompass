@@ -10,6 +10,9 @@ kompass_sources += [
   'qsBluetooth.vala',
   'qsBluetoothDevice.vala',
   'qsButton.vala',
+  'qsNotif.vala',
+  'notification.vala',
+  'mprisPlayer.vala',
 ]
 
 kompass_deps = [
@@ -18,10 +21,12 @@ kompass_deps = [
   dependency('gtk4-layer-shell-0'),
   dependency('libadwaita-1', version: '>= 1.4'),
   dependency('libnm'),
+  dependency('astal-mpris-0.1'),
   dependency('astal-river-0.1'),
   dependency('astal-battery-0.1'),
   dependency('astal-bluetooth-0.1'),
   dependency('astal-network-0.1'),
+  dependency('astal-notifd-0.1'),
   dependency('astal-wireplumber-0.1'),
 ]
 

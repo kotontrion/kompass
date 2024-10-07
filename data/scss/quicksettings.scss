@@ -4,9 +4,10 @@ row {
   label {
     margin-left: 0.8rem;
   }
-  image {
-    -gtk-icon-style: symbolic;
-  }
+}
+
+.symbolic {
+  -gtk-icon-style: symbolic;
 }
 
 qs-button {
