@@ -78,6 +78,17 @@ public class Kompass.Qs : Gtk.Box {
     }
 
     [GtkCallback]
+    public void on_wifi_clicked() {
+        this.network.wifi.enabled = !this.network.wifi.enabled;
+    }
+
+    [GtkCallback]
+    public void on_wifi_arrow_clicked() {
+        //nav_view.push_by_tag("wifi");
+    }
+
+
+    [GtkCallback]
     public bool on_scroll(Gtk.EventControllerScroll scroll, double dx, double dy) {
         double delta = dy > 0 ? -0.03 : 0.03;
         this.wp.audio.default_speaker.volume += delta;

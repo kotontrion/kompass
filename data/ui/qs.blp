@@ -48,10 +48,11 @@ template $KompassQs: Box {
               orientation: vertical;
               spacing: 5;
 
-              FlowBox {
-                max-children-per-line: 2;
-                selection-mode: none;
-                homogeneous: true;
+              Grid {
+                row-homogeneous: true;
+                column-homogeneous: true;
+                row-spacing: 5;
+                column-spacing: 5;
 
                 $KompassQsButton {
                   label: "Bluetooth";
@@ -59,8 +60,12 @@ template $KompassQs: Box {
                   active: bind template.bluetooth as <AstalBluetooth.Bluetooth>.is-powered;
                   clicked => $on_bt_clicked();
                   arrow_clicked => $on_bt_arrow_clicked();
-                }
 
+                  layout {
+                    column: "0";
+                    row: "0";
+                  }
+                }
 
                 $KompassQsButton {
                   label: "Audio";
@@ -68,6 +73,11 @@ template $KompassQs: Box {
                   inactive: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.mute;
                   clicked => $on_audio_clicked();
                   arrow_clicked => $on_audio_arrow_clicked();
+
+                  layout {
+                    column: "1";
+                    row: "0";
+                  }
                 }
 
                 $KompassQsButton {
@@ -76,6 +86,25 @@ template $KompassQs: Box {
                   inactive: bind template.notifd as <AstalNotifd.Notifd>.dont-disturb;
                   clicked => $on_notif_clicked();
                   arrow_clicked => $on_notif_arrow_clicked();
+
+
+                  layout {
+                    column: "0";
+                    row: "1";
+                  }
+                }
+
+                $KompassQsButton {
+                  label: "Wifi";
+                  icon: bind template.network as <AstalNetwork.Network>.wifi as <AstalNetwork.Wifi>.icon-name;
+                  active: bind template.network as <AstalNetwork.Network>.wifi as <AstalNetwork.Wifi>.enabled;
+                  clicked => $on_wifi_clicked();
+                  arrow_clicked => $on_wifi_arrow_clicked();
+
+                  layout {
+                    column: "1";
+                    row: "1";
+                  }
                 }
               }
 
@@ -85,6 +114,9 @@ template $KompassQs: Box {
 
               Adw.CarouselIndicatorDots {
                 carousel: players;
+              }
+
+              $KompassCava {
               }
 
             };

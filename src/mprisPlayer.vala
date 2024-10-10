@@ -33,11 +33,12 @@ public class Kompass.Player : Gtk.Box {
     }    
 
     private void update_background() {
-      //string style = "* { background-image: url(" + this.player.art_url + "); }";
+      string url  = this.player.art_url != null && this.player.art_url != ""
+                  ? "url(\"" + this.player.art_url + "\")"
+                  : "-gtk-icontheme(\"" + this.player.entry + "\")";
       string style = "* { background-image: linear-gradient(rgba(0, 0, 0, 0), " +
               "alpha(@view_bg_color, 0.9))," +
-              "url(\"" + this.player.art_url +"\"); }";
-
+              url +"; }";
       try {
           this.css_prov.load_from_string(style);
       } catch (Error err) {

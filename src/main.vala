@@ -8,6 +8,7 @@ void ensure_types() {
     typeof(Kompass.QsBluetooth).ensure();
     typeof(Kompass.QsButton).ensure();
     typeof(Kompass.QsNotif).ensure();
+    typeof(Kompass.Cava).ensure();
 }
 
 int main (string[] args) {

@@ -13,6 +13,7 @@ kompass_sources += [
   'qsNotif.vala',
   'notification.vala',
   'mprisPlayer.vala',
+  'cava.vala',
 ]
 
 kompass_deps = [
@@ -27,6 +28,7 @@ kompass_deps = [
   dependency('astal-bluetooth-0.1'),
   dependency('astal-network-0.1'),
   dependency('astal-notifd-0.1'),
+  dependency('astal-cava-0.1'),
   dependency('astal-wireplumber-0.1'),
 ]
 

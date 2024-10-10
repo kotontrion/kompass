@@ -27,10 +27,23 @@ popover {
   > * {
     background: #{"@view_bg_color"};
   }
+  contents {
+    padding: 0px;
+  }
+}
+
+navigation-view-page {
+  padding: 0.5rem;
 }
 
 picture {
   -gtk-icon-size: 80px;
+}
+
+cava {
+  color: #{"@accent_bg_color"};
+  min-height: 10rem;
+  margin: -0.5rem;
 }
 
 .mpris-player {
