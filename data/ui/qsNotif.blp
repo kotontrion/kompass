@@ -15,6 +15,9 @@ template $KompassQsNotif : Box {
   ScrolledWindow {  
     max-content-height: 500;
     propagate-natural-height: true;
+    overflow: hidden;
+    styles ["scroll-list"]
+    
     ListBox notifications {
       hexpand: true;
       valign: start;

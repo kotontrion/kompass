@@ -1,4 +1,4 @@
-application_id = 'com.github.koontrion.kompass'
+application_id = 'com.github.kotontrion.kompass'
 
 scalable_dir = 'hicolor' / 'scalable' / 'apps'
 install_data(

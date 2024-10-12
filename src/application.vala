@@ -10,6 +10,9 @@ public class Kompass.Application : Adw.Application {
     public override void activate () {
         base.activate ();
 
+        Gtk.IconTheme icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default());
+        icon_theme.add_resource_path("/com/github/kotontrion/kompass/icons/");
+
         Gtk.CssProvider provider = new Gtk.CssProvider ();
         provider.load_from_resource ("com/github/kotontrion/kompass/style.css");
         Gtk.StyleContext.add_provider_for_display(Gdk.Display.get_default (), provider,

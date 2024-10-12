@@ -9,6 +9,8 @@ void ensure_types() {
     typeof(Kompass.QsButton).ensure();
     typeof(Kompass.QsNotif).ensure();
     typeof(Kompass.Cava).ensure();
+    typeof(Kompass.Launcher).ensure();
+    typeof(Kompass.AppButton).ensure();
 }
 
 int main (string[] args) {

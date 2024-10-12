@@ -18,6 +18,8 @@ public class Kompass.Bar : Gtk.Window {
         set_margin(this, Edge.BOTTOM, 4);
         auto_exclusive_zone_enable(this);
 
+        set_keyboard_mode(this, GtkLayerShell.KeyboardMode.ON_DEMAND);
+
         ListModel monitors = Gdk.Display.get_default().get_monitors();
         for(int i = 0; i < monitors.get_n_items(); i++) {
             Gdk.Monitor monitor = (Gdk.Monitor)monitors.get_item(i);

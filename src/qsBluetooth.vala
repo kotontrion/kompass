@@ -10,7 +10,7 @@ public class Kompass.QsBluetooth : Gtk.Box {
     private unowned Gtk.Switch enable_switch;
 
     [GtkChild]
-    private unowned Gtk.ToggleButton scan_button;
+    private unowned Gtk.Button scan_button;
 
     [GtkCallback]
     public void toggle_discover() {
@@ -46,12 +46,6 @@ public class Kompass.QsBluetooth : Gtk.Box {
         this.bluetooth = AstalBluetooth.get_default();
 
         this.bluetooth.adapter.bind_property("powered", enable_switch, "active", GLib.BindingFlags.BIDIRECTIONAL | GLib.BindingFlags.SYNC_CREATE);
-
-        Gtk.Expression scan_expr = new Gtk.PropertyExpression(
-          typeof(AstalBluetooth.Adapter),
-          new Gtk.PropertyExpression(typeof(AstalBluetooth.Bluetooth), null, "adapter"), 
-          "discovering");
-        scan_expr.bind(scan_button, "active", this.bluetooth);
 
         this.bluetooth.devices.@foreach(dev => this.on_added(dev, this.devices));
         this.bluetooth.device_added.connect((bl, device) => this.on_added(device, this.devices));

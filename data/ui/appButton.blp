@@ -1,0 +1,33 @@
+using Gtk 4.0;
+using AstalApps 0.1;
+
+template $KompassAppButton : ListBoxRow {
+
+  selectable: false;
+  activatable: false;
+  activate => $clicked();
+  
+  child: Box {
+    Image {
+      icon-size: large;
+      icon-name: bind template.app as <AstalApps.Application>.icon-name;
+    }
+    Box {
+      orientation: vertical;
+      Label {
+        halign: start;
+        label: bind template.app as <AstalApps.Application>.name;
+        ellipsize: end;
+      }
+      Label {
+        halign: start;
+        label: bind template.app as <AstalApps.Application>.description;
+        ellipsize: end;
+      }
+    }
+  };
+
+  GestureClick {
+    pressed => $clicked();
+  }
+}

@@ -7,16 +7,15 @@ template $KompassQsBluetooth : Box {
   spacing: 5;
   Adw.HeaderBar {
     [end]
-    ToggleButton scan_button {
-      toggled => $toggle_discover();
-      active: bind template.bluetooth as <AstalBluetooth.Bluetooth>.adapter as <AstalBluetooth.Adapter>.discovering;
+    Button scan_button {
+      clicked => $toggle_discover();
       Box {
-        Spinner {
-          visible: bind scan_button.active;
-          spinning: bind scan_button.active;
+        Spinner spinner {
+          visible: bind template.bluetooth as <AstalBluetooth.Bluetooth>.adapter as <AstalBluetooth.Adapter>.discovering;
+          spinning: true;
         }
         Image {
-          visible: bind scan_button.active inverted;
+          visible: bind spinner.visible inverted;
           icon-name: "system-search-symbolic";
         }
       }
@@ -30,6 +29,9 @@ template $KompassQsBluetooth : Box {
   ScrolledWindow {  
     max-content-height: 500;
     propagate-natural-height: true;
+    overflow: hidden;
+    styles ["scroll-list"]
+    
     ListBox devices {
       hexpand: true;
       valign: start;

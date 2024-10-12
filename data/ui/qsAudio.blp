@@ -35,6 +35,9 @@ template $KompassQsAudio : Box {
   ScrolledWindow {
     max-content-height: 500;
     propagate-natural-height: true;
+    overflow: hidden;
+    styles ["scroll-list"]
+    
     child: Box {
       orientation: vertical;
       spacing: 5;

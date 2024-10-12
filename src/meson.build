@@ -14,10 +14,13 @@ kompass_sources += [
   'notification.vala',
   'mprisPlayer.vala',
   'cava.vala',
+  'launcher.vala',
+  'appButton.vala',
 ]
 
 kompass_deps = [
   config_dep,
+  dependency('gio-unix-2.0'),
   dependency('gtk4'),
   dependency('gtk4-layer-shell-0'),
   dependency('libadwaita-1', version: '>= 1.4'),
@@ -29,6 +32,7 @@ kompass_deps = [
   dependency('astal-network-0.1'),
   dependency('astal-notifd-0.1'),
   dependency('astal-cava-0.1'),
+  dependency('astal-apps-0.1'),
   dependency('astal-wireplumber-0.1'),
 ]
 

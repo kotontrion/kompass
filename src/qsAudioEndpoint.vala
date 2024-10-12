@@ -1,7 +1,7 @@
 [GtkTemplate (ui = "/com/github/kotontrion/kompass/ui/qsAudioEndpoint.ui")]
 public class Kompass.QsAudioEndpoint : Gtk.ListBoxRow {
 
-    public AstalWp.Endpoint endpoint {get; private set;}
+    public AstalWp.Endpoint endpoint {get; construct;}
 
     [GtkChild]
     private unowned Gtk.Adjustment volume_adjust;
@@ -24,8 +24,7 @@ public class Kompass.QsAudioEndpoint : Gtk.ListBoxRow {
     }
 
     public QsAudioEndpoint(AstalWp.Endpoint endpoint) {
-        Object();
-        this.endpoint = endpoint;
+        Object(endpoint: endpoint);
         this.endpoint.bind_property("volume", volume_adjust, "value", GLib.BindingFlags.BIDIRECTIONAL | GLib.BindingFlags.SYNC_CREATE);
     }
 

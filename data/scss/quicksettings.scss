@@ -10,6 +10,17 @@ row {
   -gtk-icon-style: symbolic;
 }
 
+.qs-popup {
+  contents {
+    padding: 0px;
+  }
+
+  navigation-view-page {
+    padding: 0.5rem;
+  }
+
+}
+
 qs-button {
   .qs-main-button {
     border-top-right-radius: 0px;
@@ -32,3 +43,32 @@ qs-button {
     }
   }
 }
+
+cava {
+  color: #{"@accent_bg_color"};
+  min-height: 10rem;
+  min-width: 10rem;
+  margin: -0.5rem;
+}
+
+
+.mpris-player {
+  min-height: 8rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0.8rem;
+  padding: 0.3rem;
+
+  label {
+    text-shadow: 0.1rem 0.1rem #{"@view_bg_color"};
+  }
+  image {
+    -gtk-icon-shadow: 0.1rem 0.1rem #{"@view_bg_color"};
+  }
+  button {
+    background-color: transparent;
+  }
+}
+
+

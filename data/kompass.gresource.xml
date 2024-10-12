@@ -13,5 +13,10 @@
     <file preprocess="xml-stripblanks">ui/qsNotif.ui</file>
     <file preprocess="xml-stripblanks">ui/notification.ui</file>
     <file preprocess="xml-stripblanks">ui/mprisPlayer.ui</file>
+    <file preprocess="xml-stripblanks">ui/launcher.ui</file>
+    <file preprocess="xml-stripblanks">ui/appButton.ui</file>
+    
+    <file compressed="true">icons/symbolic/apps/arch-linux-rounded-symbolic.svg</file>
+    <file compressed="true">icons/symbolic/apps/arch-linux-symbolic.svg</file>
   </gresource>
 </gresources>

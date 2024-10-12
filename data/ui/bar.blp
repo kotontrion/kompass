@@ -7,9 +7,18 @@ template $KompassBar: Window {
     orientation: vertical;
 
     [start]
-    $KompassTags {
+    Box {
       orientation: vertical;
-      styles ["bar-module"]
+      styles ["spacing-6"]
+
+      $KompassLauncher {
+        styles ["bar-module"]
+      }
+
+      $KompassTags {
+        orientation: vertical;
+        styles ["bar-module"]
+      }
     }
 
     [end]
