@@ -19,6 +19,7 @@ template $KompassLauncher : Box {
       Entry entry {
         primary-icon-name: "system-search-symbolic";
         changed => $update_list();
+        activate => $launch_first();
       }
 
       ScrolledWindow {  

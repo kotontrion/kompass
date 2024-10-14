@@ -18,11 +18,23 @@ public class Kompass.Launcher : Gtk.Box {
       this.popover.popup();
     }
 
+    [GtkCallback]
+    public void launch_first() {
+      AppButton ab = (AppButton)this.app_list.get_row_at_index(0);
+      if(ab != null) ab.activate();
+    }
+
+
     private int sort_func(Gtk.ListBoxRow la, Gtk.ListBoxRow lb) {
       AppButton a = (AppButton) la;
       AppButton b = (AppButton) lb;
       if(a.score == b.score) return b.app.frequency - a.app.frequency;
-      return (int)((b.score - a.score)*100);
+      return (a.score > b.score) ? -1 : 1;
+    }
+
+    private bool filter_func(Gtk.ListBoxRow la) {
+      AppButton a = (AppButton) la;
+      return a.score >= 0;
     }
 
     [GtkCallback]
@@ -34,12 +46,14 @@ public class Kompass.Launcher : Gtk.Box {
         app = (Kompass.AppButton) this.app_list.get_row_at_index(++i);
       }
       this.app_list.invalidate_sort();
+      this.app_list.invalidate_filter();
     }
 
     construct {
       this.apps = new AstalApps.Apps();
 
       this.app_list.set_sort_func(sort_func);
+      this.app_list.set_filter_func(filter_func);
 
       this.apps.list.@foreach(app => {
         this.app_list.append(new AppButton(app));  
