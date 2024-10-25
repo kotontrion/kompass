@@ -8,8 +8,10 @@ public class Kompass.Bar : Gtk.Window {
     public Bar (Gtk.Application app, AstalRiver.Output output) {
         Object (application: app, css_name: "bar");
         this.output = output;
-
+        this.name = @"bar-$(output.name)";
+        
         init_for_window(this);
+        set_namespace(this, @"bar-$(output.name)");
         set_anchor(this, Edge.TOP, true);
         set_anchor(this, Edge.LEFT, true);
         set_anchor(this, Edge.BOTTOM, true);

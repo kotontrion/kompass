@@ -42,7 +42,7 @@ public class Kompass.Launcher : Gtk.Box {
       int i = 0;
       Kompass.AppButton? app = (Kompass.AppButton) this.app_list.get_row_at_index(0);
       while(app != null) {
-        app.score = app.app.fuzzy_match(this.entry.text).name;
+        app.score = apps.fuzzy_score(this.entry.text, app.app);
         app = (Kompass.AppButton) this.app_list.get_row_at_index(++i);
       }
       this.app_list.invalidate_sort();
@@ -51,6 +51,10 @@ public class Kompass.Launcher : Gtk.Box {
 
     construct {
       this.apps = new AstalApps.Apps();
+
+      this.apps.include_name = true;
+      this.apps.include_description = true;
+      this.apps.include_keywords = true;
 
       this.app_list.set_sort_func(sort_func);
       this.app_list.set_filter_func(filter_func);
