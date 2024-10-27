@@ -10,7 +10,7 @@ Showcase (as of 2024-10-13):
 
 ### on Arch
 ```bash
-wget https://github.com/kotontrion/PKGBUILDS/blob/main/kompass-git/PKGBUILD
+wget https://github.com/kotontrion/PKGBUILDS/raw/refs/heads/main/kompass-git/PKGBUILD
 makepkg -si
 ```
 
