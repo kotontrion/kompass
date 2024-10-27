@@ -38,8 +38,38 @@ template $KompassQsBluetoothDevice : ListBoxRow {
       }
     }
 
+    PopoverMenu context_menu {
+      menu-model: menu;
+    }
+
+    GestureClick {
+      button: 3;
+      pressed => $open_menu();
+    }
+
     GestureClick {
       pressed => $toggle_connection();
     }
   };
 }
+
+
+menu menu {
+  item {
+    label: _("connected");
+    action: "bl-dev.connected";
+  }
+  item {
+    label: _("remove");
+    action: "bl-dev.remove";
+  }
+  item {
+    label: _("trusted");
+    action: "bl-dev.trusted";
+  }
+  item {
+    label: _("blocked");
+    action: "bl-dev.blocked";
+  }
+}
+
