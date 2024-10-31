@@ -30,33 +30,40 @@ popover {
 }
 
 .scroll-list {
-  border-radius: 1rem;
+  border-radius: var(--window-radius);
 }
 
-.notification { 
-  label {
-    margin-left: 0px;
-  }
-  button {
-    background-color: transparent;
-  }
-  .notification-action {
-    background-color: #{"@accent_bg_color"};
-    color: #{"@accent_fg_color"};
-
-    &:not(:first-child) {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-      border-left: 1px solid #{"mix(@accent_bg_color, @accent_fg_color, 0.10)"};
+.notification {
+  background-color: #{"mix(@card_bg_color, @destructive_bg_color, var(--swipe_progress, 0))"};
+  padding: 0;
+  > box {
+    padding: 0 0.3rem;
+    background-color: #{"@card_bg_color"};
+    border-radius: #{"calc(var(--swipe, 0)*var(--window-radius))"};
+    label {
+      margin-left: 0px;
     }
-
-    &:not(:last-child) {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
+    button {
+      background-color: transparent;
     }
+    .notification-action {
+      background-color: #{"@accent_bg_color"};
+      color: #{"@accent_fg_color"};
 
-    &:hover {
-      background-color: #{"mix(@accent_bg_color, @accent_fg_color, 0.10)"};
+      &:not(:first-child) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-left: 1px solid #{"mix(@accent_bg_color, @accent_fg_color, 0.10)"};
+      }
+
+      &:not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      &:hover {
+        background-color: #{"mix(@accent_bg_color, @accent_fg_color, 0.10)"};
+      }
     }
   }
 }

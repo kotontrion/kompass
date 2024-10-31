@@ -20,7 +20,6 @@ public class Kompass.Application : Adw.Application, AstalIO.Application {
         Unix.signal_add(1, () => { try { quit(); } catch(Error err) {} }, Priority.HIGH);
         Unix.signal_add(2, () => { try { quit(); } catch(Error err) {} }, Priority.HIGH);
         Unix.signal_add(15, () => { try { quit(); } catch(Error err) {} }, Priority.HIGH);
-
     }
 
     public Application () {
@@ -96,6 +95,7 @@ public class Kompass.Application : Adw.Application, AstalIO.Application {
     public override void activate () {
         base.activate ();
 
+
         Gtk.IconTheme icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default());
         icon_theme.add_resource_path("/com/github/kotontrion/kompass/icons/");
 
@@ -116,6 +116,6 @@ public class Kompass.Application : Adw.Application, AstalIO.Application {
             var win = new Kompass.Bar (this, output);
             win.present ();
         }
-
+        this.hold();
     }
 }

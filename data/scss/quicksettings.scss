@@ -60,6 +60,12 @@ cava {
   border-radius: 0.8rem;
   padding: 0.3rem;
 
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0),
+    #{"alpha(@view_bg_color, 0.9)"}),
+    var(--cover, #{"@view_bg_color"});
+
+
   label {
     text-shadow: 0.1rem 0.1rem #{"@view_bg_color"};
   }

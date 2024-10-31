@@ -36,9 +36,7 @@ public class Kompass.Player : Gtk.Box {
       string url  = this.player.art_url != null && this.player.art_url != ""
                   ? "url(\"" + this.player.art_url + "\")"
                   : "-gtk-icontheme(\"" + this.player.entry + "\")";
-      string style = "* { background-image: linear-gradient(rgba(0, 0, 0, 0), " +
-              "alpha(@view_bg_color, 0.9))," +
-              url +"; }";
+      string style = "* { --cover: " + url + "; }";
       try {
           this.css_prov.load_from_string(style);
       } catch (Error err) {

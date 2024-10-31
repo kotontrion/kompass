@@ -36,9 +36,12 @@ template $KompassQs: Box {
     Popover popover {
       position: right;
       width-request: 400;
+      height-request: 500;
       styles ["qs-popup"]
+      vexpand: false;
 
       Box {
+        vexpand: true;
         Adw.NavigationView nav_view {
           animate-transitions: false;
 
@@ -118,6 +121,8 @@ template $KompassQs: Box {
               }
 
               $KompassCava {
+                vexpand: true;
+                valign: end;
               }
 
             };

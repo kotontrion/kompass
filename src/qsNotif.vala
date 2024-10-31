@@ -20,13 +20,13 @@ public class Kompass.QsNotif : Gtk.Box {
 
     private void on_removed(uint id, Gtk.ListBox lb) {
         int i = 0;
-        Kompass.Notification? n = (Kompass.Notification) lb.get_row_at_index(0)?.child;
+        Kompass.Notification? n = (Kompass.Notification) lb.get_row_at_index(0);
         while(n != null) {
             if(n.notification.id == id) {
-                lb.remove(n.parent);
+                lb.remove(n);
                 break;
             }
-            n = (Kompass.Notification) lb.get_row_at_index(++i)?.child;
+            n = (Kompass.Notification) lb.get_row_at_index(++i);
         }
     }
 
