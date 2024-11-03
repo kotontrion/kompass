@@ -37,7 +37,7 @@ popover {
   background-color: #{"mix(@card_bg_color, @destructive_bg_color, var(--swipe_progress, 0))"};
   padding: 0;
   > box {
-    padding: 0 0.3rem;
+    padding: 0.3rem;
     background-color: #{"@card_bg_color"};
     border-radius: #{"calc(var(--swipe, 0)*var(--window-radius))"};
     label {

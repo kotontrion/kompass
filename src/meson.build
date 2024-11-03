@@ -37,6 +37,16 @@ kompass_deps = [
   dependency('astal-wireplumber-0.1'),
 ]
 
+types_tgt = custom_target(
+  'types',
+  command: [find_program('awk'), '-f', files('gen_ensure_type.awk'), '@INPUT@'],
+  input: kompass_sources,
+  output: 'ensure_types.vala',
+  capture: true
+)
+
+kompass_sources += [types_tgt]
+
 executable('kompass', kompass_sources,
   dependencies: kompass_deps,
   include_directories: config_inc,

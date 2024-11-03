@@ -52,10 +52,6 @@ public class Kompass.Launcher : Gtk.Box {
     construct {
       this.apps = new AstalApps.Apps();
 
-      this.apps.include_name = true;
-      this.apps.include_description = true;
-      this.apps.include_keywords = true;
-
       this.app_list.set_sort_func(sort_func);
       this.app_list.set_filter_func(filter_func);
 
