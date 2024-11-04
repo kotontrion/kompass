@@ -1,26 +1,26 @@
 using GtkLayerShell;
 
 [GtkTemplate (ui = "/com/github/kotontrion/kompass/ui/bar.ui")]
-public class Kompass.Bar : Gtk.Window {
+public class Kompass.Bar : Astal.Window {
 
     public AstalRiver.Output output { get; private set; }
 
-    public Bar (Gtk.Application app, AstalRiver.Output output) {
-        Object (application: app, css_name: "bar");
-        this.output = output;
-        this.name = @"bar-$(output.name)";
-        
-        init_for_window(this);
-        set_namespace(this, @"bar-$(output.name)");
-        set_anchor(this, Edge.TOP, true);
-        set_anchor(this, Edge.LEFT, true);
-        set_anchor(this, Edge.BOTTOM, true);
-        set_margin(this, Edge.TOP, 4);
-        set_margin(this, Edge.LEFT, 4);
-        set_margin(this, Edge.BOTTOM, 4);
-        auto_exclusive_zone_enable(this);
+    public Bar (AstalRiver.Output output) {
+        Object (
+          application: Kompass.Application.instance, 
+          css_name: "bar",
+          anchor: Astal.WindowAnchor.LEFT | Astal.WindowAnchor.TOP | Astal.WindowAnchor.BOTTOM,
+          namespace: @"bar-$(output.name)",
+          name: @"bar-$(output.name)",
+          keymode: Astal.Keymode.ON_DEMAND,
+          exclusivity: Astal.Exclusivity.EXCLUSIVE,
+          margin_left: 4,
+          margin_top: 4,
+          margin_bottom: 4
 
-        set_keyboard_mode(this, GtkLayerShell.KeyboardMode.ON_DEMAND);
+        );
+      
+        this.output = output;
 
         ListModel monitors = Gdk.Display.get_default().get_monitors();
         for(int i = 0; i < monitors.get_n_items(); i++) {
