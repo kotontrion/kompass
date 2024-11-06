@@ -52,6 +52,43 @@ template $KompassQs: Box {
               orientation: vertical;
               spacing: 5;
 
+              CenterBox {
+                [start]
+                Box {
+                  spacing: 5;
+                  Image {
+                    icon-name: bind template.battery as <AstalBattery.Device>.icon-name;
+                  }
+
+                  Label {
+                    label: bind $battery_label(template.battery as <AstalBattery.Device>.percentage) as <string>;
+                  }
+                }
+
+                [end]
+                Box {
+                  spacing: 5;
+                  Button {
+                    icon-name: bind template.recorder_icon;
+                    clicked => $record_click();
+                    GestureClick {
+                      button: 3;
+                      pressed => $record_right_click();
+                    }
+                  }
+
+                  Button {
+                    icon-name: "emblem-system-symbolic";
+                    clicked => $open_settings();
+                  }
+                  MenuButton {
+                    icon-name: "system-shutdown-symbolic";
+                    menu-model: powermenu;
+                  }
+                }
+
+              }
+
               Grid {
                 row-homogeneous: true;
                 column-homogeneous: true;
@@ -181,4 +218,10 @@ template $KompassQs: Box {
   }
 }
 
-
+menu powermenu {
+  item ("shutdown", "pm.shutdown", "system-shutdown-symbolic")
+  item ("reboot", "pm.reboot", "system-reboot-symbolic")
+  item ("suspend", "pm.suspend", "weather-clear-night-symbolic")
+  item ("logout", "pm.logout", "system-log-out-symbolic")
+  item ("lock", "pm.lock", "system-lock-screen-symbolic")
+}

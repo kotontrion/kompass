@@ -8,7 +8,11 @@ public class Kompass.Qs : Gtk.Box {
     public AstalNotifd.Notifd notifd {get; private set;}
     public AstalMpris.Mpris mpris {get; private set;}
 
+    public string recorder_icon {get; private set; default = "video-display-symbolic";}
+
+    private SimpleActionGroup actions;
     private int count = 0;
+    private AstalIO.Process recorder;
 
     [GtkChild]
     private unowned Gtk.Popover popover;
@@ -21,6 +25,57 @@ public class Kompass.Qs : Gtk.Box {
 
     [GtkChild]
     private unowned Adw.Carousel players;
+
+    [GtkCallback]
+    public string battery_label(double percentage) {
+      return "%.0f%%".printf(percentage*100);
+    }
+
+    [GtkCallback]
+    public void open_settings() {
+      AstalIO.Process.exec_asyncv({"bash", "-c", "XDG_CURRENT_DESKTOP=gnome gnome-control-center"});
+    }
+
+    [GtkCallback]
+    public void record_right_click() {
+      if(this.recorder != null) stop_record();
+      else start_record();
+    }
+
+    [GtkCallback]
+    public void record_click() {
+      if(this.recorder != null) stop_record();
+      else screenshot();
+    }
+
+    private void stop_record() {
+      this.recorder.signal(15);
+      this.recorder = null;
+      this.recorder_icon = "video-display-symbolic";
+    }
+
+    private void start_record() {
+      string video_dir = Environment.get_user_special_dir(UserDirectory.VIDEOS);
+      string file_name = new DateTime.now_local().format_iso8601();
+      AstalIO.Process.exec_async.begin("slurp", (obj, res) => {
+        string geometry = AstalIO.Process.exec_async.end(res);
+      
+        string cmd = "bash -c 'wf-recorder -g \"%s\" --pixel-format yuv420p -f %s/Screencasting/%s.mp4'".printf(geometry, video_dir, file_name);
+        try {
+          this.recorder = AstalIO.Process.subprocess(cmd);
+          this.recorder_icon = "media-record-symbolic";
+        } catch (Error e) {
+          print("%s\n", e.message);
+        }
+      });
+    }
+    
+    private void screenshot() {
+      string picture_dir = Environment.get_user_special_dir(UserDirectory.PICTURES);
+      string file_name = new DateTime.now_local().format_iso8601();
+      string cmd = "bash -c 'grim -g \"$(slurp)\" %s/Screenshots/%s.png'".printf(picture_dir, file_name);
+      AstalIO.Process.exec_async(cmd);
+    }
 
     [GtkCallback]
     public string bluetooth_icon_name(bool connected) {
@@ -129,6 +184,43 @@ public class Kompass.Qs : Gtk.Box {
         this.mpris.players.@foreach((p) => this.on_player_added(p));
         this.mpris.player_added.connect((p) => this.on_player_added(p));
         this.mpris.player_closed.connect((p) => this.on_player_removed(p));
+      
+        this.actions = new GLib.SimpleActionGroup ();
+         
+        var sd_action = new SimpleAction("shutdown", null);
+        sd_action.activate.connect(val => {
+          AstalIO.Process.exec_async("systemctl poweroff");
+        });
+        this.actions.add_action(sd_action);
+
+        var rb_action = new SimpleAction("reboot", null);
+        rb_action.activate.connect(val => {
+          AstalIO.Process.exec_async("systemctl reboot");
+        });
+        this.actions.add_action(rb_action);
+
+        var suspend_action = new SimpleAction("suspend", null);
+        suspend_action.activate.connect(val => {
+          AstalIO.Process.exec_async("systemctl suspend");
+        });
+        this.actions.add_action(suspend_action);
+
+        var logout_action = new SimpleAction("logout", null);
+        logout_action.activate.connect(val => {
+          AstalIO.Process.exec_asyncv({"bash", "-c", "loginctl terminate-user $USER"});
+        });
+        this.actions.add_action(logout_action);
+
+        var lock_action = new SimpleAction("lock", null);
+        lock_action.activate.connect(val => {
+          print("lock is not implemented yet\n");
+        });
+        this.actions.add_action(lock_action);
+
+
+        this.insert_action_group ("pm", this.actions);
+
+
     }
 
 }
