@@ -95,7 +95,7 @@ template $KompassQs: Box {
                 column-spacing: 5;
 
                 $KompassQsButton {
-                  label: "Bluetooth";
+                  label: _("Bluetooth");
                   icon: bind $bluetooth_icon_name(template.bluetooth as <AstalBluetooth.Bluetooth>.is-powered) as <string>;
                   active: bind template.bluetooth as <AstalBluetooth.Bluetooth>.is-powered;
                   clicked => $on_bt_clicked();
@@ -108,7 +108,7 @@ template $KompassQs: Box {
                 }
 
                 $KompassQsButton {
-                  label: "Audio";
+                  label: _("Audio");
                   icon: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.volume-icon;
                   inactive: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.mute;
                   clicked => $on_audio_clicked();
@@ -121,7 +121,7 @@ template $KompassQs: Box {
                 }
 
                 $KompassQsButton {
-                  label: "Notifications";
+                  label: _("Notifications");
                   icon: bind $notification_dnd_icon(template.notifd as <AstalNotifd.Notifd>.dont-disturb) as <string>;
                   inactive: bind template.notifd as <AstalNotifd.Notifd>.dont-disturb;
                   clicked => $on_notif_clicked();
@@ -135,7 +135,7 @@ template $KompassQs: Box {
                 }
 
                 $KompassQsButton {
-                  label: "Wifi";
+                  label: _("Wifi");
                   icon: bind template.network as <AstalNetwork.Network>.wifi as <AstalNetwork.Wifi>.icon-name;
                   active: bind template.network as <AstalNetwork.Network>.wifi as <AstalNetwork.Wifi>.enabled;
                   clicked => $on_wifi_clicked();
@@ -218,9 +218,9 @@ template $KompassQs: Box {
 }
 
 menu powermenu {
-  item ("shutdown", "pm.shutdown", "system-shutdown-symbolic")
-  item ("reboot", "pm.reboot", "system-reboot-symbolic")
-  item ("suspend", "pm.suspend", "weather-clear-night-symbolic")
-  item ("logout", "pm.logout", "system-log-out-symbolic")
-  item ("lock", "pm.lock", "system-lock-screen-symbolic")
+  item (_("shutdown"), "pm.shutdown", "system-shutdown-symbolic")
+  item (_("reboot"), "pm.reboot", "system-reboot-symbolic")
+  item (_("suspend"), "pm.suspend", "weather-clear-night-symbolic")
+  item (_("logout"), "pm.logout", "system-log-out-symbolic")
+  item (_("lock"), "pm.lock", "system-lock-screen-symbolic")
 }

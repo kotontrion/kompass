@@ -1,0 +1,66 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: kompass\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-06 13:38+0100\n"
+"PO-Revision-Date: 2024-11-06 13:16+0100\n"
+"Last-Translator: kotontrion <kotontrion@tutanota.de>\n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: data/ui/qs.blp:49
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: data/ui/qs.blp:98 data/ui/qs.blp:175
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#: data/ui/qs.blp:111 data/ui/qs.blp:169
+msgid "Audio"
+msgstr "Audio"
+
+#: data/ui/qs.blp:124 data/ui/qs.blp:181
+msgid "Notifications"
+msgstr "Benachrichtigungen"
+
+#: data/ui/qs.blp:138
+msgid "Wifi"
+msgstr "WLAN"
+
+#: data/ui/qs.blp:221
+msgid "shutdown"
+msgstr "Herunterfahren"
+
+#: data/ui/qs.blp:222
+msgid "reboot"
+msgstr "Neu starten"
+
+#: data/ui/qs.blp:223
+msgid "suspend"
+msgstr "Energie sparen"
+
+#: data/ui/qs.blp:224
+msgid "logout"
+msgstr "Abmelden"
+
+#: data/ui/qs.blp:225
+msgid "lock"
+msgstr "sperren"
+
+#: data/ui/qsAudio.blp:51
+msgid "Sink Selector"
+msgstr "Ausgabegeräte"
+
+#: data/ui/qsAudio.blp:69
+msgid "Source Selector"
+msgstr "Eingabegeräte"
+
+#: data/ui/qsAudio.blp:86
+msgid "App mixer"
+msgstr "App-Mixer"

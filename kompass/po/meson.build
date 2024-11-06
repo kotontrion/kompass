@@ -1,1 +1,3 @@
-i18n.gettext('kompass', preset: 'glib')
+i18n.gettext(
+  'kompass', 
+  preset: 'glib')

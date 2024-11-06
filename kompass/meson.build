@@ -1,8 +1,15 @@
+project('kompass', ['c', 'vala'],
+          version: '0.1.0',
+    meson_version: '>= 1.0.0',
+  default_options: [ 'warning_level=2', 'werror=false', ],
+)
+
+
 i18n = import('i18n')
 gnome = import('gnome')
 valac = meson.get_compiler('vala')
 
-srcdir = meson.project_source_root() / 'kompass/src'
+srcdir = meson.project_source_root() / 'src'
 
 config_h = configuration_data()
 config_h.set_quoted('PACKAGE_VERSION', meson.project_version ())

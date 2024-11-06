@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the kompass package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: kompass\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-06 13:38+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/ui/qs.blp:49
+msgid "Dashboard"
+msgstr ""
+
+#: data/ui/qs.blp:98 data/ui/qs.blp:175
+msgid "Bluetooth"
+msgstr ""
+
+#: data/ui/qs.blp:111 data/ui/qs.blp:169
+msgid "Audio"
+msgstr ""
+
+#: data/ui/qs.blp:124 data/ui/qs.blp:181
+msgid "Notifications"
+msgstr ""
+
+#: data/ui/qs.blp:138
+msgid "Wifi"
+msgstr ""
+
+#: data/ui/qs.blp:221
+msgid "shutdown"
+msgstr ""
+
+#: data/ui/qs.blp:222
+msgid "reboot"
+msgstr ""
+
+#: data/ui/qs.blp:223
+msgid "suspend"
+msgstr ""
+
+#: data/ui/qs.blp:224
+msgid "logout"
+msgstr ""
+
+#: data/ui/qs.blp:225
+msgid "lock"
+msgstr ""
+
+#: data/ui/qsAudio.blp:51
+msgid "Sink Selector"
+msgstr ""
+
+#: data/ui/qsAudio.blp:69
+msgid "Source Selector"
+msgstr ""
+
+#: data/ui/qsAudio.blp:86
+msgid "App mixer"
+msgstr ""
