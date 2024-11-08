@@ -33,6 +33,10 @@ popover {
   border-radius: var(--window-radius);
 }
 
+.tray-item button {
+  all: unset;
+}
+
 .notification {
   background-color: #{"mix(@card_bg_color, @destructive_bg_color, var(--swipe_progress, 0))"};
   padding: 0;
