@@ -8,16 +8,12 @@ public class Kompass.Bar : Astal.Window {
     public Bar (AstalRiver.Output output) {
         Object (
           application: Kompass.Application.instance, 
-          css_name: "bar",
-          anchor: Astal.WindowAnchor.LEFT | Astal.WindowAnchor.TOP | Astal.WindowAnchor.BOTTOM,
           namespace: @"bar-$(output.name)",
           name: @"bar-$(output.name)",
-          keymode: Astal.Keymode.ON_DEMAND,
-          exclusivity: Astal.Exclusivity.EXCLUSIVE,
-          margin_left: 4,
-          margin_top: 4,
-          margin_bottom: 4
-
+          css_name: "bar",
+          anchor: Astal.WindowAnchor.LEFT 
+                | Astal.WindowAnchor.TOP
+                | Astal.WindowAnchor.BOTTOM
         );
       
         this.output = output;

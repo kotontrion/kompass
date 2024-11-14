@@ -3,6 +3,13 @@ using Astal 4.0;
 
 template $KompassBar: Astal.Window {
   title: _("Kompass");
+  // anchor: left | top |bottom;
+  exclusivity: exclusive;
+  keymode: on_demand;
+  margin_left: 4;
+  margin_top: 4;
+  margin_bottom: 4;
+
 
   child: CenterBox {
     orientation: vertical;

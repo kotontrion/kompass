@@ -4,6 +4,7 @@ public class Kompass.Tray : Gtk.Box {
     private HashTable<string, Gtk.Widget> items;
 
     construct {
+        this.visible = false;
         this.items = new HashTable<string, Gtk.Widget>(str_hash, str_equal);
         this.tray = AstalTray.get_default();
         this.tray.item_added.connect((obj, item_id) => {
@@ -11,11 +12,13 @@ public class Kompass.Tray : Gtk.Box {
           var item = create_tray_item(tray.get_item(item_id));
           this.items.insert(item_id, item);
           this.append(item);
+          this.visible = true;
         });
         this.tray.item_removed.connect((obj, item_id) => {
           if(!this.items.contains(item_id)) return;
           var item = this.items.take(item_id);
           this.remove(item);
+          this.visible = items.size() > 0;
         });
     }
 
