@@ -2,25 +2,23 @@ kompass_sources += [
   'main.vala',
   'application.vala',
   'bar.vala',
-  'tags.vala',
-  'tray.vala',
-  'clock.vala',
   'qs.vala',
   'qsAudio.vala',
   'qsAudioEndpoint.vala',
   'qsBluetooth.vala',
   'qsBluetoothDevice.vala',
-  'qsButton.vala',
   'qsNotif.vala',
   'notification.vala',
   'mprisPlayer.vala',
-  'cava.vala',
   'launcher.vala',
   'appButton.vala',
 ]
 
+kompass_widgets = subproject('kompass-widgets')
+
 kompass_deps = [
   config_dep,
+  kompass_widgets.get_variable('kompass_widgets_dep'),
   dependency('gio-unix-2.0'),
   dependency('gtk4'),
   dependency('gtk4-layer-shell-0'),
@@ -30,12 +28,10 @@ kompass_deps = [
   dependency('astal-io-0.1'),
   dependency('astal-mpris-0.1'),
   dependency('astal-river-0.1'),
-  dependency('astal-tray-0.1'),
   dependency('astal-battery-0.1'),
   dependency('astal-bluetooth-0.1'),
   dependency('astal-network-0.1'),
   dependency('astal-notifd-0.1'),
-  dependency('astal-cava-0.1'),
   dependency('astal-apps-0.1'),
   dependency('astal-wireplumber-0.1'),
 ]

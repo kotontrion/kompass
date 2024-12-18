@@ -1,12 +1,11 @@
 public class Kompass.Tray : Gtk.Box {
 
-    public AstalTray.Tray tray { get; private set; }
+    private AstalTray.Tray tray = AstalTray.get_default();
     private HashTable<string, Gtk.Widget> items;
 
     construct {
         this.visible = false;
         this.items = new HashTable<string, Gtk.Widget>(str_hash, str_equal);
-        this.tray = AstalTray.get_default();
         this.tray.item_added.connect((obj, item_id) => {
           if(this.items.contains(item_id)) return;
           var item = create_tray_item(tray.get_item(item_id));

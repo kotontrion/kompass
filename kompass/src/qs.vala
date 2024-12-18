@@ -33,7 +33,7 @@ public class Kompass.Qs : Gtk.Box {
 
     [GtkCallback]
     public void open_settings() {
-      AstalIO.Process.exec_asyncv({"bash", "-c", "XDG_CURRENT_DESKTOP=gnome gnome-control-center"});
+      AstalIO.Process.exec_asyncv.begin({"bash", "-c", "XDG_CURRENT_DESKTOP=gnome gnome-control-center"});
     }
 
     [GtkCallback]
@@ -74,7 +74,7 @@ public class Kompass.Qs : Gtk.Box {
       string picture_dir = Environment.get_user_special_dir(UserDirectory.PICTURES);
       string file_name = new DateTime.now_local().format_iso8601();
       string cmd = "bash -c 'grim -g \"$(slurp)\" %s/Screenshots/%s.png'".printf(picture_dir, file_name);
-      AstalIO.Process.exec_async(cmd);
+      AstalIO.Process.exec_async.begin(cmd);
     }
 
     [GtkCallback]
@@ -189,25 +189,25 @@ public class Kompass.Qs : Gtk.Box {
          
         var sd_action = new SimpleAction("shutdown", null);
         sd_action.activate.connect(val => {
-          AstalIO.Process.exec_async("systemctl poweroff");
+          AstalIO.Process.exec_async.begin("systemctl poweroff");
         });
         this.actions.add_action(sd_action);
 
         var rb_action = new SimpleAction("reboot", null);
         rb_action.activate.connect(val => {
-          AstalIO.Process.exec_async("systemctl reboot");
+          AstalIO.Process.exec_async.begin("systemctl reboot");
         });
         this.actions.add_action(rb_action);
 
         var suspend_action = new SimpleAction("suspend", null);
         suspend_action.activate.connect(val => {
-          AstalIO.Process.exec_async("systemctl suspend");
+          AstalIO.Process.exec_async.begin("systemctl suspend");
         });
         this.actions.add_action(suspend_action);
 
         var logout_action = new SimpleAction("logout", null);
         logout_action.activate.connect(val => {
-          AstalIO.Process.exec_asyncv({"bash", "-c", "loginctl terminate-user $USER"});
+          AstalIO.Process.exec_asyncv.begin({"bash", "-c", "loginctl terminate-user $USER"});
         });
         this.actions.add_action(logout_action);
 

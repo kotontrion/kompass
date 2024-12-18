@@ -3,13 +3,11 @@
   <gresource prefix="/com/github/kotontrion/kompass">
     <file>style.css</file>
     <file preprocess="xml-stripblanks">ui/bar.ui</file>
-    <file preprocess="xml-stripblanks">ui/clock.ui</file>
     <file preprocess="xml-stripblanks">ui/qs.ui</file>
     <file preprocess="xml-stripblanks">ui/qsAudio.ui</file>
     <file preprocess="xml-stripblanks">ui/qsAudioEndpoint.ui</file>
     <file preprocess="xml-stripblanks">ui/qsBluetooth.ui</file>
     <file preprocess="xml-stripblanks">ui/qsBluetoothDevice.ui</file>
-    <file preprocess="xml-stripblanks">ui/qsButton.ui</file>
     <file preprocess="xml-stripblanks">ui/qsNotif.ui</file>
     <file preprocess="xml-stripblanks">ui/notification.ui</file>
     <file preprocess="xml-stripblanks">ui/mprisPlayer.ui</file>

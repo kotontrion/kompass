@@ -1,9 +1,7 @@
+@use "sass:meta";
+
 * {
   font-family: "CaskaydiaCove Nerd Font";
-}
-
-.half-font-size {
-  font-size: 0.5rem;
 }
 
 headerbar > windowhandle > box {
@@ -72,6 +70,6 @@ popover {
   }
 }
 
-@import "bar";
-@import "tags";
-@import "quicksettings";
+@include meta.load-css("bar");
+@include meta.load-css("tags");
+@include meta.load-css("quicksettings");

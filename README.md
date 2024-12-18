@@ -2,6 +2,8 @@
 
 My completely custom status bar. This is for my personal use only, and therefore will most likely never be configurable.
 
+This project also builds a library containing some widget definitions, which might be more useful to you thatn the actual bar.
+
 Showcase (as of 2024-10-13):
 ![2024-10-13T14:47:32,759960206+02:00](https://github.com/user-attachments/assets/78278e56-4951-4713-9b5e-a2468405be84)
 
@@ -33,6 +35,7 @@ I wont publish it to the AUR, as this is a my personal bar and is most likely no
 - libadwaita
 - astal-mpris
 - astal-river
+- astal-tray
 - astal-battery
 - astal-bluetooth
 - astal-network
@@ -47,6 +50,10 @@ cd kompass
 meson setup build
 meson install -C build
 ```
+
+# License
+This project includes multiple subprojects, each with its own licensing terms. Please refer to the provided License files in the respective subdirectories to determine which license applies:
+
 
 
 

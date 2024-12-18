@@ -46,11 +46,18 @@ private class Kompass.Tag : Gtk.Box {
 
 public class Kompass.Tags : Gtk.Box {
 
-    AstalRiver.Output output { get; private set; }
+    public AstalRiver.Output output { get; set; }
 
     construct {
-        this.realize.connect(() => {
-            output = ((Kompass.Bar)get_root()).output;
+        this.notify["output"].connect(() => {
+           
+            var child = this.get_first_child();
+            while(child != null) {
+              this.remove(child);
+              child = this.get_first_child();
+            }
+            
+            if(output == null) return;
 
             for( int i = 0; i < 9; i++ ) {
                 append(new Tag(i, output));

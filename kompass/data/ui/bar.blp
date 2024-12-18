@@ -25,6 +25,7 @@ template $KompassBar: Astal.Window {
 
       $KompassTags {
         orientation: vertical;
+        output: bind template.output;
         styles ["bar-module"]
       }
     }
@@ -43,7 +44,7 @@ template $KompassBar: Astal.Window {
         styles ["bar-module", "spacing-3"]
       }
 
-      $KompassClock {
+      $KompassVerticalClock {
         styles ["bar-module"]
       }
     }

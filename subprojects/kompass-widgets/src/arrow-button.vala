@@ -1,5 +1,5 @@
-[GtkTemplate (ui = "/com/github/kotontrion/kompass/ui/qsButton.ui")]
-public class Kompass.QsButton : Gtk.Box {
+[GtkTemplate (ui = "/com/github/kotontrion/kompass-widgets/ui/arrow-button.ui")]
+public class Kompass.ArrowButton : Gtk.Box {
   public string icon {get; set;}
   public string label {get; set;}
   public string tag {get; set;}
@@ -41,6 +41,6 @@ public class Kompass.QsButton : Gtk.Box {
   }
 
   static construct {
-    set_css_name("qs-button");
+    set_css_name("arrow-button");
   }
 }

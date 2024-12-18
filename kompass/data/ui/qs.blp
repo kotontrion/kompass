@@ -94,7 +94,7 @@ template $KompassQs: Box {
                 row-spacing: 5;
                 column-spacing: 5;
 
-                $KompassQsButton {
+                $KompassArrowButton {
                   label: _("Bluetooth");
                   icon: bind $bluetooth_icon_name(template.bluetooth as <AstalBluetooth.Bluetooth>.is-powered) as <string>;
                   active: bind template.bluetooth as <AstalBluetooth.Bluetooth>.is-powered;
@@ -107,7 +107,7 @@ template $KompassQs: Box {
                   }
                 }
 
-                $KompassQsButton {
+                $KompassArrowButton {
                   label: _("Audio");
                   icon: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.volume-icon;
                   inactive: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.mute;
@@ -120,7 +120,7 @@ template $KompassQs: Box {
                   }
                 }
 
-                $KompassQsButton {
+                $KompassArrowButton {
                   label: _("Notifications");
                   icon: bind $notification_dnd_icon(template.notifd as <AstalNotifd.Notifd>.dont-disturb) as <string>;
                   inactive: bind template.notifd as <AstalNotifd.Notifd>.dont-disturb;
@@ -134,7 +134,7 @@ template $KompassQs: Box {
                   }
                 }
 
-                $KompassQsButton {
+                $KompassArrowButton {
                   label: _("Wifi");
                   icon: bind template.network as <AstalNetwork.Network>.wifi as <AstalNetwork.Wifi>.icon-name;
                   active: bind template.network as <AstalNetwork.Network>.wifi as <AstalNetwork.Wifi>.enabled;
