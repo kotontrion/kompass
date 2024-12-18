@@ -23,6 +23,9 @@ I wont publish it to the AUR, as this is a my personal bar and is most likely no
 
 #### dependencies 
 
+> [!NOTE]  
+> Kompass needs the astal-tray lib built from the aylur/astal#68, and the astal-river lib built from the aylur/astal#186 PR. So until they get merged, you have to build them yourself from there.
+
 ##### build dependencies
 - dart-sass
 - blueprint-compiler
