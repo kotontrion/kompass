@@ -55,6 +55,7 @@ kompass_widgets_lib = shared_library('kompass-widgets-' + api_version,
       vala_gir: meson.project_name() + '-' + api_version + '.gir',
        version: meson.project_version(),
        install: true,
+   install_dir: [true, true, true, true],
 )
 
 
