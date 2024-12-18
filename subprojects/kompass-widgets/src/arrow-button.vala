@@ -1,17 +1,18 @@
-[GtkTemplate (ui = "/com/github/kotontrion/kompass-widgets/ui/arrow-button.ui")]
+[GtkTemplate(ui = "/com/github/kotontrion/kompass-widgets/ui/arrow-button.ui")]
 public class Kompass.ArrowButton : Gtk.Box {
-  public string icon {get; set;}
-  public string label {get; set;}
-  public string tag {get; set;}
+  public string icon { get; set; }
+  public string label { get; set; }
+  public string tag { get; set; }
   public bool active {
     get {
       return this.has_css_class("active");
     }
     set {
-      if(value)
+      if (value) {
         this.add_css_class("active");
-      else
+      } else {
         this.remove_css_class("active");
+      }
     }
   }
 
@@ -20,10 +21,11 @@ public class Kompass.ArrowButton : Gtk.Box {
       return !this.has_css_class("active");
     }
     set {
-      if(value)
+      if (value) {
         this.remove_css_class("active");
-      else
+      } else {
         this.add_css_class("active");
+      }
     }
   }
 

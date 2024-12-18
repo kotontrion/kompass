@@ -1,22 +1,19 @@
-[GtkTemplate (ui = "/com/github/kotontrion/kompass/ui/appButton.ui")]
+[GtkTemplate(ui = "/com/github/kotontrion/kompass/ui/appButton.ui")]
 public class Kompass.AppButton : Gtk.ListBoxRow {
+  public AstalApps.Application app { get; construct; }
+  public double score { get; set; }
 
-    public AstalApps.Application app {get; construct;}
-    public double score { get; set;}
+  [GtkCallback]
+  public void clicked() {
+    app.launch();
+  }
 
-    [GtkCallback]
-    public void clicked() {
-      app.launch();
-    }
+  [GtkCallback]
+  public void activated() {
+    app.launch();
+  }
 
-    [GtkCallback]
-    public void activated() {
-      app.launch();
-    }
-
-
-    public AppButton(AstalApps.Application app) {
-        Object(app: app);
-    }
-
+  public AppButton(AstalApps.Application app) {
+    Object(app: app);
+  }
 }
