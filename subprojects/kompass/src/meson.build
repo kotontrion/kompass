@@ -47,7 +47,7 @@ kompass_widgets_deps = [
 
 ]
 
-kompass_lib = shared_library(meson.project_name() + '-' + api_version,
+kompass_lib = shared_library(meson.project_name(),
   kompass_widgets_sources,
   dependencies: kompass_widgets_deps,
    vala_header: meson.project_name() + '.h',
