@@ -4,25 +4,29 @@ using GtkLayerShell;
 public class Kompass.Bar : Astal.Window {
   public AstalRiver.Output output { get; private set; }
 
-  public Bar(AstalRiver.Output output) {
+  public Bar(Gdk.Monitor monitor) {
     Object(
       application: Kompass.Application.instance,
-      namespace : @"bar-$(output.name)",
-      name: @"bar-$(output.name)",
+      namespace : @"bar-$(monitor.get_connector())",
+      name: @"bar-$(monitor.get_connector())",
       css_name: "bar",
+      gdkmonitor: monitor,
       anchor: Astal.WindowAnchor.LEFT
       | Astal.WindowAnchor.TOP
       | Astal.WindowAnchor.BOTTOM
       );
 
-    this.output = output;
-
-    ListModel monitors = Gdk.Display.get_default().get_monitors();
-    for (int i = 0; i < monitors.get_n_items(); i++) {
-      Gdk.Monitor monitor = (Gdk.Monitor)monitors.get_item(i);
-      if (monitor.connector == output.name) {
-        set_monitor(this, monitor);
-        break;
+    var river = AstalRiver.get_default();
+    if (river != null) {
+      this.output = river.get_output(monitor.get_connector());
+      //HACK: gdk already knows about the new monitor, but river does not.
+      //a wl_display_sync in the river lib might fix that.
+      if (this.output == null) {
+        river.output_added.connect((riv, name) => {
+          if (name == monitor.get_connector()) {
+            this.output = river.get_output(name);
+          }
+        });
       }
     }
   }

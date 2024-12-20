@@ -8,6 +8,10 @@ class Kompass.Application : Astal.Application {
   public override void activate() {
     base.activate();
 
+    if (AstalRiver.get_default() == null) {
+      GLib.warning("could not connect to river.\n");
+    }
+
     Gtk.IconTheme icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default());
     icon_theme.add_resource_path("/com/github/kotontrion/kompass-bar/icons/");
 
@@ -16,18 +20,24 @@ class Kompass.Application : Astal.Application {
     Gtk.StyleContext.add_provider_for_display(Gdk.Display.get_default(), provider,
                                               Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-    AstalRiver.River river = AstalRiver.get_default();
+    var mons = Gdk.Display.get_default().get_monitors();
+    for (var i = 0; i <= mons.get_n_items(); ++i) {
+      var monitor = (Gdk.Monitor)mons.get_item(i);
+      if (monitor != null) {
+        var win = new Kompass.Bar(monitor);
+        win.present();
+      }
+    }
 
-    river.output_added.connect((riv, name) => {
+    mons.items_changed.connect((p, r, a) => {
       Gdk.Display.get_default().sync();
-      var win = new Kompass.Bar(river.get_output(name));
-      win.present();
+      for (; a > 0; a--) {
+        var monitor = (Gdk.Monitor)mons.get_item(p++);
+        var win = new Kompass.Bar(monitor);
+        win.present();
+      }
     });
 
-    foreach (AstalRiver.Output output in river.get_outputs()) {
-      var win = new Kompass.Bar(output);
-      win.present();
-    }
     this.hold();
   }
 

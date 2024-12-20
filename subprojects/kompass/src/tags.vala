@@ -56,9 +56,10 @@ public class Kompass.Tags : Gtk.Box {
       }
 
       if (output == null) {
+        this.visible = false;
         return;
       }
-
+      this.visible = true;
       for (int i = 0; i < 9; i++) {
         append(new Tag(i, output));
       }
