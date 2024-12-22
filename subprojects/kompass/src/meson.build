@@ -8,6 +8,8 @@ version_conf.set('MAJOR_VERSION', version_split[0])
 version_conf.set('MINOR_VERSION', version_split[1])
 version_conf.set('MICRO_VERSION', version_split[2])
 
+typelib = 'Kompass-' + api_version + '.typelib'
+
 config = configure_file(
   input: 'config.vala.in',
   output: 'config.vala',
@@ -58,6 +60,20 @@ kompass_lib = shared_library(meson.project_name(),
    install_dir: [true, true, true, true],
 )
 
+custom_target(
+    typelib,
+    command: [
+      find_program('g-ir-compiler'),
+      '--output', '@OUTPUT@',
+      '--shared-library', get_option('prefix') / get_option('libdir') / '@PLAINNAME@',
+      meson.current_build_dir() / 'Kompass-' + api_version + '.gir',
+    ],
+    input: kompass_lib,
+    output: typelib,
+    depends: kompass_lib,
+    install: true,
+    install_dir: get_option('libdir') / 'girepository-1.0',
+  )
 
 pkg = import('pkgconfig')
 pkg.generate(
