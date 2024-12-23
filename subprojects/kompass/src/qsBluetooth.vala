@@ -1,4 +1,4 @@
-[GtkTemplate(ui = "/com/github/kotontrion/kompass-bar/ui/qsBluetooth.ui")]
+[GtkTemplate(ui = "/com/github/kotontrion/kompass/ui/qsBluetooth.ui")]
 public class Kompass.QsBluetooth : Gtk.Box {
   public AstalBluetooth.Bluetooth bluetooth { get; construct set; }
 

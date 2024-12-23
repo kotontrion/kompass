@@ -1,4 +1,4 @@
-[GtkTemplate(ui = "/com/github/kotontrion/kompass-bar/ui/mprisPlayer.ui")]
+[GtkTemplate(ui = "/com/github/kotontrion/kompass/ui/mprisPlayer.ui")]
 public class Kompass.Player : Gtk.Box {
   public AstalMpris.Player player { get; set; }
   private Gtk.CssProvider css_prov;

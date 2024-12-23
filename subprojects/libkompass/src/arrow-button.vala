@@ -1,4 +1,4 @@
-[GtkTemplate(ui = "/com/github/kotontrion/kompass/ui/arrow-button.ui")]
+[GtkTemplate(ui = "/com/github/kotontrion/libkompass/ui/arrow-button.ui")]
 public class Kompass.ArrowButton : Gtk.Box {
   public string icon { get; set; }
   public string label { get; set; }

@@ -1,4 +1,4 @@
-[GtkTemplate(ui = "/com/github/kotontrion/kompass-bar/ui/qsAudio.ui")]
+[GtkTemplate(ui = "/com/github/kotontrion/kompass/ui/qsAudio.ui")]
 public class Kompass.QsAudio : Gtk.Box {
   public AstalWp.Wp wp { get; construct set; }
 

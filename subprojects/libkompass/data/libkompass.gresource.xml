@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/com/github/kotontrion/kompass">
+  <gresource prefix="/com/github/kotontrion/libkompass">
     <file preprocess="xml-stripblanks">ui/vertical-clock.ui</file>
     <file preprocess="xml-stripblanks">ui/arrow-button.ui</file>
     <file>style.css</file>
