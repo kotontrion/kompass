@@ -1,9 +1,7 @@
 sass = find_program('sass')
 
 scss_deps = files(
-    'tags.scss',
-    'bar.scss',
-    'quicksettings.scss'
+  'arrow-button.scss'
 )
 
 scss = custom_target('scss',

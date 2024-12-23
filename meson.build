@@ -5,4 +5,4 @@ project('kompass-shell', ['c', 'vala'],
   default_options: [ 'warning_level=2', 'werror=false', ],
 )
 
-subproject('kompass-bar')
+subproject('kompass')

@@ -1,93 +1,53 @@
-api_version = '0.1'
+kompass_sources += [
+  'main.vala',
+  'application.vala',
+  'bar.vala',
+  'qs.vala',
+  'qsAudio.vala',
+  'qsAudioEndpoint.vala',
+  'qsBluetooth.vala',
+  'qsBluetoothDevice.vala',
+  'qsNotif.vala',
+  'notification.vala',
+  'mprisPlayer.vala',
+  'launcher.vala',
+  'appButton.vala',
+]
 
+kompass_widgets = subproject('libkompass')
 
-version_split = meson.project_version().split('.')
-version_conf = configuration_data()
-version_conf.set('VERSION', meson.project_version())
-version_conf.set('MAJOR_VERSION', version_split[0])
-version_conf.set('MINOR_VERSION', version_split[1])
-version_conf.set('MICRO_VERSION', version_split[2])
-
-typelib = 'Kompass-' + api_version + '.typelib'
-
-config = configure_file(
-  input: 'config.vala.in',
-  output: 'config.vala',
-  configuration: {
-    'VERSION': meson.project_version(),
-    'MAJOR_VERSION': version_split[0],
-    'MINOR_VERSION': version_split[1],
-    'MICRO_VERSION': version_split[2],
-  },
-)
-
-kompass_widgets_sources += [config] + files(
-  'kompass-main.vala',
-  'arrow-button.vala',
-  'cava.vala',
-  'tags.vala',
-  'tray.vala',
-  'vertical-clock.vala',
-)
+kompass_deps = [
+  config_dep,
+  kompass_widgets.get_variable('kompass_dep'),
+  dependency('gio-unix-2.0'),
+  dependency('gtk4'),
+  dependency('gtk4-layer-shell-0'),
+  dependency('libadwaita-1', version: '>= 1.4'),
+  dependency('libnm'),
+  dependency('astal-4-4.0'),
+  dependency('astal-io-0.1'),
+  dependency('astal-mpris-0.1'),
+  dependency('astal-river-0.1'),
+  dependency('astal-battery-0.1'),
+  dependency('astal-bluetooth-0.1'),
+  dependency('astal-network-0.1'),
+  dependency('astal-notifd-0.1'),
+  dependency('astal-apps-0.1'),
+  dependency('astal-wireplumber-0.1'),
+]
 
 types_tgt = custom_target(
   'types',
   command: [find_program('awk'), '-f', files('gen_ensure_type.awk'), '@INPUT@'],
-  input: kompass_widgets_sources,
+  input: kompass_sources,
   output: 'ensure_types.vala',
   capture: true
 )
 
-kompass_widgets_sources += [types_tgt]
+kompass_sources += [types_tgt]
 
-kompass_widgets_deps = [
-  dependency('libadwaita-1'),
-  dependency('gio-2.0'),
-  dependency('astal-cava-0.1'),
-  dependency('astal-tray-0.1'),
-  dependency('astal-river-0.1'),
-
-]
-
-kompass_lib = shared_library(meson.project_name(),
-  kompass_widgets_sources,
-  dependencies: kompass_widgets_deps,
-   vala_header: meson.project_name() + '.h',
-     vala_vapi: meson.project_name() + '-' + api_version + '.vapi',
-      vala_gir: 'Kompass-' + api_version + '.gir',
-       version: meson.project_version(),
-       install: true,
-   install_dir: [true, true, true, true],
+executable('kompass', kompass_sources,
+  dependencies: kompass_deps,
+  include_directories: config_inc,
+  install: true,
 )
-
-custom_target(
-    typelib,
-    command: [
-      find_program('g-ir-compiler'),
-      '--output', '@OUTPUT@',
-      '--shared-library', get_option('prefix') / get_option('libdir') / '@PLAINNAME@',
-      meson.current_build_dir() / 'Kompass-' + api_version + '.gir',
-    ],
-    input: kompass_lib,
-    output: typelib,
-    depends: kompass_lib,
-    install: true,
-    install_dir: get_option('libdir') / 'girepository-1.0',
-  )
-
-pkg = import('pkgconfig')
-pkg.generate(
-  description: 'A shared library for containing various widgets',
-    libraries: kompass_lib,
-         name: 'kompass',
-     filebase: 'kompass-' + api_version,
-      version: meson.project_version(),
-      subdirs: 'kompass',
-     requires: 'gio-2.0',
-  install_dir: get_option('libdir') / 'pkgconfig'
-)
-
-kompass_dep = declare_dependency(
-  link_with: kompass_lib,
-  include_directories: include_directories('.')
-  )
