@@ -1,12 +1,22 @@
-private class Kompass.Tag : Gtk.Box {
+namespace Kompass {
+private class Tag : Gtk.Box {
   public int index { get; construct; }
   public AstalRiver.Output output { get; construct; }
+
+  private Gtk.Label label;
+  public RiverTags tags { get; construct; }
   private Gtk.GestureClick lc;
   private Gtk.GestureClick rc;
+
 
   construct {
     valign = Gtk.Align.CENTER;
     halign = Gtk.Align.CENTER;
+
+    label = new Gtk.Label(@"$(index + 1)");
+  
+    tags.bind_property("show_numbers", label, "visible", GLib.BindingFlags.SYNC_CREATE);
+    this.append(label);
 
     lc = new Gtk.GestureClick();
     lc.set_button(Gdk.BUTTON_PRIMARY);
@@ -19,6 +29,7 @@ private class Kompass.Tag : Gtk.Box {
     this.add_controller(rc);
 
     output.changed.connect(update_css);
+
     update_css();
   }
 
@@ -39,17 +50,23 @@ private class Kompass.Tag : Gtk.Box {
     }
   }
 
-  public Tag(int index, AstalRiver.Output output) {
-    Object(index: index, output: output, css_name: "tag");
+  public Tag(int index, AstalRiver.Output output, RiverTags tags) {
+    Object(index: index, output: output, tags: tags, css_name: "tag");
   }
 }
 
-public class Kompass.Tags : Gtk.Box {
+public class RiverTags : Gtk.Box {
   public AstalRiver.Output output { get; set; }
+  public bool show_numbers { get; set; default = false; }
+  public uint tags { get; set; default = 9; }
 
   construct {
-    this.notify["output"].connect(() => {
-      var child = this.get_first_child();
+    this.notify["output"].connect(() => recreate_children());
+    this.notify["tags"].connect(() => recreate_children());
+  }
+
+  private void recreate_children() {
+    var child = this.get_first_child();
       while (child != null) {
         this.remove(child);
         child = this.get_first_child();
@@ -60,9 +77,9 @@ public class Kompass.Tags : Gtk.Box {
         return;
       }
       this.visible = true;
-      for (int i = 0; i < 9; i++) {
-        append(new Tag(i, output));
+      for (int i = 0; i < tags; i++) {
+        append(new Tag(i, output, this));
       }
-    });
   }
+}
 }

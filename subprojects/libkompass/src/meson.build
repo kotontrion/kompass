@@ -23,6 +23,9 @@ config = configure_file(
 
 kompass_widgets_sources += [config] + files(
   'kompass-main.vala',
+  
+  'screenrecord.vala',
+
   'arrow-button.vala',
   'cava.vala',
   'tags.vala',
@@ -43,6 +46,10 @@ kompass_widgets_sources += [types_tgt]
 kompass_widgets_deps = [
   dependency('libadwaita-1'),
   dependency('gio-2.0'),
+  dependency('libportal'),
+  dependency('gstreamer-1.0'),
+  dependency('gstreamer-pbutils-1.0'),
+  dependency('astal-io-0.1'),
   dependency('astal-cava-0.1'),
   dependency('astal-tray-0.1'),
   dependency('astal-river-0.1'),
@@ -51,7 +58,9 @@ kompass_widgets_deps = [
 
 kompass_lib = shared_library('kompass',
   kompass_widgets_sources,
-  dependencies: kompass_widgets_deps,
+  dependencies: kompass_widgets_deps + [
+      meson.get_compiler('vala').find_library('posix'),
+    ],
    vala_header: 'kompass.h',
      vala_vapi: 'kompass-' + api_version + '.vapi',
       vala_gir: 'Kompass-' + api_version + '.gir',

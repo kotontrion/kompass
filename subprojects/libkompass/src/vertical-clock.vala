@@ -1,5 +1,6 @@
+namespace Kompass {
 [GtkTemplate(ui = "/com/github/kotontrion/libkompass/ui/vertical-clock.ui")]
-public class Kompass.VerticalClock : Gtk.Box {
+public class VerticalClock : Gtk.Box {
   private uint interval_id;
 
   [GtkChild]
@@ -32,4 +33,5 @@ public class Kompass.VerticalClock : Gtk.Box {
     GLib.Source.remove(this.interval_id);
     base.dispose();
   }
+}
 }

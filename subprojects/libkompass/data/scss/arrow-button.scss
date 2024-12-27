@@ -3,6 +3,10 @@ arrow-button {
   .arrow-button-main {
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
+    
+    .subtitle {
+  	  font-size: 0.8rem;
+    }
   }
   .arrow-button-arrow {
     border-top-left-radius: 0px;

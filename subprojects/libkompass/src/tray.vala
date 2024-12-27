@@ -1,4 +1,5 @@
-public class Kompass.Tray : Gtk.Box {
+namespace Kompass {
+public class Tray : Gtk.Box {
   private AstalTray.Tray tray = AstalTray.get_default();
   private HashTable<string, Gtk.Widget> items;
 
@@ -40,4 +41,5 @@ public class Kompass.Tray : Gtk.Box {
     button.set_child(icon);
     return button;
   }
+}
 }

@@ -10,8 +10,19 @@ template $KompassArrowButton : Box {
       Image {
         icon-name: bind template.icon;
       }
-      Label {
-        label: bind template.label;
+      Box {
+        orientation: vertical;
+        valign: center;
+        Label {
+          label: bind template.label;
+          halign: start;
+        }
+        Label subtitle {
+          styles ["subtitle"]
+          label: bind template.subtitle;
+          visible: bind $is_not_empty(subtitle.label) as <bool>;
+          halign: start;
+        }
       }
     }  
     clicked => $on_clicked();

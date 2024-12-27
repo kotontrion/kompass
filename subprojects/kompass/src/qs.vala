@@ -7,11 +7,10 @@ public class Kompass.Qs : Gtk.Box {
   public AstalNotifd.Notifd notifd { get; private set; }
   public AstalMpris.Mpris mpris { get; private set; }
 
-  public string recorder_icon { get; private set; default = "video-display-symbolic"; }
-
   private SimpleActionGroup actions;
   private int count = 0;
-  private AstalIO.Process recorder;
+
+  public Kompass.ScreenRecorder recorder { get; set; default = Kompass.ScreenRecorder.get_default(); }
 
   [GtkChild]
   private unowned Gtk.Popover popover;
@@ -31,13 +30,18 @@ public class Kompass.Qs : Gtk.Box {
   }
 
   [GtkCallback]
+  public string recorder_icon(bool recording) {
+    return recording ? "media-record-symbolic" : "video-display-symbolic";
+  }
+
+  [GtkCallback]
   public void open_settings() {
     AstalIO.Process.exec_asyncv.begin({ "bash", "-c", "XDG_CURRENT_DESKTOP=gnome gnome-control-center" });
   }
 
   [GtkCallback]
   public void record_right_click() {
-    if (this.recorder != null) {
+    if(recorder.recording) {
       stop_record();
     } else {
       start_record();
@@ -46,7 +50,7 @@ public class Kompass.Qs : Gtk.Box {
 
   [GtkCallback]
   public void record_click() {
-    if (this.recorder != null) {
+    if(recorder.recording) {
       stop_record();
     } else {
       screenshot();
@@ -54,35 +58,15 @@ public class Kompass.Qs : Gtk.Box {
   }
 
   private void stop_record() {
-    this.recorder.signal(15);
-    this.recorder = null;
-    this.recorder_icon = "video-display-symbolic";
+    recorder.stop_record();
   }
 
   private void start_record() {
-    string video_dir = Environment.get_user_special_dir(UserDirectory.VIDEOS);
-    string file_name = new DateTime.now_local().format_iso8601();
-
-    AstalIO.Process.exec_async.begin("slurp", (obj, res) => {
-      string geometry = AstalIO.Process.exec_async.end(res);
-
-      string cmd = "bash -c 'wf-recorder -g \"%s\" --pixel-format yuv420p -f %s/Screencasting/%s.mp4'"
-                     .printf(geometry, video_dir, file_name);
-      try {
-        this.recorder = AstalIO.Process.subprocess(cmd);
-        this.recorder_icon = "media-record-symbolic";
-      } catch (Error e) {
-        print("%s\n", e.message);
-      }
-    });
+    recorder.start_record(null);
   }
 
   private void screenshot() {
-    string picture_dir = Environment.get_user_special_dir(UserDirectory.PICTURES);
-    string file_name = new DateTime.now_local().format_iso8601();
-    string cmd = "bash -c 'grim -g \"$(slurp)\" %s/Screenshots/%s.png'".printf(picture_dir, file_name);
-
-    AstalIO.Process.exec_async.begin(cmd);
+    recorder.take_screenshot.begin(null);
   }
 
   [GtkCallback]

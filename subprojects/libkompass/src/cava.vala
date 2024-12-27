@@ -1,4 +1,5 @@
-public class Kompass.Cava : Gtk.Widget {
+namespace Kompass {
+public class Cava : Gtk.Widget {
   private AstalCava.Cava cava;
 
   construct {
@@ -39,4 +40,5 @@ public class Kompass.Cava : Gtk.Widget {
 
     snapshot.append_fill(builder.to_path(), Gsk.FillRule.WINDING, color);
   }
+}
 }

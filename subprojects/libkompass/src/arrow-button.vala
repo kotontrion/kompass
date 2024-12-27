@@ -1,8 +1,10 @@
+namespace Kompass {
 [GtkTemplate(ui = "/com/github/kotontrion/libkompass/ui/arrow-button.ui")]
-public class Kompass.ArrowButton : Gtk.Box {
+public class ArrowButton : Gtk.Box {
+  
   public string icon { get; set; }
   public string label { get; set; }
-  public string tag { get; set; }
+  public string subtitle { get; set; }
   public bool active {
     get {
       return this.has_css_class("active");
@@ -33,6 +35,11 @@ public class Kompass.ArrowButton : Gtk.Box {
   public signal void arrow_clicked();
 
   [GtkCallback]
+  public bool is_not_empty(string text) {
+    return text != null && text != "";
+  }
+
+  [GtkCallback]
   public void on_clicked() {
     clicked();
   }
@@ -45,4 +52,5 @@ public class Kompass.ArrowButton : Gtk.Box {
   static construct {
     set_css_name("arrow-button");
   }
+}
 }

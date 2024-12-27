@@ -5,6 +5,7 @@ using AstalBattery 0.1;
 using AstalNetwork 0.1;
 using AstalNotifd 0.1;
 using AstalBluetooth 0.1;
+using Kompass 0.1;
 
 template $KompassQs: Box {
   orientation: vertical;
@@ -68,7 +69,7 @@ template $KompassQs: Box {
                 Box {
                   spacing: 5;
                   Button {
-                    icon-name: bind template.recorder_icon;
+                    icon-name: bind $recorder_icon(template.recorder as <Kompass.ScreenRecorder>.recording as <bool>) as <string>;
                     clicked => $record_click();
                     GestureClick {
                       button: 3;
@@ -136,6 +137,7 @@ template $KompassQs: Box {
 
                 $KompassArrowButton {
                   label: _("Wifi");
+                  subtitle: bind template.network as <AstalNetwork.Network>.wifi as <AstalNetwork.Wifi>.ssid;
                   icon: bind template.network as <AstalNetwork.Network>.wifi as <AstalNetwork.Wifi>.icon-name;
                   active: bind template.network as <AstalNetwork.Network>.wifi as <AstalNetwork.Wifi>.enabled;
                   clicked => $on_wifi_clicked();
