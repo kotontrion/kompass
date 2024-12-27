@@ -17,14 +17,11 @@ makepkg -si
 ```
 
 the PKGBUILD can be found [here](https://github.com/kotontrion/PKGBUILDS/blob/main/kompass-git/PKGBUILD).
-I wont publish it to the AUR, as this is a my personal bar and is most likely not very useful to others without some modifications.
+I wont publish it to the AUR until libkompass is more mature.
 
 ### from source
 
 #### dependencies 
-
-> [!NOTE]  
-> Kompass needs the astal-tray lib built from the aylur/astal#68, and the astal-river lib built from the aylur/astal#186 PR. So until they get merged, you have to build them yourself from there.
 
 ##### build dependencies
 - dart-sass
@@ -36,6 +33,7 @@ I wont publish it to the AUR, as this is a my personal bar and is most likely no
 - gtk4
 - gtk4-layer-shell
 - libadwaita
+- libportal
 - astal-mpris
 - astal-river
 - astal-tray
@@ -46,6 +44,8 @@ I wont publish it to the AUR, as this is a my personal bar and is most likely no
 - astal-cava
 - astal-apps
 - astal-wireplumber
+- slurp
+- wf-recorder
 
 ```bash
 git clone https://github.com/kotontrion/kompass
@@ -53,6 +53,7 @@ cd kompass
 meson setup build
 meson install -C build
 ```
+
 
 # License
 This project includes multiple subprojects, each with its own licensing terms. Please refer to the provided License files in the respective subdirectories to determine which license applies:
