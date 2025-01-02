@@ -183,6 +183,19 @@
       ) {};
     });
 
+    devShells = perSystem (pkgs: {
+      default = pkgs.mkShell {
+        nativeBuildInputs = with self.packages.${pkgs.system}; (libkompass.nativeBuildInputs ++ kompass.nativeBuildInputs);
+        inputsFrom = attrValues {
+          inherit
+            (self.packages.${pkgs.system})
+            libkompass
+            kompass
+            ;
+        };
+      };
+    });
+
     formatter = perSystem (pkgs: pkgs.alejandra);
   };
 }
