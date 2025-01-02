@@ -47,8 +47,6 @@ kompass_widgets_deps = [
   dependency('libadwaita-1'),
   dependency('gio-2.0'),
   dependency('libportal'),
-  dependency('gstreamer-1.0'),
-  dependency('gstreamer-pbutils-1.0'),
   dependency('astal-io-0.1'),
   dependency('astal-cava-0.1'),
   dependency('astal-tray-0.1'),

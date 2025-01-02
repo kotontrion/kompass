@@ -63,11 +63,6 @@
                 wrapGAppsHook
                 ;
               inherit
-                (pkgs.gst_all_1)
-                gstreamer
-                gst-plugins-base
-                ;
-              inherit
                 (astal.packages.${pkgs.system})
                 io
                 cava
