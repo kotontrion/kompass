@@ -87,6 +87,7 @@
                 (pkgs)
                 gawk # awk
                 gobject-introspection # g-ir-compiler
+                libxml2 # xmllint
                 meson
                 ninja
                 pkg-config
@@ -98,6 +99,85 @@
 
             meta = {
               license = lib.licenses.lgpl3Only;
+            };
+          }
+      ) {};
+
+      kompass = pkgs.callPackage (
+        {
+          stdenv,
+          lib,
+          ...
+        }: let
+          pname = "kompass";
+          version = getMesonValue "version: '" "${self}/subprojects/kompass/meson.build";
+        in
+          stdenv.mkDerivation {
+            inherit pname version;
+
+            src = self;
+            sourceRoot = "source/subprojects/kompass";
+
+            # the kompass.h file in ./data messes with libkompass headers
+            preBuild = ''
+              substituteInPlace ./build.ninja --replace-fail " -Idata" ""
+            '';
+
+            nativeBuildInputs = attrValues {
+              # Build Dependencies as declared in src/meson.build
+              inherit
+                (self.packages.${pkgs.system})
+                libkompass # kompass-0.1
+                ;
+              inherit
+                (pkgs)
+                wrapGAppsHook4 # gio-2.0
+                gtk4 # gtk4
+                gtk4-layer-shell # gtk4-layer-shell-0
+                libadwaita # libadwaita-1
+                networkmanager # libnm
+                ;
+              inherit
+                (astal.packages.${pkgs.system})
+                astal4 # astal-4-4.0
+                io # astal-io-0.1
+                mpris # astal-mpris-0.1
+                river # astal-river-0.1
+                battery # astal-battery-0.1
+                bluetooth # astal-bluetooth-0.1
+                network # astal-network-0.1
+                notifd # astal-notifd-0.1
+                apps # astal-apps-0.1
+                wireplumber # astal-wireplumber-0.1
+                ;
+
+              # Build Dependencies as declared in data/ui/meson.build
+              inherit
+                (pkgs)
+                blueprint-compiler # blueprint-compiler
+                ;
+
+              # Build Dependencies as declared in data/scss/meson.build
+              inherit
+                (pkgs)
+                dart-sass # sass
+                ;
+
+              # Build tools
+              inherit
+                (pkgs)
+                gawk # awk
+                libxml2 # xmllint
+                gobject-introspection # for typelibs
+                meson
+                ninja
+                pkg-config
+                vala
+                ;
+            };
+
+            meta = {
+              license = lib.licenses.gpl3Only;
             };
           }
       ) {};
