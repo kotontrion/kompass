@@ -33,7 +33,7 @@
           lib,
           ...
         }: let
-          inherit (lib) attrValues elemAt head match readFile splitString;
+          inherit (lib) attrValues elemAt getExe head match readFile splitString;
           getMesonValue = val: file:
             head (match "^([^']*).*" (elemAt (splitString val (readFile file)) 1));
 
@@ -47,6 +47,12 @@
 
             src = self;
             sourceRoot = "source/subprojects/libkompass";
+
+            postPatch = ''
+              substituteInPlace ./src/screenrecord.vala \
+                  --replace-fail "slurp" "${getExe pkgs.slurp}" \
+                  --replace-fail "bash -c 'wf-recorder" "${getExe pkgs.bash} -c '${getExe pkgs.wf-recorder}"
+            '';
 
             nativeBuildInputs = attrValues {
               inherit
