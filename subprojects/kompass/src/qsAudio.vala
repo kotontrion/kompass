@@ -1,5 +1,5 @@
-[GtkTemplate(ui = "/com/github/kotontrion/kompass/ui/qsAudio.ui")]
-public class Kompass.QsAudio : Gtk.Box {
+[GtkTemplate(ui = "/com/github/kotontrion/kompass-bar/ui/qsAudio.ui")]
+public class KompassBar.QsAudio : Gtk.Box {
   public AstalWp.Wp wp { get; construct set; }
 
   [GtkChild]
@@ -28,19 +28,19 @@ public class Kompass.QsAudio : Gtk.Box {
   }
 
   private void on_added(AstalWp.Endpoint endpoint, Gtk.ListBox lb) {
-    lb.append(new Kompass.QsAudioEndpoint(endpoint));
+    lb.append(new KompassBar.QsAudioEndpoint(endpoint));
   }
 
   private void on_removed(AstalWp.Endpoint endpoint, Gtk.ListBox lb) {
     int i = 0;
 
-    Kompass.QsAudioEndpoint? ep = (Kompass.QsAudioEndpoint)lb.get_row_at_index(0);
+    KompassBar.QsAudioEndpoint? ep = (KompassBar.QsAudioEndpoint)lb.get_row_at_index(0);
     while (ep != null) {
       if (ep.endpoint == endpoint) {
         lb.remove(ep);
         break;
       }
-      ep = (Kompass.QsAudioEndpoint)lb.get_row_at_index(++i);
+      ep = (KompassBar.QsAudioEndpoint)lb.get_row_at_index(++i);
     }
   }
 

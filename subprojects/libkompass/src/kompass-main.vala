@@ -7,9 +7,7 @@ public void init() {
   }
 
   Adw.init();
-    string[] fake_args = new string[0];
-  unowned string[] fake_unowned_args = fake_args;
-  Gst.init(ref fake_unowned_args);
+
   ensure_types();
 
   Gtk.CssProvider provider = new Gtk.CssProvider();

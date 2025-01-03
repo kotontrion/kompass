@@ -14,5 +14,12 @@ blueprints = custom_target('blueprints',
     'appButton.blp',
   ),
   output: '.',
-  command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
+  command: [
+    find_program('blueprint-compiler'),
+    'batch-compile',
+    '--typelib-path', '@BUILD_ROOT@/subprojects/libkompass/src/',
+    '@OUTPUT@',
+    '@CURRENT_SOURCE_DIR@',
+    '@INPUT@'
+    ],
 )

@@ -12,7 +12,7 @@ configure_file(output: 'config.h', configuration: config_h)
 
 gnome = import('gnome')
 
-kompass_widgets_sources = []
+libkompass_sources = []
 
 subdir('data')
 subdir('src')

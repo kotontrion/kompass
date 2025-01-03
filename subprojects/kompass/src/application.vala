@@ -1,4 +1,4 @@
-class Kompass.Application : Astal.Application {
+class KompassBar.Application : Astal.Application {
   public static Application instance;
 
   public override void request(string msg, SocketConnection conn) {
@@ -13,10 +13,10 @@ class Kompass.Application : Astal.Application {
     }
 
     Gtk.IconTheme icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default());
-    icon_theme.add_resource_path("/com/github/kotontrion/kompass/icons/");
+    icon_theme.add_resource_path("/com/github/kotontrion/kompass-bar/icons/");
 
     Gtk.CssProvider provider = new Gtk.CssProvider();
-    provider.load_from_resource("com/github/kotontrion/kompass/style.css");
+    provider.load_from_resource("com/github/kotontrion/kompass-bar/style.css");
     Gtk.StyleContext.add_provider_for_display(Gdk.Display.get_default(), provider,
                                               Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
@@ -24,7 +24,7 @@ class Kompass.Application : Astal.Application {
     for (var i = 0; i <= mons.get_n_items(); ++i) {
       var monitor = (Gdk.Monitor)mons.get_item(i);
       if (monitor != null) {
-        var win = new Kompass.Bar(monitor);
+        var win = new KompassBar.Bar(monitor);
         win.present();
       }
     }
@@ -33,7 +33,7 @@ class Kompass.Application : Astal.Application {
       Gdk.Display.get_default().sync();
       for (; a > 0; a--) {
         var monitor = (Gdk.Monitor)mons.get_item(p++);
-        var win = new Kompass.Bar(monitor);
+        var win = new KompassBar.Bar(monitor);
         win.present();
       }
     });

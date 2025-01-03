@@ -1,5 +1,5 @@
-[GtkTemplate(ui = "/com/github/kotontrion/kompass/ui/qsBluetoothDevice.ui")]
-public class Kompass.QsBluetoothDevice : Gtk.ListBoxRow {
+[GtkTemplate(ui = "/com/github/kotontrion/kompass-bar/ui/qsBluetoothDevice.ui")]
+public class KompassBar.QsBluetoothDevice : Gtk.ListBoxRow {
   public AstalBluetooth.Device device { get; construct set; }
   private SimpleActionGroup actions;
 
