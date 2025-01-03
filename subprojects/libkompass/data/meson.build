@@ -1,7 +1,7 @@
 subdir('ui')
 subdir('scss')
 
-kompass_widgets_sources += gnome.compile_resources(
+libkompass_sources += gnome.compile_resources(
     meson.project_name(),
     'libkompass.gresource.xml',
     dependencies: [blueprints, scss],

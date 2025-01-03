@@ -118,11 +118,6 @@
             src = self;
             sourceRoot = "source/subprojects/kompass";
 
-            # the kompass.h file in ./data messes with libkompass headers
-            preBuild = ''
-              substituteInPlace ./build.ninja --replace-fail " -Idata" ""
-            '';
-
             nativeBuildInputs = attrValues {
               # Build Dependencies as declared in src/meson.build
               inherit

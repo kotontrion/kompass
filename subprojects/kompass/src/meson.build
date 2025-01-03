@@ -14,15 +14,9 @@ kompass_sources += [
   'appButton.vala',
 ]
 
-kompass_widgets = dependency(
-  'kompass-0.1',
-  required: true,
-  fallback: ['libkompass', 'kompass_dep'],
-)
-
 kompass_deps = [
   config_dep,
-  kompass_widgets,
+  libkompass,
   dependency('gio-unix-2.0'),
   dependency('gtk4'),
   dependency('gtk4-layer-shell-0'),

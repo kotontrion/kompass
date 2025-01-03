@@ -1,5 +1,5 @@
-[GtkTemplate(ui = "/com/github/kotontrion/kompass/ui/launcher.ui")]
-public class Kompass.Launcher : Gtk.Box {
+[GtkTemplate(ui = "/com/github/kotontrion/kompass-bar/ui/launcher.ui")]
+public class KompassBar.Launcher : Gtk.Box {
   public AstalApps.Apps apps { get; construct set; }
 
   [GtkChild]
@@ -19,7 +19,7 @@ public class Kompass.Launcher : Gtk.Box {
 
   [GtkCallback]
   public void launch_first() {
-    AppButton ab = (AppButton)this.app_list.get_row_at_index(0);
+    KompassBar.AppButton ab = (KompassBar.AppButton)this.app_list.get_row_at_index(0);
 
     if (ab != null) {
       ab.activate();
@@ -27,8 +27,8 @@ public class Kompass.Launcher : Gtk.Box {
   }
 
   private int sort_func(Gtk.ListBoxRow la, Gtk.ListBoxRow lb) {
-    AppButton a = (AppButton)la;
-    AppButton b = (AppButton)lb;
+    KompassBar.AppButton a = (KompassBar.AppButton)la;
+    KompassBar.AppButton b = (KompassBar.AppButton)lb;
 
     if (a.score == b.score) {
       return b.app.frequency - a.app.frequency;
@@ -37,7 +37,7 @@ public class Kompass.Launcher : Gtk.Box {
   }
 
   private bool filter_func(Gtk.ListBoxRow la) {
-    AppButton a = (AppButton)la;
+    KompassBar.AppButton a = (KompassBar.AppButton)la;
 
     return a.score >= 0;
   }
@@ -46,10 +46,10 @@ public class Kompass.Launcher : Gtk.Box {
   public void update_list() {
     int i = 0;
 
-    Kompass.AppButton? app = (Kompass.AppButton)this.app_list.get_row_at_index(0);
+    KompassBar.AppButton? app = (KompassBar.AppButton)this.app_list.get_row_at_index(0);
     while (app != null) {
       app.score = apps.fuzzy_score(this.entry.text, app.app);
-      app = (Kompass.AppButton)this.app_list.get_row_at_index(++i);
+      app = (KompassBar.AppButton)this.app_list.get_row_at_index(++i);
     }
     this.app_list.invalidate_sort();
     this.app_list.invalidate_filter();

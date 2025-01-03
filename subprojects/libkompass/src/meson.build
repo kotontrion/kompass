@@ -22,7 +22,7 @@ config = configure_file(
   },
 )
 
-kompass_widgets_sources += [config] + files(
+libkompass_sources += [config] + files(
   'kompass-main.vala',
 
   'screenrecord.vala',
@@ -37,14 +37,14 @@ kompass_widgets_sources += [config] + files(
 types_tgt = custom_target(
   'types',
   command: [find_program('awk'), '-f', files('gen_ensure_type.awk'), '@INPUT@'],
-  input: kompass_widgets_sources,
+  input: libkompass_sources,
   output: 'ensure_types.vala',
   capture: true
 )
 
-kompass_widgets_sources += [types_tgt]
+libkompass_sources += [types_tgt]
 
-kompass_widgets_deps = [
+libkompass_deps = [
   dependency('libadwaita-1'),
   dependency('gio-2.0'),
   dependency('libportal'),
@@ -55,9 +55,9 @@ kompass_widgets_deps = [
 
 ]
 
-kompass_lib = shared_library('kompass',
-  kompass_widgets_sources,
-  dependencies: kompass_widgets_deps + [
+libkompass_lib = shared_library('kompass',
+  libkompass_sources,
+  dependencies: libkompass_deps + [
       meson.get_compiler('vala').find_library('posix'),
     ],
    vala_header: 'kompass.h',
@@ -68,7 +68,7 @@ kompass_lib = shared_library('kompass',
    install_dir: [true, true, true, true],
 )
 
-custom_target(
+libkompass_typelib_file = custom_target(
     typelib,
     command: [
       find_program('g-ir-compiler'),
@@ -76,9 +76,9 @@ custom_target(
       '--shared-library', get_option('prefix') / get_option('libdir') / '@PLAINNAME@',
       meson.current_build_dir() / 'Kompass-' + api_version + '.gir',
     ],
-    input: kompass_lib,
+    input: libkompass_lib,
     output: typelib,
-    depends: kompass_lib,
+    depends: libkompass_lib,
     install: true,
     install_dir: get_option('libdir') / 'girepository-1.0',
   )
@@ -86,7 +86,7 @@ custom_target(
 pkg = import('pkgconfig')
 pkg.generate(
   description: 'A shared library for containing various widgets',
-    libraries: kompass_lib,
+    libraries: libkompass_lib,
          name: 'libkompass',
      filebase: 'kompass-' + api_version,
       version: meson.project_version(),
@@ -96,6 +96,6 @@ pkg.generate(
 )
 
 kompass_dep = declare_dependency(
-  link_with: kompass_lib,
+  link_with: libkompass_lib,
   include_directories: include_directories('.')
   )

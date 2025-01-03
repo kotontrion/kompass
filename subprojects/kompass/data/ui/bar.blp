@@ -1,7 +1,7 @@
 using Gtk 4.0;
 using Astal 4.0;
 
-template $KompassBar: Astal.Window {
+template $KompassBarBar: Astal.Window {
   title: _("Kompass");
   // anchor: left | top |bottom;
   exclusivity: exclusive;
@@ -19,7 +19,7 @@ template $KompassBar: Astal.Window {
       orientation: vertical;
       styles ["spacing-6"]
 
-      $KompassLauncher {
+      $KompassBarLauncher {
         styles ["bar-module"]
       }
 
@@ -40,7 +40,7 @@ template $KompassBar: Astal.Window {
         styles ["bar-module", "spacing-3"]
       }
 
-      $KompassQs {
+      $KompassBarQs {
         styles ["bar-module", "spacing-3"]
       }
 

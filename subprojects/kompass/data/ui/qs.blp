@@ -7,7 +7,7 @@ using AstalNotifd 0.1;
 using AstalBluetooth 0.1;
 using Kompass 0.1;
 
-template $KompassQs: Box {
+template $KompassBarQs: Box {
   orientation: vertical;
 
   Revealer rev_volume{
@@ -169,19 +169,19 @@ template $KompassQs: Box {
           Adw.NavigationPage {
             tag: "audio";
             title: _("Audio");
-            child: $KompassQsAudio {};
+            child: $KompassBarQsAudio {};
           }
  
           Adw.NavigationPage {
             tag: "bluetooth";
             title: _("Bluetooth");
-            child: $KompassQsBluetooth {};
+            child: $KompassBarQsBluetooth {};
           }
           
           Adw.NavigationPage {
             tag: "notifications";
             title: _("Notifications");
-            child: $KompassQsNotif {};
+            child: $KompassBarQsNotif {};
           }
         }
       }

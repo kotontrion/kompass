@@ -1,5 +1,5 @@
-[GtkTemplate(ui = "/com/github/kotontrion/kompass/ui/notification.ui")]
-public class Kompass.Notification : Gtk.ListBoxRow, Adw.Swipeable {
+[GtkTemplate(ui = "/com/github/kotontrion/kompass-bar/ui/notification.ui")]
+public class KompassBar.Notification : Gtk.ListBoxRow, Adw.Swipeable {
   public AstalNotifd.Notification notification { get; set; }
 
   private Adw.SwipeTracker swipe_tracker;

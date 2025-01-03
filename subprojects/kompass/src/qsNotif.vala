@@ -1,5 +1,5 @@
-[GtkTemplate(ui = "/com/github/kotontrion/kompass/ui/qsNotif.ui")]
-public class Kompass.QsNotif : Gtk.Box {
+[GtkTemplate(ui = "/com/github/kotontrion/kompass-bar/ui/qsNotif.ui")]
+public class KompassBar.QsNotif : Gtk.Box {
   public AstalNotifd.Notifd notifd { get; construct set; }
 
   [GtkChild]
@@ -14,19 +14,19 @@ public class Kompass.QsNotif : Gtk.Box {
     if (replaced) {
       this.on_removed(id, lb);
     }
-    lb.prepend(new Kompass.Notification(notifd.get_notification(id)));
+    lb.prepend(new KompassBar.Notification(notifd.get_notification(id)));
   }
 
   private void on_removed(uint id, Gtk.ListBox lb) {
     int i = 0;
 
-    Kompass.Notification? n = (Kompass.Notification)lb.get_row_at_index(0);
+    KompassBar.Notification? n = (KompassBar.Notification)lb.get_row_at_index(0);
     while (n != null) {
       if (n.notification.id == id) {
         lb.remove(n);
         break;
       }
-      n = (Kompass.Notification)lb.get_row_at_index(++i);
+      n = (KompassBar.Notification)lb.get_row_at_index(++i);
     }
   }
 

@@ -1,5 +1,5 @@
-[GtkTemplate(ui = "/com/github/kotontrion/kompass/ui/qsBluetooth.ui")]
-public class Kompass.QsBluetooth : Gtk.Box {
+[GtkTemplate(ui = "/com/github/kotontrion/kompass-bar/ui/qsBluetooth.ui")]
+public class KompassBar.QsBluetooth : Gtk.Box {
   public AstalBluetooth.Bluetooth bluetooth { get; construct set; }
 
   [GtkChild]
@@ -26,19 +26,19 @@ public class Kompass.QsBluetooth : Gtk.Box {
   }
 
   private void on_added(AstalBluetooth.Device device, Gtk.ListBox lb) {
-    lb.append(new Kompass.QsBluetoothDevice(device));
+    lb.append(new KompassBar.QsBluetoothDevice(device));
   }
 
   private void on_removed(AstalBluetooth.Device device, Gtk.ListBox lb) {
     int i = 0;
 
-    Kompass.QsBluetoothDevice? dev = (Kompass.QsBluetoothDevice)lb.get_row_at_index(0);
+    KompassBar.QsBluetoothDevice? dev = (KompassBar.QsBluetoothDevice)lb.get_row_at_index(0);
     while (dev != null) {
       if (dev.device == device) {
         lb.remove(dev);
         break;
       }
-      dev = (Kompass.QsBluetoothDevice)lb.get_row_at_index(++i);
+      dev = (KompassBar.QsBluetoothDevice)lb.get_row_at_index(++i);
     }
   }
 

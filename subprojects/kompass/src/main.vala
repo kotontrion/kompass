@@ -7,6 +7,6 @@ int main(string[] args) {
 
   ensure_types();
 
-  var app = new Kompass.Application();
+  var app = new KompassBar.Application();
   return app.run(args);
 }

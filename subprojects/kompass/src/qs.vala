@@ -1,5 +1,5 @@
-[GtkTemplate(ui = "/com/github/kotontrion/kompass/ui/qs.ui")]
-public class Kompass.Qs : Gtk.Box {
+[GtkTemplate(ui = "/com/github/kotontrion/kompass-bar/ui/qs.ui")]
+public class KompassBar.Qs : Gtk.Box {
   public AstalWp.Wp wp { get; private set; }
   public AstalBattery.Device battery { get; private set; }
   public AstalNetwork.Network network { get; private set; }
@@ -143,12 +143,12 @@ public class Kompass.Qs : Gtk.Box {
   }
 
   private void on_player_added(AstalMpris.Player player) {
-    this.players.append(new Kompass.Player(player));
+    this.players.append(new KompassBar.Player(player));
   }
 
   private void on_player_removed(AstalMpris.Player player) {
     for (int i = 0; i < this.players.n_pages; i++) {
-      Kompass.Player p = (Kompass.Player)this.players.get_nth_page(i);
+      KompassBar.Player p = (KompassBar.Player)this.players.get_nth_page(i);
       if (p.player == player) {
         this.players.remove(p);
       }

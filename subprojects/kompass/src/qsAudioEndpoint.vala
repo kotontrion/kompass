@@ -1,5 +1,5 @@
-[GtkTemplate(ui = "/com/github/kotontrion/kompass/ui/qsAudioEndpoint.ui")]
-public class Kompass.QsAudioEndpoint : Gtk.ListBoxRow {
+[GtkTemplate(ui = "/com/github/kotontrion/kompass-bar/ui/qsAudioEndpoint.ui")]
+public class KompassBar.QsAudioEndpoint : Gtk.ListBoxRow {
   public AstalWp.Endpoint endpoint { get; construct; }
 
   [GtkChild]
