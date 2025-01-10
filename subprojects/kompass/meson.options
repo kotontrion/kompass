@@ -1,0 +1,2 @@
+option('libkompass_subproject', type : 'boolean', value : false, description : 'Build libkompass as a subproject')
+

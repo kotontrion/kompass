@@ -24,13 +24,15 @@ add_project_arguments('-DGETTEXT_PACKAGE="' + meson.project_name () + '"', langu
 
 kompass_sources = []
 
+libkompass = dependency('kompass-0.1', required: false)
 
-libkompass = dependency(
-  'kompass-0.1',
-  required: true,
-  fallback: ['libkompass', 'kompass_dep'],
-)
-
+if (not libkompass.found() or get_option('libkompass_subproject'))
+  libkompass_prj = subproject('libkompass')
+  libkompass = libkompass_prj.get_variable('libkompass_dep')
+  libkompass_typelib_file = libkompass_prj.get_variable('libkompass_typelib_file')
+else
+  libkompass_typelib_file = []
+endif
 
 subdir('data')
 subdir('po')

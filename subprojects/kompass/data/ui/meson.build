@@ -1,3 +1,5 @@
+
+
 blueprints = custom_target('blueprints',
   input: files(
     'bar.blp',
@@ -22,4 +24,5 @@ blueprints = custom_target('blueprints',
     '@CURRENT_SOURCE_DIR@',
     '@INPUT@'
     ],
+  depends: [libkompass_typelib_file]
 )

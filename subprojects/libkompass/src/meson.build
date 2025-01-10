@@ -95,7 +95,7 @@ pkg.generate(
   install_dir: get_option('libdir') / 'pkgconfig'
 )
 
-kompass_dep = declare_dependency(
+libkompass_dep = declare_dependency(
   link_with: libkompass_lib,
   include_directories: include_directories('.')
   )

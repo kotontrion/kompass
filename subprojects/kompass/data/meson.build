@@ -1,5 +1,5 @@
-subdir('ui')
 subdir('scss')
+subdir('ui')
 
 kompass_sources += gnome.compile_resources(
     meson.project_name(),

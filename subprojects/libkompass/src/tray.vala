@@ -1,4 +1,72 @@
 namespace Kompass {
+
+private class TrayItem : Gtk.Button {
+
+  public AstalTray.TrayItem item {get; construct;}
+
+  private Gtk.PopoverMenu menu;
+  private Gtk.Image icon;
+
+  private Gtk.GestureClick lc;
+  private Gtk.GestureClick rc;
+
+
+  public TrayItem(AstalTray.TrayItem item) {
+    Object(item: item);
+  }
+
+  static construct {
+    set_css_name("tray-item");
+  }
+
+  construct {
+    icon = new Gtk.Image();
+    item.bind_property("gicon", icon, "gicon", BindingFlags.SYNC_CREATE);
+    this.set_child(icon);
+    
+    menu = new Gtk.PopoverMenu.from_model(item.menu_model);
+    menu.set_parent(this);
+
+    menu.set_position(Gtk.PositionType.RIGHT);
+
+    item.notify["menu-model"].connect(() => {
+      menu.menu_model = item.menu_model;
+    });
+
+    item.notify["action-group"].connect(() => {
+      this.insert_action_group("dbusmenu", item.action_group);
+    });
+    this.insert_action_group("dbusmenu", item.action_group);
+
+    lc = new Gtk.GestureClick();
+    lc.set_button(Gdk.BUTTON_PRIMARY);
+    lc.pressed.connect(() => {
+      item.activate(0, 0);
+    });
+    this.add_controller(lc);
+
+    rc = new Gtk.GestureClick();
+    rc.set_button(Gdk.BUTTON_SECONDARY);
+    rc.pressed.connect(() => {
+      this.open_menu();
+    });
+    this.add_controller(rc);
+
+  }
+
+  public void open_menu() {
+      item.about_to_show();
+      menu.popup();
+  }
+
+  ~TrayItem() {
+    menu.unparent();
+  }
+
+}
+
+
+
 public class Tray : Gtk.Box {
   private AstalTray.Tray tray = AstalTray.get_default();
   private HashTable<string, Gtk.Widget> items;
@@ -10,7 +78,7 @@ public class Tray : Gtk.Box {
       if (this.items.contains(item_id)) {
         return;
       }
-      var item = create_tray_item(tray.get_item(item_id));
+      var item = new Kompass.TrayItem(tray.get_item(item_id));
       this.items.insert(item_id, item);
       this.append(item);
       this.visible = true;
@@ -25,21 +93,5 @@ public class Tray : Gtk.Box {
     });
   }
 
-  private Gtk.Widget create_tray_item(AstalTray.TrayItem item) {
-    var button = new Gtk.MenuButton();
-
-    button.direction = Gtk.ArrowType.RIGHT;
-    button.add_css_class("tray-item");
-
-    item.notify["action_group"].connect(() => {
-      button.insert_action_group("dbusmenu", item.action_group);
-    });
-    button.insert_action_group("dbusmenu", item.action_group);
-    item.bind_property("menu-model", button, "menu-model", BindingFlags.SYNC_CREATE);
-    var icon = new Gtk.Image();
-    item.bind_property("gicon", icon, "gicon", BindingFlags.SYNC_CREATE);
-    button.set_child(icon);
-    return button;
-  }
 }
 }
