@@ -36,6 +36,7 @@ private class Tag : Gtk.Box {
   private void update_css() {
     uint occupied_tags = output.occupied_tags;
     uint focused_tags = output.focused_tags;
+    uint urgent_tags = output.urgent_tags;
 
     if ((occupied_tags & (1 << index)) != 0) {
       add_css_class("occupied");
@@ -48,6 +49,13 @@ private class Tag : Gtk.Box {
     } else {
       remove_css_class("focused");
     }
+
+    if ((urgent_tags & (1 << index)) != 0) {
+      add_css_class("urgent");
+    } else {
+      remove_css_class("urgent");
+    }
+
   }
 
   public Tag(int index, AstalRiver.Output output, RiverTags tags) {

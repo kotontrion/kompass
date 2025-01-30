@@ -15,4 +15,8 @@ tag {
     background-color: #{"@accent_bg_color"};
     border: 0.1rem solid #{"@accent_bg_color"};
   }
+
+  &.urgent {
+    border: 0.1rem solid #{"@destructive_bg_color"};
+  }
 }
