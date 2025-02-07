@@ -64,10 +64,15 @@
                 ;
               inherit
                 (astal.packages.${pkgs.system})
+                apps # astal-apps-0.1
+                bluetooth # astal-bluetooth-0.1
                 io # astal-io-0.1
                 cava # astal-cava-0.1
+                mpris # astal-mpris-0.1
+                notifd # astal-notifd-0.1
                 tray # astal-tray-0.1
                 river # astal-river-0.1
+                wireplumber # astal-wireplumber-0.1
                 ;
 
               # Build Dependencies as declared in data/ui/meson.build

@@ -143,12 +143,12 @@ public class KompassBar.Qs : Gtk.Box {
   }
 
   private void on_player_added(AstalMpris.Player player) {
-    this.players.append(new KompassBar.Player(player));
+    this.players.append(new Kompass.Player(player));
   }
 
   private void on_player_removed(AstalMpris.Player player) {
     for (int i = 0; i < this.players.n_pages; i++) {
-      KompassBar.Player p = (KompassBar.Player)this.players.get_nth_page(i);
+      Kompass.Player p = (Kompass.Player)this.players.get_nth_page(i);
       if (p.player == player) {
         this.players.remove(p);
       }

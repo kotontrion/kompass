@@ -28,7 +28,12 @@ libkompass_sources += [config] + files(
   'screenrecord.vala',
 
   'arrow-button.vala',
+  'app-button.vala',
+  'audio-endpoint.vala',
+  'bluetooth-device.vala',
   'cava.vala',
+  'mpris-player.vala',
+  'notification.vala',
   'tags.vala',
   'tray.vala',
   'vertical-clock.vala',
@@ -47,12 +52,17 @@ libkompass_sources += [types_tgt]
 libkompass_deps = [
   dependency('libadwaita-1'),
   dependency('gio-2.0'),
+  dependency('gio-unix-2.0'),
   dependency('libportal'),
+  dependency('astal-apps-0.1'),
+  dependency('astal-bluetooth-0.1'),
   dependency('astal-io-0.1'),
   dependency('astal-cava-0.1'),
+  dependency('astal-notifd-0.1'),
+  dependency('astal-mpris-0.1'),
   dependency('astal-tray-0.1'),
   dependency('astal-river-0.1'),
-
+  dependency('astal-wireplumber-0.1'),
 ]
 
 libkompass_lib = shared_library('kompass',

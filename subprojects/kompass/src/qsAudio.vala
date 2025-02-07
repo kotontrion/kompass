@@ -28,19 +28,19 @@ public class KompassBar.QsAudio : Gtk.Box {
   }
 
   private void on_added(AstalWp.Endpoint endpoint, Gtk.ListBox lb) {
-    lb.append(new KompassBar.QsAudioEndpoint(endpoint));
+    lb.append(new Kompass.AudioEndpoint(endpoint));
   }
 
   private void on_removed(AstalWp.Endpoint endpoint, Gtk.ListBox lb) {
     int i = 0;
 
-    KompassBar.QsAudioEndpoint? ep = (KompassBar.QsAudioEndpoint)lb.get_row_at_index(0);
+    Kompass.AudioEndpoint? ep = (Kompass.AudioEndpoint)lb.get_row_at_index(0);
     while (ep != null) {
       if (ep.endpoint == endpoint) {
         lb.remove(ep);
         break;
       }
-      ep = (KompassBar.QsAudioEndpoint)lb.get_row_at_index(++i);
+      ep = (Kompass.AudioEndpoint)lb.get_row_at_index(++i);
     }
   }
 

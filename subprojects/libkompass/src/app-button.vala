@@ -1,5 +1,5 @@
-[GtkTemplate(ui = "/com/github/kotontrion/kompass-bar/ui/appButton.ui")]
-public class KompassBar.AppButton : Gtk.ListBoxRow {
+[GtkTemplate(ui = "/com/github/kotontrion/libkompass/ui/app-button.ui")]
+public class Kompass.AppButton : Gtk.ListBoxRow {
   public AstalApps.Application app { get; construct; }
   public double score { get; set; }
 

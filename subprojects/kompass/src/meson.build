@@ -4,14 +4,9 @@ kompass_sources += [
   'bar.vala',
   'qs.vala',
   'qsAudio.vala',
-  'qsAudioEndpoint.vala',
   'qsBluetooth.vala',
-  'qsBluetoothDevice.vala',
   'qsNotif.vala',
-  'notification.vala',
-  'mprisPlayer.vala',
   'launcher.vala',
-  'appButton.vala',
 ]
 
 kompass_deps = [
