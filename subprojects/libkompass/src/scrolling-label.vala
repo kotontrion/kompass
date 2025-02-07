@@ -9,7 +9,7 @@ public class Kompass.ScrollingLabel : Gtk.Widget {
   private int scroll_direction = -1;
   private int64 last_time = 0;
 
-  public double speed { get; set; default = 1; }
+  public double speed { get; set; default = 0.5; }
 
   public Gtk.Orientation direction { get; set; default = Gtk.Orientation.HORIZONTAL; }
 
