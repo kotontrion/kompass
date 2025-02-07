@@ -8,8 +8,11 @@ public class Kompass.ScrollingLabel : Gtk.Widget {
   private double position = 0;
   private int scroll_direction = -1;
   private int64 last_time = 0;
+  private int64 delay = 0;
 
   public double speed { get; set; default = 0.5; }
+
+  public int direction_change_delay { get; set; default = 500; }
 
   public Gtk.Orientation direction { get; set; default = Gtk.Orientation.HORIZONTAL; }
 
@@ -81,18 +84,29 @@ public class Kompass.ScrollingLabel : Gtk.Widget {
     double limit = is_horizontal ? this.get_width() : this.get_height();
     double label_size = is_horizontal ? this.scroll_label.get_width() : this.scroll_label.get_height();
 
+    if (this.delay >= 0) {
+      this.delay += elapsed / 1000;
+      if (this.delay > this.direction_change_delay) {
+        this.delay = -1;
+      } else {
+        return Source.CONTINUE;
+      }
+    }
+
     if (this.behaviour == Kompass.ScrollBehaviour.ALTERNATE) {
       if (this.scroll_direction < 0) {
         if (this.position + label_size > limit) {
           this.position = double.max(limit - label_size, this.position - delta);
         } else {
           this.scroll_direction = 1;
+          this.delay = 0;
         }
       } else {
         if (this.position < 0) {
           this.position = double.min(0, this.position + delta);
         } else {
           this.scroll_direction = -1;
+          this.delay = 0;
         }
       }
     } else {
