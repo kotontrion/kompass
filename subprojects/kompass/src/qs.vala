@@ -41,7 +41,7 @@ public class KompassBar.Qs : Gtk.Box {
 
   [GtkCallback]
   public void record_right_click() {
-    if(recorder.recording) {
+    if (recorder.recording) {
       stop_record();
     } else {
       start_record();
@@ -50,7 +50,7 @@ public class KompassBar.Qs : Gtk.Box {
 
   [GtkCallback]
   public void record_click() {
-    if(recorder.recording) {
+    if (recorder.recording) {
       stop_record();
     } else {
       screenshot();

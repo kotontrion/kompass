@@ -22,9 +22,9 @@ public class VerticalClock : Gtk.Box {
 
   construct {
     this.interval_id = GLib.Timeout.add(15000, () => {
-      this.update_clock();
-      return GLib.Source.CONTINUE;
-    });
+        this.update_clock();
+        return GLib.Source.CONTINUE;
+      });
 
     this.update_clock();
   }

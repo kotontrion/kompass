@@ -8,13 +8,12 @@ private class Tag : Gtk.Box {
   private Gtk.GestureClick lc;
   private Gtk.GestureClick rc;
 
-
   construct {
     valign = Gtk.Align.CENTER;
     halign = Gtk.Align.CENTER;
 
     label = new Gtk.Label(@"$(index + 1)");
-  
+
     tags.bind_property("show_numbers", label, "visible", GLib.BindingFlags.SYNC_CREATE);
     this.append(label);
 
@@ -55,7 +54,6 @@ private class Tag : Gtk.Box {
     } else {
       remove_css_class("urgent");
     }
-
   }
 
   public Tag(int index, AstalRiver.Output output, RiverTags tags) {
@@ -75,19 +73,19 @@ public class RiverTags : Gtk.Box {
 
   private void recreate_children() {
     var child = this.get_first_child();
-      while (child != null) {
-        this.remove(child);
-        child = this.get_first_child();
-      }
+    while (child != null) {
+      this.remove(child);
+      child = this.get_first_child();
+    }
 
-      if (output == null) {
-        this.visible = false;
-        return;
-      }
-      this.visible = true;
-      for (int i = 0; i < tags; i++) {
-        append(new Tag(i, output, this));
-      }
+    if (output == null) {
+      this.visible = false;
+      return;
+    }
+    this.visible = true;
+    for (int i = 0; i < tags; i++) {
+      append(new Tag(i, output, this));
+    }
   }
 }
 }

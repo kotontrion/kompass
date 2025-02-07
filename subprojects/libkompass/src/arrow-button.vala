@@ -1,7 +1,6 @@
 namespace Kompass {
 [GtkTemplate(ui = "/com/github/kotontrion/libkompass/ui/arrow-button.ui")]
 public class ArrowButton : Gtk.Box {
-  
   public string icon { get; set; }
   public string label { get; set; }
   public string subtitle { get; set; }
