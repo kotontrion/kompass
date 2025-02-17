@@ -51,8 +51,10 @@ private class TrayItem : Gtk.Button {
   }
 
   public void open_menu() {
-    item.about_to_show();
-    menu.popup();
+    if (this.item.menu_model != null) {
+      item.about_to_show();
+      menu.popup();
+    }
   }
 
   ~TrayItem() {
