@@ -31,26 +31,29 @@ cava {
 
 .mpris-player {
   min-height: 8rem;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
   border-radius: 0.8rem;
-  padding: 0.3rem;
 
-  background-image: linear-gradient(
-    rgba(0, 0, 0, 0),
-    #{"alpha(@view_bg_color, 0.9)"}),
-    var(--cover, #{"@view_bg_color"});
+  overlay > box {
+    padding: 0.3rem;
+    background-image: linear-gradient(
+	  	rgba(0, 0, 0, 0),
+	  	#{"alpha(@view_bg_color, 0.7)"});
 
-
-  label {
-    text-shadow: 0.1rem 0.1rem #{"@view_bg_color"};
-  }
-  image {
-    -gtk-icon-shadow: 0.1rem 0.1rem #{"@view_bg_color"};
-  }
-  button {
-    background-color: transparent;
+    label {
+      text-shadow: 
+      	0.05rem 0.05rem 0.15rem #{"@view_bg_color"},
+		    0 0 1.2rem #{"@view_bg_color"},
+    		0 0 0.4rem #{"@view_bg_color"};
+    }
+    image {
+      -gtk-icon-shadow: 
+      		0.05rem 0.05rem 0.15rem #{"@view_bg_color"}, 
+      		0 0 1.2rem #{"@view_bg_color"},
+      		0 0 0.4rem #{"@view_bg_color"};
+    }
+    button {
+      background-color: transparent;
+    }
   }
 }
 

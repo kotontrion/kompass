@@ -3,6 +3,8 @@ public class Kompass.Player : Gtk.Box {
   public AstalMpris.Player player { get; set; }
   private Gtk.CssProvider css_prov;
 
+  public File cover_file { get; private set; }
+
   [GtkCallback]
   public void next() {
     this.player.next();
@@ -51,9 +53,11 @@ public class Kompass.Player : Gtk.Box {
     this.get_style_context()
       .add_provider(this.css_prov, Gtk.STYLE_PROVIDER_PRIORITY_USER);
 
-    player.notify["art-url"].connect(() => {
-      update_background();
+    player.notify["cover-art"].connect(() => {
+      // update_background();
+      this.cover_file = File.new_for_path(this.player.cover_art);
     });
-    update_background();
+    this.cover_file = File.new_for_path(this.player.cover_art);
+    // update_background();
   }
 }

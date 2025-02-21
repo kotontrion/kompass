@@ -3,47 +3,58 @@ using AstalMpris 0.1;
 
 template $KompassPlayer : Box {
 
-  hexpand: true;
   styles ["mpris-player"]
+  hexpand: true;
+  overflow: hidden;
 
-  CenterBox {
-    styles ["mpris-player-controls"]
+  Overlay {
     hexpand: true;
-    valign: end;
     
-    [start]
-    Box {
-      orientation: vertical;
-      Label {
-        label: bind template.player as <AstalMpris.Player>.title;
-        halign: start;
-        ellipsize: end;
-        max-width-chars: 20;
-      }
-      Label {
-        label: bind template.player as <AstalMpris.Player>.artist;
-        halign: start;
-        ellipsize: end;
-        max-width-chars: 20;
-        styles ["subtitle"]
-      }
+    [overlay]
+    Picture {
+      content-fit: cover;
+      file: bind template.cover-file;
     }
 
-    [end]
-    Box {
-      Button {
-        icon-name: "media-skip-backward-symbolic";
-        clicked => $prev();
+    [overlay]
+    CenterBox {
+      styles ["mpris-player-controls"]
+      valign: end;
+      
+      [start]
+      Box {
+        orientation: vertical;
+        Label {
+          label: bind template.player as <AstalMpris.Player>.title;
+          halign: start;
+          ellipsize: end;
+          max-width-chars: 20;
+        }
+        Label {
+          label: bind template.player as <AstalMpris.Player>.artist;
+          halign: start;
+          ellipsize: end;
+          max-width-chars: 20;
+          styles ["subtitle"]
+        }
       }
 
-      Button {
-        icon-name: bind $pause_icon(template.player as <AstalMpris.Player>.playback-status) as <string>;
-        clicked => $play_pause();
-      }
+      [end]
+      Box {
+        Button {
+          icon-name: "media-skip-backward-symbolic";
+          clicked => $prev();
+        }
 
-      Button {
-        icon-name: "media-skip-forward-symbolic";
-        clicked => $next();
+        Button {
+          icon-name: bind $pause_icon(template.player as <AstalMpris.Player>.playback-status) as <string>;
+          clicked => $play_pause();
+        }
+
+        Button {
+          icon-name: "media-skip-forward-symbolic";
+          clicked => $next();
+        }
       }
     }
   }
