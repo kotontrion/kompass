@@ -31,7 +31,7 @@ jobs:
       - name: Checkout Destination Repo
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAGES_TOKEN }}
           repository: kotontrion/kotontrion.github.io
           ref: main
           path: dist
