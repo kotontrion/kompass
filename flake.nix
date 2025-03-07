@@ -100,13 +100,101 @@
                 ;
             };
 
-            passthru.girName = "Kompass-${apiVersion}";
+            passthru.girName = "Kompass-0.1";
 
             meta = {
               license = lib.licenses.lgpl3Only;
             };
           }
       ) {};
+
+      docs = pkgs.callPackage ({
+        stdenv,
+        lib,
+        gobject-introspection,
+        gi-docgen,
+        ...
+      }: let
+        pname = "libkompass";
+        libkompass = self.packages.${pkgs.system}.libkompass;
+        version = libkompass.version;
+        girFile = "${libkompass}/share/gir-1.0/${libkompass.passthru.girName}.gir";
+        data = (pkgs.formats.toml {}).generate "libkompass" {
+          library = {
+            description = "A collection of widgets useful for creating status bars using astal.";
+            authors = "kotontrion";
+            version = libkompass.version;
+            license = "LGPL-3-0";
+            browse_url = "https://github.com/kotontrion/kompass/tree/main/subprojects/libkompass";
+            repository_url = "https://github.com/kotontrion/kompass.git";
+          };
+          extra.urlmap_file = "urlmap.js";
+        };
+        docgen = pkgs.gi-docgen.overrideAttrs {
+          patches = [./gi-docgen.patch];
+        };
+        urlmap = pkgs.writeText "urlmap" ''
+          baseURLs = ${builtins.toJSON [
+            ["GLib" "https://docs.gtk.org/glib/"]
+            ["GObject" "https://docs.gtk.org/gobject/"]
+            ["Gio" "https://docs.gtk.org/gio/"]
+            ["Gdk" "https://docs.gtk.org/gdk4/"]
+            ["Gtk" "https://docs.gtk.org/gtk4/"]
+            ["GdkPixbuf" "https://docs.gtk.org/gdk-pixbuf/"]
+            ["Adw" "https://gnome.pages.gitlab.gnome.org/libadwaita/doc/1-latest/"]
+            ["AstalIO" "https://aylur.github.io/libastal/io/"]
+            ["AstalNotifd" "https://aylur.github.io/libastal/notifd/"]
+            ["AstalBluetooth" "https://aylur.github.io/libastal/bluetooth/"]
+            ["AstalCava" "https://aylur.github.io/libastal/cava/"]
+            ["AstalMpris" "https://aylur.github.io/libastal/mpris/"]
+            ["AstalRiver" "https://aylur.github.io/libastal/river/"]
+            ["AstalWp" "https://aylur.github.io/libastal/wireplumber/"]
+            ["AstalApps" "https://aylur.github.io/libastal/apps/"]
+            ["AstalNetwork" "https://aylur.github.io/libastal/network/"]
+            ["AstalTray" "https://aylur.github.io/libastal/tray/"]
+          ]}
+        '';
+      in
+        stdenv.mkDerivation {
+          inherit pname version;
+          src = self;
+          sourceRoot = "source/subprojects/libkompass";
+          nativeBuildInputs = [
+            gobject-introspection
+            gi-docgen
+          ];
+          buildInputs = attrValues {
+              # Build Dependencies as declared in src/meson.build
+              inherit
+                (pkgs)
+                libadwaita # libadwaita-1
+                ;
+              inherit
+                (astal.packages.${pkgs.system})
+                apps # astal-apps-0.1
+                bluetooth # astal-bluetooth-0.1
+                io # astal-io-0.1
+                cava # astal-cava-0.1
+                mpris # astal-mpris-0.1
+                notifd # astal-notifd-0.1
+                tray # astal-tray-0.1
+                river # astal-river-0.1
+                wireplumber # astal-wireplumber-0.1
+                ;
+            };
+          buildPhase = ''
+            cat ${urlmap} > urlmap.js
+            ${docgen}/bin/gi-docgen generate --config=${data} ${girFile}
+          '';
+          installPhase = ''        
+            mkdir -p $out/share/doc/${pname}
+            mv ${libkompass.passthru.girName}/* $out/share/doc/${pname}
+          '';
+          meta = {
+            description = "Documentation for libkompass";
+            license = lib.licenses.lgpl3Only;
+          };
+        }) {};
 
       kompass = pkgs.callPackage (
         {
@@ -181,6 +269,8 @@
             };
           }
       ) {};
+
+      default = self.packages.${pkgs.system}.kompass;
     });
 
     devShells = perSystem (pkgs: {

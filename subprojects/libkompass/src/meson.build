@@ -1,6 +1,3 @@
-api_version = '0.1'
-
-
 version_split = meson.project_version().split('.')
 version_conf = configuration_data()
 version_conf.set('VERSION', meson.project_version())
@@ -9,6 +6,7 @@ version_conf.set('MINOR_VERSION', version_split[1])
 version_conf.set('MICRO_VERSION', version_split[2])
 
 typelib = 'Kompass-' + api_version + '.typelib'
+gir = 'Kompass-' + api_version + '.gir'
 
 config = configure_file(
   input: 'config.vala.in',
@@ -22,7 +20,7 @@ config = configure_file(
   },
 )
 
-libkompass_sources += [config] + files(
+libkompass_vala_sources += [config] + files(
   'kompass-main.vala',
 
   'screenrecord.vala',
@@ -43,14 +41,14 @@ libkompass_sources += [config] + files(
 types_tgt = custom_target(
   'types',
   command: [find_program('awk'), '-f', files('gen_ensure_type.awk'), '@INPUT@'],
-  input: libkompass_sources,
+  input: libkompass_sources + libkompass_vala_sources,
   output: 'ensure_types.vala',
   capture: true
 )
 
-libkompass_sources += [types_tgt]
+libkompass_vala_sources += [types_tgt]
 
-libkompass_deps = [
+libkompass_deps += [
   dependency('libadwaita-1'),
   dependency('gio-2.0'),
   dependency('gio-unix-2.0'),
@@ -67,29 +65,51 @@ libkompass_deps = [
 ]
 
 libkompass_lib = shared_library('kompass',
-  libkompass_sources,
+  libkompass_sources + libkompass_vala_sources,
   dependencies: libkompass_deps + [
       meson.get_compiler('vala').find_library('posix'),
     ],
    vala_header: 'kompass.h',
      vala_vapi: 'kompass-' + api_version + '.vapi',
-      vala_gir: 'Kompass-' + api_version + '.gir',
        version: meson.project_version(),
        install: true,
-   install_dir: [true, true, true, true],
+   install_dir: [true, true, true],
 )
+
+  pkgs = []
+  foreach dep : libkompass_deps
+    pkgs += ['--pkg=' + dep.name()]
+  endforeach
+
+  gir_tgt = custom_target(
+    'gir',
+    command: [find_program('python3'), files('gir.py'), meson.project_name(), gir]
+    + pkgs
+    + libkompass_vala_sources
+    + ['&&',
+      'mv',
+      meson.current_build_dir() / '..' / gir,
+      '@OUTPUT@'
+      ],
+    input: libkompass_vala_sources,
+    depends: libkompass_lib,
+    output: gir,
+    install: true,
+    install_dir: get_option('datadir') / 'gir-1.0',
+  )
 
 libkompass_typelib_file = custom_target(
     typelib,
     command: [
       find_program('g-ir-compiler'),
       '--output', '@OUTPUT@',
-      '--shared-library', get_option('prefix') / get_option('libdir') / '@PLAINNAME@',
-      meson.current_build_dir() / 'Kompass-' + api_version + '.gir',
+      '--shared-library', get_option('prefix') / get_option('libdir') / '@INPUT0@',
+      '@INPUT1@'
+      # meson.current_build_dir() / 'Kompass-' + api_version + '.gir',
     ],
-    input: libkompass_lib,
+    input: [libkompass_lib, gir_tgt[0]],
     output: typelib,
-    depends: libkompass_lib,
+    depends: [libkompass_lib, gir_tgt],
     install: true,
     install_dir: get_option('libdir') / 'girepository-1.0',
   )

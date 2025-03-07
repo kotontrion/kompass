@@ -1,0 +1,12 @@
+option(
+    'valadoc',
+    type: 'boolean',
+    value: false,
+    description: 'Generate valadoc documentation',
+)
+option(
+    'gidoc',
+    type: 'boolean',
+    value: false,
+    description: 'Generate gidoc documentation (this will also generate valadoc, and currently requires Vala nightly)',
+)
