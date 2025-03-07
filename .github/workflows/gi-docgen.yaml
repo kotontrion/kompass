@@ -43,8 +43,8 @@ jobs:
 
       - name: Clean and Copy Files
         run: |
-          rm -rf dist/libastal
-          mkdir dist/libastal
+          rm -rf dist/libkompass
+          mkdir dist/libkompass
           cp -r src/result/share/doc/libkompass/* dist/libkompass
 
       - name: Push to Pages Repo
