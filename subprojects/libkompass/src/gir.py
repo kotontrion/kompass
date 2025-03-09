@@ -58,11 +58,10 @@ def valadoc(name: str, gir: str, args: list[str]):
 
 if __name__ == "__main__":
     name = sys.argv[1]
-    in_out = sys.argv[2].split(":")
-    args = sys.argv[3:]
-
-    gir = in_out[0]
-    out = in_out[1] if len(in_out) > 1 else gir
+    gir = sys.argv[2]
+    out = sys.argv[3]
+    args = sys.argv[4:]
 
     valadoc(name, gir, args)
     fix_gir(name, gir, out)
+    os.remove(gir)

@@ -83,14 +83,9 @@ libkompass_lib = shared_library('kompass',
 
   gir_tgt = custom_target(
     'gir',
-    command: [find_program('python3'), files('gir.py'), meson.project_name(), gir]
+    command: [find_program('python3'), files('gir.py'), meson.project_name(), gir, '@OUTPUT@']
     + pkgs
-    + libkompass_vala_sources
-    + ['&&',
-      'mv',
-      meson.current_build_dir() / '..' / gir,
-      '@OUTPUT@'
-      ],
+    + libkompass_vala_sources,
     input: libkompass_vala_sources,
     depends: libkompass_lib,
     output: gir,
