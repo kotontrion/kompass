@@ -11,8 +11,11 @@ private class Tag : Gtk.Box {
   construct {
     valign = Gtk.Align.CENTER;
     halign = Gtk.Align.CENTER;
+    orientation = Gtk.Orientation.VERTICAL;
 
     label = new Gtk.Label(@"$(index + 1)");
+    label.valign = Gtk.Align.CENTER;
+    label.halign = Gtk.Align.CENTER;
 
     tags.bind_property("show_numbers", label, "visible", GLib.BindingFlags.SYNC_CREATE);
     this.append(label);

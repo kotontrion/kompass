@@ -5,5 +5,5 @@ bar {
 .bar-module {
   border-radius: 0.5rem;
   padding: 0.4rem;
-  background: #{"@view_bg_color"};
+  background: var(--window-bg-color);
 }
