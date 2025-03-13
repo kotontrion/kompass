@@ -1,5 +1,4 @@
 namespace Kompass {
-
 public class ScreenRecorder : Object {
   private static ScreenRecorder instance;
   public static ScreenRecorder get_default() {

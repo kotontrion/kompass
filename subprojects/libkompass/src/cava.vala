@@ -1,6 +1,15 @@
 namespace Kompass {
+public enum CavaStyle {
+  /** draw as a smooth curve */
+  SMOOTH,
+  /** like smooth, but better */
+  CATMULL_ROM
+}
+
 public class Cava : Gtk.Widget {
   private AstalCava.Cava cava;
+
+  public CavaStyle style { get; set; default = CavaStyle.CATMULL_ROM; }
 
   construct {
     this.cava = AstalCava.get_default();
@@ -13,7 +22,63 @@ public class Cava : Gtk.Widget {
 
   public override void snapshot(Gtk.Snapshot snapshot) {
     base.snapshot(snapshot);
+    switch (style) {
+      case SMOOTH:
+        draw_smooth(snapshot);
+        break;
 
+      case CATMULL_ROM:
+      default:
+        draw_catmull_rom(snapshot);
+        break;
+    }
+  }
+
+  private void draw_catmull_rom(Gtk.Snapshot snapshot) {
+    int width = this.get_width();
+    int height = this.get_height();
+    Gdk.RGBA color = this.get_color();
+
+    Array<double> values = cava.get_values();
+    int bars = cava.bars;
+
+    float bar_width = width / (bars - 1f);
+
+    Gsk.PathBuilder builder = new Gsk.PathBuilder();
+    builder.move_to(0, (float)(height - height * values.index(0)));
+
+    for (int i = 0; i <= bars - 2; i++) {
+      Graphene.Point p0, p1, p2, p3;
+
+      if (i == 0) {
+        p0 = { x : i* bar_width, y : (float)(height - height * values.index(i)) };
+        p3 = { x : (i + 2) * bar_width, y : (float)(height - height * values.index(i + 2)) };
+      } else if (i == bars - 2) {
+        p0 = { x : (i - 1) * bar_width, y : (float)(height - height * values.index(i - 1)) };
+        p3 = { x : (i + 1) * bar_width, y : (float)(height - height * values.index(i + 1)) };
+      } else {
+        p0 = { x : (i - 1) * bar_width, y : (float)(height - height * values.index(i - 1)) };
+        p3 = { x : (i + 2) * bar_width, y : (float)(height - height * values.index(i + 2)) };
+      }
+
+      p1 = { x : i* bar_width, y : (float)(height - height * values.index(i)) };
+      p2 = { x : (i + 1) * bar_width, y : (float)(height - height * values.index(i + 1)) };
+
+      Graphene.Point c1 = { x : p1.x + (p2.x - p0.x) / 6, y : p1.y + (p2.y - p0.y) / 6 };
+      Graphene.Point c2 = { x : p2.x - (p3.x - p1.x) / 6, y : p2.y - (p3.y - p1.y) / 6 };
+
+      builder.cubic_to(c1.x, c1.y, c2.x, c2.y, p2.x, p2.y);
+    }
+
+    builder.line_to(width, height);
+    builder.line_to(0, height);
+
+    builder.close();
+
+    snapshot.append_fill(builder.to_path(), Gsk.FillRule.WINDING, color);
+  }
+
+  private void draw_smooth(Gtk.Snapshot snapshot) {
     int width = this.get_width();
     int height = this.get_height();
     Gdk.RGBA color = this.get_color();
