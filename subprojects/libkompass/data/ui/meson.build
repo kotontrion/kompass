@@ -8,7 +8,7 @@ blueprints = custom_target('blueprints',
     'mpris-player.blp',
     'vertical-clock.blp',
     'search-result-button.blp',
-    'result-provider.blp'
+    'search-result-provider.blp'
   ),
   output: '.',
   command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],

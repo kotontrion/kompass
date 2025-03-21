@@ -1,0 +1,21 @@
+using Gtk 4.0;
+
+template $KompassSearchResultProvider : Box {
+
+  Revealer revealer {
+    child: Box {
+      orientation: vertical;
+      Label {
+        label: bind template.provider as <$KompassSearchProvider>.name;
+      }
+
+      ListBox results {
+        hexpand: true;
+        valign: start;
+        selection-mode: none;
+        styles ["boxed-list"]
+      }
+    };
+  }
+
+}

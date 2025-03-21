@@ -1,6 +1,6 @@
 namespace Kompass {
-[GtkTemplate(ui = "/com/github/kotontrion/libkompass/ui/result-provider.ui")]
-public class ResultProvider : Gtk.Box {
+[GtkTemplate(ui = "/com/github/kotontrion/libkompass/ui/search-result-provider.ui")]
+public class SearchResultProvider : Gtk.Box {
   [GtkChild]
   private unowned Gtk.Revealer revealer;
   [GtkChild]
@@ -13,7 +13,7 @@ public class ResultProvider : Gtk.Box {
     return new SearchResultButton(item as Kompass.SearchResult);
   }
 
-  public ResultProvider(SearchProvider provider) {
+  public SearchResultProvider(SearchProvider provider) {
     this.provider = provider;
     this.result_model = new Gtk.SliceListModel(this.provider.results, 0, 5);
     this.results.bind_model(this.result_model, result_button_factory);
@@ -27,7 +27,7 @@ public class ResultProvider : Gtk.Box {
 }
 
 public class Launcher : Gtk.Box {
-  private ResultProvider[] providers;
+  private SearchResultProvider[] providers;
   private string[] enabled_providers = {
     "org.gnome.Calculator-search-provider.ini",
     "org.gnome.Calendar.search-provider.ini",
@@ -37,7 +37,7 @@ public class Launcher : Gtk.Box {
 
   construct {
     this.orientation = Gtk.Orientation.VERTICAL;
-    providers = new ResultProvider[0];
+    providers = new SearchResultProvider[0];
     setup_provider.begin();
   }
 
@@ -48,7 +48,7 @@ public class Launcher : Gtk.Box {
   }
 
   private async void setup_provider() {
-    var apps = new ResultProvider(new AppSearchProvider());
+    var apps = new SearchResultProvider(new AppSearchProvider());
 
     this.append(apps);
     this.providers += apps;
@@ -77,9 +77,10 @@ public class Launcher : Gtk.Box {
           continue;
         }
 
-        var p = new ResultProvider(yield new DBusSearchProvider(bus_name, object_path));
+        var p = new SearchResultProvider(yield new DBusSearchProvider(bus_name, object_path));
         this.append(p);
         this.providers += p;
+        p.search.begin("");
       }
     } catch (Error e) {
       stderr.printf("Failed to open directory %s: %s\n", dir_path, e.message);

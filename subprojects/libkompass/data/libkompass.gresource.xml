@@ -9,7 +9,7 @@
     <file preprocess="xml-stripblanks">ui/notification.ui</file>
     <file preprocess="xml-stripblanks">ui/mpris-player.ui</file>
     <file preprocess="xml-stripblanks">ui/search-result-button.ui</file>
-    <file preprocess="xml-stripblanks">ui/result-provider.ui</file>
+    <file preprocess="xml-stripblanks">ui/search-result-provider.ui</file>
     <file>style.css</file>
     <file compressed="true">icons/symbolic/apps/arch-linux-rounded-symbolic.svg</file>
     <file compressed="true">icons/symbolic/apps/arch-linux-symbolic.svg</file>

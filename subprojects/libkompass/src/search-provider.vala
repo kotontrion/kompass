@@ -113,7 +113,6 @@ public class Kompass.DBusSearchProvider : Object, SearchProvider {
         var search_result = SearchResult.from_dbus_data(meta, (result) => {
           proxy.activate_result(result.id, query.split(" "), 0);
         });
-        print("%s, %s\n", search_result.name, search_result.description);
         (results as ListStore).append(search_result);
       }
     }
