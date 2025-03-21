@@ -1,0 +1,34 @@
+using Gtk 4.0;
+
+template $KompassSearchResultButton : ListBoxRow {
+
+  selectable: false;
+  activatable: false;
+  activate => $activated();
+  hexpand: true;
+
+  child: Box {
+    Image {
+      icon-size: large;
+      gicon: bind template.result as <$KompassSearchResult>.icon;
+    }
+    Box {
+      orientation: vertical;
+      Label {
+        halign: start;
+        label: bind template.result as <$KompassSearchResult>.name;
+        ellipsize: end;
+      }
+      Label {
+        styles ["subtitle"]
+        halign: start;
+        label: bind template.result as <$KompassSearchResult>.description;
+        ellipsize: end;
+      }
+    }
+  };
+
+  GestureClick {
+    pressed => $clicked();
+  }
+}

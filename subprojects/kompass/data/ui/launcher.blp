@@ -19,7 +19,7 @@ template $KompassBarLauncher : Box {
       Entry entry {
         primary-icon-name: "system-search-symbolic";
         changed => $update_list();
-        activate => $launch_first();
+        // activate => $launch_first();
       }
 
       ScrolledWindow {  
@@ -28,13 +28,7 @@ template $KompassBarLauncher : Box {
         overflow: hidden;
         styles ["scroll-list"]
 
-        ListBox app_list {
-          hexpand: true;
-          valign: start;
-          selection-mode: none;
-          show-separators: true;
-          styles ["boxed-list"]
-        }
+        $KompassLauncher launcher { }
       }
     }
   }

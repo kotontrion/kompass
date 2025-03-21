@@ -36,6 +36,9 @@ libkompass_vala_sources += [config] + files(
   'tags.vala',
   'tray.vala',
   'vertical-clock.vala',
+  'search-provider.vala',
+  'launcher.vala',
+  'search-result-button.vala'
 )
 
 types_tgt = custom_target(
@@ -60,8 +63,8 @@ libkompass_deps += [
   dependency('astal-notifd-0.1'),
   dependency('astal-mpris-0.1'),
   dependency('astal-tray-0.1'),
-  dependency('astal-river-0.1'),
   dependency('astal-wireplumber-0.1'),
+  dependency('astal-river-0.1'),
 ]
 
 libkompass_lib = shared_library('kompass',
