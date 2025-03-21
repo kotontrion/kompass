@@ -10,10 +10,7 @@ public class KompassBar.Bar : Astal.Window {
       namespace : @"bar-$(monitor.get_connector())",
       name: @"bar-$(monitor.get_connector())",
       css_name: "bar",
-      gdkmonitor: monitor,
-      anchor: Astal.WindowAnchor.LEFT
-      | Astal.WindowAnchor.TOP
-      | Astal.WindowAnchor.BOTTOM
+      gdkmonitor: monitor
       );
 
     var river = AstalRiver.get_default();
