@@ -4,4 +4,8 @@
   font-size: 0.5rem;
 }
 
-@include meta.load-css("arrow-button")
+@include meta.load-css("arrow-button");
+
+searchresultprovider > revealer > box {
+  padding-top: 0.5rem;
+}

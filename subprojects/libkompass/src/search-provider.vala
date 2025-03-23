@@ -69,6 +69,7 @@ public class Kompass.SearchResult : Object {
 public interface Kompass.SearchProvider : Object {
   public abstract ListModel results { get; construct; }
   public abstract string name { get; construct; }
+  public abstract Icon icon { get; construct; }
 
   public abstract async void search(string query);
 }
@@ -88,9 +89,23 @@ public class Kompass.DBusSearchProvider : Object, SearchProvider {
   private IDBusSearchProvider proxy;
   public ListModel results { get; construct; }
   public string name { get; construct; }
+  public Icon icon { get; construct; }
 
-  public async DBusSearchProvider(string bus_name, string path) {
-    Object(name: bus_name, results: new ListStore(typeof(SearchResult)));
+  public async DBusSearchProvider(string desktop_id, string bus_name, string path) {
+
+    
+    string desktop_path = "applications/" + desktop_id;
+
+    KeyFile keyfile = new KeyFile();
+    keyfile.load_from_data_dirs(desktop_path, null, KeyFileFlags.NONE);
+    string name = keyfile.get_string("Desktop Entry", "Name");
+    string icon = keyfile.get_string("Desktop Entry", "Icon");
+
+    Object(name: name, 
+          icon: new ThemedIcon(icon),
+            results: new ListStore(typeof(SearchResult))
+            );
+
     proxy = yield Bus.get_proxy(
       BusType.SESSION,
       bus_name,
@@ -100,23 +115,24 @@ public class Kompass.DBusSearchProvider : Object, SearchProvider {
 
   public async void search(string query) {
     string [] s = query.split(" ");
+    HashTable<string, Variant>[] result_metas = null;
     try {
-      (results as ListStore).remove_all();
       var query_result = yield proxy.get_initial_result_set(query.split(" "));
 
-      if (query_result == null || query_result.length == 0) {
-        return;
+      if (query_result != null && query_result.length > 0) {
+          result_metas = yield proxy.get_result_metas(query_result);
       }
-      var result_metas = yield proxy.get_result_metas(query_result);
 
-      foreach (var meta in result_metas) {
-        var search_result = SearchResult.from_dbus_data(meta, (result) => {
-          proxy.activate_result(result.id, query.split(" "), 0);
-        });
-        (results as ListStore).append(search_result);
-      }
     }
     catch (Error e) {
+    }
+
+    (results as ListStore).remove_all();
+    foreach (var meta in result_metas) {
+      var search_result = SearchResult.from_dbus_data(meta, (result) => {
+        proxy.activate_result(result.id, query.split(" "), 0);
+      });
+      (results as ListStore).append(search_result);
     }
   }
 }
@@ -125,9 +141,12 @@ public class Kompass.AppSearchProvider : Object, SearchProvider {
   public ListModel results { get; construct; }
   private AstalApps.Apps apps = new AstalApps.Apps();
   public string name { get; construct; }
+  public Icon icon { get; construct; }
 
   public AppSearchProvider() {
-    Object(name: "Apps", results: new ListStore(typeof(SearchResult)));
+    Object(name: "Apps",
+        icon: new ThemedIcon("arch-linux"),
+        results: new ListStore(typeof(SearchResult)));
   }
 
   public async void search(string query) {

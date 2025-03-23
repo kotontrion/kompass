@@ -13,6 +13,10 @@ public class SearchResultProvider : Gtk.Box {
     return new SearchResultButton(item as Kompass.SearchResult);
   }
 
+  static construct {
+    set_css_name("searchresultprovider");
+  }
+
   public SearchResultProvider(SearchProvider provider) {
     this.provider = provider;
     this.result_model = new Gtk.SliceListModel(this.provider.results, 0, 5);
@@ -21,7 +25,6 @@ public class SearchResultProvider : Gtk.Box {
 
   public async void search(string query) {
     yield this.provider.search(query);
-
     this.revealer.reveal_child = this.provider.results.get_n_items() > 0;
   }
 }
@@ -30,10 +33,15 @@ public class Launcher : Gtk.Box {
   private SearchResultProvider[] providers;
   private string[] enabled_providers = {
     "org.gnome.Calculator-search-provider.ini",
+    "Apps",
+    "org.gnome.Nautilus.search-provider.ini",
     "org.gnome.Calendar.search-provider.ini",
     "org.gnome.Contacts.search-provider.ini",
-    "org.gnome.Nautilus.search-provider.ini"
   }; //TODO make this configurable, or read from gsettings
+
+  static construct {
+    set_css_name("launcher");
+  }
 
   construct {
     this.orientation = Gtk.Orientation.VERTICAL;
@@ -50,23 +58,17 @@ public class Launcher : Gtk.Box {
   private async void setup_provider() {
     var apps = new SearchResultProvider(new AppSearchProvider());
 
-    this.append(apps);
-    this.providers += apps;
-
-    string dir_path = "/usr/share/gnome-shell/search-providers/";
-
+    string dir_path = "gnome-shell/search-providers/";
     try {
-      File dir = File.new_for_path(dir_path);
-      string? file_name;
       foreach (string file in enabled_providers) {
-        var file_path = dir.get_child(file).get_path();
-
-        if (!FileUtils.test(file_path, FileTest.EXISTS)) {
-          continue;
+        if(file == "Apps") {
+              this.append(apps);
+              this.providers += apps;
+              apps.search.begin("");
+              continue;
         }
-
         KeyFile keyfile = new KeyFile();
-        keyfile.load_from_file(file_path, KeyFileFlags.NONE);
+        keyfile.load_from_data_dirs(dir_path + file, null, KeyFileFlags.NONE);
 
         string desktop_id = keyfile.get_string("Shell Search Provider", "DesktopId");
         string bus_name = keyfile.get_string("Shell Search Provider", "BusName");
@@ -77,14 +79,19 @@ public class Launcher : Gtk.Box {
           continue;
         }
 
-        var p = new SearchResultProvider(yield new DBusSearchProvider(bus_name, object_path));
+        var p = new SearchResultProvider(yield new DBusSearchProvider(desktop_id, bus_name, object_path));
         this.append(p);
         this.providers += p;
-        p.search.begin("");
       }
     } catch (Error e) {
       stderr.printf("Failed to open directory %s: %s\n", dir_path, e.message);
     }
+
+
+  }
+
+  private async void search_providers(string dir_path) {
+
   }
 }
 }
