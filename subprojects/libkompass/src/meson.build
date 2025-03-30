@@ -101,7 +101,7 @@ libkompass_typelib_file = custom_target(
     command: [
       find_program('g-ir-compiler'),
       '--output', '@OUTPUT@',
-      '--shared-library', get_option('prefix') / get_option('libdir') / '@INPUT0@',
+      '--shared-library', get_option('prefix') / get_option('libdir') / '@PLAINNAME0@',
       '@INPUT1@'
       # meson.current_build_dir() / 'Kompass-' + api_version + '.gir',
     ],
