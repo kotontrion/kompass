@@ -26,6 +26,7 @@ class KompassBar.Application : Astal.Application {
       if (monitor != null) {
         var win = new KompassBar.Bar(monitor);
         win.present();
+        monitor.invalidate.connect(() => win.destroy());
       }
     }
 
@@ -35,6 +36,7 @@ class KompassBar.Application : Astal.Application {
         var monitor = (Gdk.Monitor)mons.get_item(p++);
         var win = new KompassBar.Bar(monitor);
         win.present();
+        monitor.invalidate.connect(() => win.destroy());
       }
     });
 
