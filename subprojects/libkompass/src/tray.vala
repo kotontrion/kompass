@@ -69,6 +69,14 @@ public class Tray : Gtk.Box {
   construct {
     this.visible = false;
     this.items = new HashTable<string, Gtk.Widget>(str_hash, str_equal);
+
+    this.tray.items.foreach((item) => {
+        var tray_item = new Kompass.TrayItem(item);
+        this.items.insert(item.item_id, tray_item);
+        this.append(tray_item);
+        this.visible = true;
+      });
+
     this.tray.item_added.connect((obj, item_id) => {
         if (this.items.contains(item_id)) {
           return;
