@@ -1,6 +1,6 @@
 [GtkTemplate(ui = "/com/github/kotontrion/libkompass/ui/audio-endpoint.ui")]
-public class Kompass.AudioEndpoint : Gtk.ListBoxRow {
-  public AstalWp.Endpoint endpoint { get; construct; }
+public class Kompass.AudioNode : Gtk.ListBoxRow {
+  public AstalWp.Node endpoint { get; construct; }
 
   [GtkChild]
   private unowned Gtk.Adjustment volume_adjust;
@@ -21,10 +21,12 @@ public class Kompass.AudioEndpoint : Gtk.ListBoxRow {
 
   [GtkCallback]
   public void clicked() {
-    this.endpoint.is_default = true;
+    if(this.endpoint is AstalWp.Endpoint) {
+      (this.endpoint as AstalWp.Endpoint).is_default = true;
+    }
   }
 
-  public AudioEndpoint(AstalWp.Endpoint endpoint) {
+  public AudioNode(AstalWp.Node endpoint) {
     Object(endpoint: endpoint);
     this.endpoint.bind_property("volume", volume_adjust, "value",
                                 GLib.BindingFlags.BIDIRECTIONAL | GLib.BindingFlags.SYNC_CREATE);
