@@ -45,7 +45,7 @@ jobs:
         run: |
           rm -rf dist/libkompass
           mkdir dist/libkompass
-          cp -r src/result/share/doc/libkompass/* dist/libkompass
+          cp -r src/result/share/doc/libkompass-docs/* dist/libkompass
 
       - name: Push to Pages Repo
         run: |
