@@ -1,4 +1,16 @@
-kompass_sources += [
+
+
+config = configure_file(
+  input: 'config.vala.in',
+  output: 'config.vala',
+  configuration: {
+    'GETTEXT_PACKAGE': 'kompass',
+    'LOCALEDIR': get_option('prefix') / get_option('localedir'),
+    'PACKAGE_VERSION': meson.project_version (),
+  },
+)
+
+kompass_vala_sources += [config] + [
   'main.vala',
   'application.vala',
   'bar.vala',
@@ -10,8 +22,7 @@ kompass_sources += [
 ]
 
 kompass_deps = [
-  config_dep,
-  libkompass,
+  libkompass_dep,
   dependency('gio-unix-2.0'),
   dependency('gtk4'),
   dependency('gtk4-layer-shell-0'),
@@ -31,16 +42,16 @@ kompass_deps = [
 
 types_tgt = custom_target(
   'types',
-  command: [find_program('awk'), '-f', files('gen_ensure_type.awk'), '@INPUT@'],
-  input: kompass_sources,
+  command: [find_program('awk'), '-f', meson.project_source_root() / 'gen_ensure_type.awk', '@INPUT@'],
+  input: kompass_vala_sources,
   output: 'ensure_types.vala',
   capture: true
 )
 
-kompass_sources += [types_tgt]
+kompass_vala_sources += [types_tgt]
 
-executable('kompass', kompass_sources,
+executable('kompass', kompass_vala_sources + kompass_sources,
   dependencies: kompass_deps,
-  include_directories: config_inc,
+  c_args: ['-DGETTEXT_PACKAGE="kompass"'],
   install: true,
 )

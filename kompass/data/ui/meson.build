@@ -13,7 +13,7 @@ blueprints = custom_target('blueprints',
   command: [
     find_program('blueprint-compiler'),
     'batch-compile',
-    '--typelib-path', '@BUILD_ROOT@/subprojects/libkompass/src/',
+    '--typelib-path', '@BUILD_ROOT@/libkompass/src/',
     '@OUTPUT@',
     '@CURRENT_SOURCE_DIR@',
     '@INPUT@'

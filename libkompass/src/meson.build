@@ -43,8 +43,8 @@ libkompass_vala_sources += [config] + files(
 
 types_tgt = custom_target(
   'types',
-  command: [find_program('awk'), '-f', files('gen_ensure_type.awk'), '@INPUT@'],
-  input: libkompass_sources + libkompass_vala_sources,
+  command: [find_program('awk'), '-f', meson.project_source_root() / 'gen_ensure_type.awk', '@INPUT@'],
+  input: libkompass_vala_sources,
   output: 'ensure_types.vala',
   capture: true
 )
@@ -103,7 +103,6 @@ libkompass_typelib_file = custom_target(
       '--output', '@OUTPUT@',
       '--shared-library', get_option('prefix') / get_option('libdir') / '@PLAINNAME0@',
       '@INPUT1@'
-      # meson.current_build_dir() / 'Kompass-' + api_version + '.gir',
     ],
     input: [libkompass_lib, gir_tgt[0]],
     output: typelib,
