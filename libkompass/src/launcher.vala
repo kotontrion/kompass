@@ -25,6 +25,7 @@ public class SearchResultProvider : Gtk.Box {
 
   public async void search(string query) {
     yield this.provider.search(query);
+
     this.revealer.reveal_child = this.provider.results.get_n_items() > 0;
   }
 }
@@ -59,13 +60,14 @@ public class Launcher : Gtk.Box {
     var apps = new SearchResultProvider(new AppSearchProvider());
 
     string dir_path = "gnome-shell/search-providers/";
+
     try {
       foreach (string file in enabled_providers) {
-        if(file == "Apps") {
-              this.append(apps);
-              this.providers += apps;
-              apps.search.begin("");
-              continue;
+        if (file == "Apps") {
+          this.append(apps);
+          this.providers += apps;
+          apps.search.begin("");
+          continue;
         }
         KeyFile keyfile = new KeyFile();
         keyfile.load_from_data_dirs(dir_path + file, null, KeyFileFlags.NONE);
@@ -86,12 +88,9 @@ public class Launcher : Gtk.Box {
     } catch (Error e) {
       stderr.printf("Failed to open directory %s: %s\n", dir_path, e.message);
     }
-
-
   }
 
   private async void search_providers(string dir_path) {
-
   }
 }
 }

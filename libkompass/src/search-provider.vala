@@ -92,8 +92,6 @@ public class Kompass.DBusSearchProvider : Object, SearchProvider {
   public Icon icon { get; construct; }
 
   public async DBusSearchProvider(string desktop_id, string bus_name, string path) {
-
-    
     string desktop_path = "applications/" + desktop_id;
 
     KeyFile keyfile = new KeyFile();
@@ -101,10 +99,10 @@ public class Kompass.DBusSearchProvider : Object, SearchProvider {
     string name = keyfile.get_string("Desktop Entry", "Name");
     string icon = keyfile.get_string("Desktop Entry", "Icon");
 
-    Object(name: name, 
-          icon: new ThemedIcon(icon),
-            results: new ListStore(typeof(SearchResult))
-            );
+    Object(name: name,
+           icon: new ThemedIcon(icon),
+           results: new ListStore(typeof(SearchResult))
+           );
 
     proxy = yield Bus.get_proxy(
       BusType.SESSION,
@@ -120,9 +118,8 @@ public class Kompass.DBusSearchProvider : Object, SearchProvider {
       var query_result = yield proxy.get_initial_result_set(query.split(" "));
 
       if (query_result != null && query_result.length > 0) {
-          result_metas = yield proxy.get_result_metas(query_result);
+        result_metas = yield proxy.get_result_metas(query_result);
       }
-
     }
     catch (Error e) {
     }
@@ -145,8 +142,8 @@ public class Kompass.AppSearchProvider : Object, SearchProvider {
 
   public AppSearchProvider() {
     Object(name: "Apps",
-        icon: new ThemedIcon("arch-linux"),
-        results: new ListStore(typeof(SearchResult)));
+           icon: new ThemedIcon("arch-linux"),
+           results: new ListStore(typeof(SearchResult)));
   }
 
   public async void search(string query) {

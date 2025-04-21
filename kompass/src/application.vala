@@ -12,9 +12,6 @@ class KompassBar.Application : Astal.Application {
       GLib.warning("could not connect to river.\n");
     }
 
-    Gtk.IconTheme icon_theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default());
-    icon_theme.add_resource_path("/com/github/kotontrion/kompass-bar/icons/");
-
     Gtk.CssProvider provider = new Gtk.CssProvider();
     provider.load_from_resource("com/github/kotontrion/kompass-bar/style.css");
     Gtk.StyleContext.add_provider_for_display(Gdk.Display.get_default(), provider,
@@ -44,7 +41,6 @@ class KompassBar.Application : Astal.Application {
   }
 
   construct {
-    instance_name = "kompass";
     try {
       acquire_socket();
     }
