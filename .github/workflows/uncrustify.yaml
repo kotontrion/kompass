@@ -1,0 +1,43 @@
+name: format
+
+on: [push, pull_request]
+
+env:
+  UNCRUSTIFY_VERSION: 0.80.0
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: kompass
+
+      - name: Cache uncrustify
+        uses: actions/cache@v4
+        id: cache-uncrustify
+        with:
+          path: |
+            ~/uncrustify-${{ env.UNCRUSTIFY_VERSION }}
+          key: ${{ runner.os }}-uncrustify-${{ env.UNCRUSTIFY_VERSION }}
+
+      - name: build uncrustify
+        if: steps.cache-uncrustify.outputs.cache-hit != 'true'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential cmake
+          wget https://github.com/uncrustify/uncrustify/archive/refs/tags/uncrustify-${{ env.UNCRUSTIFY_VERSION }}.tar.gz
+          tar xzvf uncrustify-${{ env.UNCRUSTIFY_VERSION}}.tar.gz && cd uncrustify-uncrustify-${{ env.UNCRUSTIFY_VERSION }} 
+          mkdir build 
+          cd build 
+          cmake -DCMAKE_BUILD_TYPE=Release .. 
+          make -j$(nproc) -s 
+          mkdir ~/uncrustify-${{ env.UNCRUSTIFY_VERSION }}
+          cp uncrustify ~/uncrustify-${{ env.UNCRUSTIFY_VERSION }}
+
+      - name: Uncrustify check
+        run: |
+          cd kompass
+          find . -name *.vala | xargs ~/uncrustify-${{ env.UNCRUSTIFY_VERSION }}/uncrustify -c uncrustify.cfg --check
