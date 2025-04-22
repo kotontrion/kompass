@@ -40,4 +40,15 @@ jobs:
       - name: Uncrustify check
         run: |
           cd kompass
-          find . -name *.vala | xargs ~/uncrustify-${{ env.UNCRUSTIFY_VERSION }}/uncrustify -c uncrustify.cfg --check
+          find . -name *.vala | xargs ~/uncrustify-${{ env.UNCRUSTIFY_VERSION }}/uncrustify -c uncrustify.cfg --no-backup --replace
+          git diff > format-code.patch
+          if [ -s format-code.patch ]; then
+            exit 1
+          fi
+
+      - name: Archive code format restult
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: code-formart-patch
+          path: kompass/format-code.patch
