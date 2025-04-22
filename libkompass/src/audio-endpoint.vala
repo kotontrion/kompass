@@ -21,7 +21,7 @@ public class Kompass.AudioNode : Gtk.ListBoxRow {
 
   [GtkCallback]
   public void clicked() {
-    if(this.endpoint is AstalWp.Endpoint) {
+    if (this.endpoint is AstalWp.Endpoint) {
       (this.endpoint as AstalWp.Endpoint).is_default = true;
     }
   }
