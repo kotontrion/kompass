@@ -2,4 +2,5 @@ build/
 .cache/
 
 # Nix
-result*
+result
+result-*

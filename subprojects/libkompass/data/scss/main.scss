@@ -1,7 +1,0 @@
-@use "sass:meta";
-
-.half-font-size {
-  font-size: 0.5rem;
-}
-
-@include meta.load-css("arrow-button")

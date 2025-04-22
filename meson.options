@@ -1,0 +1,1 @@
+option('build_target', type: 'array', choices: ['libkompass', 'kompass', 'all'], value: ['all'], description: 'build library (always built), applications, all')

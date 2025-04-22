@@ -3,6 +3,7 @@
 My completely custom status bar. This is for my personal use only, and therefore will most likely never be configurable.
 
 This project also builds a library containing some widget definitions, which might be more useful to you than the actual bar.
+The docs for libkompass can be found [here](https://kotontrion.github.io/libkompass).
 
 Showcase (as of 2024-10-13):
 ![2024-10-13T14:47:32,759960206+02:00](https://github.com/user-attachments/assets/78278e56-4951-4713-9b5e-a2468405be84)

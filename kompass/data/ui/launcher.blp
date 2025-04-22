@@ -1,0 +1,42 @@
+using Gtk 4.0;
+
+template $KompassBarLauncher : Box {
+  Image {
+    icon-name: "arch-linux-symbolic";
+    // hexpand: true;
+    halign: center;
+    valign: center;
+  }
+
+  Popover popover {
+    position: right;
+    width-request: 400;
+
+    Box {
+      orientation: vertical;
+      spacing: 5;
+
+      Entry entry {
+        primary-icon-name: "system-search-symbolic";
+        changed => $update_list();
+        // activate => $launch_first();
+      }
+
+      ScrolledWindow {  
+        max-content-height: 500;
+        propagate-natural-height: true;
+        overflow: hidden;
+        styles ["scroll-list"]
+
+        $KompassLauncher launcher { }
+      }
+    }
+  }
+ 
+  GestureClick {
+    pressed => $open_launcher();
+  }
+
+}
+
+

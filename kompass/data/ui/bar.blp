@@ -1,0 +1,51 @@
+using Gtk 4.0;
+using Astal 4.0;
+
+template $KompassBarBar: Astal.Window {
+  title: _("Kompass");
+  anchor: left | top |bottom;
+  exclusivity: exclusive;
+  keymode: on_demand;
+  margin_left: 4;
+  margin_top: 4;
+  margin_bottom: 4;
+
+  child: CenterBox {
+    orientation: vertical;
+
+    [start]
+    Box {
+      orientation: vertical;
+      styles ["spacing-6"]
+
+      $KompassBarLauncher {
+        styles ["bar-module"]
+      }
+
+      $KompassRiverTags {
+        orientation: vertical;
+        output: bind template.output;
+        styles ["bar-module"]
+      }
+    }
+
+    [end]
+    Box {
+      orientation: vertical;
+      styles ["spacing-6"]
+      
+      $KompassTray {
+        orientation: vertical;
+        styles ["bar-module", "spacing-3"]
+      }
+
+      $KompassBarQs {
+        styles ["bar-module", "spacing-3"]
+      }
+
+      $KompassVerticalClock {
+        styles ["bar-module"]
+      }
+    }
+  };
+}
