@@ -27,20 +27,20 @@ public class KompassBar.QsAudio : Gtk.Box {
     this.wp.audio.default_microphone.mute = !this.wp.audio.default_microphone.mute;
   }
 
-  private void on_added(AstalWp.Endpoint endpoint, Gtk.ListBox lb) {
-    lb.append(new Kompass.AudioEndpoint(endpoint));
+  private void on_added(AstalWp.Node endpoint, Gtk.ListBox lb) {
+    lb.append(new Kompass.AudioNode(endpoint));
   }
 
-  private void on_removed(AstalWp.Endpoint endpoint, Gtk.ListBox lb) {
+  private void on_removed(AstalWp.Node endpoint, Gtk.ListBox lb) {
     int i = 0;
 
-    Kompass.AudioEndpoint? ep = (Kompass.AudioEndpoint)lb.get_row_at_index(0);
+    Kompass.AudioNode? ep = (Kompass.AudioNode)lb.get_row_at_index(0);
     while (ep != null) {
       if (ep.endpoint == endpoint) {
         lb.remove(ep);
         break;
       }
-      ep = (Kompass.AudioEndpoint)lb.get_row_at_index(++i);
+      ep = (Kompass.AudioNode)lb.get_row_at_index(++i);
     }
   }
 
