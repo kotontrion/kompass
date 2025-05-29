@@ -7,9 +7,10 @@ int main(string[] args) {
 
   ensure_types();
 
-  var app = new KompassBar.Application() {
-    resource_base_path = "/com/github/kotontrion/kompass-bar/",
-    instance_name = "kompass"
-  };
+  var app = (KompassBar.Application)Object.@new(
+    typeof(KompassBar.Application),
+    "resource-base-path", "/com/github/kotontrion/kompass-bar/",
+    "instance-name", "kompass"
+    );
   return app.run(args);
 }
