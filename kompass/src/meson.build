@@ -19,6 +19,7 @@ kompass_vala_sources += [config] + [
   'qsBluetooth.vala',
   'qsNotif.vala',
   'launcher.vala',
+  'popupNotificationWindow.vala',
 ]
 
 kompass_deps = [

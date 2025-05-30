@@ -3,7 +3,8 @@ sass = find_program('sass')
 scss_deps = files(
     'tags.scss',
     'bar.scss',
-    'quicksettings.scss'
+    'quicksettings.scss',
+    'notifications.scss'
 )
 
 scss = custom_target('scss',

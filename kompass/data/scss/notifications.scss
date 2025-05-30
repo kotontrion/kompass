@@ -1,0 +1,57 @@
+.notification {
+  background-color: #{"mix(@card_bg_color, @destructive_bg_color, var(--swipe_progress, 0))"};
+  padding: 0;
+  > box {
+    padding: 0.5rem;
+    background-color: #{"@card_bg_color"};
+    border-radius: #{"calc(var(--swipe, 0)*var(--window-radius))"};
+    label {
+      margin-left: 0px;
+    }
+    button {
+      background-color: transparent;
+    }
+    .notification-action {
+      background-color: #{"@accent_bg_color"};
+      color: #{"@accent_fg_color"};
+
+      &:not(:first-child) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-left: 1px solid #{"mix(@accent_bg_color, @accent_fg_color, 0.10)"};
+      }
+
+      &:not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      &:hover {
+        background-color: #{"mix(@accent_bg_color, @accent_fg_color, 0.10)"};
+      }
+    }
+  }
+}
+
+popup-notification-window {
+  background: transparent;
+ 
+  list {
+    background: transparent;
+    row {
+      padding: 0;
+
+      .notification {
+        border-radius: var(--window-radius);
+        border: 1px solid #{"@card_bg_color"};
+        min-width: 25rem;
+        margin: 0.25rem;
+
+        > box {
+          background: var(--window-bg-color);
+        }
+      }
+    }
+  }
+}
+

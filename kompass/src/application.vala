@@ -37,6 +37,8 @@ class KompassBar.Application : Astal.Application {
       }
     });
 
+    var popup_notification_window = new KompassBar.PopupNotificationWindow();
+
     this.hold();
   }
 
