@@ -44,7 +44,6 @@ popup-notification-window {
       .notification {
         border-radius: var(--window-radius);
         border: 1px solid #{"@card_bg_color"};
-        min-width: 25rem;
         margin: 0.25rem;
 
         > box {

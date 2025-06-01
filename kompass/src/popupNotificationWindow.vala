@@ -45,7 +45,7 @@ private class PopupNotification : Gtk.ListBoxRow {
 
     this.outer_revealer.notify["child-revealed"].connect(() => {
       if (!this.outer_revealer.reveal_child) {
-        (this.parent as Gtk.ListBox).remove(this);
+        (this.parent as Gtk.ListBox)?.remove(this);
       }
     });
 
@@ -83,7 +83,7 @@ public class KompassBar.PopupNotificationWindow : Astal.Window {
       name: "popup-notification",
       anchor: Astal.WindowAnchor.BOTTOM |
       Astal.WindowAnchor.LEFT,
-      default_width: -1,
+      default_width: 500,
       default_height: -1,
       visible: true
       );
@@ -99,6 +99,7 @@ public class KompassBar.PopupNotificationWindow : Astal.Window {
   }
 
   private void on_added(uint id, bool replaced) {
+    if(this.notifd.dont_disturb) return;
     this.notif_list.append(new PopupNotification(this.notifd.get_notification(id)));
   }
 }
