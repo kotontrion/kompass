@@ -13,5 +13,6 @@
     <file>style.css</file>
     <file compressed="true">icons/symbolic/apps/arch-linux-rounded-symbolic.svg</file>
     <file compressed="true">icons/symbolic/apps/arch-linux-symbolic.svg</file>
+    <file>images/empty-mpris-image.png</file>
   </gresource>
 </gresources>

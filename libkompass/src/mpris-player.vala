@@ -1,9 +1,9 @@
 [GtkTemplate(ui = "/com/github/kotontrion/libkompass/ui/mpris-player.ui")]
 public class Kompass.Player : Gtk.Box {
   public AstalMpris.Player player { get; set; }
-  private Gtk.CssProvider css_prov;
 
   public File cover_file { get; private set; }
+  public string empty_cover_uri { get; set; default = "resource:///com/github/kotontrion/libkompass/images/empty-mpris-image.png"; }
 
   [GtkCallback]
   public void next() {
@@ -21,6 +21,11 @@ public class Kompass.Player : Gtk.Box {
   }
 
   [GtkCallback]
+  public void raise() {
+    this.player.raise();
+  }
+
+  [GtkCallback]
   public string pause_icon(AstalMpris.PlaybackStatus status) {
     switch (status) {
       case AstalMpris.PlaybackStatus.PLAYING:
@@ -33,31 +38,23 @@ public class Kompass.Player : Gtk.Box {
     }
   }
 
-  private void update_background() {
-    string url = this.player.art_url != null && this.player.art_url != ""
-                 ? "url(\"" + this.player.art_url + "\")"
-                 : "-gtk-icontheme(\"" + this.player.entry + "\")";
-    string style = "* { --cover: " + url + "; }";
-
-    try {
-      this.css_prov.load_from_string(style);
-    } catch (Error err) {
-      warning(err.message);
+  private void update_cover() {
+    if (this.player.cover_art != null && this.player.cover_art != "") {
+      File file = File.new_for_path(this.player.cover_art);
+      if (file.query_exists(null)) {
+        this.cover_file = file;
+        return;
+      }
     }
+    this.cover_file = File.new_for_uri(this.empty_cover_uri);
   }
 
   public Player(AstalMpris.Player player) {
     Object(player: player);
 
-    this.css_prov = new Gtk.CssProvider();
-    this.get_style_context()
-      .add_provider(this.css_prov, Gtk.STYLE_PROVIDER_PRIORITY_USER);
-
     player.notify["cover-art"].connect(() => {
-      // update_background();
-      this.cover_file = File.new_for_path(this.player.cover_art);
+      update_cover();
     });
-    this.cover_file = File.new_for_path(this.player.cover_art);
-    // update_background();
+    update_cover();
   }
 }

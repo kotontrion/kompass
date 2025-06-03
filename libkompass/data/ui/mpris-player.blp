@@ -43,6 +43,7 @@ template $KompassPlayer : Box {
       Box {
         Button {
           icon-name: "media-skip-backward-symbolic";
+          sensitive: bind template.player as <AstalMpris.Player>.can-go-previous;
           clicked => $prev();
         }
 
@@ -53,10 +54,16 @@ template $KompassPlayer : Box {
 
         Button {
           icon-name: "media-skip-forward-symbolic";
+          sensitive: bind template.player as <AstalMpris.Player>.can-go-next;
           clicked => $next();
         }
       }
     }
   }
+
+  GestureClick {
+    released => $raise();
+  }
+
 }
 
