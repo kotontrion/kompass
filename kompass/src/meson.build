@@ -31,6 +31,7 @@ kompass_deps = [
   dependency('libnm'),
   dependency('astal-4-4.0'),
   dependency('astal-io-0.1'),
+  dependency('astal-cava-0.1'),
   dependency('astal-mpris-0.1'),
   dependency('astal-river-0.1'),
   dependency('astal-battery-0.1'),

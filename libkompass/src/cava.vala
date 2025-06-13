@@ -7,13 +7,29 @@ public enum CavaStyle {
 }
 
 public class Cava : Gtk.Widget {
-  private AstalCava.Cava cava;
 
+  public AstalCava.Cava cava {get; construct;}
   public CavaStyle style { get; set; default = CavaStyle.CATMULL_ROM; }
 
+  private AstalWp.Endpoint default_speaker;
+
+  public Cava.with_cava(AstalCava.Cava cava) {
+    Object(cava: cava);
+  }
+
   construct {
-    this.cava = AstalCava.get_default();
-    cava.notify["values"].connect(() => this.queue_draw());
+
+    if(this.cava == null) {
+      this.cava = AstalCava.get_default();
+    }
+
+    this.default_speaker = AstalWp.get_default().get_default_speaker();
+
+    this.default_speaker.notify["serial"].connect(() => {
+        this.cava.source = @"$(this.default_speaker.serial)";
+    });
+
+    this.cava.notify["values"].connect(() => this.queue_draw());
   }
 
   class construct {
