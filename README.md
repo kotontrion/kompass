@@ -54,8 +54,3 @@ cd kompass
 meson setup build
 meson install -C build
 ```
-
-
-# License
-This project includes multiple subprojects, each with its own licensing terms. Please refer to the provided License files in the respective subdirectories to determine which license applies:
-

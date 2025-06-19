@@ -138,7 +138,7 @@
             description = "A collection of widgets useful for creating status bars using astal.";
             authors = "kotontrion";
             version = libkompass.version;
-            license = "LGPL-3-0";
+            license = "MIT";
             browse_url = "https://github.com/kotontrion/kompass/tree/main/subprojects/libkompass";
             repository_url = "https://github.com/kotontrion/kompass.git";
           };
