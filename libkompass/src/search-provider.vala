@@ -58,7 +58,10 @@ public class Kompass.SearchResult : Object {
     result.id = app.entry;
     result.name = app.name;
     result.description = app.description;
-    result.icon = new ThemedIcon(app.icon_name != null ? app.icon_name : "missing-image");
+    if (app.icon_name != null && FileUtils.test(app.icon_name, FileTest.EXISTS))
+      result.icon = new FileIcon(File.new_for_path(app.icon_name));
+    else
+      result.icon = new ThemedIcon(app.icon_name != null ? app.icon_name : "missing-image");
 
     result.activate_fun = (owned)activate;
 
