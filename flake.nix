@@ -139,7 +139,7 @@
             authors = "kotontrion";
             version = libkompass.version;
             license = "MIT";
-            browse_url = "https://github.com/kotontrion/kompass/tree/main/subprojects/libkompass";
+            browse_url = "https://github.com/kotontrion/kompass/tree/main/libkompass";
             repository_url = "https://github.com/kotontrion/kompass.git";
           };
           extra.urlmap_file = "urlmap.js";
