@@ -42,8 +42,21 @@ public class Kompass.SearchResult : Object {
     }
 
     var icon = meta.lookup("icon");
+    var icon_data = meta.lookup("icon-data");
     if (icon != null) {
       result.icon = Icon.deserialize(icon);
+    } else if (icon_data != null) {
+      int width, height, rowstride, bits_per_sample, n_channels;
+      bool has_alpha;
+      Bytes bytes;
+
+      Variant data;
+
+      icon_data.get("(iiibii@ay)", out width, out height, out rowstride, out has_alpha, out bits_per_sample, out n_channels, out data);
+      bytes = new Bytes(data.get_data_as_bytes().get_data());
+
+      //result.icon = new Gdk.Pixbuf.from_bytes(bytes, Gdk.Colorspace.RGB, has_alpha, bits_per_sample, width, height, rowstride);
+      result.icon = new Gdk.MemoryTexture(width, height, has_alpha ? Gdk.MemoryFormat.R8G8B8A8 :  Gdk.MemoryFormat.R8G8B8, bytes, rowstride);
     }
     // else result.icon = new ThemedIcon("missing-image");
 

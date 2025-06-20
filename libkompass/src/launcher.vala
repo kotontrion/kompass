@@ -61,8 +61,8 @@ public class Launcher : Gtk.Box {
 
     string dir_path = "gnome-shell/search-providers/";
 
-    try {
-      foreach (string file in enabled_providers) {
+    foreach (string file in enabled_providers) {
+      try {
         if (file == "Apps") {
           this.append(apps);
           this.providers += apps;
@@ -84,9 +84,9 @@ public class Launcher : Gtk.Box {
         var p = new SearchResultProvider(yield new DBusSearchProvider(desktop_id, bus_name, object_path));
         this.append(p);
         this.providers += p;
+      } catch (Error e) {
+        stderr.printf("Failed to open directory %s: %s %s\n", dir_path, file, e.message);
       }
-    } catch (Error e) {
-      stderr.printf("Failed to open directory %s: %s\n", dir_path, e.message);
     }
   }
 
