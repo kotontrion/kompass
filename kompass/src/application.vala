@@ -83,6 +83,9 @@ class KompassBar.Application : Adw.Application {
       warning("could not connect to river, river tags widget is being disabled\n");
     }
 
+    var settings = Gtk.Settings.get_default();
+    settings.gtk_decoration_layout = "";
+
     Gtk.CssProvider provider = new Gtk.CssProvider();
     provider.load_from_resource("com/github/kotontrion/kompass-bar/style.css");
     Gtk.StyleContext.add_provider_for_display(Gdk.Display.get_default(), provider,
