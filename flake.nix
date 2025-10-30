@@ -54,7 +54,7 @@
             meson
             ninja
             pkg-config
-            wrapGAppsHook
+            wrapGAppsHook4
             vala
             gobject-introspection
             blueprint-compiler
@@ -112,7 +112,7 @@
             meson
             ninja
             pkg-config
-            wrapGAppsHook
+            wrapGAppsHook4
             vala
             gobject-introspection
             blueprint-compiler
