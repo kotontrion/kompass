@@ -1,6 +1,5 @@
 {
   inputs = {
-    
     astal = {
       type = "github";
       owner = "Aylur";
@@ -16,12 +15,19 @@
     };
   };
 
-  outputs = { self, nixpkgs, astal, systems, ... }: let
-    
+  outputs = {
+    self,
+    nixpkgs,
+    astal,
+    systems,
+    ...
+  }: let
+    inherit (nixpkgs.lib) attrValues elemAt getExe head match readFile splitString;
+
     perSystem = attrs:
       nixpkgs.lib.genAttrs (import systems) (system:
         attrs (import nixpkgs {inherit system;}));
-    inherit (nixpkgs.lib) attrValues elemAt getExe head match readFile splitString;
+
     getMesonValue = val: file:
       head (match "^([^']*).*" (elemAt (splitString val (readFile file)) 1));
   in {
@@ -42,21 +48,25 @@
               --replace-fail "bash -c 'wf-recorder" "${getExe pkgs.bash} -c '${getExe pkgs.wf-recorder}"
         '';
 
-        nativeBuildInputs = with pkgs; [
-          meson
-          ninja
-          pkg-config
-          wrapGAppsHook
-          vala
-          gobject-introspection
-          blueprint-compiler
-          dart-sass
-          gawk
-          libxml2
-        ];
+        nativeBuildInputs = attrValues {
+          inherit
+            (pkgs)
+            meson
+            ninja
+            pkg-config
+            wrapGAppsHook4
+            vala
+            gobject-introspection
+            blueprint-compiler
+            dart-sass
+            gawk
+            libxml2
+            ;
+        };
 
         buildInputs = attrValues {
-          inherit (astal.packages.${pkgs.system})
+          inherit
+            (astal.packages.${pkgs.system})
             io
             apps
             battery
@@ -69,7 +79,9 @@
             tray
             wireplumber
             ;
-          inherit (pkgs)
+
+          inherit
+            (pkgs)
             libadwaita
             libportal
             gtk4
@@ -78,6 +90,7 @@
 
         passthru.girName = "Kompass-${self.packages.${pkgs.system}.libkompass.apiVersion}";
       };
+
       kompass = pkgs.stdenv.mkDerivation {
         pname = "kompass";
         version = getMesonValue "version: '" "${self}/meson.build";
@@ -93,20 +106,24 @@
               --replace-fail "bash -c 'wf-recorder" "${getExe pkgs.bash} -c '${getExe pkgs.wf-recorder}"
         '';
 
-        nativeBuildInputs = with pkgs; [
-          meson
-          ninja
-          pkg-config
-          wrapGAppsHook
-          vala
-          gobject-introspection
-          blueprint-compiler
-          dart-sass
-          gawk
-        ];
+        nativeBuildInputs = attrValues {
+          inherit
+            (pkgs)
+            meson
+            ninja
+            pkg-config
+            wrapGAppsHook4
+            vala
+            gobject-introspection
+            blueprint-compiler
+            dart-sass
+            gawk
+            ;
+        };
 
         buildInputs = attrValues {
-          inherit (astal.packages.${pkgs.system})
+          inherit
+            (astal.packages.${pkgs.system})
             io
             astal4
             apps
@@ -120,7 +137,9 @@
             tray
             wireplumber
             ;
-          inherit (pkgs)
+
+          inherit
+            (pkgs)
             libadwaita
             libportal
             gtk4
@@ -174,34 +193,38 @@
           src = self;
           sourceRoot = "source/libkompass";
           nativeBuildInputs = attrValues {
-              # Build Dependencies as declared in src/meson.build
-              inherit
-                (pkgs)
-                libadwaita # libadwaita-1
-                gobject-introspection
-                gi-docgen
-                ;
-              inherit
-                (astal.packages.${pkgs.system})
-                apps # astal-apps-0.1
-                bluetooth # astal-bluetooth-0.1
-                io # astal-io-0.1
-                cava # astal-cava-0.1
-                mpris # astal-mpris-0.1
-                notifd # astal-notifd-0.1
-                tray # astal-tray-0.1
-                river # astal-river-0.1
-                wireplumber # astal-wireplumber-0.1
-                ;
-            };
+            # Build Dependencies as declared in src/meson.build
+            inherit
+              (pkgs)
+              libadwaita # libadwaita-1
+              gobject-introspection
+              gi-docgen
+              ;
+
+            inherit
+              (astal.packages.${pkgs.system})
+              apps # astal-apps-0.1
+              bluetooth # astal-bluetooth-0.1
+              io # astal-io-0.1
+              cava # astal-cava-0.1
+              mpris # astal-mpris-0.1
+              notifd # astal-notifd-0.1
+              tray # astal-tray-0.1
+              river # astal-river-0.1
+              wireplumber # astal-wireplumber-0.1
+              ;
+          };
+
           buildPhase = ''
             cat ${urlmap} > urlmap.js
             ${docgen}/bin/gi-docgen generate --config=${data} ${girFile}
           '';
-          installPhase = ''        
+
+          installPhase = ''
             mkdir -p $out/share/doc/${pname}
             mv ${libkompass.passthru.girName}/* $out/share/doc/${pname}
           '';
+
           meta = {
             description = "Documentation for libkompass";
             license = pkgs.lib.licenses.lgpl3Only;
@@ -215,6 +238,7 @@
       default = pkgs.mkShell {
         nativeBuildInputs = with self.packages.${pkgs.system}; (kompass.nativeBuildInputs ++ libkompass.nativeBuildInputs);
         buildInputs = with self.packages.${pkgs.system}; (kompass.buildInputs ++ libkompass.buildInputs);
+
         inputsFrom = attrValues {
           inherit
             (self.packages.${pkgs.system})
@@ -224,5 +248,7 @@
         };
       };
     });
+
+    formatter = perSystem (pkgs: pkgs.alejandra);
   };
 }
