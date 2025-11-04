@@ -66,7 +66,7 @@
 
         buildInputs = attrValues {
           inherit
-            (astal.packages.${pkgs.system})
+            (astal.packages.${pkgs.stdenv.hostPlatform.system})
             io
             apps
             battery
@@ -88,7 +88,7 @@
             ;
         };
 
-        passthru.girName = "Kompass-${self.packages.${pkgs.system}.libkompass.apiVersion}";
+        passthru.girName = "Kompass-${self.packages.${pkgs.stdenv.hostPlatform.system}.libkompass.apiVersion}";
       };
 
       kompass = pkgs.stdenv.mkDerivation {
@@ -123,7 +123,7 @@
 
         buildInputs = attrValues {
           inherit
-            (astal.packages.${pkgs.system})
+            (astal.packages.${pkgs.stdenv.hostPlatform.system})
             io
             astal4
             apps
@@ -149,7 +149,7 @@
 
       docs = let
         pname = "libkompass-docs";
-        libkompass = self.packages.${pkgs.system}.libkompass;
+        libkompass = self.packages.${pkgs.stdenv.hostPlatform.system}.libkompass;
         version = libkompass.version;
         girFile = "${libkompass}/share/gir-1.0/${libkompass.passthru.girName}.gir";
         data = (pkgs.formats.toml {}).generate "libkompass" {
@@ -202,7 +202,7 @@
               ;
 
             inherit
-              (astal.packages.${pkgs.system})
+              (astal.packages.${pkgs.stdenv.hostPlatform.system})
               apps # astal-apps-0.1
               bluetooth # astal-bluetooth-0.1
               io # astal-io-0.1
@@ -231,17 +231,17 @@
           };
         };
 
-      default = self.packages.${pkgs.system}.kompass;
+      default = self.packages.${pkgs.stdenv.hostPlatform.system}.kompass;
     });
 
     devShells = perSystem (pkgs: {
       default = pkgs.mkShell {
-        nativeBuildInputs = with self.packages.${pkgs.system}; (kompass.nativeBuildInputs ++ libkompass.nativeBuildInputs);
-        buildInputs = with self.packages.${pkgs.system}; (kompass.buildInputs ++ libkompass.buildInputs);
+        nativeBuildInputs = with self.packages.${pkgs.stdenv.hostPlatform.system}; (kompass.nativeBuildInputs ++ libkompass.nativeBuildInputs);
+        buildInputs = with self.packages.${pkgs.stdenv.hostPlatform.system}; (kompass.buildInputs ++ libkompass.buildInputs);
 
         inputsFrom = attrValues {
           inherit
-            (self.packages.${pkgs.system})
+            (self.packages.${pkgs.stdenv.hostPlatform.system})
             libkompass
             kompass
             ;
