@@ -7,7 +7,7 @@ public class KompassBar.Bar : Astal.Window {
   public Bar(Gdk.Monitor monitor) {
     Object(
       application: KompassBar.Application.instance,
-      namespace : @"bar-$(monitor.get_connector())",
+      namespace : @"bar",
       name: @"bar-$(monitor.get_connector())",
       css_name: "bar",
       gdkmonitor: monitor
