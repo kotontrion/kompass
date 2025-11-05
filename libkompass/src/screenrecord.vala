@@ -9,8 +9,7 @@ public class ScreenRecorder : Object {
   }
 
   private Xdp.Portal portal;
-
-  private AstalIO.Process recorder;
+  private Subprocess recorder;
 
   public bool recording { get; private set; }
 
@@ -43,7 +42,7 @@ public class ScreenRecorder : Object {
     }
   }
 
-  public void start_record(string? file_path) {
+  public async void start_record(string? file_path) {
     //TODO: use portal and gstreamer instead of wf-recorder
     if (this.recording) {
       return;
@@ -55,25 +54,34 @@ public class ScreenRecorder : Object {
       path = "%s/Screencasting/%s.mp4".printf(video_dir, file_name);
     }
 
-    AstalIO.Process.exec_async.begin("slurp", (obj, res) => {
-        string geometry = AstalIO.Process.exec_async.end(res);
+    try {
+      var process = new Subprocess.newv(
+        { "slurp" },
+        SubprocessFlags.STDERR_PIPE |
+        SubprocessFlags.STDOUT_PIPE
+        );
 
-        string cmd = "bash -c 'wf-recorder -g \"%s\" --pixel-format yuv420p -f %s'"
-                       .printf(geometry, path);
-        try {
-          this.recorder = AstalIO.Process.subprocess(cmd);
-          this.recording = true;
-        } catch (Error e) {
-          critical("%s\n", e.message);
-        }
-      });
+      string err_str, out_str;
+      yield process.communicate_utf8_async(null, null, out out_str, out err_str);
+
+      string geometry = out_str.strip();;
+
+      string cmd = "bash -c 'wf-recorder -g \"%s\" --pixel-format yuv420p -f %s'"
+                     .printf(geometry, path);
+      string[] argv;
+      Shell.parse_argv(cmd, out argv);
+      this.recorder = new Subprocess.newv(argv, SubprocessFlags.NONE);
+      this.recording = true;
+    } catch (Error e) {
+      critical("%s\n", e.message);
+    }
   }
 
   public void stop_record() {
     if (!this.recording) {
       return;
     }
-    this.recorder.signal(15);
+    this.recorder.send_signal(15);
     this.recorder = null;
     this.recording = false;
   }

@@ -36,7 +36,12 @@ public class KompassBar.Qs : Gtk.Box {
 
   [GtkCallback]
   public void open_settings() {
-    AstalIO.Process.exec_asyncv.begin({ "bash", "-c", "XDG_CURRENT_DESKTOP=gnome gnome-control-center" });
+    Process.spawn_async("/",
+                        { "bash", "-c", "XDG_CURRENT_DESKTOP=gnome gnome-control-center" },
+                        null,
+                        SpawnFlags.SEARCH_PATH,
+                        null,
+                        null);
   }
 
   [GtkCallback]
@@ -182,25 +187,45 @@ public class KompassBar.Qs : Gtk.Box {
 
     var sd_action = new SimpleAction("shutdown", null);
     sd_action.activate.connect(val => {
-      AstalIO.Process.exec_async.begin("systemctl poweroff");
+      Process.spawn_async("/",
+                          { "systemctl", "poweroff" },
+                          null,
+                          SpawnFlags.SEARCH_PATH,
+                          null,
+                          null);
     });
     this.actions.add_action(sd_action);
 
     var rb_action = new SimpleAction("reboot", null);
     rb_action.activate.connect(val => {
-      AstalIO.Process.exec_async.begin("systemctl reboot");
+      Process.spawn_async("/",
+                          { "systemctl", "reboot" },
+                          null,
+                          SpawnFlags.SEARCH_PATH,
+                          null,
+                          null);
     });
     this.actions.add_action(rb_action);
 
     var suspend_action = new SimpleAction("suspend", null);
     suspend_action.activate.connect(val => {
-      AstalIO.Process.exec_async.begin("systemctl suspend");
+      Process.spawn_async("/",
+                          { "systemctl", "suspend" },
+                          null,
+                          SpawnFlags.SEARCH_PATH,
+                          null,
+                          null);
     });
     this.actions.add_action(suspend_action);
 
     var logout_action = new SimpleAction("logout", null);
     logout_action.activate.connect(val => {
-      AstalIO.Process.exec_asyncv.begin({ "bash", "-c", "loginctl terminate-user $USER" });
+      Process.spawn_async("/",
+                          { "bash", "-c", "loginctl terminate-user $USER" },
+                          null,
+                          SpawnFlags.SEARCH_PATH,
+                          null,
+                          null);
     });
     this.actions.add_action(logout_action);
 
