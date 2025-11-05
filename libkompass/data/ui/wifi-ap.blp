@@ -1,0 +1,41 @@
+using Gtk 4.0;
+using AstalNetwork 0.1;
+
+template $KompassWifiAp : ListBoxRow {
+
+  selectable: false;
+  activatable: false;
+  child: CenterBox {
+      [start]
+      Box {
+        Image {
+          icon-size: large;
+          icon-name: bind template.ap as <AstalNetwork.AccessPoint>.icon-name as <string>;
+        }
+        Box {
+          orientation: vertical;
+          Label {
+            halign: start;
+            label: bind template.ap as <AstalNetwork.AccessPoint>.ssid;
+          }
+          Label {
+            halign: start;
+            label: bind template.description;
+            styles ["subtitle"]
+          }
+        }
+      }
+
+      [end]
+      Box{
+          Image {
+            visible: bind template.active;
+            icon-name: "object-select-symbolic";
+          }
+      }
+
+      GestureClick {
+        pressed => $clicked();
+      }
+  };
+}
