@@ -17,15 +17,11 @@ public class KompassBar.Launcher : Gtk.Box {
     this.popover.popup();
   }
 
-  // [GtkCallback]
-  // public void launch_first() {
-  //   Kompass.AppButton ab = (Kompass.AppButton)this.app_list.get_row_at_index(0);
-  //
-  //   if (ab != null) {
-  //     ab.activate();
-  //   }
-  // }
-  //
+  [GtkCallback]
+  public void launch_first() {
+    this.popover.popdown();
+    this.launcher.launch_first();
+  }
 
   [GtkCallback]
   public void update_list() {

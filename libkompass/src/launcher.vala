@@ -28,6 +28,10 @@ public class SearchResultProvider : Gtk.Box {
 
     this.revealer.reveal_child = this.provider.results.get_n_items() > 0;
   }
+
+  public bool launch_first() {
+    return this.provider.launch_first();
+  }
 }
 
 public class Launcher : Gtk.Box {
@@ -86,6 +90,14 @@ public class Launcher : Gtk.Box {
         this.providers += p;
       } catch (Error e) {
         stderr.printf("Failed to open directory %s: %s %s\n", dir_path, file, e.message);
+      }
+    }
+  }
+
+  public void launch_first() {
+    foreach (var provider in this.providers) {
+      if (provider.launch_first()) {
+        return;
       }
     }
   }

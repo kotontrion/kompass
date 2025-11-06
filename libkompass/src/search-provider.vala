@@ -89,6 +89,14 @@ public interface Kompass.SearchProvider : Object {
   public abstract Icon icon { get; construct; }
 
   public abstract async void search(string query);
+
+  public bool launch_first() {
+    if (this.results.get_n_items() > 0) {
+      (this.results.get_item(0) as SearchResult).activate();
+      return true;
+    }
+    return false;
+  }
 }
 
 [DBus(name = "org.gnome.Shell.SearchProvider2")]
