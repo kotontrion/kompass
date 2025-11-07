@@ -211,6 +211,7 @@
               io # astal-io-0.1
               cava # astal-cava-0.1
               mpris # astal-mpris-0.1
+              network # astal-network-0.1
               notifd # astal-notifd-0.1
               tray # astal-tray-0.1
               river # astal-river-0.1
