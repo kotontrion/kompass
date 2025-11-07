@@ -4,6 +4,7 @@
       type = "github";
       owner = "Aylur";
       repo = "astal";
+      ref = "feat/nm-signals";
     };
 
     nixpkgs.follows = "astal/nixpkgs";
@@ -61,6 +62,7 @@
             dart-sass
             gawk
             libxml2
+            libnma-gtk4
             ;
         };
 
@@ -143,6 +145,7 @@
             libadwaita
             libportal
             gtk4
+            libnma-gtk4
             ;
         };
       };

@@ -18,6 +18,7 @@ kompass_vala_sources += [config] + [
   'qsAudio.vala',
   'qsBluetooth.vala',
   'qsNotif.vala',
+  'qsWifi.vala',
   'launcher.vala',
   'popupNotificationWindow.vala',
 ]

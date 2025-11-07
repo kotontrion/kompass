@@ -183,6 +183,13 @@ template $KompassBarQs: Box {
             title: _("Notifications");
             child: $KompassBarQsNotif {};
           }
+          
+          Adw.NavigationPage {
+            tag: "wifi";
+            title: _("Wifi");
+            child: $KompassBarQsWifi {};
+          }
+
         }
       }
     }

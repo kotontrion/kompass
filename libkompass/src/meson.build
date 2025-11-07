@@ -38,7 +38,8 @@ libkompass_vala_sources += [config] + files(
   'vertical-clock.vala',
   'search-provider.vala',
   'launcher.vala',
-  'search-result-button.vala'
+  'search-result-button.vala',
+  'wifi-ap.vala'
 )
 
 types_tgt = custom_target(
@@ -56,12 +57,16 @@ libkompass_deps += [
   dependency('gio-2.0'),
   dependency('gio-unix-2.0'),
   dependency('libportal'),
+  dependency('libnm'),
+  dependency('gtk4'),
+  dependency('libnma-gtk4'),
   dependency('astal-apps-0.1'),
   dependency('astal-bluetooth-0.1'),
   dependency('astal-io-0.1'),
   dependency('astal-cava-0.1'),
   dependency('astal-notifd-0.1'),
   dependency('astal-mpris-0.1'),
+  dependency('astal-network-0.1'),
   dependency('astal-tray-0.1'),
   dependency('astal-wireplumber-0.1'),
   dependency('astal-river-0.1'),

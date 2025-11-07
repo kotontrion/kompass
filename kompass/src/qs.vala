@@ -136,7 +136,7 @@ public class KompassBar.Qs : Gtk.Box {
 
   [GtkCallback]
   public void on_wifi_arrow_clicked() {
-    //nav_view.push_by_tag("wifi");
+    nav_view.push_by_tag("wifi");
   }
 
   [GtkCallback]

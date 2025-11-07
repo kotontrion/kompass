@@ -1,0 +1,47 @@
+using Gtk 4.0;
+using Adw 1;
+using AstalNetwork 0.1;
+
+template $KompassBarQsWifi : Box {
+  orientation: vertical;
+  spacing: 5;
+  Adw.HeaderBar {
+    [end]
+    Button scan_button {
+      clicked => $scan();
+      Box {
+        Spinner spinner {
+          visible: bind template.network as <AstalNetwork.Network>.wifi as <AstalNetwork.Wifi>.scanning;
+          spinning: true;
+        }
+        Image {
+          visible: bind spinner.visible inverted;
+          icon-name: "system-search-symbolic";
+        }
+      }
+    }
+    [end]
+    Switch enable_switch {
+      activate => $toggle_wifi();
+    }
+
+  }
+  ScrolledWindow {
+    max-content-height: 500;
+    vexpand: true;
+    overflow: hidden;
+    styles ["scroll-list"]
+    
+    child: Box {
+      orientation: vertical;
+      spacing: 5;
+      ListBox aps {
+        hexpand: true;
+        valign: start;
+        selection-mode: none;
+        show-separators: true;
+        styles ["boxed-list"]
+      }
+    };
+  }
+}
