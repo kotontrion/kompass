@@ -7,8 +7,21 @@ public class KompassBar.QsWifi : Gtk.Box {
   [GtkChild]
   private unowned Gtk.ListBox aps;
 
+  [GtkChild]
+  private unowned Gtk.Switch enable_switch;
+
+  [GtkCallback]
+  public void toggle_wifi() {
+    this.network.wifi.enabled = !this.network.wifi.enabled;
+  }
+
+  [GtkCallback]
+  public void scan() {
+    this.network.wifi.scan();
+  }
+
   private void on_added(AstalNetwork.AccessPoint ap) {
-    if (ap.ssid == null || ap.ssid == "") {
+    if (ap == null || ap.ap == null || ap.ssid == null || ap.ssid == "") {
       return;
     }
     this.aps.append(new Kompass.WifiAp(this.network, this.network.wifi, ap));
@@ -43,8 +56,8 @@ public class KompassBar.QsWifi : Gtk.Box {
 
     if (this.network.wifi != null) {
       this.network.wifi.access_points.@foreach(ap => this.on_added(ap));
+      this.network.wifi.bind_property("enabled", enable_switch, "active",
+                                      GLib.BindingFlags.BIDIRECTIONAL | GLib.BindingFlags.SYNC_CREATE);
     }
-//    this.wp.audio.stream_added.connect((audio, endpoint) => this.on_added(endpoint, this.mixers));
-//    this.wp.audio.stream_removed.connect((audio, endpoint) => this.on_removed(endpoint, this.mixers));
   }
 }

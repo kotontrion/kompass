@@ -34,8 +34,35 @@ template $KompassWifiAp : ListBoxRow {
           }
       }
 
+      PopoverMenu context_menu {
+        menu-model: menu;
+      }
+
       GestureClick {
         pressed => $clicked();
       }
+
+      GestureClick {
+        button: 3;
+        pressed => $open_menu();
+      }
+
+
   };
+
+}
+
+menu menu {
+  item {
+    label: _("connected");
+    action: "wifi-ap.connected";
+  }
+  item {
+    label: _("forget");
+    action: "wifi-ap.forget";
+  }
+  item {
+    label: _("edit");
+    action: "wifi-ap.edit";
+  }
 }
