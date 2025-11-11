@@ -4,7 +4,6 @@
       type = "github";
       owner = "Aylur";
       repo = "astal";
-      ref = "feat/nm-signals";
     };
 
     nixpkgs.follows = "astal/nixpkgs";
