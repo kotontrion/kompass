@@ -69,6 +69,8 @@ libkompass_deps += [
   dependency('astal-network-0.1'),
   dependency('astal-tray-0.1'),
   dependency('astal-wireplumber-0.1'),
+  dependency('wayland-client'),
+  dependency('astal-wl-0.1'),
   dependency('astal-river-0.1'),
 ]
 

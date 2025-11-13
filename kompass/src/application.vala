@@ -79,8 +79,8 @@ class KompassBar.Application : Adw.Application {
 
     base.activate();
 
-    if (AstalRiver.get_default() == null) {
-      GLib.warning("could not connect to river.\n");
+    if (!AstalRiver.is_supported()) {
+      warning("could not connect to river, river tags widget is being disabled\n");
     }
 
     Gtk.CssProvider provider = new Gtk.CssProvider();

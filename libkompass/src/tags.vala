@@ -30,7 +30,7 @@ private class Tag : Gtk.Box {
     rc.pressed.connect(() => output.focused_tags ^= 1 << index);
     this.add_controller(rc);
 
-    output.changed.connect(update_css);
+    output.notify.connect(update_css);
 
     update_css();
   }
