@@ -13,8 +13,8 @@ public class KompassBar.Bar : Astal.Window {
       gdkmonitor: monitor
       );
 
-    var river = AstalRiver.get_default();
-    if (river != null) {
+    if (AstalRiver.is_supported()) {
+      var river = AstalRiver.get_default();
       this.output = river.find_output_by_name(monitor.get_connector());
       //HACK: gdk already knows about the new monitor, but river does not.
       //a wl_display_sync in the river lib might fix that.
