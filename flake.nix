@@ -79,6 +79,7 @@
             river
             tray
             wireplumber
+            wl
             ;
 
           inherit
@@ -137,6 +138,7 @@
             river
             tray
             wireplumber
+            wl
             ;
 
           inherit
