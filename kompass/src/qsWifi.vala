@@ -20,6 +20,14 @@ public class KompassBar.QsWifi : Gtk.Box {
     this.network.wifi.scan();
   }
 
+  [GtkCallback]
+  public string get_visible_child_name(List<AstalNetwork.AccessPoint> aps) {
+    if (aps.length() > 0) {
+      return "wifi";
+    }
+    return "empty";
+  }
+
   private void on_added(AstalNetwork.AccessPoint ap) {
     if (ap == null || ap.ap == null || ap.ssid == null || ap.ssid == "") {
       return;

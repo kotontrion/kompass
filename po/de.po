@@ -1,0 +1,117 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: libkompass\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-15 13:10+0100\n"
+"PO-Revision-Date: 2024-11-06 13:16+0100\n"
+"Last-Translator: kotontrion <kotontrion@tutanota.de>\n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: kompass/data/ui/qs.blp:51
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: kompass/data/ui/qs.blp:100 kompass/data/ui/qs.blp:197
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#: kompass/data/ui/qs.blp:113 kompass/data/ui/qs.blp:191
+msgid "Audio"
+msgstr "Audio"
+
+#: kompass/data/ui/qs.blp:126 kompass/data/ui/qs.blp:203
+msgid "Notifications"
+msgstr "Benachrichtigungen"
+
+#: kompass/data/ui/qs.blp:140 kompass/data/ui/qs.blp:209
+msgid "Wifi"
+msgstr "WLAN"
+
+#: kompass/data/ui/qs.blp:179
+msgid "No Media playing"
+msgstr "Keine Medienwiedergabe"
+
+#: kompass/data/ui/qs.blp:180
+msgid "There is currently no media player active."
+msgstr "Derzeit ist kein Mediaplayer aktiv."
+
+#: kompass/data/ui/qs.blp:250
+msgid "shutdown"
+msgstr "Herunterfahren"
+
+#: kompass/data/ui/qs.blp:251
+msgid "reboot"
+msgstr "Neu starten"
+
+#: kompass/data/ui/qs.blp:252
+msgid "suspend"
+msgstr "Energie sparen"
+
+#: kompass/data/ui/qs.blp:253
+msgid "logout"
+msgstr "Abmelden"
+
+#: kompass/data/ui/qs.blp:254
+msgid "lock"
+msgstr "sperren"
+
+#: kompass/data/ui/qsAudio.blp:51
+msgid "Sink Selector"
+msgstr "Ausgabegeräte"
+
+#: kompass/data/ui/qsAudio.blp:69
+msgid "Source Selector"
+msgstr "Eingabegeräte"
+
+#: kompass/data/ui/qsAudio.blp:86
+msgid "App mixer"
+msgstr "App-Mixer"
+
+#: kompass/data/ui/qsNotif.blp:38
+msgid "No Notifications"
+msgstr "Keine Benachrichtigungen"
+
+#: kompass/data/ui/qsNotif.blp:39
+msgid "You have currently no notifications, you're all caught up"
+msgstr "Du hast derzeit keine Benachrichtigungen, alles erledigt"
+
+#: kompass/data/ui/qsWifi.blp:58
+msgid "No WiFi network available"
+msgstr "Kein WLAN-Netzwerk verfügbar"
+
+#: kompass/data/ui/qsWifi.blp:59
+msgid "There are no network available, make sure wifi is turned on."
+msgstr ""
+"Es sind keine Netzwerke verfügbar. Stelle sicher, dass WLAN eingeschaltet "
+"ist."
+
+#: libkompass/data/ui/bluetooth-device.blp:59 libkompass/data/ui/wifi-ap.blp:57
+msgid "connected"
+msgstr "verbunden"
+
+#: libkompass/data/ui/bluetooth-device.blp:63
+msgid "remove"
+msgstr "entfernen"
+
+#: libkompass/data/ui/bluetooth-device.blp:67
+msgid "trusted"
+msgstr "vertrauenswürdig"
+
+#: libkompass/data/ui/bluetooth-device.blp:71
+#, fuzzy
+msgid "blocked"
+msgstr "gesperrt"
+
+#: libkompass/data/ui/wifi-ap.blp:61
+msgid "forget"
+msgstr "vergessen"
+
+#: libkompass/data/ui/wifi-ap.blp:65
+msgid "edit"
+msgstr "bearbeiten"

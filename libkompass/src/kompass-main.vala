@@ -6,6 +6,10 @@ public void init() {
     return;
   }
 
+  Intl.bindtextdomain(Kompass.GETTEXT_PACKAGE, Kompass.LOCALEDIR);
+  Intl.bind_textdomain_codeset(Kompass.GETTEXT_PACKAGE, "UTF-8");
+  Intl.textdomain(Kompass.GETTEXT_PACKAGE);
+
   Adw.init();
 
   ensure_types();

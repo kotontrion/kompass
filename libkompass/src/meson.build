@@ -17,9 +17,11 @@ config = configure_file(
     'MAJOR_VERSION': version_split[0],
     'MINOR_VERSION': version_split[1],
     'MICRO_VERSION': version_split[2],
+    'GETTEXT_PACKAGE': 'kompass',
+    'LOCALEDIR': get_option('prefix') / get_option('localedir'),
+    'PACKAGE_VERSION': meson.project_version (),
   },
 )
-
 libkompass_vala_sources += [config] + files(
   'kompass-main.vala',
 
@@ -82,6 +84,7 @@ libkompass_lib = shared_library('kompass',
    vala_header: 'kompass.h',
      vala_vapi: 'kompass-' + api_version + '.vapi',
        version: meson.project_version(),
+        c_args: ['-DGETTEXT_PACKAGE="libkompass"'],
        install: true,
    install_dir: [true, true, true],
 )

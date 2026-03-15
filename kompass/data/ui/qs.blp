@@ -2,6 +2,7 @@ using Gtk 4.0;
 using Adw 1;
 using AstalWp 0.1;
 using AstalBattery 0.1;
+using AstalMpris 0.1;
 using AstalNetwork 0.1;
 using AstalNotifd 0.1;
 using AstalBluetooth 0.1;
@@ -150,18 +151,37 @@ template $KompassBarQs: Box {
                 }
               }
 
-              Adw.Carousel players {
-                spacing: 5;
-              }
+              Adw.ViewStack {
+                visible-child-name: bind $get_visible_child_name(template.mpris as <AstalMpris.Mpris>.players) as <string>;
 
-              Adw.CarouselIndicatorDots {
-                carousel: players;
-              }
+                Adw.ViewStackPage {
+                  name: "music";
+                  child: Box {
+                    orientation: vertical;
 
-              $KompassCava {
-                vexpand: true;
-                valign: end;
-              }
+                    Adw.Carousel players {
+                      spacing: 5;
+                    }
+
+                    Adw.CarouselIndicatorDots {
+                      carousel: players;
+                    }
+
+                    $KompassCava {
+                      vexpand: true;
+                      valign: end;
+                    }
+                  };
+                }
+                Adw.ViewStackPage {
+                  name: "empty";
+                  child: Adw.StatusPage {
+                    title: _("No Media playing");
+                    description: _("There is currently no media player active.");
+                    icon-name: "audio-x-generic-symbolic";
+                  };
+                }
+              } 
 
             };
           }

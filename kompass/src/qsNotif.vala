@@ -10,6 +10,14 @@ public class KompassBar.QsNotif : Gtk.Box {
     this.notifd.notifications.@foreach(n => n.dismiss());
   }
 
+  [GtkCallback]
+  public string get_visible_child_name(List<AstalNotifd.Notification> notifications) {
+    if (notifications.length() > 0) {
+      return "notifications";
+    }
+    return "empty";
+  }
+
   private void on_added(uint id, bool replaced, Gtk.ListBox lb) {
     if (replaced) {
       this.on_removed(id, lb);

@@ -1,5 +1,0 @@
-# List of source files containing translatable strings.
-# Please keep this file sorted alphabetically.
-data/com.github.kotontrion.kompass.gschema.xml
-data/ui/qs.blp
-data/ui/qsAudio.blp

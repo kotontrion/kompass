@@ -1,0 +1,8 @@
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
+kompass/data/ui/qs.blp
+kompass/data/ui/qsAudio.blp
+kompass/data/ui/qsNotif.blp
+kompass/data/ui/qsWifi.blp
+libkompass/data/ui/bluetooth-device.blp
+libkompass/data/ui/wifi-ap.blp

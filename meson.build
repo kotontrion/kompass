@@ -10,6 +10,10 @@ add_project_arguments(
     language: 'vala'
 )
 
+i18n = import('i18n')
+gnome = import('gnome')
+valac = meson.get_compiler('vala')
+
 vapigen = find_program('vapigen', required: false)
 g_ir_dep = dependency('gobject-introspection-1.0', required: false)
 if vapigen.found() and g_ir_dep.found()
@@ -24,3 +28,5 @@ subdir('libkompass')
 if 'kompass' in targets or 'all' in targets
   subdir('kompass')
 endif
+
+subdir('po')

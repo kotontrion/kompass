@@ -1,9 +1,4 @@
 
-i18n = import('i18n')
-gnome = import('gnome')
-valac = meson.get_compiler('vala')
-
-
 #config_h = configuration_data()
 #config_h.set_quoted('PACKAGE_VERSION', meson.project_version ())
 #config_h.set_quoted('GETTEXT_PACKAGE', 'kompass')
@@ -30,5 +25,4 @@ kompass_sources = []
 kompass_vala_sources = []
 
 subdir('data')
-subdir('po')
 subdir('src')

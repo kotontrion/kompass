@@ -35,6 +35,14 @@ public class KompassBar.Qs : Gtk.Box {
   }
 
   [GtkCallback]
+  public string get_visible_child_name(List<AstalMpris.Player> players) {
+    if (players.length() > 0) {
+      return "music";
+    }
+    return "empty";
+  }
+
+  [GtkCallback]
   public void open_settings() {
     Process.spawn_async("/",
                         { "bash", "-c", "XDG_CURRENT_DESKTOP=gnome gnome-control-center" },
