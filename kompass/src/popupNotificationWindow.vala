@@ -5,7 +5,7 @@ private class PopupNotification : Gtk.ListBoxRow {
   private Gtk.Revealer inner_revealer;
   private Gtk.Box notification_box;
 
-  private Kompass.Notification notification;
+  internal Kompass.Notification notification;
 
   public AstalNotifd.Notifd notifd;
   public int animation_duration { get; set; default = 500; }
@@ -40,6 +40,9 @@ private class PopupNotification : Gtk.ListBoxRow {
     this.inner_revealer.notify["child-revealed"].connect(() => {
       if (!this.inner_revealer.reveal_child) {
         this.outer_revealer.reveal_child = false;
+        if (!this.outer_revealer.child_revealed) {
+          (this.parent as Gtk.ListBox)?.remove(this);
+        }
       }
     });
 
@@ -106,6 +109,19 @@ public class KompassBar.PopupNotificationWindow : Astal.Window {
     if (this.notifd.dont_disturb) {
       return;
     }
-    this.notif_list.append(new PopupNotification(this.notifd.get_notification(id)));
+    if (replaced) {
+      int i = 0;
+
+      PopupNotification? n = (PopupNotification)this.notif_list.get_row_at_index(0);
+      while (n != null) {
+        if (n.notification.notification.id == id) {
+          n.notification.notification = this.notifd.get_notification(id);
+          break;
+        }
+        n = (PopupNotification)this.notif_list.get_row_at_index(++i);
+      }
+    } else {
+      this.notif_list.append(new PopupNotification(this.notifd.get_notification(id)));
+    }
   }
 }
