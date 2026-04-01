@@ -1,6 +1,6 @@
 [library]
 version = "0.1.0"
-browse_url = "https://codeberg.org/kotontrion/kompass/tree/main/libkompass/"
+browse_url = "https://codeberg.org/kotontrion/kompass/src/branch/main/libkompass"
 repository_url = "https://codeberg.org/kotontrion/kompass.git"
 authors = "kotontrion"
 license = "MIT"
