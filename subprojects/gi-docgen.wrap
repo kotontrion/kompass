@@ -1,0 +1,4 @@
+[wrap-git]
+url = https://gitlab.gnome.org/GNOME/gi-docgen.git
+revision = 2026.1
+diff_files = gi-docgen.patch

@@ -100,7 +100,6 @@ libkompass_lib = shared_library('kompass',
     + pkgs
     + libkompass_vala_sources,
     input: libkompass_vala_sources,
-    depends: libkompass_lib,
     output: gir,
     install: true,
     install_dir: get_option('datadir') / 'gir-1.0',

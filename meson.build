@@ -17,7 +17,6 @@ valac = meson.get_compiler('vala')
 vapigen = find_program('vapigen', required: false)
 g_ir_dep = dependency('gobject-introspection-1.0', required: false)
 if vapigen.found() and g_ir_dep.found()
-    message('hi')
     subdir('vapi')
 endif
 
@@ -30,3 +29,8 @@ if 'kompass' in targets or 'all' in targets
 endif
 
 subdir('po')
+
+
+if 'docs' in targets
+  subdir('docs')
+endif

@@ -1,0 +1,104 @@
+[library]
+version = "0.1.0"
+browse_url = "https://codeberg.org/kotontrion/kompass/tree/main/libkompass/"
+repository_url = "https://codeberg.org/kotontrion/kompass.git"
+authors = "kotontrion"
+license = "MIT"
+description = "A collection off widgets useful for creating status bars using astal"
+search_index = true
+
+[dependencies."GLib"]
+name = "GLib"
+description = "Low-level core library"
+docs_url = "https://docs.gtk.org/glib/"
+
+[dependencies."GObject"]
+name = "GObject"
+description = "The base type system library"
+docs_url = "https://docs.gtk.org/gobject/"
+
+[dependencies."Gio"]
+name = "Gio"
+description = "GObject interfaces and implementations for I/O, files, and applications"
+docs_url = "https://docs.gtk.org/gio/"
+
+[dependencies."GdkPixbuf"]
+name = "GdkPixbuf"
+description = "Image loading and pixel buffer library"
+docs_url = "https://docs.gtk.org/gdk-pixbuf/"
+
+[dependencies."Gdk"]
+name = "Gdk"
+description = "The GTK windowing system abstraction"
+docs_url = "https://docs.gtk.org/gdk4/"
+
+[dependencies."Gtk"]
+name = "Gtk"
+description = "The GTK user interface toolkit"
+docs_url = "https://docs.gtk.org/gtk4/"
+
+[dependencies."Adw"]
+name = "Adw"
+description = "Building blocks for modern GNOME applications"
+docs_url = "https://gnome.pages.gitlab.gnome.org/libadwaita/doc/1-latest/"
+
+[dependencies."AstalIO"]
+name = "AstalIO"
+description = "Astal I/O utilities"
+docs_url = "https://aylur.github.io/libastal/io/"
+
+[dependencies."AstalNotifd"]
+name = "AstalNotifd"
+description = "Astal notification daemon service"
+docs_url = "https://aylur.github.io/libastal/notifd/"
+
+[dependencies."AstalBluetooth"]
+name = "AstalBluetooth"
+description = "Astal Bluetooth service"
+docs_url = "https://aylur.github.io/libastal/bluetooth/"
+
+[dependencies."AstalCava"]
+name = "AstalCava"
+description = "Astal CAVA visualizer service"
+docs_url = "https://aylur.github.io/libastal/cava/"
+
+[dependencies."AstalMpris"]
+name = "AstalMpris"
+description = "Astal MPRIS media control service"
+docs_url = "https://aylur.github.io/libastal/mpris/"
+
+[dependencies."AstalRiver"]
+name = "AstalRiver"
+description = "Astal River compositor integration"
+docs_url = "https://aylur.github.io/libastal/river/"
+
+[dependencies."AstalWp"]
+name = "AstalWp"
+description = "Astal WirePlumber integration"
+docs_url = "https://aylur.github.io/libastal/wireplumber/"
+
+[dependencies."AstalApps"]
+name = "AstalApps"
+description = "Astal applications service"
+docs_url = "https://aylur.github.io/libastal/apps/"
+
+[dependencies."AstalNetwork"]
+name = "AstalNetwork"
+description = "Astal network service"
+docs_url = "https://aylur.github.io/libastal/network/"
+
+[dependencies."AstalTray"]
+name = "AstalTray"
+description = "Astal system tray service"
+docs_url = "https://aylur.github.io/libastal/tray/"
+
+[theme]
+name = "basic"
+show_index_summary = true
+show_class_hierarchy = true
+
+[source-location]
+base_url = "https://codeberg.org/kotontrion/kompass/src/branch/main/libkompass/"
+
+[extra]
+urlmap_file = "urlmap.js"

@@ -1,0 +1,28 @@
+when:
+  - event: [ push, manual ]
+    branch: main
+
+steps:
+  - name: generate docs
+    image: archlinux:latest
+    commands:
+      - pacman-key --init
+      - pacman-key --recv-keys E029EB9088C833C2
+      - pacman-key --lsign-key E029EB9088C833C2
+      - echo "[kotontrion]" >> /etc/pacman.conf
+      - echo "Server = https://arch-pkgs.kotontrion.net/\$arch/" >> /etc/pacman.conf
+      - pacman -Syu --noconfirm libastal-meta vala meson blueprint-compiler gobject-introspection libadwaita libportal dart-sass libnma-gtk4 git python-jinja python-magic python-markdown python-markupsafe python-typogrify
+      - arch-meson build --wipe -Dbuild_target=docs --wrap-mode=default
+      - meson compile -C build docs
+  - name: deploy
+    image: data.forgejo.org/git-pages/git-pages-cli:latest
+    environment:
+      GIT_PAGES_TOKEN:
+         from_secret: pages_token
+    entrypoint: [
+      "git-pages-cli",
+      "https://kotontrion.codeberg.page",
+      "--upload-dir", "build/docs/libkompass/Kompass-0.1",
+      "--path", "libkompass",
+      "--parents" 
+    ]
