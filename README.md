@@ -13,12 +13,13 @@ Showcase (as of 2024-10-13):
 
 ### on Arch
 ```bash
-wget https://github.com/kotontrion/PKGBUILDS/raw/refs/heads/main/kompass-git/PKGBUILD
+wget https://codeberg.org/kotontrion/PKGBUILDS/src/branch/main/libkompass-git/PKGBUILD
 makepkg -si
 ```
 
-the PKGBUILD can be found [here](https://github.com/kotontrion/PKGBUILDS/blob/main/kompass-git/PKGBUILD).
-I wont publish it to the AUR until libkompass is more mature.
+or install `kompass-git` (or `libkompass-git` to only install libkompass and not the bar) from the AUR using your favourite AUR helper.
+
+the PKGBUILD can be found [here](https://codeberg.org/kotontrion/PKGBUILDS/src/branch/main/libkompass-git/PKGBUILD).
 
 ### from source
 
