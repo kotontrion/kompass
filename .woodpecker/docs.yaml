@@ -15,14 +15,17 @@ steps:
       - arch-meson build --wipe -Dbuild_target=docs --wrap-mode=default
       - meson compile -C build docs
   - name: deploy
-    image: data.forgejo.org/git-pages/git-pages-cli:latest
+    image: alpine/git
     environment:
-      GIT_PAGES_TOKEN:
-         from_secret: pages_token
-    entrypoint: [
-      "git-pages-cli",
-      "https://kotontrion.codeberg.page",
-      "--upload-dir", "build/docs/libkompass/Kompass-0.1",
-      "--path", "libkompass",
-      "--parents" 
-    ]
+      PAGES_TOKEN:
+        from_secret: pages_token
+    commands:
+      - git config --global user.email "$CI_COMMIT_AUTHOR_EMAIL"
+      - git config --global user.name "[Woodpecker CI] $CI_COMMIT_AUTHOR"
+      - git clone -b pages https://$PAGES_TOKEN@codeberg.org/$CI_REPO pages
+      - find pages -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -r {} +
+      - mv build/docs/libkompass/Kompass-0.1/* pages
+      - cd pages
+      - git add --all
+      - git diff --cached --quiet || git commit -m "[CI SKIP] Deploy docs from $CI_REPO_URL/commit/$CI_COMMIT_SHA"
+      - git push https://$PAGES_TOKEN@codeberg.org/$CI_REPO pages
