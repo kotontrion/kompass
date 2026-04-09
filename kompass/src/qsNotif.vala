@@ -7,7 +7,7 @@ public class KompassBar.QsNotif : Gtk.Box {
 
   [GtkCallback]
   public void clear() {
-    this.notifd.notifications.@foreach(n => n.dismiss());
+    this.notifd.notifications.copy().@foreach(n => n.dismiss());
   }
 
   [GtkCallback]
