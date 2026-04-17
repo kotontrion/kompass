@@ -1,6 +1,6 @@
 [GtkTemplate(ui = "/com/github/kotontrion/libkompass/ui/notification.ui")]
 public class Kompass.Notification : Gtk.ListBoxRow, Adw.Swipeable {
-  public AstalNotifd.Notification notification { get; set; }
+  public AstalNotifd.Notification notification { get; construct set; }
 
   private Adw.SwipeTracker swipe_tracker;
   private Adw.SpringAnimation animation;
@@ -10,15 +10,11 @@ public class Kompass.Notification : Gtk.ListBoxRow, Adw.Swipeable {
     get { return _sp; }
     set {
       _sp = value;
-      try {
-        var s = value.abs();
-        this.css_prov.load_from_string(@"* { 
-            --swipe_progress: $(value.abs()); 
-            --swipe: $(s); 
-            }");
-      } catch (Error err) {
-        warning(err.message);
-      }
+      var s = value.abs();
+      this.css_prov.load_from_string(@"* { 
+          --swipe_progress: $(value.abs()); 
+          --swipe: $(s); 
+          }");
     }
   }
 
@@ -111,10 +107,10 @@ public class Kompass.Notification : Gtk.ListBoxRow, Adw.Swipeable {
       box.set_margin_start((int)(this.get_width() * p));
       box.set_margin_end((int)(-this.get_width() * p));
     });
+    this.setup_actions();
   }
 
   public Notification(AstalNotifd.Notification notification) {
     Object(notification: notification);
-    this.setup_actions();
   }
 }

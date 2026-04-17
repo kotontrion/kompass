@@ -8,15 +8,17 @@ public class KompassBar.QsBluetooth : Gtk.Box {
   [GtkChild]
   private unowned Gtk.Switch enable_switch;
 
-  [GtkChild]
-  private unowned Gtk.Button scan_button;
-
   [GtkCallback]
   public void toggle_discover() {
-    if (this.bluetooth.adapter.discovering) {
-      this.bluetooth.adapter.stop_discovery();
-    } else {
-      this.bluetooth.adapter.start_discovery();
+    try {
+      if (this.bluetooth.adapter.discovering) {
+        this.bluetooth.adapter.stop_discovery();
+      } else {
+        this.bluetooth.adapter.start_discovery();
+      }
+    }
+    catch (Error e) {
+      warning("could not toggle bluetooth discovery: %s\n", e.message);
     }
   }
 

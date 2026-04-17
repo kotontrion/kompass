@@ -1,8 +1,8 @@
 [GtkTemplate(ui = "/com/github/kotontrion/libkompass/ui/wifi-ap.ui")]
 public class Kompass.WifiAp : Gtk.ListBoxRow {
-  public AstalNetwork.Network network { get; set; }
-  public AstalNetwork.Wifi wifi { get; set; }
-  public AstalNetwork.AccessPoint ap { get; set; }
+  public AstalNetwork.Network network { get; construct; }
+  public AstalNetwork.Wifi wifi { get; construct; }
+  public AstalNetwork.AccessPoint ap { get; construct; }
 
   private SimpleActionGroup actions;
 
@@ -59,7 +59,7 @@ public class Kompass.WifiAp : Gtk.ListBoxRow {
           this.network.client.add_and_activate_connection_async.begin(dialog_connection, dialog_device, dialog_ap.get_path(), null);
         } else {
           connection.replace_settings_from_connection(dialog_connection);
-          (connection as NM.RemoteConnection).commit_changes(true, null);
+          (connection as NM.RemoteConnection)?.commit_changes(true, null);
         }
       }
       dialog.destroy();
@@ -78,9 +78,14 @@ public class Kompass.WifiAp : Gtk.ListBoxRow {
                        : "open";
   }
 
-  public WifiAp(AstalNetwork.Network network, AstalNetwork.Wifi wifi, AstalNetwork.AccessPoint ap) {
-    Object(ap: ap, wifi: wifi, network: network);
+  public WifiAp(AstalNetwork.AccessPoint ap) {
+    Object(
+      ap: ap,
+      wifi: AstalNetwork.get_default().wifi,
+      network: AstalNetwork.get_default());
+  }
 
+  construct {
     this.actions = new GLib.SimpleActionGroup();
 
     Signal.connect_object(wifi, "notify::active-access-point", (Callback)check_active, this, ConnectFlags.SWAPPED);

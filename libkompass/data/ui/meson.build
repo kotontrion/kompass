@@ -8,7 +8,7 @@ blueprints = custom_target('blueprints',
     'mpris-player.blp',
     'vertical-clock.blp',
     'search-result-button.blp',
-    'search-result-provider.blp',
+    'search-result-view.blp',
     'wifi-ap.blp'
   ),
   output: '.',

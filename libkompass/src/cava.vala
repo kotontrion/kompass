@@ -11,6 +11,27 @@ public class Cava : Gtk.Widget {
   public CavaStyle style { get; set; default = CavaStyle.CATMULL_ROM; }
 
   private AstalWp.Endpoint default_speaker;
+  private ulong connection_id;
+
+  private bool _follow_default_speaker = false;
+  public bool follow_default_speaker {
+    get {
+      return this._follow_default_speaker;
+    }
+    set {
+      if (this._follow_default_speaker == value) {
+        return;
+      }
+      this._follow_default_speaker = value;
+      if (value) {
+        this.connection_id = this.default_speaker.notify["serial"].connect(() => {
+            this.cava.source = @"$(this.default_speaker.serial)";
+          });
+      } else {
+        this.default_speaker.disconnect(connection_id);
+      }
+    }
+  }
 
   public Cava.with_cava(AstalCava.Cava cava) {
     Object(cava: cava);
@@ -22,11 +43,6 @@ public class Cava : Gtk.Widget {
     }
 
     this.default_speaker = AstalWp.get_default().get_default_speaker();
-
-    this.default_speaker.notify["serial"].connect(() => {
-        this.cava.source = @"$(this.default_speaker.serial)";
-      });
-
     this.cava.notify["values"].connect(() => this.queue_draw());
   }
 

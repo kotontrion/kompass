@@ -25,6 +25,6 @@ public class KompassBar.Launcher : Gtk.Box {
 
   [GtkCallback]
   public void update_list() {
-    this.launcher.search(this.entry.text);
+    this.launcher.search.begin(this.entry.text);
   }
 }

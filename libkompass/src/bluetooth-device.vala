@@ -1,6 +1,6 @@
 [GtkTemplate(ui = "/com/github/kotontrion/libkompass/ui/bluetooth-device.ui")]
 public class Kompass.BluetoothDevice : Gtk.ListBoxRow {
-  public AstalBluetooth.Device device { get; construct set; }
+  public AstalBluetooth.Device device { get; construct; }
   private SimpleActionGroup actions;
 
   [GtkChild]
@@ -30,7 +30,9 @@ public class Kompass.BluetoothDevice : Gtk.ListBoxRow {
 
   public BluetoothDevice(AstalBluetooth.Device device) {
     Object(device: device);
+  }
 
+  construct {
     this.actions = new GLib.SimpleActionGroup();
 
     var con_action = new SimpleAction.stateful("connected", null, new Variant.boolean(device.connected));
@@ -47,7 +49,12 @@ public class Kompass.BluetoothDevice : Gtk.ListBoxRow {
 
     var rem_action = new SimpleAction("remove", null);
     rem_action.activate.connect(val => {
-      AstalBluetooth.get_default().adapter.remove_device(this.device);
+      try {
+        AstalBluetooth.get_default().adapter.remove_device(this.device);
+      }
+      catch (Error e) {
+        warning("could not remove bluetooth device: %s\n", e.message);
+      }
     });
     this.actions.add_action(rem_action);
 

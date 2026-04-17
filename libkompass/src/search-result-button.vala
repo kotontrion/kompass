@@ -1,6 +1,6 @@
 [GtkTemplate(ui = "/com/github/kotontrion/libkompass/ui/search-result-button.ui")]
 public class Kompass.SearchResultButton : Gtk.ListBoxRow {
-  public Kompass.SearchResult result { get; set; }
+  public Kompass.SearchResult result { get; construct; }
 
   [GtkCallback]
   public void clicked() {

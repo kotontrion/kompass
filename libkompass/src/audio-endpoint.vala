@@ -28,6 +28,9 @@ public class Kompass.AudioNode : Gtk.ListBoxRow {
 
   public AudioNode(AstalWp.Node endpoint) {
     Object(endpoint: endpoint);
+  }
+
+  construct {
     this.endpoint.bind_property("volume", volume_adjust, "value",
                                 GLib.BindingFlags.BIDIRECTIONAL | GLib.BindingFlags.SYNC_CREATE);
   }

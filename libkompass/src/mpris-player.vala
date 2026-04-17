@@ -1,6 +1,6 @@
 [GtkTemplate(ui = "/com/github/kotontrion/libkompass/ui/mpris-player.ui")]
 public class Kompass.Player : Gtk.Box {
-  public AstalMpris.Player player { get; set; }
+  public AstalMpris.Player player { get; construct; }
 
   public File cover_file { get; private set; }
   public string empty_cover_uri { get; set; default = "resource:///com/github/kotontrion/libkompass/images/empty-mpris-image.png"; }
@@ -51,7 +51,9 @@ public class Kompass.Player : Gtk.Box {
 
   public Player(AstalMpris.Player player) {
     Object(player: player);
+  }
 
+  construct {
     player.notify["cover-art"].connect(() => {
       update_cover();
     });

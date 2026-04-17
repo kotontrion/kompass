@@ -44,12 +44,17 @@ public class KompassBar.Qs : Gtk.Box {
 
   [GtkCallback]
   public void open_settings() {
-    Process.spawn_async("/",
-                        { "bash", "-c", "XDG_CURRENT_DESKTOP=gnome gnome-control-center" },
-                        null,
-                        SpawnFlags.SEARCH_PATH,
-                        null,
-                        null);
+    try {
+      Process.spawn_async("/",
+                          { "bash", "-c", "XDG_CURRENT_DESKTOP=gnome gnome-control-center" },
+                          null,
+                          SpawnFlags.SEARCH_PATH,
+                          null,
+                          null);
+    }
+    catch (GLib.SpawnError e) {
+      warning("Could not open settings app: %s\n", e.message);
+    }
   }
 
   [GtkCallback]
@@ -75,7 +80,7 @@ public class KompassBar.Qs : Gtk.Box {
   }
 
   private void start_record() {
-    recorder.start_record(null);
+    recorder.start_record.begin(null);
   }
 
   private void screenshot() {
@@ -195,45 +200,65 @@ public class KompassBar.Qs : Gtk.Box {
 
     var sd_action = new SimpleAction("shutdown", null);
     sd_action.activate.connect(val => {
-      Process.spawn_async("/",
-                          { "systemctl", "poweroff" },
-                          null,
-                          SpawnFlags.SEARCH_PATH,
-                          null,
-                          null);
+      try {
+        Process.spawn_async("/",
+                            { "systemctl", "poweroff" },
+                            null,
+                            SpawnFlags.SEARCH_PATH,
+                            null,
+                            null);
+      }
+      catch (GLib.SpawnError e) {
+        warning("Could not open settings app: %s\n", e.message);
+      }
     });
     this.actions.add_action(sd_action);
 
     var rb_action = new SimpleAction("reboot", null);
     rb_action.activate.connect(val => {
-      Process.spawn_async("/",
-                          { "systemctl", "reboot" },
-                          null,
-                          SpawnFlags.SEARCH_PATH,
-                          null,
-                          null);
+      try {
+        Process.spawn_async("/",
+                            { "systemctl", "reboot" },
+                            null,
+                            SpawnFlags.SEARCH_PATH,
+                            null,
+                            null);
+      }
+      catch (GLib.SpawnError e) {
+        warning("Could not open settings app: %s\n", e.message);
+      }
     });
     this.actions.add_action(rb_action);
 
     var suspend_action = new SimpleAction("suspend", null);
     suspend_action.activate.connect(val => {
-      Process.spawn_async("/",
-                          { "systemctl", "suspend" },
-                          null,
-                          SpawnFlags.SEARCH_PATH,
-                          null,
-                          null);
+      try {
+        Process.spawn_async("/",
+                            { "systemctl", "suspend" },
+                            null,
+                            SpawnFlags.SEARCH_PATH,
+                            null,
+                            null);
+      }
+      catch (GLib.SpawnError e) {
+        warning("Could not open settings app: %s\n", e.message);
+      }
     });
     this.actions.add_action(suspend_action);
 
     var logout_action = new SimpleAction("logout", null);
     logout_action.activate.connect(val => {
-      Process.spawn_async("/",
-                          { "bash", "-c", "loginctl terminate-user $USER" },
-                          null,
-                          SpawnFlags.SEARCH_PATH,
-                          null,
-                          null);
+      try {
+        Process.spawn_async("/",
+                            { "bash", "-c", "loginctl terminate-user $USER" },
+                            null,
+                            SpawnFlags.SEARCH_PATH,
+                            null,
+                            null);
+      }
+      catch (GLib.SpawnError e) {
+        warning("Could not open settings app: %s\n", e.message);
+      }
     });
     this.actions.add_action(logout_action);
 

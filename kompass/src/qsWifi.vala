@@ -32,7 +32,7 @@ public class KompassBar.QsWifi : Gtk.Box {
     if (ap == null || ap.ap == null || ap.ssid == null || ap.ssid == "") {
       return;
     }
-    this.aps.append(new Kompass.WifiAp(this.network, this.network.wifi, ap));
+    this.aps.append(new Kompass.WifiAp(ap));
     this.aps.invalidate_sort();
   }
 
@@ -53,7 +53,7 @@ public class KompassBar.QsWifi : Gtk.Box {
   construct {
     this.network = AstalNetwork.get_default();
 
-    this.aps.set_sort_func((a, b) => (a as Kompass.WifiAp).compare_to(b as Kompass.WifiAp));
+    this.aps.set_sort_func((a, b) => (a as Kompass.WifiAp)?.compare_to(b as Kompass.WifiAp));
 
     this.wifi_group = new SignalGroup(typeof(AstalNetwork.Wifi));
     this.wifi_group.connect_swapped("access-point-added", (Callback)on_added, this);
