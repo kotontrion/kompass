@@ -7,7 +7,7 @@ SPDX-License-Identifier: MIT
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Kompass.WifiAp.set_wifi</title>
+  <title>Kompass.GnomeSearchProvider.get_path</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta charset="utf-8" />
@@ -18,10 +18,10 @@ SPDX-License-Identifier: MIT
   
 
   
-  <meta priority="og:title" content="Kompass.WifiAp.set_wifi"/>
-  <meta priority="og:description" content="Reference for Kompass.WifiAp.set_wifi"/>
-  <meta name="twitter:title" content="Kompass.WifiAp.set_wifi"/>
-  <meta name="twitter:description" content="Reference for Kompass.WifiAp.set_wifi"/>
+  <meta priority="og:title" content="Kompass.GnomeSearchProvider.get_path"/>
+  <meta priority="og:description" content="Reference for Kompass.GnomeSearchProvider.get_path"/>
+  <meta name="twitter:title" content="Kompass.GnomeSearchProvider.get_path"/>
+  <meta name="twitter:description" content="Reference for Kompass.GnomeSearchProvider.get_path"/>
 
 
   
@@ -71,36 +71,14 @@ SPDX-License-Identifier: MIT
 <div class="section">
   <h5>Type</h5>
   <div class="links">
-    <a href="class.WifiAp.html">WifiAp</a>
+    <a href="class.GnomeSearchProvider.html">GnomeSearchProvider</a>
   </div>
 </div>
 <div class="section">
   <h5>Methods</h5>
   <div class="links">
   
-    <a class="method" href="method.WifiAp.clicked.html">clicked</a>
-  
-    <a class="method" href="method.WifiAp.open_menu.html">open_menu</a>
-  
-    <a class="method" href="method.WifiAp.compare_to.html">compare_to</a>
-  
-    <a class="method" href="method.WifiAp.get_network.html">get_network</a>
-  
-    <a class="method" href="method.WifiAp.set_network.html">set_network</a>
-  
-    <a class="method" href="method.WifiAp.get_wifi.html">get_wifi</a>
-  
-    <a class="method current" href="method.WifiAp.set_wifi.html">set_wifi</a>
-  
-    <a class="method" href="method.WifiAp.get_ap.html">get_ap</a>
-  
-    <a class="method" href="method.WifiAp.set_ap.html">set_ap</a>
-  
-    <a class="method" href="method.WifiAp.get_active.html">get_active</a>
-  
-    <a class="method" href="method.WifiAp.set_active.html">set_active</a>
-  
-    <a class="method" href="method.WifiAp.get_description.html">get_description</a>
+    <a class="method current" href="method.GnomeSearchProvider.get_path.html">get_path</a>
   
   </div>
 </div>
@@ -116,7 +94,7 @@ SPDX-License-Identifier: MIT
 <section id="main" class="content">
   <header>
     <h3>Method</h3>
-    <h1><a href="index.html">Kompass</a><span class="sep"></span><a href="class.WifiAp.html">WifiAp</a><span class="sep"></span>set_wifi</h1>
+    <h1><a href="index.html">Kompass</a><span class="sep"></span><a href="class.GnomeSearchProvider.html">GnomeSearchProvider</a><span class="sep"></span>get_path</h1>
   </header>
 
   <section>
@@ -132,10 +110,9 @@ SPDX-License-Identifier: MIT
       </h4>
 
       <div class="docblock c-decl">
-        <pre><code><div class="highlight"><pre><span></span><span class="kt">void</span>
-<span class="n">kompass_wifi_ap_set_wifi</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="n">KompassWifiAp</span><span class="o">*</span><span class="w"> </span><span class="n">self</span><span class="p">,</span>
-<span class="w">  </span><span class="n">AstalNetworkWifi</span><span class="o">*</span><span class="w"> </span><span class="n">value</span>
+        <pre><code><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="n">gchar</span><span class="o">*</span>
+<span class="n">kompass_gnome_search_provider_get_path</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">KompassGnomeSearchProvider</span><span class="o">*</span><span class="w"> </span><span class="n">self</span>
 <span class="p">)</span>
 </pre></div>
 </code></pre>
@@ -167,41 +144,33 @@ SPDX-License-Identifier: MIT
     </div>
 
     
-    <div class="parameters toggle-wrapper">
-      <h4 id="parameters">
-        Parameters
-        <a href="#parameters" class="anchor"></a>
+
+    
+    <div class="return-value toggle-wrapper">
+      <h4 id="return-value">
+        Return value
+        <a href="#return-value" class="anchor"></a>
       </h4>
 
       <div class="docblock">
-        <dl class="arguments">
-          
-
-          
-          <dt class="arg-name"><code>value</code></dt>
-          <dd class="arg-description">
-            <p><em>Type:</em>&nbsp;<a href="javascript:void(0)" data-link="class.Wifi.html" data-namespace="AstalNetwork" class="external"><code>AstalNetworkWifi</code></a></p>
+        <div class="returns">
+          <div class="arg-description">
+            <p><em>Type:</em>&nbsp;<code>const gchar*</code></p>
             <p>No description available.</p>
+          </div>
+          <div>
             <table>
             
             
             
+            <tr><td title="transfer: none">The returned data is owned by the instance.</td></tr>
             
-            
-            
-            
-            <tr><td title="transfer: none">The data is owned by the caller of the method.</td></tr>
-            
+            <tr><td>The value is a NUL terminated UTF-8 string.</td></tr>
             </table>
-          </dd>
-          
-
-          
-        </dl>
+          </div>
+        </div>
       </div>
     </div>
-    
-
     
 
   </section>

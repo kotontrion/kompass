@@ -7,7 +7,7 @@ SPDX-License-Identifier: MIT
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Kompass.SearchProvider</title>
+  <title>Kompass.SearchResultView</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta charset="utf-8" />
@@ -18,10 +18,10 @@ SPDX-License-Identifier: MIT
   
 
   
-  <meta property="og:title" content="Kompass.SearchProvider"/>
-  <meta property="og:description" content="Reference for Kompass.SearchProvider"/>
-  <meta name="twitter:title" content="Kompass.SearchProvider"/>
-  <meta name="twitter:description" content="Reference for Kompass.SearchProvider"/>
+  <meta property="og:title" content="Kompass.SearchResultView"/>
+  <meta property="og:description" content="Reference for Kompass.SearchResultView"/>
+  <meta name="twitter:title" content="Kompass.SearchResultView"/>
+  <meta name="twitter:description" content="Reference for Kompass.SearchResultView"/>
 
 
   
@@ -71,7 +71,7 @@ SPDX-License-Identifier: MIT
 <div class="section">
   <h5>Type</h5>
   <div class="links">
-    <a class="current" href="iface.SearchProvider.html#description">SearchProvider</a>
+    <a class="current" href="iface.SearchResultView.html#description">SearchResultView</a>
   </div>
 </div>
 
@@ -84,17 +84,13 @@ SPDX-License-Identifier: MIT
   <h5>Instance methods</h5>
   <div class="links">
   
-    <a class="method" href="method.SearchProvider.search.html">search</a>
+    <a class="method" href="method.SearchResultView.search.html">search</a>
   
-    <a class="method" href="method.SearchProvider.search_finish.html">search_finish</a>
+    <a class="method" href="method.SearchResultView.search_finish.html">search_finish</a>
   
-    <a class="method" href="method.SearchProvider.launch_first.html">launch_first</a>
+    <a class="method" href="method.SearchResultView.launch_first.html">launch_first</a>
   
-    <a class="method" href="method.SearchProvider.get_results.html">get_results</a>
-  
-    <a class="method" href="method.SearchProvider.get_name.html">get_name</a>
-  
-    <a class="method" href="method.SearchProvider.get_icon.html">get_icon</a>
+    <a class="method" href="method.SearchResultView.get_provider.html">get_provider</a>
   
   </div>
 </div>
@@ -106,11 +102,7 @@ SPDX-License-Identifier: MIT
   <h5>Properties</h5>
   <div class="links">
   
-    <a class="property" href="property.SearchProvider.results.html">results</a>
-  
-    <a class="property" href="property.SearchProvider.name.html">name</a>
-  
-    <a class="property" href="property.SearchProvider.icon.html">icon</a>
+    <a class="property" href="property.SearchResultView.provider.html">provider</a>
   
   </div>
 </div>
@@ -128,17 +120,13 @@ SPDX-License-Identifier: MIT
   <h5>Virtual methods</h5>
   <div class="links">
   
-    <a class="method" href="vfunc.SearchProvider.search.html">search</a>
+    <a class="method" href="vfunc.SearchResultView.search.html">search</a>
   
-    <a class="method" href="vfunc.SearchProvider.search_finish.html">search_finish</a>
+    <a class="method" href="vfunc.SearchResultView.search_finish.html">search_finish</a>
   
-    <a class="method" href="vfunc.SearchProvider.launch_first.html">launch_first</a>
+    <a class="method" href="vfunc.SearchResultView.launch_first.html">launch_first</a>
   
-    <a class="method" href="vfunc.SearchProvider.get_results.html">get_results</a>
-  
-    <a class="method" href="vfunc.SearchProvider.get_name.html">get_name</a>
-  
-    <a class="method" href="vfunc.SearchProvider.get_icon.html">get_icon</a>
+    <a class="method" href="vfunc.SearchResultView.get_provider.html">get_provider</a>
   
   </div>
 </div>
@@ -157,7 +145,7 @@ SPDX-License-Identifier: MIT
 <section id="main" class="content">
   <header>
     <h3>Interface</h3>
-    <h1><a href="index.html">Kompass</a><span class="sep"></span>SearchProvider</h1>
+    <h1><a href="index.html">Kompass</a><span class="sep"></span>SearchResultView</h1>
   </header>
 
   <section>
@@ -172,7 +160,7 @@ SPDX-License-Identifier: MIT
           
         </h4>
 
-        <pre><code>interface Kompass.SearchProvider : GObject.Object</code></pre>
+        <pre><code>interface Kompass.SearchResultView : GObject.Object</code></pre>
 
         <div class="docblock">
           <p>No description available.</p>
@@ -195,7 +183,7 @@ SPDX-License-Identifier: MIT
       </h4>
 
       <div class="docblock">
-        <p>In order to implement SearchProvider, your type must inherit from<a data-namespace="GObject" data-link="class.Object.html" href="javascript:void(0)" class="external"><code>GObject</code></a>.</p>
+        <p>In order to implement SearchResultView, your type must inherit from<a data-namespace="GObject" data-link="class.Object.html" href="javascript:void(0)" class="external"><code>GObject</code></a>.</p>
       </div>
     </div>
 
@@ -204,9 +192,7 @@ SPDX-License-Identifier: MIT
       <h4 id="implementations">Implementations<a href="#implementations" class="anchor"></a></h4>
       <div class="docblock">
         <ul>
-          <li><a href="class.GnomeSearchProvider.html">KompassGnomeSearchProvider</a></li>
-        
-          <li><a href="class.AppSearchProvider.html">KompassAppSearchProvider</a></li>
+          <li><a href="class.RevealingSearchResultView.html">KompassRevealingSearchResultView</a></li>
         </ul>
       </div>
     </div>
@@ -224,7 +210,7 @@ SPDX-License-Identifier: MIT
       <div class="docblock">
       
         <div class="">
-          <h6><a href="method.SearchProvider.search.html">kompass_search_provider_search</a></h6>
+          <h6><a href="method.SearchResultView.search.html">kompass_search_result_view_search</a></h6>
           <div class="docblock">
             No description available.
           </div>
@@ -234,7 +220,7 @@ SPDX-License-Identifier: MIT
         </div>
       
         <div class="">
-          <h6><a href="method.SearchProvider.search_finish.html">kompass_search_provider_search_finish</a></h6>
+          <h6><a href="method.SearchResultView.search_finish.html">kompass_search_result_view_search_finish</a></h6>
           <div class="docblock">
             No description available.
           </div>
@@ -244,7 +230,7 @@ SPDX-License-Identifier: MIT
         </div>
       
         <div class="">
-          <h6><a href="method.SearchProvider.launch_first.html">kompass_search_provider_launch_first</a></h6>
+          <h6><a href="method.SearchResultView.launch_first.html">kompass_search_result_view_launch_first</a></h6>
           <div class="docblock">
             No description available.
           </div>
@@ -254,27 +240,7 @@ SPDX-License-Identifier: MIT
         </div>
       
         <div class="">
-          <h6><a href="method.SearchProvider.get_results.html">kompass_search_provider_get_results</a></h6>
-          <div class="docblock">
-            No description available.
-          </div>
-          <div class="docblock">
-            <p></p>
-          </div>
-        </div>
-      
-        <div class="">
-          <h6><a href="method.SearchProvider.get_name.html">kompass_search_provider_get_name</a></h6>
-          <div class="docblock">
-            No description available.
-          </div>
-          <div class="docblock">
-            <p></p>
-          </div>
-        </div>
-      
-        <div class="">
-          <h6><a href="method.SearchProvider.get_icon.html">kompass_search_provider_get_icon</a></h6>
+          <h6><a href="method.SearchResultView.get_provider.html">kompass_search_result_view_get_provider</a></h6>
           <div class="docblock">
             No description available.
           </div>
@@ -298,27 +264,7 @@ SPDX-License-Identifier: MIT
       <div class="docblock">
       
         <div class="">
-          <h6><a href="property.SearchProvider.results.html">Kompass.SearchProvider:results</a></h6>
-          <div class="docblock">
-            No description available.
-          </div>
-          <div class="docblock">
-            <p></p>
-          </div>
-        </div>
-      
-        <div class="">
-          <h6><a href="property.SearchProvider.name.html">Kompass.SearchProvider:name</a></h6>
-          <div class="docblock">
-            No description available.
-          </div>
-          <div class="docblock">
-            <p></p>
-          </div>
-        </div>
-      
-        <div class="">
-          <h6><a href="property.SearchProvider.icon.html">Kompass.SearchProvider:icon</a></h6>
+          <h6><a href="property.SearchResultView.provider.html">Kompass.SearchResultView:provider</a></h6>
           <div class="docblock">
             No description available.
           </div>
@@ -343,28 +289,22 @@ SPDX-License-Identifier: MIT
       </h4>
 
       <div class="docblock">
-        <pre><code>struct KompassSearchProviderIface {
+        <pre><code>struct KompassSearchResultViewIface {
   void (* search) (
-    KompassSearchProvider* self,
+    KompassSearchResultView* self,
     const gchar* query,
     GAsyncReadyCallback _callback_,
     void* _callback__target
   );
   void (* search_finish) (
-    KompassSearchProvider* self,
+    KompassSearchResultView* self,
     GAsyncResult* _res_
   );
   gboolean (* launch_first) (
-    KompassSearchProvider* self
+    KompassSearchResultView* self
   );
-  GListModel* (* get_results) (
-    KompassSearchProvider* self
-  );
-  const gchar* (* get_name) (
-    KompassSearchProvider* self
-  );
-  GIcon* (* get_icon) (
-    KompassSearchProvider* self
+  KompassSearchProvider* (* get_provider) (
+    KompassSearchResultView* self
   );
   
 }</code></pre>
@@ -383,7 +323,7 @@ SPDX-License-Identifier: MIT
         <tr>
           <td style="vertical-align:top"><code>search</code></td>
           <td style="vertical-align:top"><pre><code>void (* search) (
-    KompassSearchProvider* self,
+    KompassSearchResultView* self,
     const gchar* query,
     GAsyncReadyCallback _callback_,
     void* _callback__target
@@ -396,7 +336,7 @@ SPDX-License-Identifier: MIT
         <tr>
           <td style="vertical-align:top"><code>search_finish</code></td>
           <td style="vertical-align:top"><pre><code>void (* search_finish) (
-    KompassSearchProvider* self,
+    KompassSearchResultView* self,
     GAsyncResult* _res_
   )</code></pre></td>
         </tr>
@@ -407,7 +347,7 @@ SPDX-License-Identifier: MIT
         <tr>
           <td style="vertical-align:top"><code>launch_first</code></td>
           <td style="vertical-align:top"><pre><code>gboolean (* launch_first) (
-    KompassSearchProvider* self
+    KompassSearchResultView* self
   )</code></pre></td>
         </tr>
         <tr>
@@ -415,29 +355,9 @@ SPDX-License-Identifier: MIT
         </tr>
         
         <tr>
-          <td style="vertical-align:top"><code>get_results</code></td>
-          <td style="vertical-align:top"><pre><code>GListModel* (* get_results) (
-    KompassSearchProvider* self
-  )</code></pre></td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td><td style="vertical-align:top"><p>No description available.</p></td>
-        </tr>
-        
-        <tr>
-          <td style="vertical-align:top"><code>get_name</code></td>
-          <td style="vertical-align:top"><pre><code>const gchar* (* get_name) (
-    KompassSearchProvider* self
-  )</code></pre></td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td><td style="vertical-align:top"><p>No description available.</p></td>
-        </tr>
-        
-        <tr>
-          <td style="vertical-align:top"><code>get_icon</code></td>
-          <td style="vertical-align:top"><pre><code>GIcon* (* get_icon) (
-    KompassSearchProvider* self
+          <td style="vertical-align:top"><code>get_provider</code></td>
+          <td style="vertical-align:top"><pre><code>KompassSearchProvider* (* get_provider) (
+    KompassSearchResultView* self
   )</code></pre></td>
         </tr>
         <tr>
@@ -462,7 +382,7 @@ SPDX-License-Identifier: MIT
       <div class="docblock">
       
         <div class="">
-          <h6 id="vfunc-search"><a href="vfunc.SearchProvider.search.html">Kompass.SearchProvider.search</a></h6>
+          <h6 id="vfunc-search"><a href="vfunc.SearchResultView.search.html">Kompass.SearchResultView.search</a></h6>
           <div class="docblock">
             No description available.
           </div>
@@ -472,7 +392,7 @@ SPDX-License-Identifier: MIT
         </div>
       
         <div class="">
-          <h6 id="vfunc-search_finish"><a href="vfunc.SearchProvider.search_finish.html">Kompass.SearchProvider.search_finish</a></h6>
+          <h6 id="vfunc-search_finish"><a href="vfunc.SearchResultView.search_finish.html">Kompass.SearchResultView.search_finish</a></h6>
           <div class="docblock">
             No description available.
           </div>
@@ -482,7 +402,7 @@ SPDX-License-Identifier: MIT
         </div>
       
         <div class="">
-          <h6 id="vfunc-launch_first"><a href="vfunc.SearchProvider.launch_first.html">Kompass.SearchProvider.launch_first</a></h6>
+          <h6 id="vfunc-launch_first"><a href="vfunc.SearchResultView.launch_first.html">Kompass.SearchResultView.launch_first</a></h6>
           <div class="docblock">
             No description available.
           </div>
@@ -492,27 +412,7 @@ SPDX-License-Identifier: MIT
         </div>
       
         <div class="">
-          <h6 id="vfunc-get_results"><a href="vfunc.SearchProvider.get_results.html">Kompass.SearchProvider.get_results</a></h6>
-          <div class="docblock">
-            No description available.
-          </div>
-          <div class="docblock">
-            <p></p>
-          </div>
-        </div>
-      
-        <div class="">
-          <h6 id="vfunc-get_name"><a href="vfunc.SearchProvider.get_name.html">Kompass.SearchProvider.get_name</a></h6>
-          <div class="docblock">
-            No description available.
-          </div>
-          <div class="docblock">
-            <p></p>
-          </div>
-        </div>
-      
-        <div class="">
-          <h6 id="vfunc-get_icon"><a href="vfunc.SearchProvider.get_icon.html">Kompass.SearchProvider.get_icon</a></h6>
+          <h6 id="vfunc-get_provider"><a href="vfunc.SearchResultView.get_provider.html">Kompass.SearchResultView.get_provider</a></h6>
           <div class="docblock">
             No description available.
           </div>

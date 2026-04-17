@@ -7,7 +7,7 @@ SPDX-License-Identifier: MIT
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Kompass.SearchResultProvider.search_finish</title>
+  <title>Kompass.GnomeSearchProvider.new</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta charset="utf-8" />
@@ -18,10 +18,10 @@ SPDX-License-Identifier: MIT
   
 
   
-  <meta priority="og:title" content="Kompass.SearchResultProvider.search_finish"/>
-  <meta priority="og:description" content="Reference for Kompass.SearchResultProvider.search_finish"/>
-  <meta name="twitter:title" content="Kompass.SearchResultProvider.search_finish"/>
-  <meta name="twitter:description" content="Reference for Kompass.SearchResultProvider.search_finish"/>
+  <meta property="og:title" content="Kompass.GnomeSearchProvider.new"/>
+  <meta property="og:description" content="Reference for Kompass.GnomeSearchProvider.new"/>
+  <meta name="twitter:title" content="Kompass.GnomeSearchProvider.new"/>
+  <meta name="twitter:description" content="Reference for Kompass.GnomeSearchProvider.new"/>
 
 
   
@@ -71,20 +71,14 @@ SPDX-License-Identifier: MIT
 <div class="section">
   <h5>Type</h5>
   <div class="links">
-    <a href="class.SearchResultProvider.html">SearchResultProvider</a>
+    <a href="class.GnomeSearchProvider.html">GnomeSearchProvider</a>
   </div>
 </div>
 <div class="section">
-  <h5>Methods</h5>
+  <h5>Constructors</h5>
   <div class="links">
   
-    <a class="method" href="method.SearchResultProvider.search.html">search</a>
-  
-    <a class="method current" href="method.SearchResultProvider.search_finish.html">search_finish</a>
-  
-    <a class="method" href="method.SearchResultProvider.launch_first.html">launch_first</a>
-  
-    <a class="method" href="method.SearchResultProvider.get_provider.html">get_provider</a>
+    <a class="method current" href="ctor.GnomeSearchProvider.new.html">new</a>
   
   </div>
 </div>
@@ -99,27 +93,25 @@ SPDX-License-Identifier: MIT
     
 <section id="main" class="content">
   <header>
-    <h3>Method</h3>
-    <h1><a href="index.html">Kompass</a><span class="sep"></span><a href="class.SearchResultProvider.html">SearchResultProvider</a><span class="sep"></span>search_finish</h1>
+    <h3>Constructor</h3>
+    <h1><a href="index.html">Kompass</a><span class="sep"></span><a href="class.GnomeSearchProvider.html">GnomeSearchProvider</a><span class="sep"></span>new</h1>
   </header>
 
   <section>
     <div class="docblock">
       <p></p>
     </div>
-
     <div class="declaration toggle-wrapper">
-      <h4 style="display:flex;" id="declaration">
+      <h4 id="declaration" style="display:flex;">
         Declaration
-        <a class="anchor" href="#declaration"></a>
+        <a href="#declaration" class="anchor"></a>
         
       </h4>
 
-      <div class="docblock c-decl">
-        <pre><code><div class="highlight"><pre><span></span><span class="kt">void</span>
-<span class="n">kompass_search_result_provider_search_finish</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="n">KompassSearchResultProvider</span><span class="o">*</span><span class="w"> </span><span class="n">self</span><span class="p">,</span>
-<span class="w">  </span><span class="n">GAsyncResult</span><span class="o">*</span><span class="w"> </span><span class="n">_res_</span>
+      <div class="docblock">
+        <pre><code><div class="highlight"><pre><span></span><span class="n">KompassGnomeSearchProvider</span><span class="o">*</span>
+<span class="n">kompass_gnome_search_provider_new</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">gchar</span><span class="o">*</span><span class="w"> </span><span class="n">path</span>
 <span class="p">)</span>
 </pre></div>
 </code></pre>
@@ -127,9 +119,9 @@ SPDX-License-Identifier: MIT
     </div>
 
     <div class="description toggle-wrapper">
-      <h4 style="display:flex;" id="description">
+      <h4 id="description" style="display:flex;">
         Description
-        <a class="anchor" href="#description"></a>
+        <a href="#description" class="anchor"></a>
         
       </h4>
 
@@ -160,11 +152,9 @@ SPDX-License-Identifier: MIT
       <div class="docblock">
         <dl class="arguments">
           
-
-          
-          <dt class="arg-name"><code>_res_</code></dt>
+          <dt class="arg-name"><code>path</code></dt>
           <dd class="arg-description">
-            <p><em>Type:</em>&nbsp;<a href="javascript:void(0)" data-link="iface.AsyncResult.html" data-namespace="Gio" class="external"><code>GAsyncResult</code></a></p>
+            <p><em>Type:</em>&nbsp;<code>const gchar*</code></p>
             <p>No description available.</p>
             <table>
             
@@ -174,8 +164,8 @@ SPDX-License-Identifier: MIT
             
             
             
-            <tr><td title="transfer: none">The data is owned by the caller of the method.</td></tr>
-            
+            <tr><td title="transfer: none">The data is owned by the caller of the function.</td></tr>
+            <tr><td>The value is a NUL terminated UTF-8 string.</td></tr>
             </table>
           </dd>
           
@@ -187,7 +177,32 @@ SPDX-License-Identifier: MIT
     
 
     
+    <div class="return-value toggle-wrapper">
+      <h4 id="return-value">
+        Return value
+        <a href="#return-value" class="anchor"></a>
+      </h4>
 
+      <div class="docblock">
+        <div class="returns">
+          <div class="arg-description">
+            <p><em>Type:</em>&nbsp;<a href="class.GnomeSearchProvider.html"><code>KompassGnomeSearchProvider</code></a></p>
+            <p>No description available.</p>
+          </div>
+          <div>
+            <table>
+            
+            
+            
+            <tr><td title="transfer: full">The caller of the function takes ownership of the data, and is responsible for freeing it.</td></tr>
+            
+            
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    
   </section>
 </section>
 

@@ -7,7 +7,7 @@ SPDX-License-Identifier: MIT
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Kompass.SearchResultProvider.new</title>
+  <title>Kompass.SearchResultView.launch_first</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta charset="utf-8" />
@@ -18,10 +18,10 @@ SPDX-License-Identifier: MIT
   
 
   
-  <meta property="og:title" content="Kompass.SearchResultProvider.new"/>
-  <meta property="og:description" content="Reference for Kompass.SearchResultProvider.new"/>
-  <meta name="twitter:title" content="Kompass.SearchResultProvider.new"/>
-  <meta name="twitter:description" content="Reference for Kompass.SearchResultProvider.new"/>
+  <meta property="og:title" content="Kompass.SearchResultView.launch_first"/>
+  <meta property="og:description" content="Reference for Kompass.SearchResultView.launch_first"/>
+  <meta name="twitter:title" content="Kompass.SearchResultView.launch_first"/>
+  <meta name="twitter:description" content="Reference for Kompass.SearchResultView.launch_first"/>
 
 
   
@@ -71,14 +71,20 @@ SPDX-License-Identifier: MIT
 <div class="section">
   <h5>Type</h5>
   <div class="links">
-    <a href="class.SearchResultProvider.html">SearchResultProvider</a>
+    <a href="iface.SearchResultView.html">SearchResultView</a>
   </div>
 </div>
 <div class="section">
-  <h5>Constructors</h5>
+  <h5>Virtual methods</h5>
   <div class="links">
   
-    <a class="method current" href="ctor.SearchResultProvider.new.html">new</a>
+    <a class="method" href="vfunc.SearchResultView.search.html">search</a>
+  
+    <a class="method" href="vfunc.SearchResultView.search_finish.html">search_finish</a>
+  
+    <a class="method current" href="vfunc.SearchResultView.launch_first.html">launch_first</a>
+  
+    <a class="method" href="vfunc.SearchResultView.get_provider.html">get_provider</a>
   
   </div>
 </div>
@@ -93,25 +99,26 @@ SPDX-License-Identifier: MIT
     
 <section id="main" class="content">
   <header>
-    <h3>Constructor</h3>
-    <h1><a href="index.html">Kompass</a><span class="sep"></span><a href="class.SearchResultProvider.html">SearchResultProvider</a><span class="sep"></span>new</h1>
+    <h3>Virtual Method</h3>
+    <h1><a href="index.html">Kompass</a><span class="sep"></span><a href="iface.SearchResultView.html">SearchResultView</a><span class="sep"></span>launch_first</h1>
   </header>
 
   <section>
     <div class="docblock">
       <p></p>
     </div>
+
     <div class="declaration toggle-wrapper">
-      <h4 id="declaration" style="display:flex;">
+      <h4 id="declaration">
         Declaration
         <a href="#declaration" class="anchor"></a>
         
       </h4>
 
-      <div class="docblock">
-        <pre><code><div class="highlight"><pre><span></span><span class="n">KompassSearchResultProvider</span><span class="o">*</span>
-<span class="n">kompass_search_result_provider_new</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="n">KompassSearchProvider</span><span class="o">*</span><span class="w"> </span><span class="n">provider</span>
+      <div class="docblock c-decl">
+        <pre><code><div class="highlight"><pre><span></span><span class="n">gboolean</span>
+<span class="n">launch_first</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">KompassSearchResultView</span><span class="o">*</span><span class="w"> </span><span class="n">self</span>
 <span class="p">)</span>
 </pre></div>
 </code></pre>
@@ -119,7 +126,7 @@ SPDX-License-Identifier: MIT
     </div>
 
     <div class="description toggle-wrapper">
-      <h4 id="description" style="display:flex;">
+      <h4 id="description">
         Description
         <a href="#description" class="anchor"></a>
         
@@ -133,47 +140,11 @@ SPDX-License-Identifier: MIT
         
         
         
-        
-        
-        
-        
       </div>
 
       
     </div>
 
-    
-    <div class="parameters toggle-wrapper">
-      <h4 id="parameters">
-        Parameters
-        <a href="#parameters" class="anchor"></a>
-      </h4>
-
-      <div class="docblock">
-        <dl class="arguments">
-          
-          <dt class="arg-name"><code>provider</code></dt>
-          <dd class="arg-description">
-            <p><em>Type:</em>&nbsp;<a href="iface.SearchProvider.html"><code>KompassSearchProvider</code></a></p>
-            <p>No description available.</p>
-            <table>
-            
-            
-            
-            
-            
-            
-            
-            <tr><td title="transfer: none">The data is owned by the caller of the function.</td></tr>
-            
-            </table>
-          </dd>
-          
-
-          
-        </dl>
-      </div>
-    </div>
     
 
     
@@ -185,8 +156,8 @@ SPDX-License-Identifier: MIT
 
       <div class="docblock">
         <div class="returns">
-          <div class="arg-description">
-            <p><em>Type:</em>&nbsp;<a href="class.SearchResultProvider.html"><code>KompassSearchResultProvider</code></a></p>
+          <div>
+            <p><em>Type:</em>&nbsp;<code>gboolean</code></p>
             <p>No description available.</p>
           </div>
           <div>
@@ -194,7 +165,7 @@ SPDX-License-Identifier: MIT
             
             
             
-            <tr><td title="transfer: none">The data is owned by the called function.</td></tr>
+            
             
             
             </table>
@@ -203,6 +174,7 @@ SPDX-License-Identifier: MIT
       </div>
     </div>
     
+
   </section>
 </section>
 

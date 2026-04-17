@@ -7,7 +7,7 @@ SPDX-License-Identifier: MIT
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Kompass.SearchResultProvider.search</title>
+  <title>Kompass.Cava.set_follow_default_speaker</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta charset="utf-8" />
@@ -18,10 +18,10 @@ SPDX-License-Identifier: MIT
   
 
   
-  <meta priority="og:title" content="Kompass.SearchResultProvider.search"/>
-  <meta priority="og:description" content="Reference for Kompass.SearchResultProvider.search"/>
-  <meta name="twitter:title" content="Kompass.SearchResultProvider.search"/>
-  <meta name="twitter:description" content="Reference for Kompass.SearchResultProvider.search"/>
+  <meta priority="og:title" content="Kompass.Cava.set_follow_default_speaker"/>
+  <meta priority="og:description" content="Reference for Kompass.Cava.set_follow_default_speaker"/>
+  <meta name="twitter:title" content="Kompass.Cava.set_follow_default_speaker"/>
+  <meta name="twitter:description" content="Reference for Kompass.Cava.set_follow_default_speaker"/>
 
 
   
@@ -71,20 +71,22 @@ SPDX-License-Identifier: MIT
 <div class="section">
   <h5>Type</h5>
   <div class="links">
-    <a href="class.SearchResultProvider.html">SearchResultProvider</a>
+    <a href="class.Cava.html">Cava</a>
   </div>
 </div>
 <div class="section">
   <h5>Methods</h5>
   <div class="links">
   
-    <a class="method current" href="method.SearchResultProvider.search.html">search</a>
+    <a class="method" href="method.Cava.get_cava.html">get_cava</a>
   
-    <a class="method" href="method.SearchResultProvider.search_finish.html">search_finish</a>
+    <a class="method" href="method.Cava.get_style.html">get_style</a>
   
-    <a class="method" href="method.SearchResultProvider.launch_first.html">launch_first</a>
+    <a class="method" href="method.Cava.set_style.html">set_style</a>
   
-    <a class="method" href="method.SearchResultProvider.get_provider.html">get_provider</a>
+    <a class="method" href="method.Cava.get_follow_default_speaker.html">get_follow_default_speaker</a>
+  
+    <a class="method current" href="method.Cava.set_follow_default_speaker.html">set_follow_default_speaker</a>
   
   </div>
 </div>
@@ -100,7 +102,7 @@ SPDX-License-Identifier: MIT
 <section id="main" class="content">
   <header>
     <h3>Method</h3>
-    <h1><a href="index.html">Kompass</a><span class="sep"></span><a href="class.SearchResultProvider.html">SearchResultProvider</a><span class="sep"></span>search</h1>
+    <h1><a href="index.html">Kompass</a><span class="sep"></span><a href="class.Cava.html">Cava</a><span class="sep"></span>set_follow_default_speaker</h1>
   </header>
 
   <section>
@@ -117,11 +119,9 @@ SPDX-License-Identifier: MIT
 
       <div class="docblock c-decl">
         <pre><code><div class="highlight"><pre><span></span><span class="kt">void</span>
-<span class="n">kompass_search_result_provider_search</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="n">KompassSearchResultProvider</span><span class="o">*</span><span class="w"> </span><span class="n">self</span><span class="p">,</span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">gchar</span><span class="o">*</span><span class="w"> </span><span class="n">query</span><span class="p">,</span>
-<span class="w">  </span><span class="n">GAsyncReadyCallback</span><span class="w"> </span><span class="n">_callback_</span><span class="p">,</span>
-<span class="w">  </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">_callback__target</span>
+<span class="n">kompass_cava_set_follow_default_speaker</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">KompassCava</span><span class="o">*</span><span class="w"> </span><span class="n">self</span><span class="p">,</span>
+<span class="w">  </span><span class="n">gboolean</span><span class="w"> </span><span class="n">value</span>
 <span class="p">)</span>
 </pre></div>
 </code></pre>
@@ -164,9 +164,9 @@ SPDX-License-Identifier: MIT
           
 
           
-          <dt class="arg-name"><code>query</code></dt>
+          <dt class="arg-name"><code>value</code></dt>
           <dd class="arg-description">
-            <p><em>Type:</em>&nbsp;<code>const gchar*</code></p>
+            <p><em>Type:</em>&nbsp;<code>gboolean</code></p>
             <p>No description available.</p>
             <table>
             
@@ -176,41 +176,7 @@ SPDX-License-Identifier: MIT
             
             
             
-            <tr><td title="transfer: none">The data is owned by the caller of the method.</td></tr>
-            <tr><td>The value is a NUL terminated UTF-8 string.</td></tr>
-            </table>
-          </dd>
-          
-          <dt class="arg-name"><code>_callback_</code></dt>
-          <dd class="arg-description">
-            <p><em>Type:</em>&nbsp;<a href="javascript:void(0)" data-link="callback.AsyncReadyCallback.html" data-namespace="Gio" class="external"><code>GAsyncReadyCallback</code></a></p>
-            <p>No description available.</p>
-            <table>
             
-            <tr><td>The argument can be <code>NULL</code>.</td></tr>
-            
-            
-            
-            
-            
-            
-            
-            </table>
-          </dd>
-          
-          <dt class="arg-name"><code>_callback__target</code></dt>
-          <dd class="arg-description">
-            <p><em>Type:</em>&nbsp;<code>void*</code></p>
-            <p>No description available.</p>
-            <table>
-            
-            <tr><td>The argument can be <code>NULL</code>.</td></tr>
-            
-            
-            
-            
-            
-            <tr><td title="transfer: none">The data is owned by the caller of the method.</td></tr>
             
             </table>
           </dd>

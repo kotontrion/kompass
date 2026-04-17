@@ -7,7 +7,7 @@ SPDX-License-Identifier: MIT
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Kompass.Player.set_empty_cover_uri</title>
+  <title>Kompass.RevealingSearchResultView.new</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta charset="utf-8" />
@@ -18,10 +18,10 @@ SPDX-License-Identifier: MIT
   
 
   
-  <meta priority="og:title" content="Kompass.Player.set_empty_cover_uri"/>
-  <meta priority="og:description" content="Reference for Kompass.Player.set_empty_cover_uri"/>
-  <meta name="twitter:title" content="Kompass.Player.set_empty_cover_uri"/>
-  <meta name="twitter:description" content="Reference for Kompass.Player.set_empty_cover_uri"/>
+  <meta property="og:title" content="Kompass.RevealingSearchResultView.new"/>
+  <meta property="og:description" content="Reference for Kompass.RevealingSearchResultView.new"/>
+  <meta name="twitter:title" content="Kompass.RevealingSearchResultView.new"/>
+  <meta name="twitter:description" content="Reference for Kompass.RevealingSearchResultView.new"/>
 
 
   
@@ -71,30 +71,14 @@ SPDX-License-Identifier: MIT
 <div class="section">
   <h5>Type</h5>
   <div class="links">
-    <a href="class.Player.html">Player</a>
+    <a href="class.RevealingSearchResultView.html">RevealingSearchResultView</a>
   </div>
 </div>
 <div class="section">
-  <h5>Methods</h5>
+  <h5>Constructors</h5>
   <div class="links">
   
-    <a class="method" href="method.Player.next.html">next</a>
-  
-    <a class="method" href="method.Player.prev.html">prev</a>
-  
-    <a class="method" href="method.Player.play_pause.html">play_pause</a>
-  
-    <a class="method" href="method.Player.raise.html">raise</a>
-  
-    <a class="method" href="method.Player.pause_icon.html">pause_icon</a>
-  
-    <a class="method" href="method.Player.get_player.html">get_player</a>
-  
-    <a class="method" href="method.Player.get_cover_file.html">get_cover_file</a>
-  
-    <a class="method" href="method.Player.get_empty_cover_uri.html">get_empty_cover_uri</a>
-  
-    <a class="method current" href="method.Player.set_empty_cover_uri.html">set_empty_cover_uri</a>
+    <a class="method current" href="ctor.RevealingSearchResultView.new.html">new</a>
   
   </div>
 </div>
@@ -109,27 +93,25 @@ SPDX-License-Identifier: MIT
     
 <section id="main" class="content">
   <header>
-    <h3>Method</h3>
-    <h1><a href="index.html">Kompass</a><span class="sep"></span><a href="class.Player.html">Player</a><span class="sep"></span>set_empty_cover_uri</h1>
+    <h3>Constructor</h3>
+    <h1><a href="index.html">Kompass</a><span class="sep"></span><a href="class.RevealingSearchResultView.html">RevealingSearchResultView</a><span class="sep"></span>new</h1>
   </header>
 
   <section>
     <div class="docblock">
       <p></p>
     </div>
-
     <div class="declaration toggle-wrapper">
-      <h4 style="display:flex;" id="declaration">
+      <h4 id="declaration" style="display:flex;">
         Declaration
-        <a class="anchor" href="#declaration"></a>
+        <a href="#declaration" class="anchor"></a>
         
       </h4>
 
-      <div class="docblock c-decl">
-        <pre><code><div class="highlight"><pre><span></span><span class="kt">void</span>
-<span class="n">kompass_player_set_empty_cover_uri</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="n">KompassPlayer</span><span class="o">*</span><span class="w"> </span><span class="n">self</span><span class="p">,</span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">gchar</span><span class="o">*</span><span class="w"> </span><span class="n">value</span>
+      <div class="docblock">
+        <pre><code><div class="highlight"><pre><span></span><span class="n">KompassRevealingSearchResultView</span><span class="o">*</span>
+<span class="n">kompass_revealing_search_result_view_new</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">KompassSearchProvider</span><span class="o">*</span><span class="w"> </span><span class="n">provider</span>
 <span class="p">)</span>
 </pre></div>
 </code></pre>
@@ -137,9 +119,9 @@ SPDX-License-Identifier: MIT
     </div>
 
     <div class="description toggle-wrapper">
-      <h4 style="display:flex;" id="description">
+      <h4 id="description" style="display:flex;">
         Description
-        <a class="anchor" href="#description"></a>
+        <a href="#description" class="anchor"></a>
         
       </h4>
 
@@ -170,11 +152,9 @@ SPDX-License-Identifier: MIT
       <div class="docblock">
         <dl class="arguments">
           
-
-          
-          <dt class="arg-name"><code>value</code></dt>
+          <dt class="arg-name"><code>provider</code></dt>
           <dd class="arg-description">
-            <p><em>Type:</em>&nbsp;<code>const gchar*</code></p>
+            <p><em>Type:</em>&nbsp;<a href="iface.SearchProvider.html"><code>KompassSearchProvider</code></a></p>
             <p>No description available.</p>
             <table>
             
@@ -184,8 +164,8 @@ SPDX-License-Identifier: MIT
             
             
             
-            <tr><td title="transfer: none">The data is owned by the caller of the method.</td></tr>
-            <tr><td>The value is a NUL terminated UTF-8 string.</td></tr>
+            <tr><td title="transfer: none">The data is owned by the caller of the function.</td></tr>
+            
             </table>
           </dd>
           
@@ -197,7 +177,32 @@ SPDX-License-Identifier: MIT
     
 
     
+    <div class="return-value toggle-wrapper">
+      <h4 id="return-value">
+        Return value
+        <a href="#return-value" class="anchor"></a>
+      </h4>
 
+      <div class="docblock">
+        <div class="returns">
+          <div class="arg-description">
+            <p><em>Type:</em>&nbsp;<a href="class.RevealingSearchResultView.html"><code>KompassRevealingSearchResultView</code></a></p>
+            <p>No description available.</p>
+          </div>
+          <div>
+            <table>
+            
+            
+            
+            <tr><td title="transfer: none">The data is owned by the called function.</td></tr>
+            
+            
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    
   </section>
 </section>
 

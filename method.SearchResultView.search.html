@@ -7,7 +7,7 @@ SPDX-License-Identifier: MIT
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Kompass.WifiAp.set_ap</title>
+  <title>Kompass.SearchResultView.search</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta charset="utf-8" />
@@ -18,10 +18,10 @@ SPDX-License-Identifier: MIT
   
 
   
-  <meta priority="og:title" content="Kompass.WifiAp.set_ap"/>
-  <meta priority="og:description" content="Reference for Kompass.WifiAp.set_ap"/>
-  <meta name="twitter:title" content="Kompass.WifiAp.set_ap"/>
-  <meta name="twitter:description" content="Reference for Kompass.WifiAp.set_ap"/>
+  <meta priority="og:title" content="Kompass.SearchResultView.search"/>
+  <meta priority="og:description" content="Reference for Kompass.SearchResultView.search"/>
+  <meta name="twitter:title" content="Kompass.SearchResultView.search"/>
+  <meta name="twitter:description" content="Reference for Kompass.SearchResultView.search"/>
 
 
   
@@ -71,36 +71,20 @@ SPDX-License-Identifier: MIT
 <div class="section">
   <h5>Type</h5>
   <div class="links">
-    <a href="class.WifiAp.html">WifiAp</a>
+    <a href="iface.SearchResultView.html">SearchResultView</a>
   </div>
 </div>
 <div class="section">
   <h5>Methods</h5>
   <div class="links">
   
-    <a class="method" href="method.WifiAp.clicked.html">clicked</a>
+    <a class="method current" href="method.SearchResultView.search.html">search</a>
   
-    <a class="method" href="method.WifiAp.open_menu.html">open_menu</a>
+    <a class="method" href="method.SearchResultView.search_finish.html">search_finish</a>
   
-    <a class="method" href="method.WifiAp.compare_to.html">compare_to</a>
+    <a class="method" href="method.SearchResultView.launch_first.html">launch_first</a>
   
-    <a class="method" href="method.WifiAp.get_network.html">get_network</a>
-  
-    <a class="method" href="method.WifiAp.set_network.html">set_network</a>
-  
-    <a class="method" href="method.WifiAp.get_wifi.html">get_wifi</a>
-  
-    <a class="method" href="method.WifiAp.set_wifi.html">set_wifi</a>
-  
-    <a class="method" href="method.WifiAp.get_ap.html">get_ap</a>
-  
-    <a class="method current" href="method.WifiAp.set_ap.html">set_ap</a>
-  
-    <a class="method" href="method.WifiAp.get_active.html">get_active</a>
-  
-    <a class="method" href="method.WifiAp.set_active.html">set_active</a>
-  
-    <a class="method" href="method.WifiAp.get_description.html">get_description</a>
+    <a class="method" href="method.SearchResultView.get_provider.html">get_provider</a>
   
   </div>
 </div>
@@ -116,7 +100,7 @@ SPDX-License-Identifier: MIT
 <section id="main" class="content">
   <header>
     <h3>Method</h3>
-    <h1><a href="index.html">Kompass</a><span class="sep"></span><a href="class.WifiAp.html">WifiAp</a><span class="sep"></span>set_ap</h1>
+    <h1><a href="index.html">Kompass</a><span class="sep"></span><a href="iface.SearchResultView.html">SearchResultView</a><span class="sep"></span>search</h1>
   </header>
 
   <section>
@@ -133,9 +117,11 @@ SPDX-License-Identifier: MIT
 
       <div class="docblock c-decl">
         <pre><code><div class="highlight"><pre><span></span><span class="kt">void</span>
-<span class="n">kompass_wifi_ap_set_ap</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="n">KompassWifiAp</span><span class="o">*</span><span class="w"> </span><span class="n">self</span><span class="p">,</span>
-<span class="w">  </span><span class="n">AstalNetworkAccessPoint</span><span class="o">*</span><span class="w"> </span><span class="n">value</span>
+<span class="n">kompass_search_result_view_search</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">KompassSearchResultView</span><span class="o">*</span><span class="w"> </span><span class="n">self</span><span class="p">,</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">gchar</span><span class="o">*</span><span class="w"> </span><span class="n">query</span><span class="p">,</span>
+<span class="w">  </span><span class="n">GAsyncReadyCallback</span><span class="w"> </span><span class="n">_callback_</span><span class="p">,</span>
+<span class="w">  </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">_callback__target</span>
 <span class="p">)</span>
 </pre></div>
 </code></pre>
@@ -178,13 +164,47 @@ SPDX-License-Identifier: MIT
           
 
           
-          <dt class="arg-name"><code>value</code></dt>
+          <dt class="arg-name"><code>query</code></dt>
           <dd class="arg-description">
-            <p><em>Type:</em>&nbsp;<a href="javascript:void(0)" data-link="class.AccessPoint.html" data-namespace="AstalNetwork" class="external"><code>AstalNetworkAccessPoint</code></a></p>
+            <p><em>Type:</em>&nbsp;<code>const gchar*</code></p>
             <p>No description available.</p>
             <table>
             
             
+            
+            
+            
+            
+            
+            <tr><td title="transfer: none">The data is owned by the caller of the method.</td></tr>
+            <tr><td>The value is a NUL terminated UTF-8 string.</td></tr>
+            </table>
+          </dd>
+          
+          <dt class="arg-name"><code>_callback_</code></dt>
+          <dd class="arg-description">
+            <p><em>Type:</em>&nbsp;<a href="javascript:void(0)" data-link="callback.AsyncReadyCallback.html" data-namespace="Gio" class="external"><code>GAsyncReadyCallback</code></a></p>
+            <p>No description available.</p>
+            <table>
+            
+            <tr><td>The argument can be <code>NULL</code>.</td></tr>
+            
+            
+            
+            
+            
+            
+            
+            </table>
+          </dd>
+          
+          <dt class="arg-name"><code>_callback__target</code></dt>
+          <dd class="arg-description">
+            <p><em>Type:</em>&nbsp;<code>void*</code></p>
+            <p>No description available.</p>
+            <table>
+            
+            <tr><td>The argument can be <code>NULL</code>.</td></tr>
             
             
             

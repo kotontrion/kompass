@@ -7,7 +7,7 @@ SPDX-License-Identifier: MIT
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Kompass.SearchResultButton.set_result</title>
+  <title>Kompass.RevealingSearchResultView.set_max_results</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta charset="utf-8" />
@@ -18,10 +18,10 @@ SPDX-License-Identifier: MIT
   
 
   
-  <meta priority="og:title" content="Kompass.SearchResultButton.set_result"/>
-  <meta priority="og:description" content="Reference for Kompass.SearchResultButton.set_result"/>
-  <meta name="twitter:title" content="Kompass.SearchResultButton.set_result"/>
-  <meta name="twitter:description" content="Reference for Kompass.SearchResultButton.set_result"/>
+  <meta priority="og:title" content="Kompass.RevealingSearchResultView.set_max_results"/>
+  <meta priority="og:description" content="Reference for Kompass.RevealingSearchResultView.set_max_results"/>
+  <meta name="twitter:title" content="Kompass.RevealingSearchResultView.set_max_results"/>
+  <meta name="twitter:description" content="Reference for Kompass.RevealingSearchResultView.set_max_results"/>
 
 
   
@@ -71,20 +71,18 @@ SPDX-License-Identifier: MIT
 <div class="section">
   <h5>Type</h5>
   <div class="links">
-    <a href="class.SearchResultButton.html">SearchResultButton</a>
+    <a href="class.RevealingSearchResultView.html">RevealingSearchResultView</a>
   </div>
 </div>
 <div class="section">
   <h5>Methods</h5>
   <div class="links">
   
-    <a class="method" href="method.SearchResultButton.clicked.html">clicked</a>
+    <a class="method" href="method.RevealingSearchResultView.set_create_widget_fun.html">set_create_widget_fun</a>
   
-    <a class="method" href="method.SearchResultButton.activated.html">activated</a>
+    <a class="method" href="method.RevealingSearchResultView.get_max_results.html">get_max_results</a>
   
-    <a class="method" href="method.SearchResultButton.get_result.html">get_result</a>
-  
-    <a class="method current" href="method.SearchResultButton.set_result.html">set_result</a>
+    <a class="method current" href="method.RevealingSearchResultView.set_max_results.html">set_max_results</a>
   
   </div>
 </div>
@@ -100,7 +98,7 @@ SPDX-License-Identifier: MIT
 <section id="main" class="content">
   <header>
     <h3>Method</h3>
-    <h1><a href="index.html">Kompass</a><span class="sep"></span><a href="class.SearchResultButton.html">SearchResultButton</a><span class="sep"></span>set_result</h1>
+    <h1><a href="index.html">Kompass</a><span class="sep"></span><a href="class.RevealingSearchResultView.html">RevealingSearchResultView</a><span class="sep"></span>set_max_results</h1>
   </header>
 
   <section>
@@ -117,9 +115,9 @@ SPDX-License-Identifier: MIT
 
       <div class="docblock c-decl">
         <pre><code><div class="highlight"><pre><span></span><span class="kt">void</span>
-<span class="n">kompass_search_result_button_set_result</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="n">KompassSearchResultButton</span><span class="o">*</span><span class="w"> </span><span class="n">self</span><span class="p">,</span>
-<span class="w">  </span><span class="n">KompassSearchResult</span><span class="o">*</span><span class="w"> </span><span class="n">value</span>
+<span class="n">kompass_revealing_search_result_view_set_max_results</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">KompassRevealingSearchResultView</span><span class="o">*</span><span class="w"> </span><span class="n">self</span><span class="p">,</span>
+<span class="w">  </span><span class="n">guint</span><span class="w"> </span><span class="n">value</span>
 <span class="p">)</span>
 </pre></div>
 </code></pre>
@@ -164,7 +162,7 @@ SPDX-License-Identifier: MIT
           
           <dt class="arg-name"><code>value</code></dt>
           <dd class="arg-description">
-            <p><em>Type:</em>&nbsp;<a href="class.SearchResult.html"><code>KompassSearchResult</code></a></p>
+            <p><em>Type:</em>&nbsp;<code>guint</code></p>
             <p>No description available.</p>
             <table>
             
@@ -174,7 +172,7 @@ SPDX-License-Identifier: MIT
             
             
             
-            <tr><td title="transfer: none">The data is owned by the caller of the method.</td></tr>
+            
             
             </table>
           </dd>

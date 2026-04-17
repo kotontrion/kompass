@@ -7,7 +7,7 @@ SPDX-License-Identifier: MIT
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Kompass.Player.set_player</title>
+  <title>Kompass.RevealingSearchResultView.set_create_widget_fun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta charset="utf-8" />
@@ -18,10 +18,10 @@ SPDX-License-Identifier: MIT
   
 
   
-  <meta priority="og:title" content="Kompass.Player.set_player"/>
-  <meta priority="og:description" content="Reference for Kompass.Player.set_player"/>
-  <meta name="twitter:title" content="Kompass.Player.set_player"/>
-  <meta name="twitter:description" content="Reference for Kompass.Player.set_player"/>
+  <meta priority="og:title" content="Kompass.RevealingSearchResultView.set_create_widget_fun"/>
+  <meta priority="og:description" content="Reference for Kompass.RevealingSearchResultView.set_create_widget_fun"/>
+  <meta name="twitter:title" content="Kompass.RevealingSearchResultView.set_create_widget_fun"/>
+  <meta name="twitter:description" content="Reference for Kompass.RevealingSearchResultView.set_create_widget_fun"/>
 
 
   
@@ -71,32 +71,18 @@ SPDX-License-Identifier: MIT
 <div class="section">
   <h5>Type</h5>
   <div class="links">
-    <a href="class.Player.html">Player</a>
+    <a href="class.RevealingSearchResultView.html">RevealingSearchResultView</a>
   </div>
 </div>
 <div class="section">
   <h5>Methods</h5>
   <div class="links">
   
-    <a class="method" href="method.Player.next.html">next</a>
+    <a class="method current" href="method.RevealingSearchResultView.set_create_widget_fun.html">set_create_widget_fun</a>
   
-    <a class="method" href="method.Player.prev.html">prev</a>
+    <a class="method" href="method.RevealingSearchResultView.get_max_results.html">get_max_results</a>
   
-    <a class="method" href="method.Player.play_pause.html">play_pause</a>
-  
-    <a class="method" href="method.Player.raise.html">raise</a>
-  
-    <a class="method" href="method.Player.pause_icon.html">pause_icon</a>
-  
-    <a class="method" href="method.Player.get_player.html">get_player</a>
-  
-    <a class="method current" href="method.Player.set_player.html">set_player</a>
-  
-    <a class="method" href="method.Player.get_cover_file.html">get_cover_file</a>
-  
-    <a class="method" href="method.Player.get_empty_cover_uri.html">get_empty_cover_uri</a>
-  
-    <a class="method" href="method.Player.set_empty_cover_uri.html">set_empty_cover_uri</a>
+    <a class="method" href="method.RevealingSearchResultView.set_max_results.html">set_max_results</a>
   
   </div>
 </div>
@@ -112,7 +98,7 @@ SPDX-License-Identifier: MIT
 <section id="main" class="content">
   <header>
     <h3>Method</h3>
-    <h1><a href="index.html">Kompass</a><span class="sep"></span><a href="class.Player.html">Player</a><span class="sep"></span>set_player</h1>
+    <h1><a href="index.html">Kompass</a><span class="sep"></span><a href="class.RevealingSearchResultView.html">RevealingSearchResultView</a><span class="sep"></span>set_create_widget_fun</h1>
   </header>
 
   <section>
@@ -129,9 +115,11 @@ SPDX-License-Identifier: MIT
 
       <div class="docblock c-decl">
         <pre><code><div class="highlight"><pre><span></span><span class="kt">void</span>
-<span class="n">kompass_player_set_player</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="n">KompassPlayer</span><span class="o">*</span><span class="w"> </span><span class="n">self</span><span class="p">,</span>
-<span class="w">  </span><span class="n">AstalMprisPlayer</span><span class="o">*</span><span class="w"> </span><span class="n">value</span>
+<span class="n">kompass_revealing_search_result_view_set_create_widget_fun</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">KompassRevealingSearchResultView</span><span class="o">*</span><span class="w"> </span><span class="n">self</span><span class="p">,</span>
+<span class="w">  </span><span class="n">GtkListBoxCreateWidgetFunc</span><span class="w"> </span><span class="n">widget_fun</span><span class="p">,</span>
+<span class="w">  </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">widget_fun_target</span><span class="p">,</span>
+<span class="w">  </span><span class="n">GDestroyNotify</span><span class="w"> </span><span class="n">widget_fun_target_destroy_notify</span>
 <span class="p">)</span>
 </pre></div>
 </code></pre>
@@ -174,9 +162,43 @@ SPDX-License-Identifier: MIT
           
 
           
-          <dt class="arg-name"><code>value</code></dt>
+          <dt class="arg-name"><code>widget_fun</code></dt>
           <dd class="arg-description">
-            <p><em>Type:</em>&nbsp;<a href="javascript:void(0)" data-link="class.Player.html" data-namespace="AstalMpris" class="external"><code>AstalMprisPlayer</code></a></p>
+            <p><em>Type:</em>&nbsp;<a href="javascript:void(0)" data-link="callback.ListBoxCreateWidgetFunc.html" data-namespace="Gtk" class="external"><code>GtkListBoxCreateWidgetFunc</code></a></p>
+            <p>No description available.</p>
+            <table>
+            
+            <tr><td>The argument can be <code>NULL</code>.</td></tr>
+            
+            
+            
+            
+            
+            
+            
+            </table>
+          </dd>
+          
+          <dt class="arg-name"><code>widget_fun_target</code></dt>
+          <dd class="arg-description">
+            <p><em>Type:</em>&nbsp;<code>void*</code></p>
+            <p>No description available.</p>
+            <table>
+            
+            <tr><td>The argument can be <code>NULL</code>.</td></tr>
+            
+            
+            
+            
+            
+            <tr><td title="transfer: none">The data is owned by the caller of the method.</td></tr>
+            
+            </table>
+          </dd>
+          
+          <dt class="arg-name"><code>widget_fun_target_destroy_notify</code></dt>
+          <dd class="arg-description">
+            <p><em>Type:</em>&nbsp;<a href="javascript:void(0)" data-link="callback.DestroyNotify.html" data-namespace="GLib" class="external"><code>GDestroyNotify</code></a></p>
             <p>No description available.</p>
             <table>
             
@@ -186,7 +208,7 @@ SPDX-License-Identifier: MIT
             
             
             
-            <tr><td title="transfer: none">The data is owned by the caller of the method.</td></tr>
+            
             
             </table>
           </dd>

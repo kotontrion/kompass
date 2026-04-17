@@ -7,7 +7,7 @@ SPDX-License-Identifier: MIT
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Kompass.SearchResultProvider.get_provider</title>
+  <title>Kompass.Cava.get_follow_default_speaker</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta charset="utf-8" />
@@ -18,10 +18,10 @@ SPDX-License-Identifier: MIT
   
 
   
-  <meta priority="og:title" content="Kompass.SearchResultProvider.get_provider"/>
-  <meta priority="og:description" content="Reference for Kompass.SearchResultProvider.get_provider"/>
-  <meta name="twitter:title" content="Kompass.SearchResultProvider.get_provider"/>
-  <meta name="twitter:description" content="Reference for Kompass.SearchResultProvider.get_provider"/>
+  <meta priority="og:title" content="Kompass.Cava.get_follow_default_speaker"/>
+  <meta priority="og:description" content="Reference for Kompass.Cava.get_follow_default_speaker"/>
+  <meta name="twitter:title" content="Kompass.Cava.get_follow_default_speaker"/>
+  <meta name="twitter:description" content="Reference for Kompass.Cava.get_follow_default_speaker"/>
 
 
   
@@ -71,20 +71,22 @@ SPDX-License-Identifier: MIT
 <div class="section">
   <h5>Type</h5>
   <div class="links">
-    <a href="class.SearchResultProvider.html">SearchResultProvider</a>
+    <a href="class.Cava.html">Cava</a>
   </div>
 </div>
 <div class="section">
   <h5>Methods</h5>
   <div class="links">
   
-    <a class="method" href="method.SearchResultProvider.search.html">search</a>
+    <a class="method" href="method.Cava.get_cava.html">get_cava</a>
   
-    <a class="method" href="method.SearchResultProvider.search_finish.html">search_finish</a>
+    <a class="method" href="method.Cava.get_style.html">get_style</a>
   
-    <a class="method" href="method.SearchResultProvider.launch_first.html">launch_first</a>
+    <a class="method" href="method.Cava.set_style.html">set_style</a>
   
-    <a class="method current" href="method.SearchResultProvider.get_provider.html">get_provider</a>
+    <a class="method current" href="method.Cava.get_follow_default_speaker.html">get_follow_default_speaker</a>
+  
+    <a class="method" href="method.Cava.set_follow_default_speaker.html">set_follow_default_speaker</a>
   
   </div>
 </div>
@@ -100,7 +102,7 @@ SPDX-License-Identifier: MIT
 <section id="main" class="content">
   <header>
     <h3>Method</h3>
-    <h1><a href="index.html">Kompass</a><span class="sep"></span><a href="class.SearchResultProvider.html">SearchResultProvider</a><span class="sep"></span>get_provider</h1>
+    <h1><a href="index.html">Kompass</a><span class="sep"></span><a href="class.Cava.html">Cava</a><span class="sep"></span>get_follow_default_speaker</h1>
   </header>
 
   <section>
@@ -116,9 +118,9 @@ SPDX-License-Identifier: MIT
       </h4>
 
       <div class="docblock c-decl">
-        <pre><code><div class="highlight"><pre><span></span><span class="n">KompassSearchProvider</span><span class="o">*</span>
-<span class="n">kompass_search_result_provider_get_provider</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="n">KompassSearchResultProvider</span><span class="o">*</span><span class="w"> </span><span class="n">self</span>
+        <pre><code><div class="highlight"><pre><span></span><span class="n">gboolean</span>
+<span class="n">kompass_cava_get_follow_default_speaker</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">KompassCava</span><span class="o">*</span><span class="w"> </span><span class="n">self</span>
 <span class="p">)</span>
 </pre></div>
 </code></pre>
@@ -161,7 +163,7 @@ SPDX-License-Identifier: MIT
       <div class="docblock">
         <div class="returns">
           <div class="arg-description">
-            <p><em>Type:</em>&nbsp;<a href="iface.SearchProvider.html"><code>KompassSearchProvider</code></a></p>
+            <p><em>Type:</em>&nbsp;<code>gboolean</code></p>
             <p>No description available.</p>
           </div>
           <div>
@@ -169,7 +171,7 @@ SPDX-License-Identifier: MIT
             
             
             
-            <tr><td title="transfer: none">The returned data is owned by the instance.</td></tr>
+            
             
             
             </table>
