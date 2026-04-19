@@ -35,7 +35,7 @@ libkompass_vala_sources += [config] + files(
   'mpris-player.vala',
   'notification.vala',
   'popup-notification.vala',
-  'scrolling-label.vala',
+  'scrolled-bin.vala',
   'tags.vala',
   'tray.vala',
   'vertical-clock.vala',
