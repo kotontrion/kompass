@@ -5,7 +5,7 @@ repository_url = "https://codeberg.org/kotontrion/kompass.git"
 authors = "kotontrion"
 license = "MIT"
 description = "A collection off widgets useful for creating status bars using astal"
-search_index = true
+search_index = false
 
 [dependencies."GLib"]
 name = "GLib"
@@ -94,7 +94,7 @@ docs_url = "https://aylur.github.io/libastal/tray/"
 
 [theme]
 name = "basic"
-show_index_summary = true
+show_index_summary = false
 show_class_hierarchy = true
 
 [source-location]
@@ -102,3 +102,8 @@ base_url = "https://codeberg.org/kotontrion/kompass/src/branch/main/libkompass/"
 
 [extra]
 urlmap_file = "urlmap.js"
+
+
+content_images = [
+  "images/arrow-button.jpg",
+]

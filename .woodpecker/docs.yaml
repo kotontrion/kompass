@@ -24,7 +24,7 @@ steps:
       - git config --global user.name "[Woodpecker CI] $CI_COMMIT_AUTHOR"
       - git clone -b pages https://$PAGES_TOKEN@codeberg.org/$CI_REPO pages
       - find pages -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -r {} +
-      - mv build/docs/libkompass/Kompass-0.1/* pages
+      - mv build/docs/libkompass/* pages
       - cd pages
       - git add --all
       - git diff --cached --quiet || git commit -m "[CI SKIP] Deploy docs from $CI_REPO_URL/commit/$CI_COMMIT_SHA"

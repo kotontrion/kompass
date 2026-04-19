@@ -1,76 +1,5 @@
 using GtkLayerShell;
 
-private class PopupNotification : Gtk.ListBoxRow {
-  private Gtk.Revealer outer_revealer;
-  private Gtk.Revealer inner_revealer;
-  private Gtk.Box notification_box;
-
-  internal Kompass.Notification notification;
-
-  public AstalNotifd.Notifd notifd;
-  public int animation_duration { get; set; default = 500; }
-  public int timeout { get; set; default = 5000; }
-
-  public PopupNotification(AstalNotifd.Notification notification) {
-    this.notifd = AstalNotifd.get_default();
-    this.notification = new Kompass.Notification(notification);
-
-    this.selectable = false;
-    this.activatable = false;
-
-    this.notification_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-
-    this.outer_revealer = new Gtk.Revealer() {
-      transition_type = Gtk.RevealerTransitionType.SLIDE_UP,
-      transition_duration = this.animation_duration,
-      reveal_child = false,
-    };
-
-    this.inner_revealer = new Gtk.Revealer() {
-      transition_type = Gtk.RevealerTransitionType.SLIDE_RIGHT,
-      transition_duration = this.animation_duration,
-      reveal_child = true,
-    };
-
-    this.inner_revealer.set_child(this.notification);
-    this.outer_revealer.set_child(this.inner_revealer);
-    this.notification_box.append(this.outer_revealer);
-    this.set_child(this.notification_box);
-
-    this.inner_revealer.notify["child-revealed"].connect(() => {
-      if (!this.inner_revealer.reveal_child) {
-        this.outer_revealer.reveal_child = false;
-        if (!this.outer_revealer.child_revealed) {
-          (this.parent as Gtk.ListBox)?.remove(this);
-        }
-      }
-    });
-
-    this.outer_revealer.notify["child-revealed"].connect(() => {
-      if (!this.outer_revealer.reveal_child) {
-        (this.parent as Gtk.ListBox)?.remove(this);
-      }
-    });
-
-    this.notifd.resolved.connect((id, reason) => {
-      if (id == notification.id) {
-        this.inner_revealer.reveal_child = false;
-      }
-    });
-
-    this.realize.connect(() => {
-      GLib.Idle.add(() => {
-        this.outer_revealer.reveal_child = true;
-        return GLib.Source.REMOVE;
-      });
-      GLib.Timeout.add(this.timeout, () => {
-        this.inner_revealer.reveal_child = false;
-        return GLib.Source.REMOVE;
-      });
-    });
-  }
-}
-
 public class KompassBar.PopupNotificationWindow : Astal.Window {
   public AstalNotifd.Notifd notifd;
 
@@ -112,16 +41,22 @@ public class KompassBar.PopupNotificationWindow : Astal.Window {
     if (replaced) {
       int i = 0;
 
-      PopupNotification? n = (PopupNotification)this.notif_list.get_row_at_index(0);
+      Kompass.PopupNotification? n = (Kompass.PopupNotification)this.notif_list.get_row_at_index(0);
       while (n != null) {
         if (n.notification.notification.id == id) {
           n.notification.notification = this.notifd.get_notification(id);
           break;
         }
-        n = (PopupNotification)this.notif_list.get_row_at_index(++i);
+        n = (Kompass.PopupNotification)this.notif_list.get_row_at_index(++i);
       }
     } else {
-      this.notif_list.append(new PopupNotification(this.notifd.get_notification(id)));
+      var notif = new Kompass.PopupNotification(
+        this.notifd.get_notification(id),
+        Kompass.PopupNotificationTransitionType.IN_BOTTOM_OUT_LEFT);
+      notif.closed.connect(() => {
+        this.notif_list.remove(notif);
+      });
+      this.notif_list.append(notif);
     }
   }
 }

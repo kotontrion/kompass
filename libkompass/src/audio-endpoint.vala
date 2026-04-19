@@ -6,7 +6,7 @@ public class Kompass.AudioNode : Gtk.ListBoxRow {
   private unowned Gtk.Adjustment volume_adjust;
 
   [GtkCallback]
-  public string icon_substitue(string icon) {
+  private string icon_substitue(string icon) {
     switch (icon) {
       case "audio-card-analog-pci":
         return "audio-card-symbolic";
@@ -20,7 +20,7 @@ public class Kompass.AudioNode : Gtk.ListBoxRow {
   }
 
   [GtkCallback]
-  public void clicked() {
+  private void clicked() {
     if (this.endpoint is AstalWp.Endpoint) {
       (this.endpoint as AstalWp.Endpoint).is_default = true;
     }

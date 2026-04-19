@@ -1,0 +1,22 @@
+using Gtk 4.0;
+
+template $KompassPopupNotification : Gtk.ListBoxRow {
+  selectable: false;
+  activatable: false;
+
+  Box {
+    orientation: horizontal;
+    Revealer outer_revealer {
+      transition-type: slide_up;
+      transition-duration: bind template.animation-duration;
+      reveal-child: false;
+
+      Revealer inner_revealer {
+        transition-type: slide_right;
+        transition-duration: bind template.animation-duration;
+        reveal-child: true;
+      }
+    }
+  }
+}
+

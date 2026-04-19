@@ -26,6 +26,7 @@ template $KompassNotification : Gtk.ListBoxRow {
         }
         Button {
           icon-name: "window-close-symbolic";
+          visible: bind template.is-popup inverted;
           clicked => $close();
         }
       }
@@ -35,10 +36,11 @@ template $KompassNotification : Gtk.ListBoxRow {
       spacing: 5;
       Label {
         label: bind template.notification as <AstalNotifd.Notification>.body;
-        halign: start;
+        xalign: 0;
         hexpand: true;
         wrap: true;
         wrap-mode: word_char;
+        max-width-chars: 50;
       }
       Box actions {
       }

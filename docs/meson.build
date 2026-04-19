@@ -20,6 +20,7 @@ custom_target('docs',
     '--config=@INPUT0@',
     '--output-dir=@OUTPUT@',
     '--content-dir=@0@'.format(meson.current_source_dir()),
+    '--no-namespace-dir',
     '@INPUT1@',
   ],
 )

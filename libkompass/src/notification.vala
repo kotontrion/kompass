@@ -5,6 +5,9 @@ public class Kompass.Notification : Gtk.ListBoxRow, Adw.Swipeable {
   private Adw.SwipeTracker swipe_tracker;
   private Adw.SpringAnimation animation;
   private Gtk.CssProvider css_prov;
+
+  public bool is_popup { get; construct set; default = false; }
+
   private double _sp = 0;
   public double swipe_progress {
     get { return _sp; }
