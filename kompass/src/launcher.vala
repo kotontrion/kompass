@@ -1,4 +1,4 @@
-[GtkTemplate(ui = "/com/github/kotontrion/kompass-bar/ui/launcher.ui")]
+[GtkTemplate(ui = "/net/kotontrion/kompass-bar/ui/launcher.ui")]
 public class KompassBar.Launcher : Gtk.Box {
   public AstalApps.Apps apps { get; construct set; }
 

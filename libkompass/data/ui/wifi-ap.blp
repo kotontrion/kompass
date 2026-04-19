@@ -8,9 +8,10 @@ template $KompassWifiAp : ListBoxRow {
   child: CenterBox {
       [start]
       Box {
-        Image {
+        $KompassSvg {
+          resource: "/net/kotontrion/libkompass/icons/scalable/status/wifi.gpa";
+          state: bind $wifi_icon_to_state(template.ap as <AstalNetwork.AccessPoint>.icon-name) as <uint>;
           icon-size: large;
-          icon-name: bind template.ap as <AstalNetwork.AccessPoint>.icon-name as <string>;
         }
         Box {
           orientation: vertical;

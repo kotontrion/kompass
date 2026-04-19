@@ -1,4 +1,4 @@
-[GtkTemplate(ui = "/com/github/kotontrion/kompass-bar/ui/qsAudio.ui")]
+[GtkTemplate(ui = "/net/kotontrion/kompass-bar/ui/qsAudio.ui")]
 public class KompassBar.QsAudio : Gtk.Box {
   public AstalWp.Wp wp { get; construct set; }
 
@@ -25,6 +25,11 @@ public class KompassBar.QsAudio : Gtk.Box {
   [GtkCallback]
   public void toggle_mute_mic() {
     this.wp.audio.default_microphone.mute = !this.wp.audio.default_microphone.mute;
+  }
+
+  [GtkCallback]
+  public uint volume_to_state(double volume, bool mute) {
+    return Kompass.IconUtils.volume_to_state(volume, mute);
   }
 
   private void on_added(AstalWp.Node endpoint, Gtk.ListBox lb) {

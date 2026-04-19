@@ -9,8 +9,8 @@ int main(string[] args) {
 
   var app = (KompassBar.Application)Object.@new(
     typeof(KompassBar.Application),
-    "resource-base-path", "/com/github/kotontrion/kompass-bar/",
-    "application-id", "com.github.kotontrion.kompass",
+    "resource-base-path", "/net/kotontrion/kompass-bar/",
+    "application-id", "net.kotontrion.kompass",
     "version", Config.PACKAGE_VERSION
     );
   return app.run(args);

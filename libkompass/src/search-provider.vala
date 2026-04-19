@@ -196,7 +196,7 @@ public class Kompass.AppSearchProvider : Object, SearchProvider {
 
   construct {
     name = this.name ?? "Apps";
-    icon = this.icon ?? new FileIcon(File.new_for_uri("resource://com/github/kotontrion/libkompass/icons/symbolic/ui/tux-symbolic.svg"));
+    icon = this.icon ?? new FileIcon(File.new_for_uri("resource://net/kotontrion/libkompass/icons/scalable/ui/tux-symbolic.svg"));
     results = new ListStore(typeof(SearchResult));
     this.search.begin("");
   }

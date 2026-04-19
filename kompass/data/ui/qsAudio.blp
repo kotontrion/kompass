@@ -1,14 +1,20 @@
 using Gtk 4.0;
 using Adw 1;
 using AstalWp 0.1;
+using Kompass 0.1;
 
 template $KompassBarQsAudio : Box {
   orientation: vertical;
   spacing: 5;
   Adw.HeaderBar {}
   Box {
-    Button {
-      icon-name: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.volume-icon;
+    Button { 
+      Kompass.Svg {
+        resource: "/net/kotontrion/libkompass/icons/scalable/status/speaker.gpa";
+        state: bind $volume_to_state(
+          template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.volume,
+          template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.mute);
+      }
       clicked => $toggle_mute_speaker();
     }
     Scale {

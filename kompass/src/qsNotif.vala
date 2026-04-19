@@ -1,4 +1,4 @@
-[GtkTemplate(ui = "/com/github/kotontrion/kompass-bar/ui/qsNotif.ui")]
+[GtkTemplate(ui = "/net/kotontrion/kompass-bar/ui/qsNotif.ui")]
 public class KompassBar.QsNotif : Gtk.Box {
   public AstalNotifd.Notifd notifd { get; construct set; }
 

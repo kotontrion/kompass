@@ -1,0 +1,223 @@
+<svg
+        xmlns='http://www.w3.org/2000/svg'
+        xmlns:svg='http://www.w3.org/2000/svg'
+        xmlns:gpa='https://www.gtk.org/grappa'
+        gpa:version='1'
+        gpa:state='1'
+        width='16'
+        height='16'>
+  <defs>
+    <filter
+            id='gpa:morph-filter:path0'
+            x='-50%'
+            y='-50%'
+            width='200%'
+            height='200%'>
+      <feGaussianBlur
+              result='gpa:morph-filter:path0:blurred'>
+      </feGaussianBlur>
+      <feComponentTransfer
+              in='SourceGraphic'>
+        <feFuncA
+                type='linear'
+                slope='100'>
+        </feFuncA>
+      </feComponentTransfer>
+      <feGaussianBlur>
+      </feGaussianBlur>
+      <feComponentTransfer>
+        <feFuncR
+                type='linear'
+                slope='0'
+                intercept='1'>
+        </feFuncR>
+        <feFuncG
+                type='linear'
+                slope='0'
+                intercept='1'>
+        </feFuncG>
+        <feFuncB
+                type='linear'
+                slope='0'
+                intercept='1'>
+        </feFuncB>
+        <feFuncA
+                type='linear'>
+        </feFuncA>
+      </feComponentTransfer>
+      <feComposite
+              in2='gpa:morph-filter:path0:blurred'
+              operator='arithmetic'
+              k1='1'>
+      </feComposite>
+    </filter>
+  </defs>
+  <path
+          id='path0'
+          fill='none'
+          stroke='url(#gpa:foreground) rgb(0,0,0)'
+          stroke-width='2'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          d='M 6 3 L 6 13 L 3 10 L 1 10 L 1 6 L 3 6 Z'
+          class='transparent-fill foreground-stroke'
+          gpa:stroke='foreground'
+          gpa:transition-type='morph'
+          gpa:transition-easing='ease-in'
+          gpa:transition-duration='200ms'>
+  </path>
+  <path
+          id='path1'
+          fill='none'
+          stroke='url(#gpa:foreground) rgb(0,0,0)'
+          stroke-opacity='0.27027'
+          stroke-width='2'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          d='M 10.1853 4.9594 C 11.2716 6.84093, 11.2716 9.15907, 10.1853 11.0406'
+          class='transparent-fill foreground-stroke'
+          gpa:stroke='foreground'
+          gpa:states='1 2 3 4 5'
+          gpa:transition-type='animate'
+          gpa:transition-easing='ease-in'
+          gpa:transition-duration='200ms'
+          gpa:origin='0.5'>
+    <animate
+            attributeName='d'
+            begin='gpa:states(0 1 2 3 4 6, 5)'
+            dur='200ms'
+            fill='freeze'
+            from='M 10.1853 4.9594 C 11.2716 6.84093, 11.2716 9.15907, 10.1853 11.0406'
+            to='M 10.1853 4.9594 C 10.1853 5, 10.1853 10, 10.1853 11.0406'
+            keyTimes='0; 1'/>
+
+    <animate
+            attributeName='d'
+            begin='gpa:states(5, 0 1 2 3 4 6)'
+            dur='200ms'
+            fill='freeze'
+            from='M 10.1853 4.9594 C 10.1853 5, 10.1853 10, 10.1853 11.0406'
+            to='M 10.1853 4.9594 C 11.2716 6.84093, 11.2716 9.15907, 10.1853 11.0406'
+            keyTimes='0; 1'/>
+  </path>
+  <path
+          id='path2'
+          visibility='hidden'
+          fill='none'
+          stroke='url(#gpa:foreground) rgb(0,0,0)'
+          stroke-opacity='0.271875'
+          stroke-width='2'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          d='M 13.579 3 C 15.3654 6.09401, 15.3654 9.90599, 13.579 13'
+          class='transparent-fill foreground-stroke'
+          gpa:stroke='foreground'
+          gpa:states='3 4 5'
+          gpa:transition-type='animate'
+          gpa:transition-easing='ease-in'
+          gpa:transition-duration='200ms'
+          gpa:origin='0.5'>
+    <animate
+            attributeName='d'
+            begin='gpa:states(0 1 2 3 4 6, 5)'
+            dur='200ms'
+            fill='freeze'
+            from='M 13.579 3 C 15.3654 6.09401, 15.3654 9.90599, 13.579 13'
+            to='M 13.579 3 C 13.579 4, 13.579 12, 13.579 13'
+            keyTimes='0; 1'/>
+
+    <animate
+            attributeName='d'
+            begin='gpa:states(5, 0 1 2 3 4 6)'
+            dur='200ms'
+            fill='freeze'
+            from='M 13.579 3 C 13.579 4, 13.579 12, 13.579 13'
+            to='M 13.579 3 C 15.3654 6.09401, 15.3654 9.90599, 13.579 13'
+            keyTimes='0; 1'/>
+  </path>
+  <path
+          id='path3'
+          visibility='hidden'
+          fill='none'
+          stroke='url(#gpa:foreground) rgb(0,0,0)'
+          stroke-width='2'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          d='M 10.1853 4.9594 C 11.2716 6.84093, 11.2716 9.15907, 10.1853 11.0406'
+          class='transparent-fill foreground-stroke'
+          gpa:stroke='foreground'
+          gpa:states='2 3 4 5'
+          gpa:transition-type='animate'
+          gpa:transition-easing='ease-out'
+          gpa:transition-duration='200ms'
+          
+          gpa:origin='0.5'>
+    <animate
+            attributeName='d'
+            begin='gpa:states(0 1 2 3 4 6, 5)'
+            dur='200ms'
+            fill='freeze'
+            from='M 10.1853 4.9594 C 11.2716 6.84093, 11.2716 9.15907, 10.1853 11.0406'
+            to='M 10.1853 4.9594 C 10.1853 5, 10.1853 10, 10.1853 11.0406'
+            keyTimes='0; 1'/>
+
+    <animate
+            attributeName='d'
+            begin='gpa:states(5, 0 1 2 3 4 6)'
+            dur='200ms'
+            fill='freeze'
+            from='M 10.1853 4.9594 C 10.1853 5, 10.1853 10, 10.1853 11.0406'
+            to='M 10.1853 4.9594 C 11.2716 6.84093, 11.2716 9.15907, 10.1853 11.0406'
+            keyTimes='0; 1'/>
+  </path>
+  <path
+          id='path4'
+          visibility='hidden'
+          fill='none'
+          stroke='url(#gpa:foreground) rgb(0,0,0)'
+          stroke-width='2'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          d='M 13.579 3 C 15.3654 6.09401, 15.3654 9.90599, 13.579 13'
+          class='transparent-fill foreground-stroke'
+          gpa:stroke='foreground'
+          gpa:states='4 5'
+          gpa:transition-type='animate'
+          gpa:transition-duration='200ms'
+          gpa:origin='0.5'>
+    <animate
+            attributeName='d'
+            begin='gpa:states(0 1 2 3 4 6, 5)'
+            dur='200ms'
+            fill='freeze'
+            from='M 13.579 3 C 15.3654 6.09401, 15.3654 9.90599, 13.579 13'
+            to='M 13.579 3 C 13.579 4, 13.579 12, 13.579 13'
+            keyTimes='0; 1'/>
+
+    <animate
+            attributeName='d'
+            begin='gpa:states(5, 0 1 2 3 4 6)'
+            dur='200ms'
+            fill='freeze'
+            from='M 13.579 3 C 13.579 4, 13.579 12, 13.579 13'
+            to='M 13.579 3 C 15.3654 6.09401, 15.3654 9.90599, 13.579 13'
+            keyTimes='0; 1'/>
+  </path>
+  <path
+          id='path5'
+          visibility='hidden'
+          fill='none'
+          stroke='url(#gpa:foreground) rgb(0,0,0)'
+          stroke-width='2'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          d='M 14.2665 10.1653 L 10.1853 5.9594 M 14.2665 5.9594 L 10.1853 10.0406'
+          class='transparent-fill foreground-stroke'
+          gpa:stroke='foreground'
+          gpa:states='6'
+          gpa:transition-type='animate'
+          gpa:transition-duration='200ms'
+          gpa:origin='0.5'>
+  </path>
+
+</svg>

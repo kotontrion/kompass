@@ -1,4 +1,4 @@
-[GtkTemplate(ui = "/com/github/kotontrion/kompass-bar/ui/qs.ui")]
+[GtkTemplate(ui = "/net/kotontrion/kompass-bar/ui/qs.ui")]
 public class KompassBar.Qs : Gtk.Box {
   public AstalWp.Wp wp { get; private set; }
   public AstalBattery.Device battery { get; private set; }
@@ -32,6 +32,16 @@ public class KompassBar.Qs : Gtk.Box {
   [GtkCallback]
   public string recorder_icon(bool recording) {
     return recording ? "media-record-symbolic" : "video-display-symbolic";
+  }
+
+  [GtkCallback]
+  public uint volume_to_state(double volume, bool mute) {
+    return Kompass.IconUtils.volume_to_state(volume, mute);
+  }
+
+  [GtkCallback]
+  public uint wifi_icon_to_state(string icon_name) {
+    return Kompass.IconUtils.wifi_icon_to_state(icon_name);
   }
 
   [GtkCallback]

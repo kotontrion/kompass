@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/com/github/kotontrion/kompass-bar">
+  <gresource prefix="/net/kotontrion/kompass-bar">
     <file>style.css</file>
     <file preprocess="xml-stripblanks">ui/bar.ui</file>
     <file preprocess="xml-stripblanks">ui/qs.ui</file>
@@ -10,7 +10,7 @@
     <file preprocess="xml-stripblanks">ui/qsWifi.ui</file>
     <file preprocess="xml-stripblanks">ui/launcher.ui</file>
     
-    <file compressed="true">icons/symbolic/apps/arch-linux-rounded-symbolic.svg</file>
-    <file compressed="true">icons/symbolic/apps/arch-linux-symbolic.svg</file>
+    <file compressed="true">icons/scalable/apps/arch-linux-rounded-symbolic.svg</file>
+    <file compressed="true">icons/scalable/apps/arch-linux-symbolic.svg</file>
   </gresource>
 </gresources>

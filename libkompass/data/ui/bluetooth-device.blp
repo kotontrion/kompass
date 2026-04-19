@@ -28,13 +28,11 @@ template $KompassBluetoothDevice : ListBoxRow {
     }
     [end]
     Box {
-      Spinner spinner{
-        visible: bind spinner.spinning;
-        spinning: bind template.device as <AstalBluetooth.Device>.connecting;
-      }
       Image {
-        visible: bind template.device as <AstalBluetooth.Device> .connected;
-        icon-name: "object-select-symbolic";
+        paintable: Svg svg {
+          resource: "/net/kotontrion/libkompass/icons/scalable/status/spinner-check.gpa";
+          playing: true;
+        };
       }
     }
 

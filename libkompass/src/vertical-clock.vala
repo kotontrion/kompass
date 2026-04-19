@@ -1,5 +1,5 @@
 namespace Kompass {
-[GtkTemplate(ui = "/com/github/kotontrion/libkompass/ui/vertical-clock.ui")]
+[GtkTemplate(ui = "/net/kotontrion/libkompass/ui/vertical-clock.ui")]
 public class VerticalClock : Gtk.Box {
   private uint interval_id;
 

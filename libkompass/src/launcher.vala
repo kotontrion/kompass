@@ -11,7 +11,7 @@ public interface SearchResultView : Object {
   }
 }
 
-[GtkTemplate(ui = "/com/github/kotontrion/libkompass/ui/search-result-view.ui")]
+[GtkTemplate(ui = "/net/kotontrion/libkompass/ui/search-result-view.ui")]
 public class RevealingSearchResultView : Gtk.Box, SearchResultView {
   [GtkChild]
   private unowned Gtk.Revealer revealer;

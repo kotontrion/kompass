@@ -1,4 +1,4 @@
-[GtkTemplate(ui = "/com/github/kotontrion/kompass-bar/ui/qsWifi.ui")]
+[GtkTemplate(ui = "/net/kotontrion/kompass-bar/ui/qsWifi.ui")]
 public class KompassBar.QsWifi : Gtk.Box {
   public AstalNetwork.Network network { get; construct set; }
 

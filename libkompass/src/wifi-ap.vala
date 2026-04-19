@@ -1,4 +1,4 @@
-[GtkTemplate(ui = "/com/github/kotontrion/libkompass/ui/wifi-ap.ui")]
+[GtkTemplate(ui = "/net/kotontrion/libkompass/ui/wifi-ap.ui")]
 public class Kompass.WifiAp : Gtk.ListBoxRow {
   public AstalNetwork.Network network { get; construct; }
   public AstalNetwork.Wifi wifi { get; construct; }
@@ -21,6 +21,11 @@ public class Kompass.WifiAp : Gtk.ListBoxRow {
     } else {
       open_wifi_dialog(null);
     }
+  }
+
+  [GtkCallback]
+  public uint wifi_icon_to_state(string icon_name) {
+    return IconUtils.wifi_icon_to_state(icon_name);
   }
 
   [GtkCallback]

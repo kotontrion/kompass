@@ -28,7 +28,7 @@ public enum PopupNotificationTransitionType {
   //TODO: add more
 }
 
-[GtkTemplate(ui = "/com/github/kotontrion/libkompass/ui/popup-notification.ui")]
+[GtkTemplate(ui = "/net/kotontrion/libkompass/ui/popup-notification.ui")]
 public class PopupNotification : Gtk.ListBoxRow {
   [GtkChild]
   private unowned Gtk.Revealer outer_revealer;

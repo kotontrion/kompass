@@ -11,7 +11,7 @@ namespace Kompass {
  * `KompassArrowButton`'s CSS node is called `arrow-button`. The `active` class
  * is controled by the `active` property.
  */
-[GtkTemplate(ui = "/com/github/kotontrion/libkompass/ui/arrow-button.ui")]
+[GtkTemplate(ui = "/net/kotontrion/libkompass/ui/arrow-button.ui")]
 public class ArrowButton : Gtk.Box {
   public string icon { get; set; }
   public string label { get; set; }

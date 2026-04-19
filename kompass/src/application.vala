@@ -87,7 +87,7 @@ class KompassBar.Application : Adw.Application {
     settings.gtk_decoration_layout = "";
 
     Gtk.CssProvider provider = new Gtk.CssProvider();
-    provider.load_from_resource("com/github/kotontrion/kompass-bar/style.css");
+    provider.load_from_resource("net/kotontrion/kompass-bar/style.css");
     Gtk.StyleContext.add_provider_for_display(Gdk.Display.get_default(), provider,
                                               Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 

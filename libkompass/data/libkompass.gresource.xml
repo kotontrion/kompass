@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/com/github/kotontrion/libkompass">
+  <gresource prefix="/net/kotontrion/libkompass">
     <file preprocess="xml-stripblanks">ui/audio-endpoint.ui</file>
     <file preprocess="xml-stripblanks">ui/bluetooth-device.ui</file>
     <file preprocess="xml-stripblanks">ui/vertical-clock.ui</file>
@@ -13,9 +13,12 @@
     <file preprocess="xml-stripblanks">ui/search-result-view.ui</file>
     <file preprocess="xml-stripblanks">ui/wifi-ap.ui</file>
     <file>style.css</file>
-    <file compressed="true">icons/symbolic/ui/arch-linux-rounded-symbolic.svg</file>
-    <file compressed="true">icons/symbolic/ui/arch-linux-symbolic.svg</file>
-    <file compressed="true">icons/symbolic/ui/tux-symbolic.svg</file>
+    <file compressed="true">icons/scalable/ui/arch-linux-rounded-symbolic.svg</file>
+    <file compressed="true">icons/scalable/ui/arch-linux-symbolic.svg</file>
+    <file compressed="true">icons/scalable/ui/tux-symbolic.svg</file>
+    <file compressed="true">icons/scalable/status/spinner-check.gpa</file>
+    <file compressed="true">icons/scalable/status/speaker.gpa</file>
+    <file compressed="true">icons/scalable/status/wifi.gpa</file>
     <file>images/empty-mpris-image.png</file>
   </gresource>
 </gresources>

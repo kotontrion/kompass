@@ -1,9 +1,9 @@
-[GtkTemplate(ui = "/com/github/kotontrion/libkompass/ui/mpris-player.ui")]
+[GtkTemplate(ui = "/net/kotontrion/libkompass/ui/mpris-player.ui")]
 public class Kompass.Player : Gtk.Box {
   public AstalMpris.Player player { get; construct; }
 
   public File cover_file { get; private set; }
-  public string empty_cover_uri { get; set; default = "resource:///com/github/kotontrion/libkompass/images/empty-mpris-image.png"; }
+  public string empty_cover_uri { get; set; default = "resource:///net/kotontrion/libkompass/images/empty-mpris-image.png"; }
 
   [GtkCallback]
   public void next() {

@@ -25,9 +25,13 @@ template $KompassBarQs: Box {
         value: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.volume;
       }
 
-      Image {
-        icon-name: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.volume-icon;
+      Kompass.Svg {
+        resource: "/net/kotontrion/libkompass/icons/scalable/status/speaker.gpa";
+        state: bind $volume_to_state(
+          template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.volume,
+          template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.mute);
       }
+
       Separator {}
     };    
   }
@@ -226,16 +230,20 @@ template $KompassBarQs: Box {
       icon-name: bind template.battery as <AstalBattery.Device>.icon-name;
     }
 
-    Image {
-      icon-name: bind template.network as <AstalNetwork.Network>.wifi as <AstalNetwork.Wifi>.icon-name;
+    $KompassSvg {
+      resource: "/net/kotontrion/libkompass/icons/scalable/status/wifi.gpa";
+      state: bind $wifi_icon_to_state(template.network as <AstalNetwork.Network>.wifi as <AstalNetwork.Wifi>.icon-name) as <uint>;
     }
 
     Image {
       icon-name: bind $bluetooth_icon_name(template.bluetooth as <AstalBluetooth.Bluetooth>.is-connected) as <string>;
     }
-
-    Image {
-      icon-name: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.volume-icon;
+    
+    Kompass.Svg {
+      resource: "/net/kotontrion/libkompass/icons/scalable/status/speaker.gpa";
+      state: bind $volume_to_state(
+        template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.volume,
+        template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.mute);
     }
 
     GestureClick {

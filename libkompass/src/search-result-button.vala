@@ -1,4 +1,4 @@
-[GtkTemplate(ui = "/com/github/kotontrion/libkompass/ui/search-result-button.ui")]
+[GtkTemplate(ui = "/net/kotontrion/libkompass/ui/search-result-button.ui")]
 public class Kompass.SearchResultButton : Gtk.ListBoxRow {
   public Kompass.SearchResult result { get; construct; }
 

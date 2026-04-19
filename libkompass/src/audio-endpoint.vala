@@ -1,4 +1,4 @@
-[GtkTemplate(ui = "/com/github/kotontrion/libkompass/ui/audio-endpoint.ui")]
+[GtkTemplate(ui = "/net/kotontrion/libkompass/ui/audio-endpoint.ui")]
 public class Kompass.AudioNode : Gtk.ListBoxRow {
   public AstalWp.Node endpoint { get; construct; }
 
