@@ -29,8 +29,6 @@ SPDX-License-Identifier: MIT
 
   
   
-  
-  
 
   <link rel="stylesheet" href="style.css" type="text/css" />
 
@@ -39,9 +37,6 @@ SPDX-License-Identifier: MIT
   
   <script src="urlmap.js"></script>
   
-  
-  <script src="fzy.js"></script>
-  <script src="search.js"></script>
   
   <script src="main.js"></script>
 
@@ -53,12 +48,6 @@ SPDX-License-Identifier: MIT
 
     <nav class="sidebar devhelp-hidden">
       
-      
-      <div class="search section">
-        <form id="search-form" autocomplete="off">
-          <input id="search-input" type="text" name="do-not-autocomplete" placeholder="Click, or press 's' to search" autocomplete="off"/>
-        </form>
-      </div>
       
       <div class="section namespace">
         <h3><a href="index.html">Kompass</a></h3>
@@ -95,12 +84,6 @@ SPDX-License-Identifier: MIT
 <div class="section">
   <h5>Instance methods</h5>
   <div class="links">
-  
-    <a class="method" href="method.ArrowButton.is_not_empty.html">is_not_empty</a>
-  
-    <a class="method" href="method.ArrowButton.on_clicked.html">on_clicked</a>
-  
-    <a class="method" href="method.ArrowButton.on_arrow_clicked.html">on_arrow_clicked</a>
   
     <a class="method" href="method.ArrowButton.get_icon.html">get_icon</a>
   
@@ -193,6 +176,8 @@ SPDX-License-Identifier: MIT
           Description
           <a href="#description" class="anchor"></a>
           
+          <a class="srclink" title="go to source location" href="https://codeberg.org/kotontrion/kompass/src/branch/main/libkompass/#L0">[src]</a>
+          
         </h4>
 
         <pre><code>class Kompass.ArrowButton : Gtk.Box
@@ -201,7 +186,11 @@ SPDX-License-Identifier: MIT
 }</pre></code>
 
         <div class="docblock">
-          <p>No description available.</p>
+          <p>A button with an attached arrow as a secondary button. Eg clicking the main button could toggle bluetooth and clicking the arrow opens the 
+bluetooth settings.
+<img alt="arrow-button" src="arrow-button.jpg" /></p>
+<h2 id="css-nodes">CSS nodes<a class="md-anchor" href="#css-nodes" title="Permanent link"></a></h2>
+<p><code>KompassArrowButton</code><span class="quo">&#8216;</span>s <span class="caps">CSS</span> node is&nbsp;called <code>arrow-button</code>.&nbsp;The <code>active</code> class is controled by&nbsp;the <code>active</code> property.</p>
         </div>
 
         <div class="docblock">
@@ -368,36 +357,6 @@ SPDX-License-Identifier: MIT
       </h4>
 
       <div class="docblock">
-      
-        <div class="">
-          <h6><a href="method.ArrowButton.is_not_empty.html">kompass_arrow_button_is_not_empty</a></h6>
-          <div class="docblock">
-            No description available.
-          </div>
-          <div class="docblock">
-            <p></p>
-          </div>
-        </div>
-      
-        <div class="">
-          <h6><a href="method.ArrowButton.on_clicked.html">kompass_arrow_button_on_clicked</a></h6>
-          <div class="docblock">
-            No description available.
-          </div>
-          <div class="docblock">
-            <p></p>
-          </div>
-        </div>
-      
-        <div class="">
-          <h6><a href="method.ArrowButton.on_arrow_clicked.html">kompass_arrow_button_on_arrow_clicked</a></h6>
-          <div class="docblock">
-            No description available.
-          </div>
-          <div class="docblock">
-            <p></p>
-          </div>
-        </div>
       
         <div class="">
           <h6><a href="method.ArrowButton.get_icon.html">kompass_arrow_button_get_icon</a></h6>
@@ -624,7 +583,7 @@ in the&nbsp;box.</p>
         <div class="">
           <h6><a href="property.ArrowButton.active.html">Kompass.ArrowButton:active</a></h6>
           <div class="docblock">
-            No description available.
+            <p>Controls&nbsp;the <code>active</code> css&nbsp;class.</p>
           </div>
           <div class="docblock">
             <p></p>
@@ -634,7 +593,8 @@ in the&nbsp;box.</p>
         <div class="">
           <h6><a href="property.ArrowButton.inactive.html">Kompass.ArrowButton:inactive</a></h6>
           <div class="docblock">
-            No description available.
+            <p>The inverse&nbsp;of <code>KompassArrowButton:active</code>. This is useful because eg blueprint does not suport the inverted flag for nested 
+bidirectional property&nbsp;bindings.</p>
           </div>
           <div class="docblock">
             <p></p>
@@ -932,6 +892,12 @@ its value set through g_object_set_property(), g_object_set(), et&nbsp;al.</p>
     <p id="toc-title">Content</p>
     <ul class="toc-list">
       <li class="toc-list-item"><a href="#description"><span class="link-text">Description</span></a></li>
+      
+      <ul class="toc-list">
+      
+      
+      
+      </ul>
       
       
       <li class="toc-list-item"><a href="#hierarchy"><span class="link-text">Hierarchy</span></a></li>
