@@ -1,6 +1,6 @@
 using GtkLayerShell;
 
-public class KompassBar.PopupNotificationWindow : Astal.Window {
+public class KompassBar.PopupNotificationWindow : Kompass.Window {
   public AstalNotifd.Notifd notifd;
 
   private Gtk.ListBox notif_list;
@@ -14,8 +14,8 @@ public class KompassBar.PopupNotificationWindow : Astal.Window {
     Object(
       application: KompassBar.Application.instance,
       name: "popup-notification",
-      anchor: Astal.WindowAnchor.BOTTOM |
-      Astal.WindowAnchor.LEFT,
+      anchor: Kompass.WindowAnchor.BOTTOM |
+      Kompass.WindowAnchor.LEFT,
       default_width: 500,
       default_height: -1
       );
@@ -25,7 +25,7 @@ public class KompassBar.PopupNotificationWindow : Astal.Window {
       selection_mode = Gtk.SelectionMode.NONE
     };
 
-    this.set_child(this.notif_list);
+    this.set_content(this.notif_list);
 
     this.notifd.notified.connect((id, replace) => this.on_added(id, replace));
     this.notif_list_model = this.notif_list.observe_children();

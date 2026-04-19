@@ -36,12 +36,14 @@ libkompass_vala_sources += [config] + files(
   'notification.vala',
   'popup-notification.vala',
   'scrolled-bin.vala',
+  'rotated-bin.vala',
   'tags.vala',
   'tray.vala',
   'vertical-clock.vala',
   'search-provider.vala',
   'launcher.vala',
   'search-result-button.vala',
+  'window.vala',
   'wifi-ap.vala'
 )
 
@@ -57,6 +59,7 @@ libkompass_vala_sources += [types_tgt]
 
 libkompass_deps += [
   dependency('libadwaita-1'),
+  dependency('gtk4-layer-shell-0'),
   dependency('gio-2.0'),
   dependency('gio-unix-2.0'),
   dependency('libportal'),
@@ -65,7 +68,6 @@ libkompass_deps += [
   dependency('libnma-gtk4'),
   dependency('astal-apps-0.1'),
   dependency('astal-bluetooth-0.1'),
-  dependency('astal-io-0.1'),
   dependency('astal-cava-0.1'),
   dependency('astal-notifd-0.1'),
   dependency('astal-mpris-0.1'),

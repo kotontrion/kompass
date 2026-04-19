@@ -1,7 +1,7 @@
 using Gtk 4.0;
-using Astal 4.0;
+using Kompass 0.1;
 
-template $KompassBarBar: Astal.Window {
+template $KompassBarBar: Kompass.Window {
   title: _("Kompass");
   anchor: left | top |bottom;
   exclusivity: exclusive;
@@ -10,7 +10,7 @@ template $KompassBarBar: Astal.Window {
   margin_top: 4;
   margin_bottom: 4;
 
-  child: CenterBox {
+  CenterBox {
     orientation: vertical;
 
     [start]
@@ -47,5 +47,5 @@ template $KompassBarBar: Astal.Window {
         styles ["bar-module"]
       }
     }
-  };
+  }
 }

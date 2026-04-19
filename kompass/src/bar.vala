@@ -1,7 +1,7 @@
 using GtkLayerShell;
 
 [GtkTemplate(ui = "/com/github/kotontrion/kompass-bar/ui/bar.ui")]
-public class KompassBar.Bar : Astal.Window {
+public class KompassBar.Bar : Kompass.Window {
   public AstalRiver.Output output { get; private set; }
 
   public Bar(Gdk.Monitor monitor) {

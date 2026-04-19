@@ -30,8 +30,6 @@ kompass_deps = [
   dependency('gtk4-layer-shell-0'),
   dependency('libadwaita-1', version: '>= 1.4'),
   dependency('libnm'),
-  dependency('astal-4-4.0'),
-  dependency('astal-io-0.1'),
   dependency('astal-cava-0.1'),
   dependency('astal-mpris-0.1'),
   dependency('wayland-client'),
