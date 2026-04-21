@@ -9,6 +9,7 @@ public class Kompass.AudioNode : Gtk.ListBoxRow {
   private string icon_substitue(string icon) {
     switch (icon) {
       case "audio-card-analog-pci":
+      case "audio-card-analog-usb":
         return "audio-card-symbolic";
 
       case "audio-headset-bluetooth":
