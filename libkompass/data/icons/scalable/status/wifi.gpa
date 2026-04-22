@@ -213,7 +213,7 @@
           stroke-width='2'
           stroke-linecap='round'
           stroke-linejoin='round'
-          d='M 2 2 l 12 12'
+          d='M 2 2 l 11 11'
           class='transparent-fill foreground-stroke'
           gpa:stroke='foreground'
           gpa:states='6'
