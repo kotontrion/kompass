@@ -42,5 +42,15 @@ public class IconUtils {
     }
     return state;
   }
+
+  public static uint bluetooth_to_state(bool powered, bool connected) {
+    if (connected) {
+      return 1;
+    }
+    if (powered) {
+      return 2;
+    }
+    return 3;
+  }
 }
 }

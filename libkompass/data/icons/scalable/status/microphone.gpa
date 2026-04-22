@@ -1,0 +1,156 @@
+<svg
+        xmlns='http://www.w3.org/2000/svg'
+        xmlns:svg='http://www.w3.org/2000/svg'
+        xmlns:gpa='https://www.gtk.org/grappa'
+        gpa:version='1'
+        gpa:state='0'
+        width='16'
+        height='16'
+        viewBox='0 0 16 16'>
+  <path
+          id='path0'
+          fill='none'
+          stroke='url(#gpa:foreground) rgb(0,0,0)'
+          stroke-opacity='0.27027'
+          stroke-width='2'
+          stroke-linecap='butt'
+          stroke-linejoin='miter'
+          stroke-miterlimit='4'
+          d='M 3 8 C 3 11, 5 13, 8.2 13 L 8.2 15.5 L 7.8 15.5 L 7.8 13 C 11 13, 13 11, 13 8 M 6 8 C 6 10.5, 10 10.5, 10 8 L 10 4 C 10 1.5, 6 1.5, 6 4 L 6 8'
+          gpa:stroke-minwidth='0.5'
+          gpa:stroke-maxwidth='3'
+          class='transparent-fill foreground-stroke'
+          gpa:stroke='foreground'>
+  </path>
+  <path
+          id='path1'
+          visibility='hidden'
+          fill='none'
+          stroke='url(#gpa:foreground) rgb(0,0,0)'
+          stroke-opacity='1'
+          stroke-width='2'
+          stroke-linecap='butt'
+          stroke-linejoin='miter'
+          stroke-miterlimit='4'
+          d='M 3 8 C 3 11, 5 13, 8.2 13 L 8.2 16 M 13 8 C 13 11, 11 13, 7.8 13 L 7.8 16'
+          gpa:stroke-minwidth='0.5'
+          gpa:stroke-maxwidth='3'
+          class='transparent-fill foreground-stroke'
+          gpa:stroke='foreground'
+          gpa:states='1 2 3 4 5'
+          gpa:transition-type='animate'
+          gpa:transition-duration='200ms'
+          gpa:origin='0.5'>
+  </path>
+  <path
+          id='path3'
+          visibility='hidden'
+          fill='none'
+          stroke='url(#gpa:foreground) rgb(0,0,0)'
+          stroke-width='2'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          d='M 14.2665 13.8144 L 10.1853 9.60852 M 14.2665 9.60852 L 10.1853 13.6897'
+          class='transparent-fill foreground-stroke'
+          gpa:stroke='foreground'
+          gpa:states='6'
+          gpa:transition-type='animate'
+          gpa:transition-duration='200ms'
+          gpa:origin='0.5'>
+  </path>
+  <g
+          mask='url(#mask0)'>
+    <rect
+            id='path2'
+            display='inline'
+            transform='translate(0, 12)'
+            fill='url(#gpa:foreground) rgb(0,0,0)'
+            fill-opacity='1'
+            fill-rule='nonzero'
+            stroke='url(#gpa:foreground) rgb(0,0,0)'
+            stroke-width='0'
+            stroke-linecap='round'
+            stroke-linejoin='round'
+            x='0'
+            y='0'
+            width='16'
+            height='16'
+            rx='0'
+            ry='0'
+            gpa:stroke-minwidth='0.5'
+            gpa:stroke-maxwidth='3'
+            class='foreground foreground-fill foreground-stroke'
+            gpa:stroke='foreground'
+            gpa:fill='foreground'>
+      <animateTransform
+              attributeName='transform'
+              begin='gpa:states(1).begin'
+              dur='200ms'
+              fill='freeze'
+              to='0 9'
+              keyTimes='0; 1'
+              type='translate'/>
+      <animateTransform
+              attributeName='transform'
+              begin='gpa:states(2).begin'
+              dur='200ms'
+              fill='freeze'
+              to='0 7'
+              keyTimes='0; 1'
+              type='translate'/>
+      <animateTransform
+              attributeName='transform'
+              begin='gpa:states(3).begin'
+              dur='200ms'
+              fill='freeze'
+              to='0 5'
+              keyTimes='0; 1'
+              type='translate'/>
+      <animateTransform
+              attributeName='transform'
+              begin='gpa:states(4).begin'
+              dur='200ms'
+              fill='freeze'
+              to='0 3'
+              keyTimes='0; 1'
+              type='translate'/>
+      <animateTransform
+              attributeName='transform'
+              begin='gpa:states(5).begin'
+              dur='200ms'
+              fill='freeze'
+              to='0 1'
+              keyTimes='0; 1'
+              type='translate'/>
+      <animateTransform
+              attributeName='transform'
+              begin='gpa:states(1 2 3 4 5, 0 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63)'
+              dur='200ms'
+              fill='freeze'
+              to='0 12'
+              keyTimes='0; 1'
+              type='translate'/>
+    </rect>
+  </g>
+  <mask
+          id='mask0'
+          mask-type='luminance'>
+    <rect
+            fill='rgb(0,0,0)'
+            x='0'
+            y='0'
+            width='16'
+            height='16'>
+    </rect>
+    <path
+            fill='rgb(255,255,255)'
+            stroke='rgb(255,255,255)'
+            stroke-opacity='1'
+            stroke-width='2'
+            stroke-linecap='butt'
+            stroke-linejoin='miter'
+            stroke-miterlimit='4'
+            d='M 6 8 C 6 10.5, 10 10.5, 10 8 L 10 4 C 10 1.5, 6 1.5, 6 4 L 6 8'>
+    </path>
+  </mask>
+</svg>

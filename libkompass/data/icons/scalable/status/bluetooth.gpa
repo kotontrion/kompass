@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+        xmlns='http://www.w3.org/2000/svg'
+        xmlns:svg='http://www.w3.org/2000/svg'
+        xmlns:gpa='https://www.gtk.org/grappa'
+        gpa:version='1'
+        gpa:state='0'
+        id='svg1'
+        width='16'
+        height='16'>
+  <path
+          id='path0'
+          fill='none'
+          stroke='url(#gpa:foreground) rgb(0,0,0)'
+          stroke-opacity='0.271875'
+          stroke-width='2'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          d='M 4 5 L 12 11.502 L 8 15 L 7.99771 1.00053 L 12.0055 4.50834 L 4 11'
+          class='transparent-fill foreground-stroke'
+          gpa:stroke='foreground'>
+  </path>
+  <path
+          id='path1'
+          visibility='hidden'
+          fill='none'
+          stroke='url(#gpa:foreground) rgb(0,0,0)'
+          stroke-width='2'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          d='M 4 5 L 12 11.502 L 8 15 L 7.99771 1.00053 L 12.0055 4.50834 L 4 11'
+          class='transparent-fill foreground-stroke'
+          gpa:stroke='foreground'
+          gpa:states='1'
+          gpa:transition-type='animate'
+          gpa:transition-duration='400ms'
+          gpa:origin='0.5'>
+  </path>
+  <path
+          id='path2'
+          visibility='hidden'
+          fill='none'
+          stroke='url(#gpa:foreground) rgb(0,0,0)'
+          stroke-width='2'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          d='M 14.2665 13.8144 L 10.1853 9.60852 M 14.2665 9.60852 L 10.1853 13.6897'
+          class='transparent-fill foreground-stroke'
+          gpa:stroke='foreground'
+          gpa:states='2'
+          gpa:transition-type='animate'
+          gpa:transition-duration='200ms'
+          gpa:origin='0.5'>
+  </path>
+  <path
+          id='path3'
+          visibility='hidden'
+          fill='none'
+          stroke='url(#gpa:foreground) rgb(0,0,0)'
+          stroke-width='2'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          d='M 2.5 2.5 L 13.5 13.5'
+          class='transparent-fill foreground-stroke'
+          gpa:stroke='foreground'
+          gpa:states='3'
+          gpa:transition-type='animate'
+          gpa:transition-duration='200ms'>
+  </path>
+</svg>

@@ -9,13 +9,13 @@ template $KompassBarQsAudio : Box {
   Adw.HeaderBar {}
   Box {
     Button { 
+      clicked => $toggle_mute_speaker();
       Kompass.Svg {
         resource: "/net/kotontrion/libkompass/icons/scalable/status/speaker.gpa";
         state: bind $volume_to_state(
           template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.volume,
           template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-speaker as <AstalWp.Endpoint>.mute);
       }
-      clicked => $toggle_mute_speaker();
     }
     Scale {
       hexpand: true;
@@ -27,8 +27,13 @@ template $KompassBarQsAudio : Box {
   }
   Box {
     Button {
-      icon-name: bind template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-microphone as <AstalWp.Endpoint>.volume-icon;
       clicked => $toggle_mute_mic();
+      Kompass.Svg {
+        resource: "/net/kotontrion/libkompass/icons/scalable/status/microphone.gpa";
+        state: bind $volume_to_state(
+          template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-microphone as <AstalWp.Endpoint>.volume,
+          template.wp as <AstalWp.Wp>.audio as <AstalWp.Audio>.default-microphone as <AstalWp.Endpoint>.mute);
+      }
     }
     Scale {
       hexpand: true;

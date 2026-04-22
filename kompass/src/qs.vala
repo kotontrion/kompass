@@ -35,13 +35,18 @@ public class KompassBar.Qs : Gtk.Box {
   }
 
   [GtkCallback]
-  public uint volume_to_state(double volume, bool mute) {
+  private uint volume_to_state(double volume, bool mute) {
     return Kompass.IconUtils.volume_to_state(volume, mute);
   }
 
   [GtkCallback]
-  public uint wifi_icon_to_state(string icon_name) {
+  private uint wifi_icon_to_state(string icon_name) {
     return Kompass.IconUtils.wifi_icon_to_state(icon_name);
+  }
+
+  [GtkCallback]
+  private uint bluetooth_to_state(bool powered, bool connected) {
+    return Kompass.IconUtils.bluetooth_to_state(powered, connected);
   }
 
   [GtkCallback]
