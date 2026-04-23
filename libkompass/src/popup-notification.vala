@@ -87,16 +87,16 @@ public class PopupNotification : Gtk.ListBoxRow {
   private void configure_revealers() {
     switch (this.transition_type) {
       case IN_BOTTOM_OUT_LEFT:
-        this.outer_revealer.transition_type = Gtk.RevealerTransitionType.SLIDE_UP;
+        this.outer_revealer.transition_type = Gtk.RevealerTransitionType.FADE_SLIDE_UP;
         this.outer_revealer.reveal_child = false;
-        this.inner_revealer.transition_type = Gtk.RevealerTransitionType.SLIDE_RIGHT;
+        this.inner_revealer.transition_type = Gtk.RevealerTransitionType.FADE_SLIDE_RIGHT;
         this.inner_revealer.reveal_child = true;
         break;
 
       case IN_LEFT_OUT_LEFT:
-        this.outer_revealer.transition_type = Gtk.RevealerTransitionType.SLIDE_UP;
+        this.outer_revealer.transition_type = Gtk.RevealerTransitionType.FADE_SLIDE_UP;
         this.outer_revealer.reveal_child = false;
-        this.inner_revealer.transition_type = Gtk.RevealerTransitionType.SLIDE_RIGHT;
+        this.inner_revealer.transition_type = Gtk.RevealerTransitionType.FADE_SLIDE_RIGHT;
         this.inner_revealer.reveal_child = false;
         break;
 
