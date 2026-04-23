@@ -221,9 +221,9 @@ template $KompassBarQs: Box {
       }
     }
 
-    Image {
+    $KompassSvg notif_svg {
       visible: bind $notification_icon_visible(template.notifd as <AstalNotifd.Notifd>.notifications) as <bool>;
-      icon-name: "user-available-symbolic";
+      resource: "/net/kotontrion/libkompass/icons/scalable/status/notification.gpa";
     }
 
     Image {

@@ -13,6 +13,9 @@ public class KompassBar.Qs : Gtk.Box {
   public Kompass.ScreenRecorder recorder { get; set; default = Kompass.ScreenRecorder.get_default(); }
 
   [GtkChild]
+  private unowned Kompass.Svg notif_svg;
+
+  [GtkChild]
   private unowned Gtk.Popover popover;
 
   [GtkChild]
@@ -195,6 +198,11 @@ public class KompassBar.Qs : Gtk.Box {
     this.bluetooth = AstalBluetooth.get_default();
     this.notifd = AstalNotifd.get_default();
     this.mpris = AstalMpris.get_default();
+
+    this.notifd.notified.connect(() => {
+      this.notif_svg.state = 1;
+      this.notif_svg.state = 0;
+    });
 
     this.wp.audio.default_speaker.notify["volume"].connect(() => {
       this.count++;
