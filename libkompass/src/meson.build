@@ -28,6 +28,7 @@ libkompass_vala_sources += [config] + files(
   'screenrecord.vala',
 
   'arrow-button.vala',
+  'animated-level-bar.vala',
   'app-button.vala',
   'audio-endpoint.vala',
   'bluetooth-device.vala',
