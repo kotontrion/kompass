@@ -80,7 +80,7 @@ public class ScrolledBin : Gtk.Widget, Gtk.Orientable, Gtk.Buildable {
       this._child.measure(orientation, -1, out min, out nat, null, null);
     }
 
-    minimum = 0;
+    minimum = min;
     natural = nat;
     minimum_baseline = -1;
     natural_baseline = -1;

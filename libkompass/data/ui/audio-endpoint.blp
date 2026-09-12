@@ -12,9 +12,12 @@ template $KompassAudioNode : ListBoxRow {
     }
     Box {
       orientation: vertical;
-      Label {
-        halign: start;
-        label: bind template.endpoint as <AstalWp.Node>.description;
+      $KompassScrolledBin {
+        propagate-child-size: false;
+        Label {
+          halign: start;
+          label: bind template.endpoint as <AstalWp.Node>.description;
+        }
       }
       Scale {
         hexpand: true;
