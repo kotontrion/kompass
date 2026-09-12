@@ -85,6 +85,11 @@ template $KompassBarQs: Box {
                   }
 
                   Button {
+                    icon-name: "theme-switch-symbolic";
+                    clicked => $theme_click();
+                  }
+
+                  Button {
                     icon-name: "emblem-system-symbolic";
                     clicked => $open_settings();
                   }

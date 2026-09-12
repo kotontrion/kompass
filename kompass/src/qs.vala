@@ -9,7 +9,9 @@ public class KompassBar.Qs : Gtk.Box {
 
   private SimpleActionGroup actions;
   private int count = 0;
-
+  
+  private Settings settings;
+  
   public Kompass.ScreenRecorder recorder { get; set; default = Kompass.ScreenRecorder.get_default(); }
 
   [GtkChild]
@@ -106,6 +108,12 @@ public class KompassBar.Qs : Gtk.Box {
   }
 
   [GtkCallback]
+  public void theme_click() {
+    var scheme = this.settings.get_enum("color-scheme");
+    this.settings.set_enum("color-scheme", (scheme + 1)%2);
+  }
+
+  [GtkCallback]
   public string bluetooth_icon_name(bool connected) {
     return connected
            ? "bluetooth-active-symbolic"
@@ -198,6 +206,7 @@ public class KompassBar.Qs : Gtk.Box {
     this.bluetooth = AstalBluetooth.get_default();
     this.notifd = AstalNotifd.get_default();
     this.mpris = AstalMpris.get_default();
+    this.settings = new Settings("org.gnome.desktop.interface");
 
     this.notifd.notified.connect(() => {
       this.notif_svg.state = 1;

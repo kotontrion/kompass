@@ -12,5 +12,6 @@
     
     <file compressed="true">icons/scalable/apps/arch-linux-rounded-symbolic.svg</file>
     <file compressed="true">icons/scalable/apps/arch-linux-symbolic.svg</file>
+    <file compressed="true">icons/scalable/status/theme-switch-symbolic.svg</file>
   </gresource>
 </gresources>
