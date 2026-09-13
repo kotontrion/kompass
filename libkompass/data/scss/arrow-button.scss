@@ -1,6 +1,6 @@
 
 arrow-button {
-  .arrow-button-main {
+  .arrow-button-main:not(:last-child) {
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
     

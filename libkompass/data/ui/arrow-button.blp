@@ -1,7 +1,7 @@
 using Gtk 4.0;
 
 template $KompassArrowButton : Box {
-  hexpand: true; 
+  hexpand: true;
   Button {
     hexpand: true; 
     styles ["arrow-button-main"]
@@ -28,9 +28,11 @@ template $KompassArrowButton : Box {
     clicked => $on_clicked();
   }
   Separator {
+    visible: bind template.show_arrow;
     orientation: vertical;
   }
   Button {
+    visible: bind template.show_arrow;
     styles ["arrow-button-arrow"]
     Image {
         icon-name: "pan-end-symbolic";

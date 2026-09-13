@@ -6,6 +6,7 @@ using AstalMpris 0.1;
 using AstalNetwork 0.1;
 using AstalNotifd 0.1;
 using AstalBluetooth 0.1;
+using AstalPowerProfiles 0.1;
 using Kompass 0.1;
 
 template $KompassBarQs: Box {
@@ -41,8 +42,8 @@ template $KompassBarQs: Box {
     orientation: vertical;
     Popover popover {
       position: right;
-      width-request: 400;
-      height-request: 500;
+      width-request: 450;
+      height-request: 600;
       styles ["qs-popup"]
       vexpand: false;
 
@@ -82,11 +83,6 @@ template $KompassBarQs: Box {
                       button: 3;
                       pressed => $record_right_click();
                     }
-                  }
-
-                  Button {
-                    icon-name: "theme-switch-symbolic";
-                    clicked => $theme_click();
                   }
 
                   Button {
@@ -158,6 +154,32 @@ template $KompassBarQs: Box {
                   layout {
                     column: "1";
                     row: "1";
+                  }
+                }
+
+                $KompassArrowButton {
+                  label: "Theme";
+                  icon: "theme-switch-symbolic";
+                  clicked => $theme_clicked();
+                  subtitle: bind template.active-theme as <string>;
+                  show-arrow: false;
+
+                  layout {
+                    column: "0";
+                    row: "2";
+                  }
+                }
+
+                $KompassArrowButton {
+                  label: "Power Profile";
+                  icon: bind template.power-profile as <AstalPowerProfiles.PowerProfiles>.icon-name;
+                  clicked => $power_clicked();
+                  subtitle: bind template.power-profile as <AstalPowerProfiles.PowerProfiles>.active-profile as <string>;
+                  show-arrow: false;
+
+                  layout {
+                    column: "1";
+                    row: "2";
                   }
                 }
               }

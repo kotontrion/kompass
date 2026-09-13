@@ -41,6 +41,7 @@ kompass_deps = [
   dependency('astal-notifd-0.1'),
   dependency('astal-apps-0.1'),
   dependency('astal-wireplumber-0.1'),
+  dependency('astal-power-profiles-0.1'),
 ]
 
 types_tgt = custom_target(

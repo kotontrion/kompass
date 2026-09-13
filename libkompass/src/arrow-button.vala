@@ -16,6 +16,7 @@ public class ArrowButton : Gtk.Box {
   public string icon { get; set; }
   public string label { get; set; }
   public string subtitle { get; set; }
+  public bool show_arrow { get; set; default = true; }
 
   /**
    * controls the `active` css class

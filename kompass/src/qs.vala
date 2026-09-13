@@ -6,11 +6,13 @@ public class KompassBar.Qs : Gtk.Box {
   public AstalBluetooth.Bluetooth bluetooth { get; private set; }
   public AstalNotifd.Notifd notifd { get; private set; }
   public AstalMpris.Mpris mpris { get; private set; }
+  public AstalPowerProfiles.PowerProfiles power_profile {get; private set; }
 
   private SimpleActionGroup actions;
   private int count = 0;
   
   private Settings settings;
+  public string active_theme { get; set; }
   
   public Kompass.ScreenRecorder recorder { get; set; default = Kompass.ScreenRecorder.get_default(); }
 
@@ -108,9 +110,22 @@ public class KompassBar.Qs : Gtk.Box {
   }
 
   [GtkCallback]
-  public void theme_click() {
+  public void theme_clicked() {
     var scheme = this.settings.get_enum("color-scheme");
-    this.settings.set_enum("color-scheme", (scheme + 1)%2);
+    this.settings.set_enum("color-scheme", (scheme + 1)%3);
+  }
+
+  [GtkCallback]
+  public void power_clicked() {
+    var profiles = this.power_profile.profiles;
+    for (int i = 0; i < profiles.length; i++) {
+      if(profiles[i].profile == this.power_profile.active_profile) {
+        var new_profile = profiles[(i + 1) % profiles.length];
+        this.power_profile.active_profile = new_profile.profile;
+        break;
+      }
+    }
+
   }
 
   [GtkCallback]
@@ -206,7 +221,10 @@ public class KompassBar.Qs : Gtk.Box {
     this.bluetooth = AstalBluetooth.get_default();
     this.notifd = AstalNotifd.get_default();
     this.mpris = AstalMpris.get_default();
+    this.power_profile = AstalPowerProfiles.get_default();
+
     this.settings = new Settings("org.gnome.desktop.interface");
+    settings.bind("color-scheme", this, "active-theme", SettingsBindFlags.DEFAULT);
 
     this.notifd.notified.connect(() => {
       this.notif_svg.state = 1;
