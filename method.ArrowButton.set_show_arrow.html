@@ -7,7 +7,7 @@ SPDX-License-Identifier: MIT
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Kompass.ArrowButton.get_inactive</title>
+  <title>Kompass.ArrowButton.set_show_arrow</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta charset="utf-8" />
@@ -18,10 +18,10 @@ SPDX-License-Identifier: MIT
   
 
   
-  <meta priority="og:title" content="Kompass.ArrowButton.get_inactive"/>
-  <meta priority="og:description" content="Reference for Kompass.ArrowButton.get_inactive"/>
-  <meta name="twitter:title" content="Kompass.ArrowButton.get_inactive"/>
-  <meta name="twitter:description" content="Reference for Kompass.ArrowButton.get_inactive"/>
+  <meta priority="og:title" content="Kompass.ArrowButton.set_show_arrow"/>
+  <meta priority="og:description" content="Reference for Kompass.ArrowButton.set_show_arrow"/>
+  <meta name="twitter:title" content="Kompass.ArrowButton.set_show_arrow"/>
+  <meta name="twitter:description" content="Reference for Kompass.ArrowButton.set_show_arrow"/>
 
 
   
@@ -81,13 +81,13 @@ SPDX-License-Identifier: MIT
   
     <a class="method" href="method.ArrowButton.get_show_arrow.html">get_show_arrow</a>
   
-    <a class="method" href="method.ArrowButton.set_show_arrow.html">set_show_arrow</a>
+    <a class="method current" href="method.ArrowButton.set_show_arrow.html">set_show_arrow</a>
   
     <a class="method" href="method.ArrowButton.get_active.html">get_active</a>
   
     <a class="method" href="method.ArrowButton.set_active.html">set_active</a>
   
-    <a class="method current" href="method.ArrowButton.get_inactive.html">get_inactive</a>
+    <a class="method" href="method.ArrowButton.get_inactive.html">get_inactive</a>
   
     <a class="method" href="method.ArrowButton.set_inactive.html">set_inactive</a>
   
@@ -105,7 +105,7 @@ SPDX-License-Identifier: MIT
 <section id="main" class="content">
   <header>
     <h3>Method</h3>
-    <h1><a href="index.html">Kompass</a><span class="sep"></span><a href="class.ArrowButton.html">ArrowButton</a><span class="sep"></span>get_inactive</h1>
+    <h1><a href="index.html">Kompass</a><span class="sep"></span><a href="class.ArrowButton.html">ArrowButton</a><span class="sep"></span>set_show_arrow</h1>
   </header>
 
   <section>
@@ -121,9 +121,10 @@ SPDX-License-Identifier: MIT
       </h4>
 
       <div class="docblock c-decl">
-        <pre><code><div class="highlight"><pre><span></span><span class="n">gboolean</span>
-<span class="n">kompass_arrow_button_get_inactive</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="n">KompassArrowButton</span><span class="o">*</span><span class="w"> </span><span class="n">self</span>
+        <pre><code><div class="highlight"><pre><span></span><span class="kt">void</span>
+<span class="n">kompass_arrow_button_set_show_arrow</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">KompassArrowButton</span><span class="o">*</span><span class="w"> </span><span class="n">self</span><span class="p">,</span>
+<span class="w">  </span><span class="n">gboolean</span><span class="w"> </span><span class="n">value</span>
 <span class="p">)</span>
 </pre></div>
 </code></pre>
@@ -155,21 +156,21 @@ SPDX-License-Identifier: MIT
     </div>
 
     
-
-    
-    <div class="return-value toggle-wrapper">
-      <h4 id="return-value">
-        Return value
-        <a href="#return-value" class="anchor"></a>
+    <div class="parameters toggle-wrapper">
+      <h4 id="parameters">
+        Parameters
+        <a href="#parameters" class="anchor"></a>
       </h4>
 
       <div class="docblock">
-        <div class="returns">
-          <div class="arg-description">
+        <dl class="arguments">
+          
+
+          
+          <dt class="arg-name"><code>value</code></dt>
+          <dd class="arg-description">
             <p><em>Type:</em>&nbsp;<code>gboolean</code></p>
             <p>No description available.</p>
-          </div>
-          <div>
             <table>
             
             
@@ -177,11 +178,19 @@ SPDX-License-Identifier: MIT
             
             
             
+            
+            
+            
             </table>
-          </div>
-        </div>
+          </dd>
+          
+
+          
+        </dl>
       </div>
     </div>
+    
+
     
 
   </section>
