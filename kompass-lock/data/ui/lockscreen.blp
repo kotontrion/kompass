@@ -1,0 +1,194 @@
+using Gtk 4.0;
+using Adw 1;
+using AstalWp 0.1;
+using AstalBrightness 0.1;
+using AstalBattery 0.1;
+using Kompass 0.1;
+
+template $KompassLockLockscreen: Box {
+  orientation: vertical;
+  styles ["lockscreen"]
+
+  Overlay stage {
+    hexpand: true;
+    vexpand: true;
+
+    Box cava_background {
+      hexpand: true;
+      valign: end;
+      height-request: 300;
+      styles ["lockscreen-cava"]
+
+      Kompass.Cava {
+        hexpand: true;
+        vexpand: true;
+        opacity: 0.28;
+        follow-default-speaker: true;
+      }
+    }
+
+    [overlay]
+    Box content {
+      halign: center;
+      valign: center;
+
+      Box card {
+        orientation: vertical;
+        halign: center;
+        spacing: 12;
+        styles ["lockscreen-card"]
+
+        Label time {
+          halign: center;
+          styles ["lockscreen-time"]
+        }
+
+        Label date {
+          halign: center;
+          styles ["lockscreen-date"]
+        }
+
+        Label user {
+          halign: center;
+          margin-top: 12;
+          styles ["lockscreen-user"]
+        }
+
+        Label status {
+          halign: center;
+          label: bind template.app as <$KompassLockApplication>.auth-message;
+          styles ["lockscreen-status", "error"]
+        }
+
+        Box prompt {
+          orientation: vertical;
+          spacing: 12;
+          visible: bind template.app as <$KompassLock.Application>.auth-prompt-visible;
+
+          Entry visible_input {
+            hexpand: true;
+            placeholder-text: _("Response");
+            visible: bind template.app as <$KompassLock.Application>.auth-prompt-visible-response;
+            sensitive: bind template.app as <$KompassLockApplication>.auth-input-enabled;
+            activates-default: true;
+            activate => $authenticate();
+          }
+
+          PasswordEntry secret_input {
+            hexpand: true;
+            placeholder-text: _("Password");
+            show-peek-icon: false;
+            visible: bind template.app as <$KompassLock.Application>.auth-prompt-secret;
+            sensitive: bind template.app as <$KompassLockApplication>.auth-input-enabled;
+            activates-default: true;
+            activate => $authenticate();
+          }
+        }
+
+        Button unlock_button {
+          label: _("Unlock");
+          sensitive: bind template.app as <$KompassLockApplication>.auth-input-enabled;
+          receives-default: true;
+          clicked => $authenticate();
+        }
+      }
+
+    }
+
+    [overlay]
+    Box sidebar_anchor {
+      halign: end;
+      valign: center;
+      margin-end: 24;
+
+      Revealer sidebar_revealer {
+        transition-type: slide_left;
+        reveal-child: false;
+
+        Box sidebar {
+          orientation: vertical;
+          spacing: 12;
+          margin-start: 12;
+          margin-top: 16;
+          margin-bottom: 16;
+          margin-end: 16;
+          styles ["lockscreen-sidebar"]
+
+          Label battery_info {
+            halign: start;
+            label: bind $battery_label(
+              template.battery as <AstalBattery.Device>
+            ) as <string>;
+            visible: bind $battery_available(
+              template.battery as <AstalBattery.Device>
+            ) as <bool>;
+            styles ["lockscreen-control-label"]
+          }
+
+          Label volume_title {
+            label: _("Volume");
+            halign: start;
+            styles ["lockscreen-control-label"]
+          }
+
+          Scale volume {
+            adjustment: Adjustment volume_adjust {
+              lower: 0;
+              upper: 1;
+              step-increment: 0.01;
+              value: bind template.speaker as <AstalWp.Endpoint>.volume;
+            };
+            draw-value: false;
+            hexpand: true;
+            value-changed => $set_volume();
+          }
+
+          Label brightness_title {
+            label: _("Brightness");
+            halign: start;
+            styles ["lockscreen-control-label"]
+          }
+
+          Scale brightness {
+            adjustment: Adjustment brightness_adjust {
+              lower: 0;
+              upper: 1;
+              step-increment: 0.01;
+              value: bind template.screen as <AstalBrightness.Device>.brightness;
+            };
+            draw-value: false;
+            hexpand: true;
+            value-changed => $set_brightness();
+          }
+
+          Box media_panel {
+            orientation: vertical;
+            visible: false;
+            styles ["lockscreen-media"]
+
+            Adw.Carousel media_players {
+              spacing: 12;
+              allow-mouse-drag: true;
+              allow-scroll-wheel: true;
+            }
+
+            Adw.CarouselIndicatorDots {
+              carousel: media_players;
+              halign: center;
+            }
+          }
+        }
+      }
+    }
+
+    [overlay]
+    Box status_bar {
+      halign: center;
+      valign: end;
+      margin-bottom: 24;
+      spacing: 12;
+
+      Label network {}
+    }
+  }
+}

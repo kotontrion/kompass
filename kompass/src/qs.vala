@@ -314,7 +314,17 @@ public class KompassBar.Qs : Gtk.Box {
 
     var lock_action = new SimpleAction("lock", null);
     lock_action.activate.connect(val => {
-      print("lock is not implemented yet\n");
+      try {
+        Process.spawn_async("/",
+                            { "kompass-lock" },
+                            null,
+                            SpawnFlags.SEARCH_PATH,
+                            null,
+                            null);
+      }
+      catch (GLib.SpawnError e) {
+        warning("Could not start kompass-lock lockscreen: %s\n", e.message);
+      }
     });
     this.actions.add_action(lock_action);
 

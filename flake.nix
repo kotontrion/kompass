@@ -236,6 +236,59 @@
           };
         };
 
+      kompass-lock = pkgs.stdenv.mkDerivation {
+        pname = "kompass-lock";
+        version = getMesonValue "version: '" "${self}/meson.build";
+        src = ./.;
+
+        mesonFlags = [
+          "-Dbuild_target=kompass-lock"
+        ];
+
+        nativeBuildInputs = attrValues {
+          inherit
+            (pkgs)
+            meson
+            ninja
+            pkg-config
+            wrapGAppsHook4
+            vala
+            blueprint-compiler
+            dart-sass
+            gawk
+            ;
+        };
+
+        buildInputs = attrValues {
+          inherit
+            (astal.packages.${pkgs.stdenv.hostPlatform.system})
+            auth
+            apps
+            battery
+            bluetooth
+            cava
+            io
+            mpris
+            network
+            notifd
+            river
+            tray
+            wireplumber
+            wl
+            ;
+
+          inherit
+            (pkgs)
+            libadwaita
+            libnm
+            libnma-gtk4
+            libportal
+            gtk4
+            gtk4-layer-shell
+            ;
+        };
+      };
+
       default = self.packages.${pkgs.stdenv.hostPlatform.system}.kompass;
     });
 

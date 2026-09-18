@@ -31,6 +31,10 @@ if 'kompass' in targets or 'all' in targets
   subdir('kompass')
 endif
 
+if 'kompass-lock' in targets or 'all' in targets
+  subdir('kompass-lock')
+endif
+
 subdir('po')
 
 

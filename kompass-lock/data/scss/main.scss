@@ -1,0 +1,83 @@
+lockscreen {
+  background: #{"@window_bg_color"};
+}
+
+.lockscreen-cava > cava {
+  color: #{"alpha(@accent_bg_color, 0.9)"};
+}
+
+.lockscreen-card {
+  min-width: 26rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  background: #{"alpha(@card_bg_color, 0.94)"};
+}
+
+.lockscreen-time {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.lockscreen-date {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+.lockscreen-user {
+  margin-top: 0.5rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.03rem;
+}
+
+.lockscreen-sidebar {
+  min-width: 22rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: #{"alpha(@card_bg_color, 0.94)"};
+}
+
+.lockscreen-control-label {
+  font-weight: 600;
+}
+
+.lockscreen-media {
+  min-height: 11rem;
+  border-radius: 0.75rem;
+}
+
+.lockscreen-media carousel {
+  border-radius: 0.5rem;
+}
+
+.lockscreen-status {
+  min-height: 1.4rem;
+}
+
+.mpris-player {
+  min-height: 8rem;
+  border-radius: 0.8rem;
+
+  overlay > box {
+    padding: 0.3rem;
+    background-image: linear-gradient(
+            rgba(0, 0, 0, 0),
+            #{"alpha(var(--view-bg-color), 0.7)"});
+
+    label {
+      text-shadow:
+              0.05rem 0.05rem 0.15rem var(--view-bg-color),
+              0 0 1.2rem var(--view-bg-color),
+              0 0 0.4rem var(--view-bg-color);
+    }
+    image {
+      -gtk-icon-shadow:
+              0.05rem 0.05rem 0.15rem var(--view-bg-color),
+              0 0 1.2rem var(--view-bg-color),
+              0 0 0.4rem var(--view-bg-color);
+    }
+    button {
+      background-color: transparent;
+    }
+  }
+}
