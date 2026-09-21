@@ -89,6 +89,7 @@ public class Application : Adw.Application {
     if (!session_lock.lock()) {
       quit();
     }
+    hold();
   }
 
   private void assign_window(Gdk.Monitor monitor) {
@@ -129,7 +130,7 @@ public class Application : Adw.Application {
   }
 
   public override void shutdown() {
-    this.unlock();
+    //this.unlock();
     base.shutdown();
   }
 }
